@@ -57,8 +57,8 @@ app.use('/data', express.static(global.rootDir + '/public/data'));
 app.use('/docs', express.static(global.rootDir + '/public/html'));
 app.use('/img', express.static(global.rootDir + '/public/media'));
 
-const clientRouter = require('./routers/clientRouter');
-app.use("/clients", clientRouter);
+//const clientRouter = require(global.rootDir + '/routers/clientRouter');
+//app.use("/clients", clientRouter);
 
 app.use(express.urlencoded({ extended: true }))
 app.use(express.json());

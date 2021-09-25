@@ -1,0 +1,20 @@
+{
+  "name": "progettotecweb",
+  "version": "1.0.0",
+  "description": "prova prova prova",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "clear && node index.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/pondo95/ProgettoTecWeb.git"
+  },
+  "author": "Michele Virelli, Matteo Vannucchi, Denis Pondini",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/pondo95/ProgettoTecWeb/issues"
+  },
+  "homepage": "https://github.com/pondo95/ProgettoTecWeb#readme"
+}

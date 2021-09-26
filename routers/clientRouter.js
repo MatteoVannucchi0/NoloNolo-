@@ -16,6 +16,7 @@ router.get("/:id", getClientById, async (req, res) => {
 })
 
 router.post("/", async (req, res) =>{
+    console.log(req);
     const client = new Client({
         firstName: req.body.firstName,
         lastName: req.body.lastName,
@@ -23,7 +24,7 @@ router.post("/", async (req, res) =>{
     });
 
     try {
-        const newClient = await client.save();
+        const newClient = await Client.save();
         res.status(201).json(newClient);
     } catch (error) {
         res.status(400).json({message: error.message});

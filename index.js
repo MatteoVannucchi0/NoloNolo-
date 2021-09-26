@@ -32,13 +32,12 @@ Copyright (c) 2021 by Fabio Vitali
 global.rootDir = __dirname;
 global.startDate = null;
 
-const template = require(global.rootDir + '/scripts/tpl.js');
-const mymongo = require(global.rootDir + '/scripts/mongo.js');
 const mongoose = require("mongoose");
 const express = require('express');
 const cors = require('cors');
 
-
+//Serve per le variabili di ambiente
+require('dotenv').config();
 
 
 
@@ -60,7 +59,6 @@ app.use('/img', express.static(global.rootDir + '/public/media'));
 const clientRouter = require(global.rootDir + '/routers/clientRouter');
 app.use("/clients", clientRouter);
 
-app.use(express.urlencoded({ extended: true }))
 app.use(express.json());
 app.use(cors())
 
@@ -68,55 +66,9 @@ app.use(cors())
 app.enable('trust proxy');
 
 
-app.get('/', async function (req, res) {
-	let sitename = req.hostname.split('.')[0]
-	res.send(await template.generate('index.html', {
-		host: req.hostname,
-		site: sitename
-	}));
+app.get("/", (req, res) => {
+	res.send("Ciao");
 })
-
-app.get('/hw', async function (req, res) {
-	var text = "Hello world as a Node service";
-	res.send(
-		`<!doctype html>
-<html>
-	<body>
-		<h1>${text}</h1>
-		<p><a href="javascript:history.back()">Go back</a></p>
-	</body>
-</html>
-			`)
-});
-
-app.get('/hwhb', async function (req, res) {
-	res.send(await template.generate('generic.html', {
-		text: "Hello world as a Handlebar service",
-	}));
-});
-
-const info = async function (req, res) {
-	let data = {
-		startDate: global.startDate.toLocaleString(),
-		requestDate: (new Date()).toLocaleString(),
-		request: {
-			host: req.hostname,
-			method: req.method,
-			path: req.path,
-			protocol: req.protocol
-		},
-		query: req.query,
-		body: req.body
-	}
-	res.send(await template.generate('info.html', data));
-}
-
-app.get('/info', info)
-app.post('/info', info)
-
-
-
-
 
 /* ========================== */
 /*                            */
@@ -126,12 +78,21 @@ app.post('/info', info)
 
 /* Replace these info with the ones you were given when activating mongoDB */
 const mongoCredentials = {
-	user: "site202120",
-	pwd: "quazio8U",
+	user: process.env.DATABASE_USER,		//"site202120",
+	pwd:  process.env.DATABASE_PASSWORD,	//"quazio8U",
 	site: "mongo_site202120"
 }
 
+const mongooseOptions = {
+	dbName: "databaseProgettoTechWeb",
+	useNewUrlParser: true,
+}
 
+const mongouri = `mongodb://${mongoCredentials.user}:${mongoCredentials.pwd}@${process.env.DATABASE_URL}/${mongooseOptions.dbName}`;
+
+mongoose.connect(mongouri, mongooseOptions);
+mongoose.connection.on('error', (err) => console.log(err));
+mongoose.connection.once('open', () => console.log("Connesso al database"));
 
 
 

@@ -1,0 +1,29 @@
+GET http://localhost:8000/Objects
+
+###
+
+GET http://localhost:8000/Objects/615076c738b89babd9896404
+
+###
+
+POST http://localhost:8000/Objects 
+Content-Type: application/json
+
+{
+    "title": "Macchina X",
+    "description": "Una bellissima automobile"
+}
+
+###
+
+DELETE http://localhost:8000/Objects/615076c738b89babd9896404
+
+###
+
+PATCH http://localhost:8000/Object/615076c738b89babd9896404
+Content-Type: application/json
+
+{
+    "title": "Macchina X",
+    "description": "Una automobile"
+}

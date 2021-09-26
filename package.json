@@ -5,7 +5,7 @@
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "clear && node index.js"
+    "start": "clear && nodemon index.js"
   },
   "repository": {
     "type": "git",
@@ -21,7 +21,11 @@
     "cors": "^2.8.5",
     "express": "^4.17.1",
     "handlebar": "^1.0.0",
+    "handlebars": "^4.7.7",
     "mongodb": "^4.1.2",
     "mongoose": "^6.0.7"
+  },
+  "devDependencies": {
+    "nodemon": "^2.0.13"
   }
 }

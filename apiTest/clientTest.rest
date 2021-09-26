@@ -1,0 +1,10 @@
+GET https://site202120.tw.cs.unibo.it/clients
+
+###
+
+POST https://site202120.tw.cs.unibo.it/clients
+
+{
+    "firstName" : "John",
+    "lastName" : "Smith",
+}

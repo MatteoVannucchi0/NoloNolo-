@@ -130,16 +130,6 @@ const mongoCredentials = {
 	pwd: "quazio8U",
 	site: "mongo_site202120"
 }
-/* end */
-app.get('/db/create', async function (req, res) {
-	res.send(await mymongo.create(mongoCredentials))
-});
-app.get('/db/search', async function (req, res) {
-	res.send(await mymongo.search(req.query, mongoCredentials))
-});
-
-
-
 
 
 
@@ -157,5 +147,3 @@ app.listen(8000, function () {
 	console.log(`App listening on port 8000 started ${global.startDate.toLocaleString()}`)
 })
 
-
-/*       END OF SCRIPT        */

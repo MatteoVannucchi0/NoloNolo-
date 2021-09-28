@@ -1,6 +1,6 @@
 const express = require("express");
 const router = express.Router();
-const Object = require("../public/models/Object");
+const Object = require("../models/Object");
 
 //Getting all Object
 router.get('/', async (req, res) => {
@@ -14,7 +14,7 @@ router.get('/', async (req, res) => {
 
 //Getting one Object 
 router.get('/:id', getObject,(req, res) => {
-    res.send(object.title);
+    res.send(object);
     //res.json(res.object)
 });
 

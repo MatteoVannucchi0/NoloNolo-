@@ -28,7 +28,6 @@ Copyright (c) 2021 by Fabio Vitali
 /*           SETUP            */
 /*                            */
 /* ========================== */
-/*
 global.rootDir = __dirname ;
 global.startDate = null; 
 
@@ -41,9 +40,6 @@ const cors = require('cors');
 
 //Serve per le variabili di ambiente
 require('dotenv').config();
-
-//Provvisoria
-let app = express(); 
 
 
 
@@ -68,16 +64,8 @@ app.use(cors())
 // https://stackoverflow.com/questions/40459511/in-express-js-req-protocol-is-not-picking-up-https-for-my-secure-link-it-alwa
 app.enable('trust proxy');
 
-
-mongoose.connect('mongodb://localhost');
-const db = mongoose.connection;
-db.on('error', (error) => console.error(error));
-db.once('open', () => console.log('Connected to Database'));
-
-app.use(express.json());
-
-const objectsRouter = require('./routers/ObjectRoutes'); 
-app.use('/Objects', objectsRouter);
+const objectsRouter = require(global.rootDir + '/public/routers/ObjectRoutes'); 
+app.use('/products', objectsRouter);
 
 const clientRouter = require(global.rootDir + '/public/routers/clientRouter');
 app.use("/clients", clientRouter);
@@ -88,22 +76,11 @@ app.use("/clients", clientRouter);
 /*                            */
 /* ========================== */
 
-/* Replace these info with the ones you were given when activating mongoDB 
 const mongoCredentials = {
 	user: process.env.DATABASE_USER,		//"site202120",
 	pwd:  process.env.DATABASE_PASSWORD,	//"quazio8U",
 	site: "mongo_site202120"
 }  
-/* end 
-
-app.get('/db/create', async function(req, res) { 
-	res.send(await mymongo.create(mongoCredentials))
-});
-app.get('/db/search', async function(req, res) { 
-	res.send(await mymongo.search(req.query, mongoCredentials))
-});
-*/
-
 
 const mongooseOptions = {
 	dbName: "databaseProgettoTechWeb",

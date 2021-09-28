@@ -32,13 +32,15 @@ Copyright (c) 2021 by Fabio Vitali
 global.rootDir = __dirname ;
 global.startDate = null; 
 
-const template = require(global.rootDir + '/scripts/tpl.js') ; 
-const mymongo = require(global.rootDir + '/scripts/mongo.js') ; 
-*/
-const express = require('express') ;
-const cors = require('cors')
+global.rootDir = __dirname;
+global.startDate = null;
 
-const mongoose = require('mongoose');
+const mongoose = require("mongoose");
+const express = require('express');
+const cors = require('cors');
+
+//Serve per le variabili di ambiente
+require('dotenv').config();
 
 //Provvisoria
 let app = express(); 
@@ -51,66 +53,22 @@ let app = express();
 /*  EXPRESS CONFIG & ROUTES   */
 /*                            */
 /* ========================== */
-/*
-let app= express(); 
-app.use('/js'  , express.static(global.rootDir +'/public/js'));
-app.use('/css' , express.static(global.rootDir +'/public/css'));
-app.use('/data', express.static(global.rootDir +'/public/data'));
-app.use('/docs', express.static(global.rootDir +'/public/html'));
-app.use('/img' , express.static(global.rootDir +'/public/media'));
-app.use(express.urlencoded({ extended: true })) 
+
+let app = express();
+app.use('/js', express.static(global.rootDir + '/public/js'));
+app.use('/css', express.static(global.rootDir + '/public/css'));
+app.use('/data', express.static(global.rootDir + '/public/data'));
+app.use('/docs', express.static(global.rootDir + '/public/html'));
+app.use('/img', express.static(global.rootDir + '/public/media'));
+
+
+
+app.use(express.json());
 app.use(cors())
 
 // https://stackoverflow.com/questions/40459511/in-express-js-req-protocol-is-not-picking-up-https-for-my-secure-link-it-alwa
 app.enable('trust proxy');
 
-
-app.get('/', async function (req, res) { 
-	let sitename = req.hostname.split('.')[0]
-	res.send(await template.generate('index.html', {
-			host: req.hostname,
-			site: sitename
-	}));
-})
-
-app.get('/hw', async function(req, res) { 
-	var text = "Hello world as a Node service";
-	res.send(
-`<!doctype html>
-<html>
-	<body>
-		<h1>${text}</h1>
-		<p><a href="javascript:history.back()">Go back</a></p>
-	</body>
-</html>
-			`)
-});
-
-app.get('/hwhb', async function(req, res) { 
-	res.send(await template.generate('generic.html', {
-		text: "Hello world as a Handlebar service",
-	}));
-});
-
-const info = async function(req, res) {
-	let data = {
-		startDate: global.startDate.toLocaleString(), 
-		requestDate: (new Date()).toLocaleString(), 
-		request: {
-			host: req.hostname,
-			method: req.method,
-			path: req.path,
-			protocol: req.protocol
-		}, 
-		query: req.query,
-		body: req.body
-	}
-	res.send( await template.generate('info.html', data));
-}
-
-app.get('/info', info )
-app.post('/info', info )
-*/
 
 mongoose.connect('mongodb://localhost');
 const db = mongoose.connection;
@@ -122,7 +80,8 @@ app.use(express.json());
 const objectsRouter = require('./routers/ObjectRoutes'); 
 app.use('/Objects', objectsRouter);
 
-
+const clientRouter = require(global.rootDir + '/public/routers/clientRouter');
+app.use("/clients", clientRouter);
 
 /* ========================== */
 /*                            */
@@ -132,8 +91,8 @@ app.use('/Objects', objectsRouter);
 
 /* Replace these info with the ones you were given when activating mongoDB 
 const mongoCredentials = {
-	user: "site202120",
-	pwd: "quazio8U",
+	user: process.env.DATABASE_USER,		//"site202120",
+	pwd:  process.env.DATABASE_PASSWORD,	//"quazio8U",
 	site: "mongo_site202120"
 }  
 /* end 
@@ -147,7 +106,16 @@ app.get('/db/search', async function(req, res) {
 */
 
 
+const mongooseOptions = {
+	dbName: "databaseProgettoTechWeb",
+	useNewUrlParser: true,
+}
 
+const mongouri = `mongodb://${mongoCredentials.user}:${mongoCredentials.pwd}@${process.env.DATABASE_URL}/${mongooseOptions.dbName}`;
+
+mongoose.connect(mongouri, mongooseOptions);
+mongoose.connection.on('error', (err) => console.log(err));
+mongoose.connection.once('open', () => console.log("Connesso al database"));
 
 
 

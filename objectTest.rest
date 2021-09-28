@@ -1,0 +1,31 @@
+@id = 6152e3e70addd951d0a00cc5
+
+GET http://localhost:8000/Objects
+
+###
+
+GET http://localhost:8000/Objects/{{id}}
+
+###
+
+POST http://localhost:8000/Objects 
+Content-Type: application/json
+
+{
+    "title": "Macchina X",
+    "description": "Una bellissima automobile"
+}
+
+###
+
+DELETE http://localhost:8000/Objects/{{id}}
+
+###
+
+PATCH http://localhost:8000/Object/{{id}}
+Content-Type: application/json
+
+{
+    "title": "Macchina X",
+    "description": "Una automobile"
+}

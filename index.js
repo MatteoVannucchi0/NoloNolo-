@@ -55,12 +55,12 @@ app.use('/css', express.static(global.rootDir + '/public/css'));
 app.use('/data', express.static(global.rootDir + '/public/data'));
 app.use('/docs', express.static(global.rootDir + '/public/html'));
 app.use('/img', express.static(global.rootDir + '/public/media'));
+app.use(express.json());   //L'ordine di questi è importante!
+app.use(cors())
 
 const clientRouter = require(global.rootDir + '/public/routers/clientRouter');
-app.use("/clients", clientRouter);
+app.use("/customers", clientRouter);
 
-app.use(express.json());
-app.use(cors())
 
 // https://stackoverflow.com/questions/40459511/in-express-js-req-protocol-is-not-picking-up-https-for-my-secure-link-it-alwa
 app.enable('trust proxy');

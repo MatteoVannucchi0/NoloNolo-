@@ -1,8 +1,10 @@
+@id = 6152e3e70addd951d0a00cc5
+
 GET http://localhost:8000/Objects
 
 ###
 
-GET http://localhost:8000/Objects/615076c738b89babd9896404
+GET http://localhost:8000/Objects/{{id}}
 
 ###
 
@@ -16,11 +18,11 @@ Content-Type: application/json
 
 ###
 
-DELETE http://localhost:8000/Objects/615076c738b89babd9896404
+DELETE http://localhost:8000/Objects/{{id}}
 
 ###
 
-PATCH http://localhost:8000/Object/615076c738b89babd9896404
+PATCH http://localhost:8000/Object/{{id}}
 Content-Type: application/json
 
 {

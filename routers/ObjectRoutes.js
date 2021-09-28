@@ -61,6 +61,7 @@ router.delete('/:id', getObject, async (req,res) => {
 });
 
 async function getObject(req, res, next){
+    object = null;
     try {
         object = await Object.findById(req.params.id);
         if(object == null){

@@ -1,14 +1,14 @@
-@id = 6152e3e70addd951d0a00cc5
+@id = 615371748968b8c7a8024010
 
-GET http://localhost:8000/Objects
-
-###
-
-GET http://localhost:8000/Objects/{{id}}
+GET http://localhost:8000/Products
 
 ###
 
-POST http://localhost:8000/Objects 
+GET http://localhost:8000/Products/{{id}}
+
+###
+
+POST http://localhost:8000/Products
 Content-Type: application/json
 
 {
@@ -18,11 +18,11 @@ Content-Type: application/json
 
 ###
 
-DELETE http://localhost:8000/Objects/{{id}}
+DELETE http://localhost:8000/Products/{{id}}
 
 ###
 
-PATCH http://localhost:8000/Object/{{id}}
+PATCH http://localhost:8000/Products/{{id}}
 Content-Type: application/json
 
 {

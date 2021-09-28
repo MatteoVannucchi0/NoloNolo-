@@ -1,49 +1,48 @@
 const express = require("express");
 const router = express.Router();
-const Object = require("../models/Object");
+const Products = require("../models/Products");
 
 //Getting all Object
 router.get('/', async (req, res) => {
     try {
-        const object = await Object.find();
-        res.json(object);
+        const product = await Products.find();
+        res.json(product);
     } catch (err){
         res.status(500).json({message: err.message});
     }
 });
 
 //Getting one Object 
-router.get('/:id', getObject,(req, res) => {
-    res.send(object);
-    //res.json(res.object)
+router.get('/:id', getProduct,(req, res) => {
+    res.json(res.product)
 });
 
 //Creating one 
 router.post('/', async (req, res) => {
-    const object = new Object({
+    const product = new Products({
         title: req.body.title,
         description: req.body.description,
     });
 
     try {
-        const newObject = await object.save();
-        res.status(201).json(newObject);
+        const newProduct = await product.save();
+        res.status(201).json(newProduct);
     } catch (err) {
         res.status(400).json({message: err.message});
     }
 });
 
 //Updating one
-router.patch('/:id', getObject, async (req,res) => {
+router.patch('/:id', getProduct, async (req,res) => {
     if(req.body.title != null){
-        res.object.title = req.body.title;
+        res.product.title = req.body.title;
     }
     if(req.body.description != null){
-        res.object.description = req.body.description;
+        res.product.description = req.body.description;
     }
     try {
-        const updateObject = await res.object.save();
-        res.json({updateObject});
+        const updateProduct = await res.product.save();
+        res.json({updateProduct: updateProduct});
     } catch (err) {
         res.status(400).json({message: err.message});
         
@@ -51,27 +50,27 @@ router.patch('/:id', getObject, async (req,res) => {
 });
 
 //Deleting one
-router.delete('/:id', getObject, async (req,res) => {
+router.delete('/:id', getProduct, async (req,res) => {
     try {
-        await res.object.remove();
+        await res.product.remove();
         res.json({message: 'Delete Object'});
     } catch (err) {
         res.status(500).json({message: err.message})
     }
 });
 
-async function getObject(req, res, next){
-    object = null;
+async function getProduct (req, res, next){
+    product = null;
     try {
-        object = await Object.findById(req.params.id);
-        if(object == null){
-            return res.status(404).json({message: 'Cannot find Object'});
+        product = await Products.findById(req.params.id);
+        if(product == null){
+            return res.status(404).json({message: 'Cannot find the Product'});
         }
     } catch (err) {
         return res.status(500).json({message: err.message})
     }
 
-    res.object = object;
+    res.product = product;
     next();
 };
 

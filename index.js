@@ -42,8 +42,6 @@ const cors = require('cors');
 require('dotenv').config();
 
 
-
-
 /* ========================== */
 /*                            */
 /*  EXPRESS CONFIG & ROUTES   */
@@ -64,8 +62,8 @@ app.use(cors())
 // https://stackoverflow.com/questions/40459511/in-express-js-req-protocol-is-not-picking-up-https-for-my-secure-link-it-alwa
 app.enable('trust proxy');
 
-const objectsRouter = require(global.rootDir + '/public/routers/ObjectRoutes'); 
-app.use('/products', objectsRouter);
+const productsRouter = require(global.rootDir + '/public/routers/ProductsRoutes'); 
+app.use('/products', productsRouter);
 
 const clientRouter = require(global.rootDir + '/public/routers/clientRouter');
 app.use("/clients", clientRouter);

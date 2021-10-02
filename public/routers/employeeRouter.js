@@ -57,6 +57,15 @@ router.patch('/{id}', async (req,res) => {
     }
 })
 
+router.get('/{id}/rentals', getEmployeeById, async (req, res) => {
+    try{
+        let rentals =  await Rental.find({employee: req.params.id})
+        res.send(200).json({rentals})
+    } catch (error) {
+        res.status(400).json({message: error.message})
+    }
+})
+
 async function getEmployeeById(req, res, next) {
     let employee;
     try {

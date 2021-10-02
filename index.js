@@ -65,11 +65,10 @@ app.use(cors())
 app.enable('trust proxy');
 
 const objectsRouter = require(global.rootDir + '/public/routers/ObjectRoutes'); 
-app.use('/products', objectsRouter);
+app.use('/api/products', objectsRouter);
 
-const clientRouter = require(global.rootDir + '/public/routers/clientRouter');
-app.use("/clients", clientRouter);
-
+const customerRouter = require(global.rootDir + '/public/routers/customerRouter');
+app.use("/api/customers", customerRouter);
 /* ========================== */
 /*                            */
 /*           MONGODB          */

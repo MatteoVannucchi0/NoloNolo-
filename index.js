@@ -62,12 +62,19 @@ app.use(cors())
 // https://stackoverflow.com/questions/40459511/in-express-js-req-protocol-is-not-picking-up-https-for-my-secure-link-it-alwa
 app.enable('trust proxy');
 
+<<<<<<< HEAD
 const productsRouter = require(global.rootDir + '/public/routers/ProductsRoutes'); 
 app.use('/products', productsRouter);
 
 const clientRouter = require(global.rootDir + '/public/routers/clientRouter');
 app.use("/clients", clientRouter);
+=======
+const objectsRouter = require(global.rootDir + '/public/routers/ObjectRoutes'); 
+app.use('/api/products', objectsRouter);
+>>>>>>> main
 
+const customerRouter = require(global.rootDir + '/public/routers/customerRouter');
+app.use("/api/customers", customerRouter);
 /* ========================== */
 /*                            */
 /*           MONGODB          */

@@ -28,6 +28,8 @@ Copyright (c) 2021 by Fabio Vitali
 /*           SETUP            */
 /*                            */
 /* ========================== */
+global.rootDir = __dirname ;
+global.startDate = null; 
 
 global.rootDir = __dirname;
 global.startDate = null;
@@ -38,7 +40,6 @@ const cors = require('cors');
 
 //Serve per le variabili di ambiente
 require('dotenv').config();
-
 
 
 
@@ -55,20 +56,19 @@ app.use('/css', express.static(global.rootDir + '/public/css'));
 app.use('/data', express.static(global.rootDir + '/public/data'));
 app.use('/docs', express.static(global.rootDir + '/public/html'));
 app.use('/img', express.static(global.rootDir + '/public/media'));
-
-const clientRouter = require(global.rootDir + '/public/routers/clientRouter');
-app.use("/clients", clientRouter);
-
-app.use(express.json());
+app.use(express.json());   //L'ordine di questi è importante!
 app.use(cors())
+
+
 
 // https://stackoverflow.com/questions/40459511/in-express-js-req-protocol-is-not-picking-up-https-for-my-secure-link-it-alwa
 app.enable('trust proxy');
 
+const objectsRouter = require(global.rootDir + '/public/routers/ObjectRoutes'); 
+app.use('/products', objectsRouter);
 
-app.get("/", (req, res) => {
-	res.send("Ciao");
-})
+const clientRouter = require(global.rootDir + '/public/routers/clientRouter');
+app.use("/clients", clientRouter);
 
 /* ========================== */
 /*                            */
@@ -76,12 +76,11 @@ app.get("/", (req, res) => {
 /*                            */
 /* ========================== */
 
-/* Replace these info with the ones you were given when activating mongoDB */
 const mongoCredentials = {
 	user: process.env.DATABASE_USER,		//"site202120",
 	pwd:  process.env.DATABASE_PASSWORD,	//"quazio8U",
 	site: "mongo_site202120"
-}
+}  
 
 const mongooseOptions = {
 	dbName: "databaseProgettoTechWeb",
@@ -103,8 +102,10 @@ mongoose.connection.once('open', () => console.log("Connesso al database"));
 /*                            */
 /* ========================== */
 
-app.listen(8000, function () {
-	global.startDate = new Date();
-	console.log(`App listening on port 8000 started ${global.startDate.toLocaleString()}`)
+app.listen(8000, function() { 
+	global.startDate = new Date() ; 
+	console.log(`App listening on port 8000 started ${global.startDate.toLocaleString()}` )
 })
 
+
+/*       END OF SCRIPT        */

@@ -2,7 +2,7 @@ const express = require('express');
 const customer = require('../models/customer');
 const router = express.Router();
 const Customer = require('../models/customer');
-const Rental = require('../models/rental')
+const Rental = null//require('../models/rental')
 
 router.get('/', async (req, res) => {
     try {
@@ -14,8 +14,9 @@ router.get('/', async (req, res) => {
 })
 
 router.post('/', async (req, res) => {
+    let customer = null;
     try{
-        const customer = await Customer({
+        customer = await Customer({
             firstname : req.body.firstname,
             lastname : req.body.lastname,
             username : req.body.username,
@@ -36,20 +37,21 @@ router.post('/', async (req, res) => {
     }
 })
 
-router.get('/{id}', getCustomerById, async (req, res) => {
+router.get('/:id', getCustomerById, async (req, res) => {
     res.json(res.customer);
 })
 
-router.delete('/{id}', getCustomerById, async (req, res) => {
+router.delete('/:id', getCustomerById, async (req, res) => {
     try{
+        let removedCustomer = res.customer
         await res.customer.remove();
-        res.json({message: "Customer deleted from the database"});
+        res.json(removedCustomer);   //{message: "Customer deleted from the database"});
     } catch(error){
         //res.status(500).json({message: error.message});
     }
 })
 
-router.patch('/{id}', async (req,res) => {
+router.patch('/:id', async (req,res) => {
     try{
         let newCustomer =  await Customer.FindOneAndUpdate(req.params.id, req.body.customer, {new: true});
         if (newCustomer == null)
@@ -60,7 +62,7 @@ router.patch('/{id}', async (req,res) => {
     }
 })
 
-router.get('/{id}/rentals', getCustomerById, async (req, res) => {
+router.get('/:id/rentals', getCustomerById, async (req, res) => {
     try{
         let rentals =  await Rental.find({customer: req.params.id})
         res.send(200).json({rentals})
@@ -69,7 +71,7 @@ router.get('/{id}/rentals', getCustomerById, async (req, res) => {
     }
 })
 
-router.get('/{id}/favorites', async (req, res) => {
+router.get('/:id/favorites', async (req, res) => {
     res.send(404).json({message: 'Non ancora implementanto'});
 })
 
@@ -78,7 +80,7 @@ async function getCustomerById(req, res, next) {
     try {
         customer = await Customer.findById(req.params.id);
         if(customer == null){
-            return res.status(404).json({message: "Customer not found on the database"});
+            return res.status(404).json({message: "Customer with id " + req.params.id + " not found on the database"});
         }
     } catch (error) {
         return res.status(400).json({message: error.message});

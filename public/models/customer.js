@@ -55,4 +55,4 @@ const customerSchema = new mongoose.Schema({
     address: addressSchema,
 })
 
-module.exports = mongoose.model('Customer', clientSchema);
+module.exports = mongoose.model('Customer', customerSchema);

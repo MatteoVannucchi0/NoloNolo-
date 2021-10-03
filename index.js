@@ -108,3 +108,9 @@ app.listen(8000, function() {
 
 
 /*       END OF SCRIPT        */
+
+
+//TEST TEST
+
+
+module.exports = app;

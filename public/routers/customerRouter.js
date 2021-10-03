@@ -47,16 +47,17 @@ router.delete('/:id', getCustomerById, async (req, res) => {
         await res.customer.remove();
         res.json(removedCustomer);   //{message: "Customer deleted from the database"});
     } catch(error){
-        //res.status(500).json({message: error.message});
+        res.status(500).json({message: error.message});
     }
 })
 
-router.patch('/:id', async (req,res) => {
+router.patch('/:id', async (req,res) => {    
     try{
-        let newCustomer =  await Customer.FindOneAndUpdate(req.params.id, req.body.customer, {new: true});
+        let newCustomer =  await Customer.findOneAndUpdate(req.params.id, req.body, {new: true});
         if (newCustomer == null)
-            res.send(404).json({message:"Customer not found"})
-        res.send(200).json({newCustomer});
+            res.status(404).json({message:"Customer not found"})
+
+        res.status(200).json(newCustomer);
     } catch (error) {
         res.status(400).json({message: error.message})          //Non so se restituire 400 o 404
     }
@@ -65,20 +66,21 @@ router.patch('/:id', async (req,res) => {
 router.get('/:id/rentals', getCustomerById, async (req, res) => {
     try{
         let rentals =  await Rental.find({customer: req.params.id})
-        res.send(200).json({rentals})
+        res.status(200).json({rentals})
     } catch (error) {
         res.status(400).json({message: error.message})          //Non so se restituire 400 o 404
     }
 })
 
 router.get('/:id/favorites', async (req, res) => {
-    res.send(404).json({message: 'Non ancora implementanto'});
+    res.status(404).json({message: 'Non ancora implementanto'});
 })
 
 async function getCustomerById(req, res, next) {
     let customer;
     try {
         customer = await Customer.findById(req.params.id);
+
         if(customer == null){
             return res.status(404).json({message: "Customer with id " + req.params.id + " not found on the database"});
         }

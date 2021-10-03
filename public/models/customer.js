@@ -47,7 +47,7 @@ const customerSchema = new mongoose.Schema({
         required: true,
         validate: validateEmail,
     },
-    dataOfBirth:{
+    dateOfBirth:{
         type: Date,
         required: true,
         default: Date.now(),

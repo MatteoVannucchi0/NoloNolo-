@@ -47,7 +47,7 @@ const customerSchema = new mongoose.Schema({
         required: true,
         validate: validateEmail,
     },
-    dataOfBirth:{
+    dateOfBirth:{
         type: Date,
         required: true,
         default: Date.now(),
@@ -55,4 +55,4 @@ const customerSchema = new mongoose.Schema({
     address: addressSchema,
 })
 
-module.exports = mongoose.model('Customer', clientSchema);
+module.exports = mongoose.model('Customer', customerSchema);

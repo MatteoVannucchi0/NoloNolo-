@@ -18,7 +18,9 @@ jobs:
           command: | 
             ssh-keyscan -H donpasquale.cs.unibo.it >> ~/.ssh/known_hosts
 
-            scp -r public/ matteo.vannucchi@donpasquale.cs.unibo.it:/home/web/site202120/html/public/
+            scp -r public/models/ matteo.vannucchi@donpasquale.cs.unibo.it:/home/web/site202120/html/public/backend/
+            scp -r public/routers/ matteo.vannucchi@donpasquale.cs.unibo.it:/home/web/site202120/html/public/backend/
+
             scp index.js matteo.vannucchi@donpasquale.cs.unibo.it:/home/web/site202120/html/
             scp package.json matteo.vannucchi@donpasquale.cs.unibo.it:/home/web/site202120/html/
             scp package-lock.json matteo.vannucchi@donpasquale.cs.unibo.it:/home/web/site202120/html/  

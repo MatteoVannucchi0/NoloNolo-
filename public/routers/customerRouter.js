@@ -2,6 +2,7 @@ const express = require('express');
 const router = express.Router();
 const Customer = require('../models/customer');
 const Rental = null//require('../models/rental')
+const authentication = require('../routers/authenticationRouter');
 
 router.get('/', async (req, res) => {
     try {
@@ -18,16 +19,18 @@ router.get('/', async (req, res) => {
     }
 })
 
-router.post('/', async (req, res) => {
+router.post('/', hashPassword, async (req, res) => {
     let customer = null;
     try{
         customer = await Customer({
             firstname : req.body.firstname,
             lastname : req.body.lastname,
-            loginInfo: req.body.loginInfo,
             dateOfBirth: req.body.dateOfBirth,
+            loginInfo: req.body.loginInfo,
             address: req.body.address,
         });
+
+
     } catch (error) {
         res.status(400).json({message: error.message})
     }
@@ -54,7 +57,7 @@ router.delete('/:id', getCustomerById, async (req, res) => {
     }
 })
 
-router.patch('/:id', getCustomerById, async (req,res) => {    
+router.patch('/:id', hashPassword, getCustomerById, async (req,res) => {    
     try{
         res.customer.set(req.body);
         await res.customer.save();
@@ -92,6 +95,17 @@ async function getCustomerById(req, res, next) {
     }
 
     res.customer = customer;
+    next();
+}
+
+async function hashPassword(req, res, next) {
+    try{
+        if(req.body && req.body.loginInfo && req.body.loginInfo.password)
+            req.body.loginInfo.password = await authentication.hash(req.body.loginInfo.password);
+    } catch (error) {
+        return res.status(400).json({message: error.message});
+    }
+
     next();
 }
 

@@ -13,7 +13,8 @@ describe('Unit test customer', function() {
     function verifyCustomer(got, expected){
         got.firstname.should.equal(expected.firstname);
         got.lastname.should.equal(expected.lastname);
-        got.loginInfo.should.deep.equal(expected.loginInfo);
+        got.loginInfo.username.should.equal(expected.loginInfo.username);
+        got.loginInfo.email.should.equal(expected.loginInfo.email);
         got.should.have.property('_id');
         got.address.should.deep.equal(expected.address);
     }
@@ -92,62 +93,62 @@ describe('Unit test customer', function() {
         let statusCode = req.statusCode;
 
         id1 = req.body._id;
+        statusCode.should.equal(201);
 
         verifyCustomer(value, customer1)
 
-        statusCode.should.equal(201);
     })
 
     it('POST2 /customers', async function() {
         let req = (await request(app).post(url + '/customers').send(customer2));
         let value = req.body;
         let statusCode = req.statusCode;
+        statusCode.should.equal(201);
 
         verifyCustomer(value, customer2)
 
 
         id2 = req.body._id;
-        statusCode.should.equal(201);
     })
 
     it('DELETE2 /customers should delete customer post with POST2', async function() {
         let req = (await request(app).delete(url + '/customers/' + id2));
         let value = req.body;
         let statusCode = req.statusCode;
+        statusCode.should.equal(200);
 
         verifyCustomer(value, customer2)
        
-        statusCode.should.equal(200);
     })
 
     it('DELETE2 /customers should return 404 not found', async function() {
         let req = (await request(app).delete(url + '/customers/' + id2));
         let value = req.body;
         let statusCode = req.statusCode;
+        statusCode.should.equal(404);
 
         value.should.have.property('message');
 
-        statusCode.should.equal(404);
     })
 
     it('DELETE2 /customers should return 400 invalid id', async function() {
         let req = (await request(app).delete(url + '/customers/' + "!?:_.!"));
         let value = req.body;
         let statusCode = req.statusCode;
+        statusCode.should.equal(400);
 
         value.should.have.property('message');
 
-        statusCode.should.equal(400);
     })
 
     it('GET2 /customers should return 404', async function() {
         let req = (await request(app).get(url + '/customers/' + id2));
         let value = req.body;
         let statusCode = req.statusCode;
+        statusCode.should.equal(404);
 
         value.should.have.property('message');
 
-        statusCode.should.equal(404);
     })
 
     it('GET1 /customers should return customer of POST1', async function() {
@@ -430,8 +431,5 @@ describe('Unit test customer', function() {
         verifyCustomer(value3[0], customerTest);
 
         req = (await request(app).delete(url + '/customers/' + oldId));
-
-        console.log(req.body);
-
     })
 })

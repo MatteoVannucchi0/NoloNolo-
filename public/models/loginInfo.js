@@ -1,15 +1,16 @@
-const mongoose = require('mongoose');
+/*const mongoose = require('mongoose');
+var uniqueValidator = require('mongoose-unique-validator');
 
 var validateEmail = function(email) {
     var re = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/;
     return re.test(email)
 };
 
-const LoginInfoSchema = new mongoose.Schema({
+const loginInfoSchema = new mongoose.Schema({
     username: {
         type: String,
-        unique: true,
         required: true,
+        unique: true,
     },
     password: {
         type: String,
@@ -17,11 +18,11 @@ const LoginInfoSchema = new mongoose.Schema({
     },
     email: {
         type: String,
-        unique: true,
         required: true,
+        unique: true,
         validate: validateEmail,
-    }
+    },
 }, { _id : false });
 
-module.exports = mongoose.model('LoginInfo', LoginInfoSchema);
-module.exports = LoginInfoSchema;
+loginInfoSchema.plugin(uniqueValidator);
+module.exports = loginInfoSchema;*/

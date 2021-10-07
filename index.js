@@ -65,11 +65,14 @@ app.enable('trust proxy');
 // const objectsRouter = require(global.rootDir + '/public/routers/'); 
 // app.use('/api/', Router);
 
+const authentication = require(global.rootDir + '/public/routers/authenticationRouter');
+app.use("/api/authentication/", authentication.router);
+
+
 const customerRouter = require(global.rootDir + '/public/routers/customerRouter');
 app.use("/api/customers/", customerRouter);
 
-const authenticationRouter = require(global.rootDir + '/public/routers/authenticationRouter');
-app.use("/api/authentication/", authenticationRouter);
+
 /* ========================== */
 /*                            */
 /*           MONGODB          */
@@ -87,6 +90,7 @@ const mongooseOptions = {
 	useNewUrlParser: true,
 }
 
+//mongodb://matteo:vannucchi@localhost/databaseProgettoTechWeb
 const mongouri = `mongodb://${mongoCredentials.user}:${mongoCredentials.pwd}@${process.env.DATABASE_URL}/${mongooseOptions.dbName}`;
 
 mongoose.connect(mongouri, mongooseOptions);

@@ -1,5 +1,12 @@
 const mongoose = require('mongoose');
-const LoginInfoSchema = require('../models/loginInfo');
+
+//const loginInfoSchema = require('../models/loginInfo');
+//var uniqueValidator = require('mongoose-unique-validator');
+
+var validateEmail = function(email) {
+    var re = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/;
+    return re.test(email)
+};
 
 const addressSchema = new mongoose.Schema({
     country: {
@@ -34,8 +41,25 @@ const customerSchema = new mongoose.Schema({
         required: true,
         default: Date.now(),
     },
-    loginInfo: LoginInfoSchema,
+    loginInfo: {
+        username: {
+            type: String,
+            required: true,
+            unique: true,
+        },
+        password: {
+            type: String,
+            required: true,
+        },
+        email: {
+            type: String,
+            required: true,
+            unique: true,
+            validate: validateEmail,
+        },
+    },
     address: addressSchema,
 })
 
+//customerSchema.plugin(uniqueValidator);
 module.exports = mongoose.model('Customer', customerSchema);

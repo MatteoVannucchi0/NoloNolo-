@@ -59,4 +59,4 @@ const rentalSchema = new mongoose.Schema({
 
 })
 
-module.exports = mongoose.model('Rental', clientSchema);
+module.exports = mongoose.model('Rental', rentalSchema);

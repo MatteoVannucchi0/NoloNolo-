@@ -1,9 +1,5 @@
-    const mongoose = require('mongoose');
-
-var validateEmail = function(email) {
-    var re = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/;
-    return re.test(email)
-};
+const mongoose = require('mongoose');
+const LoginInfoSchema = require('../models/loginInfo');
 
 const addressSchema = new mongoose.Schema({
     country: {
@@ -22,7 +18,7 @@ const addressSchema = new mongoose.Schema({
         type: String,
         required: true,
     }
-})
+}, { _id : false });
 
 const customerSchema = new mongoose.Schema({
     firstname:{
@@ -33,25 +29,12 @@ const customerSchema = new mongoose.Schema({
         type: String,
         required: false,
     },
-    username: {
-        type: String,
-        required: true,
-    },
-    password: {
-        type: String,
-        required: true,
-        min: 8,
-    },
-    email: {
-        type: String,
-        required: true,
-        validate: validateEmail,
-    },
     dateOfBirth:{
         type: Date,
         required: true,
         default: Date.now(),
     },
+    loginInfo: LoginInfoSchema,
     address: addressSchema,
 })
 

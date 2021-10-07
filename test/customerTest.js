@@ -6,15 +6,28 @@ const request = require('supertest');
 const app = require('../index');
 const url = "/api"
 
+
+
 describe('Unit test customer', function() {
+
+    function verifyCustomer(got, expected){
+        got.firstname.should.equal(expected.firstname);
+        got.lastname.should.equal(expected.lastname);
+        got.loginInfo.should.deep.equal(expected.loginInfo);
+        got.should.have.property('_id');
+        got.address.should.deep.equal(expected.address);
+    }
+
     let startingCustomers = [];
 
     const customer1 = {
         firstname: 'John',
         lastname: 'Smith',
-        username: 'John_Smith',
-        password: 'odfaspodfkpqir091349857ashdfi',
-        email: 'john@example.com',
+        loginInfo: {
+            username: 'John_Smith',
+            password: 'odfaspodfkpqir091349857ashdfi',
+            email: 'john@example.com',
+        },
         dateOfBirth: Date.now(),
         address: {
             country: 'United States',
@@ -27,9 +40,11 @@ describe('Unit test customer', function() {
     const customer2 = {
         firstname: 'Michele',
         lastname: 'Virelli',
-        username: 'Virelli_michele',
-        password: 'sldklsdkgod91349857ashdfi',
-        email: 'michele@example.com',
+        loginInfo: {
+            username: 'Virelli_michele',
+            password: 'sldklsdkgod91349857ashdfi',
+            email: 'michele@example.com',
+        },
         dateOfBirth: Date.now(),
         address: {
             country: 'Italy',
@@ -42,9 +57,11 @@ describe('Unit test customer', function() {
     const customer3 = {
         firstname: 'Matteo',
         lastname: 'Vannucchi',
-        username: 'Vannucchi___Matteo',
-        password: 'fkgpasofkgèaosfkèg930aps',
-        email: 'vannucchi@example.com',
+        loginInfo: {
+            username: 'Vannucchi___Matteo',
+            password: 'fkgpasofkgèaosfkèg930aps',
+            email: 'vannucchi@example.com',
+        },
         dateOfBirth: Date.now(),
         address: {
             country: 'Italy',
@@ -76,13 +93,7 @@ describe('Unit test customer', function() {
 
         id1 = req.body._id;
 
-        value.firstname.should.equal(customer1.firstname);
-        value.lastname.should.equal(customer1.lastname);
-        value.username.should.equal(customer1.username);
-        value.password.should.equal(customer1.password);
-        value.email.should.equal(customer1.email);
-        value.should.have.property('_id');
-        value.address.should.have.property('_id');
+        verifyCustomer(value, customer1)
 
         statusCode.should.equal(201);
     })
@@ -92,13 +103,8 @@ describe('Unit test customer', function() {
         let value = req.body;
         let statusCode = req.statusCode;
 
-        value.firstname.should.equal(customer2.firstname);
-        value.lastname.should.equal(customer2.lastname);
-        value.username.should.equal(customer2.username);
-        value.password.should.equal(customer2.password);
-        value.email.should.equal(customer2.email);
-        value.should.have.property('_id');
-        value.address.should.have.property('_id');
+        verifyCustomer(value, customer2)
+
 
         id2 = req.body._id;
         statusCode.should.equal(201);
@@ -109,14 +115,8 @@ describe('Unit test customer', function() {
         let value = req.body;
         let statusCode = req.statusCode;
 
-        value.firstname.should.equal(customer2.firstname);
-        value.lastname.should.equal(customer2.lastname);
-        value.username.should.equal(customer2.username);
-        value.password.should.equal(customer2.password);
-        value.email.should.equal(customer2.email);
-        value.should.have.property('_id');
-        value.address.should.have.property('_id');        
-
+        verifyCustomer(value, customer2)
+       
         statusCode.should.equal(200);
     })
 
@@ -155,13 +155,8 @@ describe('Unit test customer', function() {
         let value = req.body;
         let statusCode = req.statusCode;
 
-        value.firstname.should.equal(customer1.firstname);
-        value.lastname.should.equal(customer1.lastname);
-        value.username.should.equal(customer1.username);
-        value.password.should.equal(customer1.password);
-        value.email.should.equal(customer1.email);
-        value.should.have.property('_id');
-        value.address.should.have.property('_id');
+        verifyCustomer(value, customer1)
+
 
         statusCode.should.equal(200);
     })
@@ -171,13 +166,7 @@ describe('Unit test customer', function() {
         let value = req.body;
         let statusCode = req.statusCode;
 
-        value.firstname.should.equal(customer1.firstname);
-        value.lastname.should.equal(customer1.lastname);
-        value.username.should.equal(customer1.username);
-        value.password.should.equal(customer1.password);
-        value.email.should.equal(customer1.email);
-        value.should.have.property('_id');
-        value.address.should.have.property('_id');        
+        verifyCustomer(value, customer1)       
 
         statusCode.should.equal(200);
     })
@@ -199,13 +188,8 @@ describe('Unit test customer', function() {
 
         id1 = req.body._id;
 
-        value.firstname.should.equal(customer1.firstname);
-        value.lastname.should.equal(customer1.lastname);
-        value.username.should.equal(customer1.username);
-        value.password.should.equal(customer1.password);
-        value.email.should.equal(customer1.email);
-        value.should.have.property('_id');
-        value.address.should.have.property('_id');
+        verifyCustomer(value, customer1)
+
 
         post1customer = req.body;
         statusCode.should.equal(201);
@@ -227,23 +211,20 @@ describe('Unit test customer', function() {
     let modifiedCustomer
     it('PATCH1 /customers should modify a customer on the db created with POST1', async function() {
         modifiedCustomer = customer1;
-        modifiedCustomer.username = "jjjjhon1";
+        modifiedCustomer.loginInfo.username = "jjjjhon1";
+
+        let req1 = (await request(app).get(url + '/customers'));
+        let value1 = req1.body;
+
 
         let req = (await request(app).patch(url + '/customers/' + id1).send(modifiedCustomer));
         let value = req.body;
         let statusCode = req.statusCode;
         id1 = req.body._id;
-
-
         statusCode.should.equal(200);
         
-        value.firstname.should.equal(modifiedCustomer.firstname);
-        value.lastname.should.equal(modifiedCustomer.lastname);
-        value.username.should.equal(modifiedCustomer.username);
-        value.password.should.equal(modifiedCustomer.password);
-        value.email.should.equal(modifiedCustomer.email);
-        value.should.have.property('_id');
-        value.address.should.have.property('_id');
+        verifyCustomer(value, modifiedCustomer)
+
     })
 
     it('DELETE /customers should return 200. It deletes previous post-patch customer', async function() {
@@ -251,13 +232,8 @@ describe('Unit test customer', function() {
         let value = req.body;
         let statusCode = req.statusCode;
 
-        value.firstname.should.equal(modifiedCustomer.firstname);
-        value.lastname.should.equal(modifiedCustomer.lastname);
-        value.username.should.equal(modifiedCustomer.username);
-        value.password.should.equal(modifiedCustomer.password);
-        value.email.should.equal(modifiedCustomer.email);
-        value.should.have.property('_id');
-        value.address.should.have.property('_id');
+        verifyCustomer(value, modifiedCustomer)
+
         statusCode.should.equal(200);
     })
 
@@ -293,9 +269,16 @@ describe('Unit test customer', function() {
     })
 
     it('GET /customers/rentals should return an array', async function() {
+        let diffLogin = customer1
+        diffLogin.loginInfo = { 
+            username: "alsddfsdf", 
+            password: "alkdl<sdkg+e",
+            email: "adfasdfasdf@gmail.com"
+        }
         let req = (await request(app).post(url + '/customers').send(customer1));
         let value = req.body;
         let statusCode = req.statusCode;
+        let oldId = value._id
 
         req = (await request(app).get(url + '/customers/'+ value._id + '/rentals'));
         value = req.body;
@@ -309,7 +292,7 @@ describe('Unit test customer', function() {
         elem0.should.have.property("enddate");
         elem0.should.have.property("bill");
 
-        req = (await request(app).post(url + '/customers' + value._id));
+        req = (await request(app).delete(url + '/customers/' + oldId));
         value = req.body;
         statusCode = req.statusCode;
     })
@@ -333,10 +316,18 @@ describe('Unit test customer', function() {
         value.should.have.property("message");
     })
 
+    
     it('GET /customers/favorites should return an array', async function() {
-        let req = (await request(app).post(url + '/customers').send(customer1));
+        let diffLogin = customer1
+        diffLogin.loginInfo = { 
+            username: "testtest", 
+            password: "alkdl<sdkg+e",
+            email: "test1@gmail.com"
+        }
+        let req = (await request(app).post(url + '/customers').send(diffLogin));
         let value = req.body;
         let statusCode = req.statusCode;
+        let oldId = value._id;
 
         req = (await request(app).get(url + '/customers/'+ value._id + '/favorites'));
         value = req.body;
@@ -352,7 +343,7 @@ describe('Unit test customer', function() {
         elem0.should.have.property("category");
 
 
-        req = (await request(app).post(url + '/customers' + value._id));
+        req = (await request(app).delete(url + '/customers/' + oldId));
         value = req.body;
         statusCode = req.statusCode;
     })
@@ -374,5 +365,52 @@ describe('Unit test customer', function() {
 
         statusCode.should.equal(400);
         value.should.have.property("message");
+    })
+
+    it('GET /customers with query should return max 1 customer', async function() {
+        let usernameQuery = "prova";
+        let req = (await request(app).get(url + '/customers?username=' + usernameQuery));
+        let value = req.body;
+        let statusCode = req.statusCode;
+
+        statusCode.should.equal(200);
+        value.should.be.a('array');
+        value.should.have.lengthOf.below(2);
+    })
+
+    it('GET /customers with query should return the customer if it exist', async function() {
+        let req = (await request(app).post(url + '/customers').send(customer1));
+        let idToRemove = req.body._id;
+                
+        req = (await request(app).get(url + '/customers?username=' + customer1.loginInfo.username));
+        value = req.body;
+        statusCode = req.statusCode;
+
+        statusCode.should.equal(200);
+        value.should.be.a('array');
+        value.should.have.lengthOf(1);
+        
+        verifyCustomer(value[0], customer1);
+
+        req2 = (await request(app).get(url + '/customers?email=' + customer1.loginInfo.email));
+        value2 = req.body;
+        statusCode2 = req.statusCode;
+
+        statusCode2.should.equal(200);
+        value2.should.be.a('array');
+        value2.should.have.lengthOf(1);
+        verifyCustomer(value2[0], customer1);
+
+        req3 = (await request(app).get(url + '/customers?email=' + customer1.loginInfo.email + "&username=" + customer1.loginInfo.username));
+        value3 = req.body;
+        statusCode3 = req.statusCode;
+
+        statusCode3.should.equal(200);
+        value3.should.be.a('array');
+        value3.should.have.lengthOf(1);
+        verifyCustomer(value3[0], customer1);
+
+        await request(app).delete(url + '/customers/' + idToRemove);
+
     })
 })

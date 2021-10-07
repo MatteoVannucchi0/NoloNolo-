@@ -6,7 +6,13 @@ const Rental = null//require('../models/rental')
 
 router.get('/', async (req, res) => {
     try {
-        const customer = await Customer.find();
+        let query = {}
+        if(req.query.username)
+            query["loginInfo.username"] = req.query.username;
+        if(req.query.email)
+            query["loginInfo.email"] = req.query.email;
+
+        const customer = await Customer.find(query);
         res.status(200).json(customer);
     } catch (error) {
         res.status(500).json({message: error.message});
@@ -19,9 +25,7 @@ router.post('/', async (req, res) => {
         customer = await Customer({
             firstname : req.body.firstname,
             lastname : req.body.lastname,
-            username : req.body.username,
-            password : req.body.password,
-            email : req.body.email,
+            loginInfo: req.body.loginInfo,
             dateOfBirth: req.body.dateOfBirth,
             address: req.body.address,
         });
@@ -51,13 +55,12 @@ router.delete('/:id', getCustomerById, async (req, res) => {
     }
 })
 
-router.patch('/:id', async (req,res) => {    
+router.patch('/:id', getCustomerById, async (req,res) => {    
     try{
-        let newCustomer =  await Customer.findOneAndUpdate(req.params.id, req.body, {new: true});
-        if (newCustomer == null)
-            res.status(404).json({message:"Customer not found"})
+        res.customer.set(req.body);
+        await res.customer.save();
 
-        res.status(200).json(newCustomer);
+        res.status(200).json(res.customer);
     } catch (error) {
         res.status(400).json({message: error.message})          //Non so se restituire 400 o 404
     }
@@ -73,6 +76,7 @@ router.get('/:id/rentals', getCustomerById, async (req, res) => {
 })
 
 router.get('/:id/favorites', async (req, res) => {
+    let max = req.query.max;
     res.status(404).json({message: 'Non ancora implementanto'});
 })
 

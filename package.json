@@ -4,8 +4,8 @@
   "description": "prova prova prova",
   "main": "index.js",
   "scripts": {
-    "test": "clear && nodemon --exec \"mocha --recursive\"",
-    "start": "clear && nodemon index.js"
+    "test": "nodemon --exec \"mocha --recursive\"",
+    "start": "nodemon index.js"
   },
   "repository": {
     "type": "git",

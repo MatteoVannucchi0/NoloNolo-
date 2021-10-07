@@ -379,10 +379,29 @@ describe('Unit test customer', function() {
     })
 
     it('GET /customers with query should return the customer if it exist', async function() {
-        let req = (await request(app).post(url + '/customers').send(customer1));
-        let idToRemove = req.body._id;
+        const customerTest = {
+            firstname: 'ProvaQuery',
+            lastname: 'ProvaQuery21',
+            loginInfo: {
+                username: 'ProvaQuery--',
+                password: 'asdkalsgfkodkgfoWDGF',
+                email: 'ProvaQuery@example.com',
+            },
+            dateOfBirth: Date.now(),
+            address: {
+                country: 'United States',
+                city: 'New York',
+                zipcode: '123',
+                streetAddress: "5th avenue",
+            }
+        }
+
+        let req = (await request(app).post(url + '/customers').send(customerTest));
+        let value = req.body;
+        let statusCode = req.statusCode;
+        let oldId = value._id
                 
-        req = (await request(app).get(url + '/customers?username=' + customer1.loginInfo.username));
+        req = (await request(app).get(url + '/customers?username=' + customerTest.loginInfo.username));
         value = req.body;
         statusCode = req.statusCode;
 
@@ -390,27 +409,29 @@ describe('Unit test customer', function() {
         value.should.be.a('array');
         value.should.have.lengthOf(1);
         
-        verifyCustomer(value[0], customer1);
+        verifyCustomer(value[0], customerTest);
 
-        req2 = (await request(app).get(url + '/customers?email=' + customer1.loginInfo.email));
+        req2 = (await request(app).get(url + '/customers?email=' + customerTest.loginInfo.email));
         value2 = req.body;
         statusCode2 = req.statusCode;
 
         statusCode2.should.equal(200);
         value2.should.be.a('array');
         value2.should.have.lengthOf(1);
-        verifyCustomer(value2[0], customer1);
+        verifyCustomer(value2[0], customerTest);
 
-        req3 = (await request(app).get(url + '/customers?email=' + customer1.loginInfo.email + "&username=" + customer1.loginInfo.username));
+        req3 = (await request(app).get(url + '/customers?email=' + customerTest.loginInfo.email + "&username=" + customerTest.loginInfo.username));
         value3 = req.body;
         statusCode3 = req.statusCode;
 
         statusCode3.should.equal(200);
         value3.should.be.a('array');
         value3.should.have.lengthOf(1);
-        verifyCustomer(value3[0], customer1);
+        verifyCustomer(value3[0], customerTest);
 
-        await request(app).delete(url + '/customers/' + idToRemove);
+        req = (await request(app).delete(url + '/customers/' + oldId));
+
+        console.log(req.body);
 
     })
 })

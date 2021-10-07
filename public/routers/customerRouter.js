@@ -1,5 +1,4 @@
 const express = require('express');
-const customer = require('../models/customer');
 const router = express.Router();
 const Customer = require('../models/customer');
 const Rental = null//require('../models/rental')

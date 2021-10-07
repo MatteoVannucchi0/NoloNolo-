@@ -19,6 +19,7 @@ const LoginInfoSchema = new mongoose.Schema({
         type: String,
         unique: true,
         required: true,
+        validate: validateEmail,
     }
 }, { _id : false });
 

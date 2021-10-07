@@ -66,7 +66,10 @@ app.enable('trust proxy');
 // app.use('/api/', Router);
 
 const customerRouter = require(global.rootDir + '/public/routers/customerRouter');
-app.use("/api/customers", customerRouter);
+app.use("/api/customers/", customerRouter);
+
+const authenticationRouter = require(global.rootDir + '/public/routers/authenticationRouter');
+app.use("/api/authentication/", authenticationRouter);
 /* ========================== */
 /*                            */
 /*           MONGODB          */

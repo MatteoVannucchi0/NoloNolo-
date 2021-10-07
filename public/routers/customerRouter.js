@@ -2,7 +2,7 @@ const express = require('express');
 const router = express.Router();
 const Customer = require('../models/customer');
 const Rental = null//require('../models/rental')
-const authentication = require('../routers/authenticationRouter');
+const authentication = require('../helper/authentication');
 
 router.get('/', async (req, res) => {
     try {

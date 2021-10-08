@@ -1,12 +1,9 @@
 const mongoose = require('mongoose');
-
+const auth = require('../middleware/authentication');
+const { validateEmail, validateNotEmail } = require('../middleware/validation');
+ 
 //const loginInfoSchema = require('../models/loginInfo');
 //var uniqueValidator = require('mongoose-unique-validator');
-
-var validateEmail = function(email) {
-    var re = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/;
-    return re.test(email)
-};
 
 const addressSchema = new mongoose.Schema({
     country: {
@@ -46,6 +43,7 @@ const customerSchema = new mongoose.Schema({
             type: String,
             required: true,
             unique: true,
+            validate: validateNotEmail,
         },
         password: {
             type: String,
@@ -61,5 +59,8 @@ const customerSchema = new mongoose.Schema({
     address: addressSchema,
 })
 
-//customerSchema.plugin(uniqueValidator);
+customerSchema.methods.generateToken = async function() {
+    return await auth.generateToken(auth.authLevel.customer, this.username, this._id);
+}
+
 module.exports = mongoose.model('Customer', customerSchema);

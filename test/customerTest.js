@@ -409,16 +409,10 @@ describe('Unit test customer', function() {
         req = (await request(app).delete(url + '/customers/' + oldId).set(authheader));
     })
 
-    it('GET,POST,DELETE,PATCH /customers not authorized', async function() {
+    it('GET,DELETE,PATCH /customers not authorized', async function() {
         let req = (await request(app).get(url + '/customers'));
         let value = req.body;
         let statusCode = req.statusCode;
-
-        statusCode.should.equal(401);
-
-        req = (await request(app).post(url + '/customers'));
-        value = req.body;
-        statusCode = req.statusCode;
 
         statusCode.should.equal(401);
 
@@ -446,7 +440,7 @@ describe('Unit test customer', function() {
         statusCode.should.equal(201);
 
         const auth = require("../public/middleware/authentication");
-        const userToken = await auth.createToken("customers", value.loginInfo.username, id);
+        const userToken = await auth.generateToken("customers", value.loginInfo.username, id);
 
         req = (await request(app).delete(url + '/customers/' + id).set({"Authorization": userToken}));
         value = req.body;

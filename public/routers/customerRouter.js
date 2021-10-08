@@ -21,8 +21,9 @@ router.get('/', authentication.verifyAuth(requiredAuthLevel, false), async (req,
     }
 })
 
-router.post('/', authentication.verifyAuth(requiredAuthLevel, false), authentication.hashPassword, async (req, res) => {
+router.post('/', authentication.hashPassword, async (req, res) => {
     let customer = null;
+    let jwtToken = null;
     try{
         customer = await Customer({
             firstname : req.body.firstname,
@@ -32,14 +33,14 @@ router.post('/', authentication.verifyAuth(requiredAuthLevel, false), authentica
             address: req.body.address,
         });
 
-
+        jwtToken = await customer.generateToken();
     } catch (error) {
         res.status(400).json({message: error.message})
     }
 
     try {
         const newCustomer = await customer.save();
-        res.status(201).json(newCustomer);
+        res.status(201).set({"Authorization": jwtToken}).json(newCustomer);
     } catch (error) {
         res.status(409).json({message: error.message});
     }

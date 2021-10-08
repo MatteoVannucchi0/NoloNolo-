@@ -2,6 +2,7 @@ const fs = require("fs").promises;
 const bcrypt = require('bcrypt');
 const crypto = require('crypto');
 const jwt = require('jsonwebtoken');
+const validation = require('../middleware/validation');
 
 
 const authFileName = ".auth"
@@ -35,8 +36,7 @@ async function initializeAuthentication() {
 //------------ Password hashing --------------------------------
 
 async function hash(string) {
-    const saltRound = 5;
-    return await bcrypt.hashSync(string, saltRound);
+    return await bcrypt.hashSync(string, 5);
 }
 
 async function hashPassword(req, res, next) {
@@ -47,6 +47,19 @@ async function hashPassword(req, res, next) {
         return res.status(400).json({message: error.message});
     }
     next();
+}
+
+async function verifyCredential(loginInfoPassed, loginInfoExpected) {
+    console.log("passed", loginInfoPassed);
+    console.log("expected", loginInfoExpected);
+
+    if(validation.validateEmail(loginInfoPassed.username) && loginInfoPassed.username == loginInfoExpected.email){
+        return (await hash(loginInfoPassed.password)) == loginInfoExpected.password;
+    } else if (loginInfoPassed.username == loginInfoExpected.username) {
+        return (await hash(loginInfoPassed.password)) == loginInfoExpected.password;
+    }
+
+    return false;
 }
 
 //------------ Password hashing --------------------------------
@@ -68,7 +81,7 @@ const authLevelDict = {
     "unregistered": 1,
 }
 
-async function createToken(auth, username, id, expireTime = "31d"){
+async function generateToken(auth, username, id, expireTime = "31d"){
     const unsignedToken = {
         auth: auth,
         username: username,
@@ -82,25 +95,9 @@ async function createToken(auth, username, id, expireTime = "31d"){
     return signedToken;
 }
 
-async function test(token){
-    try{
-        const testRequiredAuthLevel = 3;
-        const decodedToken = await jwt.verify(token, privateKey);
-        const authLevel = authLevelDict[decodedToken.auth]
-
-        if(authLevel >= testRequiredAuthLevel){
-            console.log("Authorized");
-        } else{
-            console.log("Not authorized");
-        }
-    } catch(err){
-        console.log(err.message);
-    }
-}
-
 function verifyAuth(requiredAuthLevel, checkId = false){
     return async function (req, res, next) {
-        const token = req.headers["authorization"] || req.body.token || req.query.token ;
+        const token = req.headers["authorization"];
         if(!token) {
             return res.status(401).json({message: "Required authentication token"});
         }
@@ -124,7 +121,8 @@ function verifyAuth(requiredAuthLevel, checkId = false){
 //------------ Token handling --------------------------------
 
 
-module.exports.createToken = createToken;
+module.exports.verifyCredential = verifyCredential;
+module.exports.generateToken = generateToken;
 module.exports.authLevel = authLevel;
 module.exports.hashPassword = hashPassword;
 module.exports.verifyAuth = verifyAuth;

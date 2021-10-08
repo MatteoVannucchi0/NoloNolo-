@@ -16,10 +16,6 @@ const billSchema = new mongoose.Schema({
         type: integer,
         required: true
     },
-    currency: {
-        type: String,
-        required: true
-    },
     modifier: {
         type: Array
         //Come dire che è un'array di modifier  ??
@@ -32,11 +28,11 @@ const billSchema = new mongoose.Schema({
 
 const rentalSchema = new mongoose.Schema({
     customer:{
-        type: integer,
+        type: ObjcetId,
         required: true
     },
     employee: {
-        type: interger,
+        type: ObjcetId,
         required: true
     },
     bill: billSchema,

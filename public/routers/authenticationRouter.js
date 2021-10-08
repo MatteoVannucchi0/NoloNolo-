@@ -2,7 +2,7 @@ const express = require('express');
 const router = express.Router();
 const Customer = require('../models/customer');
 const Employee = null; //require('..//models/employee');
-const authentication = require("../helper/authentication");
+const authentication = require("../middleware/authentication");
 
 router.post('/customers/login', async (req, res) => {
     res.status(200);

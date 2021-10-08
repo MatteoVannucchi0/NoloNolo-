@@ -2,9 +2,11 @@ const express = require('express');
 const router = express.Router();
 const Customer = require('../models/customer');
 const Rental = null//require('../models/rental')
-const authentication = require('../helper/authentication');
+const authentication = require('../middleware/authentication');
 
-router.get('/', async (req, res) => {
+const requiredAuthLevel = authentication.authLevel.employee;
+
+router.get('/', authentication.verifyAuth(requiredAuthLevel, false), async (req, res) => {
     try {
         let query = {}
         if(req.query.username)
@@ -19,7 +21,7 @@ router.get('/', async (req, res) => {
     }
 })
 
-router.post('/', hashPassword, async (req, res) => {
+router.post('/', authentication.verifyAuth(requiredAuthLevel, false), authentication.hashPassword, async (req, res) => {
     let customer = null;
     try{
         customer = await Customer({
@@ -43,11 +45,11 @@ router.post('/', hashPassword, async (req, res) => {
     }
 })
 
-router.get('/:id', getCustomerById, async (req, res) => {
+router.get('/:id', authentication.verifyAuth(requiredAuthLevel, true), getCustomerById, async (req, res) => {
     res.json(res.customer);
 })
 
-router.delete('/:id', getCustomerById, async (req, res) => {
+router.delete('/:id', authentication.verifyAuth(requiredAuthLevel, true), getCustomerById, async (req, res) => {
     try{
         let removedCustomer = res.customer
         await res.customer.remove();
@@ -57,7 +59,7 @@ router.delete('/:id', getCustomerById, async (req, res) => {
     }
 })
 
-router.patch('/:id', hashPassword, getCustomerById, async (req,res) => {    
+router.patch('/:id', authentication.verifyAuth(requiredAuthLevel, true), authentication.hashPassword, getCustomerById, async (req,res) => {    
     try{
         res.customer.set(req.body);
         await res.customer.save();
@@ -68,7 +70,7 @@ router.patch('/:id', hashPassword, getCustomerById, async (req,res) => {
     }
 })
 
-router.get('/:id/rentals', getCustomerById, async (req, res) => {
+router.get('/:id/rentals', authentication.verifyAuth(requiredAuthLevel, true) ,getCustomerById, async (req, res) => {
     try{
         let rentals =  await Rental.find({customer: req.params.id})
         res.status(200).json({rentals})
@@ -77,7 +79,7 @@ router.get('/:id/rentals', getCustomerById, async (req, res) => {
     }
 })
 
-router.get('/:id/favorites', async (req, res) => {
+router.get('/:id/favorites', authentication.verifyAuth(requiredAuthLevel, true) ,async (req, res) => {
     let max = req.query.max;
     res.status(404).json({message: 'Non ancora implementanto'});
 })
@@ -98,15 +100,5 @@ async function getCustomerById(req, res, next) {
     next();
 }
 
-async function hashPassword(req, res, next) {
-    try{
-        if(req.body && req.body.loginInfo && req.body.loginInfo.password)
-            req.body.loginInfo.password = await authentication.hash(req.body.loginInfo.password);
-    } catch (error) {
-        return res.status(400).json({message: error.message});
-    }
-
-    next();
-}
 
 module.exports = router;

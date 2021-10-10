@@ -50,9 +50,6 @@ async function hashPassword(req, res, next) {
 }
 
 async function verifyCredential(loginInfoPassed, loginInfoExpected) {
-    console.log("passed", loginInfoPassed);
-    console.log("expected", loginInfoExpected);
-
     if(validation.validateEmail(loginInfoPassed.username) && loginInfoPassed.username == loginInfoExpected.email){
         return (await hash(loginInfoPassed.password)) == loginInfoExpected.password;
     } else if (loginInfoPassed.username == loginInfoExpected.username) {

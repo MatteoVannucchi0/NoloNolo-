@@ -63,4 +63,5 @@ customerSchema.methods.generateToken = async function() {
     return await auth.generateToken(auth.authLevel.customer, this.username, this._id);
 }
 
-module.exports = mongoose.model('Customer', customerSchema);
+module.exports.model = mongoose.model('Customer', customerSchema);
+module.exports.schema = customerSchema;

@@ -1,6 +1,6 @@
 const express = require('express');
 const router = express.Router();
-const Customer = require('../models/customer');
+const Customer = require('../models/customer').model;
 const Rental = null//require('../models/rental')
 const authentication = require('../middleware/authentication');
 
@@ -25,14 +25,7 @@ router.post('/', authentication.hashPassword, async (req, res) => {
     let customer = null;
     let jwtToken = null;
     try{
-        customer = await Customer({
-            firstname : req.body.firstname,
-            lastname : req.body.lastname,
-            dateOfBirth: req.body.dateOfBirth,
-            loginInfo: req.body.loginInfo,
-            address: req.body.address,
-        });
-
+        customer = await Customer(req.body);
         jwtToken = await customer.generateToken();
     } catch (error) {
         res.status(400).json({message: error.message})
@@ -100,6 +93,5 @@ async function getCustomerById(req, res, next) {
     res.customer = customer;
     next();
 }
-
 
 module.exports = router;

@@ -1,44 +1,59 @@
 const express = require('express');
-const rental = require('../models/rental');
+const { verifyAuth } = require('../middleware/authentication');
+const Employee = require('../models/employee');
+const Customer = require('../models/customer');
 const router = express.Router();
-const unit = require('../models/unit');
+//const unit = require('../models/unit');
+const authentication = require('../middleware/authentication');
 
-router.get('/', async (req, res) => {
+const requiredAuthLevel = authentication.authLevel.admin
+
+router.get('/', authentication.verifyAuth(requiredAuthLevel, false), async (req, res) => {
     try {
-        const employee = await Employee.find();
+        let query = {} 
+        if(req.query.username)
+            query["loginInfo.username"] = req.query.username;
+        if(req.query.email)
+            query["loginInfo.email"] = req.query.email;
+        
+        const employee = await Employee.find(query);
         res.status(200).json(employee);
     } catch (error) {
         res.status(500).json({message: error.message});
     }
 })
 
-router.post('/', async (req, res) => {
+router.post('/', authentication.hashPassword, async (req, res) => {
+    let employee = null;
+    let jwtToken = null;
     try{
         const employee = await Employee({
             firstname: req.body.firstname,
             lastname: req.body.lastname,
-            username: req.body.username,
-            password: req.body.password,
-            email: req.body.email
+            loginInfo: req.body.loginInfo,
+            authentication: req.body.authentication
         });
+
+        jwtToken = await employee.generateToken();
     } catch (error) {
         res.status(400).json({message: error.message})
     }
 
     try {
         const newEmployee = await employee.save();
-        res.status(201).json(newEmployee);
+        res.status(201).set({"Authorization": jwtToken}).json(newEmployee);
     } catch (error) {
         res.status(409).json({message: error.message});
     }
 })
 
-router.get('/{id}', getEmployeeById, async (req, res) => {
+router.get('/:id', authentication.verifyAuth(requiredAuthLevel, true)  , getEmployeeById, async (req, res) => {
     res.json(res.employee);
 })
 
-router.delete('/{id}', getEmployeeById, async (req, res) => {
+router.delete('/:id', authentication.verifyAuth(requiredAuthLevel, true), getEmployeeById, async (req, res) => {
     try{
+        let removedEmployee = res.employee
         await res.employee.remove();
         res.json({message: "Employee deleted from the database"});
     } catch(error){
@@ -46,21 +61,30 @@ router.delete('/{id}', getEmployeeById, async (req, res) => {
     }
 })
 
-router.patch('/{id}', async (req,res) => {
+router.patch('/:id', authentication.verifyAuth(requiredAuthLevel, true), authentication.hashPassword, getEmployeeById, async (req,res) => {
     try{
-        let newEmployee =  await Employee.FindOneAndUpdate(req.params.id, req.body.employee, {new: true});
-        if (newEmployee == null)
-            res.send(404).json({message:"Employee not found"})
-        res.send(200).json({newEmployee: newEmployee});
+        res.employee.set(req.body);
+        await res.employee.save();
+
+        res.send(200).json(res.customer);
     } catch (error) {
         res.status(400).json({message: error.message})
     }
 })
 
-router.get('/{id}/rentals', getEmployeeById, async (req, res) => {
+router.get('/:id/rentals',authentication.verifyAuth(requiredAuthLevel, true), getEmployeeById, async (req, res) => {
     try{
         let rentals =  await Rental.find({employee: req.params.id})
         res.send(200).json({rentals})
+    } catch (error) {
+        res.status(400).json({message: error.message})
+    }
+})
+
+router.get('/:id/customers', authentication.verifyAuth(requiredAuthLevel, true), getEmployeeById, async (req,res) => {
+    try {
+        let cusotmer = await Cusotmer.find({employee: req.params.id})
+        res.status(200).json({cusotmer})
     } catch (error) {
         res.status(400).json({message: error.message})
     }

@@ -1,9 +1,10 @@
 const mongoose = require('mongoose');
+const auth = require('../middleware/authentication');
+const { validateEmail, validateNotEmail } = require('../middleware/validation');
 
-var validateEmail = function(email) {
-    var re = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/;
-    return re.test(email)
-};
+
+//Dovrebbero avere altri campi tipo: Data di nascita o altro ?? (Intendo non opzionali)
+
 
 const employeeSchema = new mongoose.Schema({
     firstname:{
@@ -14,20 +15,34 @@ const employeeSchema = new mongoose.Schema({
         type: String,
         required: false,
     },
-    username: {
-        type: String,
-        required: true,
+    loginInfo:{
+        username:{
+            type: String,
+            required: true,
+            unique: true,
+            validate: validateNotEmail,
+        },
+        password:{
+            type: String,
+            required: true,
+        },
+        email:{
+            type: String,
+            required: true,
+            unique: true,
+            validate: validateEmail,
+        }
     },
-    password: {
-        type: String,
-        required: true,
-        min: 8,
-    },
-    email: {
-        type: String,
-        required: true,
-        validate: validateEmail,
-    },
+    authorization:{
+        type: String,   
+        required: false,
+        enum: [auth.authLevel.admin, auth.authLevel.employee],
+        default: auth.authLevel.employee
+    }
 })
 
-module.exports = mongoose.model('Employee', clientSchema);
+employeeSchema.methods.generateToken = async function() {
+    return await auth.generateToken(this.authorization, this.username, this._id);
+}
+
+module.exports = mongoose.model('Employee', employeeSchema);

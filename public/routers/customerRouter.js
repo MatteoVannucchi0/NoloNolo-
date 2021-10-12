@@ -26,7 +26,7 @@ router.post('/', authentication.hashPassword, async (req, res) => {
     let jwtToken = null;
     try{
         customer = await Customer({
-            firstname : req.body.firstname,
+            firstname : req.body.firstname, 
             lastname : req.body.lastname,
             dateOfBirth: req.body.dateOfBirth,
             loginInfo: req.body.loginInfo,

@@ -17,8 +17,8 @@ const billSchema = new mongoose.Schema({
         required: true
     },
     modifier: {
-        type: Array
-        //Come dire che è un'array di modifier  ??
+        type: Array, 
+        required: true
     },
     date: {
         type: Date,

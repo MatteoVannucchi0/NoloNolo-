@@ -1,7 +1,7 @@
 const express = require('express');
-const rental = require('../models/rental');
+const Rental = require('../models/rental');
 const router = express.Router();
-const unit = require('../models/unit');
+//const unit = require('../models/unit');
 
 router.get('/', async (req, res) => {
     try {
@@ -58,7 +58,7 @@ router.patch('/{id}', async (req,res) => {
         res.status(400).json({message: error.message})
     }
 })
-
+/* Non ho le unit 
 router.get('/{id}/unit', getRentalById, async (req, res) => {
     try {
         let unit = await Unit.find({rental: req.params.unit});
@@ -67,7 +67,7 @@ router.get('/{id}/unit', getRentalById, async (req, res) => {
         res.status(400).json({message: error.message});
     }
 })
-
+*/
 async function getRentalById(req, res, next) {
     let rental;
     try {

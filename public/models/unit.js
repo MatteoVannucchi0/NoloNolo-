@@ -1,5 +1,4 @@
 const mongoose = require('mongoose');
-const productSchema = require('../models/product').schema;
 
 const conditionLevel = {
     perfect: "perfect",
@@ -21,16 +20,22 @@ const unitSchema = new mongoose.Schema({
     product: {
         type: mongoose.Schema.Types.ObjectId,
         required: true,
+        ref: "Product",
     },
     rentals: {
         type: [mongoose.Schema.Types.ObjectId],
         required: true,
+        ref: "Rental",
     },
 })
 
 unitSchema.virtual("available").get(function (from, to) {
     throw new Error('Not implemented');
 });
+
+unitSchema.methods.availableFromTo = async function (from, to) {
+    throw new Error('Not implemented');
+}
 
 module.exports.model = mongoose.model('Unit', unitSchema);
 module.exports.schema = unitSchema;

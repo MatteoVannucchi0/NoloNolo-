@@ -1,4 +1,5 @@
 const mongoose = require('mongoose');
+const Unit = require('../models/unit').model;
 
 const tagSchema = new mongoose.Schema({
     key: {
@@ -15,6 +16,7 @@ const productSchema = new mongoose.Schema({
     name: {
         type: String,
         required: true,
+        unique: true,
     },
     description: {
         type: String,
@@ -32,21 +34,24 @@ const productSchema = new mongoose.Schema({
         type: String,
         required: true,
     },
-    tags: {
-        type: [tagSchema],
-        required: true,
-    },
+    tags: [tagSchema],
     altproducts: {
         type: [mongoose.Schema.Types.ObjectId],
         required: true,
+        ref: 'Product',
     }
 })
 
-productSchema.methods.getUnits = async function () {
+//TODO da aggiungere nella specifica di openapi
+productSchema.virtual("available").get(function () {
     throw new Error('Not implemented');
+});
+
+productSchema.methods.getUnits = async function () {
+    return await Unit.find({product: this._id});
 }
 
-productSchema.methods.isAvailable = async function (from, to) {
+productSchema.methods.availableFromTo = async function (from, to) {
     throw new Error('Not implemented');
 }
 

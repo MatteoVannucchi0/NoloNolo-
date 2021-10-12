@@ -4,6 +4,7 @@ const Customer = require('../models/customer').model;
 const Rental = null//require('../models/rental')
 const authentication = require('../middleware/authentication');
 
+
 const requiredAuthLevel = authentication.authLevel.employee;
 
 router.get('/', authentication.verifyAuth(requiredAuthLevel, false), async (req, res) => {
@@ -47,7 +48,7 @@ router.delete('/:id', authentication.verifyAuth(requiredAuthLevel, true), getCus
     try{
         let removedCustomer = res.customer
         await res.customer.remove();
-        res.json(removedCustomer);   //{message: "Customer deleted from the database"});
+        res.status(200).json(removedCustomer);   //{message: "Customer deleted from the database"});
     } catch(error){
         res.status(500).json({message: error.message});
     }

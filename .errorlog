@@ -1,0 +1,11 @@
+[2021-10-12 18:24:56][ERROR] : undefined: undefined 
+[2021-10-12 18:25:45][ERROR] : undefined: undefined 
+[2021-10-12 18:31:57][ERROR] : undefined: undefined 
+[2021-10-12 18:33:24][ERROR] : undefined: undefined 
+[2021-10-12 18:33:41][ERROR] : undefined: undefined 
+[2021-10-12 18:34:37][ERROR] : undefined: undefined 
+[2021-10-12 18:34:46][ERROR] : undefined: undefined 
+[2021-10-12 18:35:08][ERROR] : undefined: undefined 
+[2021-10-12 18:36:39][ERROR] : ValidationError: Product validation failed: subcategory: Path `subcategory` is required., category: Path `category` is required., description: Path `description` is required. 
+[2021-10-12 18:38:56][ERROR] : ValidationError: Product validation failed: subcategory: Path `subcategory` is required., category: Path `category` is required., description: Path `description` is required. 
+[2021-10-12 18:41:17][ERROR] : ValidationError: Product validation failed: subcategory: Path `subcategory` is required., category: Path `category` is required., description: Path `description` is required. 

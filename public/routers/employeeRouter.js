@@ -1,9 +1,7 @@
 const express = require('express');
-const { verifyAuth } = require('../middleware/authentication');
 const Employee = require('../models/employee');
 const Customer = require('../models/customer');
 const router = express.Router();
-//const unit = require('../models/unit');
 const authentication = require('../middleware/authentication');
 
 const requiredAuthLevel = authentication.authLevel.admin
@@ -11,6 +9,7 @@ const requiredAuthLevel = authentication.authLevel.admin
 router.get('/', authentication.verifyAuth(requiredAuthLevel, false), async (req, res) => {
     try {
         let query = {} 
+        console.log('Ma ci arrivi ?');
         if(req.query.username)
             query["loginInfo.username"] = req.query.username;
         if(req.query.email)

@@ -65,13 +65,11 @@ app.enable('trust proxy');
 const authentication = require(global.rootDir + '/public/routers/authenticationRouter');
 app.use("/api/authentication/", authentication.router);
 
-
 const customerRouter = require(global.rootDir + '/public/routers/customerRouter');
 app.use("/api/customers/", customerRouter);
 
-
 const employeeRouter = require(global.rootDir + '/public/routers/employeeRouter');
-app.use("api/employee", employeeRouter);
+app.use("/api/employees/", employeeRouter);
 
 /* ========================== */
 /*                            */

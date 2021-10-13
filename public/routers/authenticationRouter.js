@@ -7,7 +7,6 @@ const validation = require("../middleware/validation");
 
 router.post('/customers/login', async (req, res) => {
     try{
-        console.log(req.body);
         let username = req.body.username;
         let customer = null;
     

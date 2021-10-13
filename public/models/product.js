@@ -44,7 +44,10 @@ const productSchema = new mongoose.Schema({
 
 //TODO da aggiungere nella specifica di openapi
 productSchema.virtual("available").get(function () {
-    throw new Error('Not implemented');
+    let unitsAvaible = Unit.find({product: this._id, available: true})
+    .filter(x => x.available);
+
+    return unitsAvaible.length > 0;
 });
 
 productSchema.methods.getUnits = async function () {
@@ -52,7 +55,10 @@ productSchema.methods.getUnits = async function () {
 }
 
 productSchema.methods.availableFromTo = async function (from, to) {
-    throw new Error('Not implemented');
+    let unitsAvaible = Unit.find({product: this._id, available: true})
+        .filter(x => x.availableFromTo(from, to));
+
+    return unitsAvaible.length > 0;
 }
 
 module.exports.model = mongoose.model('Product', productSchema);

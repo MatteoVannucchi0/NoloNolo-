@@ -2,7 +2,7 @@ const mongoose = require('mongoose');
 
 const modifierSchema = new mongoose.Schema({
     value: {
-        type: integer,
+        type: Number,
         required: true
     },
     condition: {
@@ -13,7 +13,7 @@ const modifierSchema = new mongoose.Schema({
 
 const billSchema = new mongoose.Schema({
     baseprice: {
-        type: integer,
+        type: Number,
         required: true
     },
     modifier: {
@@ -28,11 +28,11 @@ const billSchema = new mongoose.Schema({
 
 const rentalSchema = new mongoose.Schema({
     customer:{
-        type: ObjcetId,
+        type: mongoose.Schema.Types.ObjectId,
         required: true
     },
     employee: {
-        type: ObjcetId,
+        type: mongoose.Schema.Types.ObjectId,
         required: true
     },
     bill: billSchema,
@@ -49,7 +49,7 @@ const rentalSchema = new mongoose.Schema({
         required: true
     },
     unit: {
-        type: integer,
+        type: mongoose.Schema.Types.ObjectId,
         required: true
     }
 

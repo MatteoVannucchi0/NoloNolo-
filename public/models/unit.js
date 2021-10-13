@@ -1,4 +1,6 @@
 const mongoose = require('mongoose');
+const Rental = require('../models/rental');
+
 
 const conditionLevel = {
     perfect: "perfect",
@@ -29,12 +31,25 @@ const unitSchema = new mongoose.Schema({
     },
 })
 
-unitSchema.virtual("available").get(function (from, to) {
-    throw new Error('Not implemented');
+unitSchema.virtual("available").get(function () {
+    const dateNow = new Date().now();
+    let rentalInPeriod = Rental.find({unit: this._id})
+        .filter(x => {
+            return (x.startdate <= dateNow && x.enddate >= dateNow)
+        })
+
+    return rentalInPeriod.length == 0;
 });
 
 unitSchema.methods.availableFromTo = async function (from, to) {
-    throw new Error('Not implemented');
+    let rentalInPeriod = Rental.find({unit: this._id})
+        .filter(x => {
+            return (x.startdate <= from && x.enddate >= from)
+                || (x.startdate <= to && x.enddate >= to) 
+                || (x.startdate >= frofrom && x.enddate <= to)
+        })
+
+    return rentalInPeriod.length == 0;
 }
 
 module.exports.model = mongoose.model('Unit', unitSchema);

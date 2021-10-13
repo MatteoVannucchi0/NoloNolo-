@@ -1,11 +1,58 @@
-[2021-10-12 18:24:56][ERROR] : undefined: undefined 
-[2021-10-12 18:25:45][ERROR] : undefined: undefined 
-[2021-10-12 18:31:57][ERROR] : undefined: undefined 
-[2021-10-12 18:33:24][ERROR] : undefined: undefined 
-[2021-10-12 18:33:41][ERROR] : undefined: undefined 
-[2021-10-12 18:34:37][ERROR] : undefined: undefined 
-[2021-10-12 18:34:46][ERROR] : undefined: undefined 
-[2021-10-12 18:35:08][ERROR] : undefined: undefined 
-[2021-10-12 18:36:39][ERROR] : ValidationError: Product validation failed: subcategory: Path `subcategory` is required., category: Path `category` is required., description: Path `description` is required. 
-[2021-10-12 18:38:56][ERROR] : ValidationError: Product validation failed: subcategory: Path `subcategory` is required., category: Path `category` is required., description: Path `description` is required. 
-[2021-10-12 18:41:17][ERROR] : ValidationError: Product validation failed: subcategory: Path `subcategory` is required., category: Path `category` is required., description: Path `description` is required. 
+[2021-10-12 18:44:56][ERROR] : ValidationError: Product validation failed: subcategory: Path `subcategory` is required., category: Path `category` is required., description: Path `description` is required. 
+[2021-10-12 18:45:28][ERROR] : ValidationError: Product validation failed: subcategory: Path `subcategory` is required., category: Path `category` is required., description: Path `description` is required. 
+[2021-10-12 18:45:34][ERROR] : ValidationError: Product validation failed: subcategory: Path `subcategory` is required., category: Path `category` is required., description: Path `description` is required. 
+[2021-10-12 18:45:34][ERROR] : MongoServerError: E11000 duplicate key error collection: databaseProgettoTechWeb.products index: name_1 dup key: { name: "ProdottoTest5" } 
+[2021-10-12 18:45:57][ERROR] : ValidationError: Product validation failed: subcategory: Path `subcategory` is required., category: Path `category` is required., description: Path `description` is required. 
+[2021-10-12 18:45:57][ERROR] : MongoServerError: E11000 duplicate key error collection: databaseProgettoTechWeb.products index: name_1 dup key: { name: "ProdottoTest5" } 
+[2021-10-12 18:46:13][ERROR] : ValidationError: Product validation failed: subcategory: Path `subcategory` is required., category: Path `category` is required., description: Path `description` is required. 
+[2021-10-12 18:46:13][ERROR] : MongoServerError: E11000 duplicate key error collection: databaseProgettoTechWeb.products index: name_1 dup key: { name: "ProdottoTest5" } 
+[2021-10-12 18:46:20][ERROR] : ValidationError: Product validation failed: subcategory: Path `subcategory` is required., category: Path `category` is required., description: Path `description` is required. 
+[2021-10-12 18:46:20][ERROR] : MongoServerError: E11000 duplicate key error collection: databaseProgettoTechWeb.products index: name_1 dup key: { name: "ProdottoTest5" } 
+[2021-10-12 18:46:25][ERROR] : ValidationError: Product validation failed: subcategory: Path `subcategory` is required., category: Path `category` is required., description: Path `description` is required. 
+[2021-10-12 18:46:25][ERROR] : MongoServerError: E11000 duplicate key error collection: databaseProgettoTechWeb.products index: name_1 dup key: { name: "ProdottoTest5" } 
+[2021-10-12 18:46:30][ERROR] : ValidationError: Product validation failed: subcategory: Path `subcategory` is required., category: Path `category` is required., description: Path `description` is required. 
+[2021-10-12 18:46:30][ERROR] : MongoServerError: E11000 duplicate key error collection: databaseProgettoTechWeb.products index: name_1 dup key: { name: "ProdottoTest5" } 
+[2021-10-12 18:46:48][ERROR] : ValidationError: Product validation failed: subcategory: Path `subcategory` is required., category: Path `category` is required., description: Path `description` is required. 
+[2021-10-12 18:46:49][ERROR] : MongoServerError: E11000 duplicate key error collection: databaseProgettoTechWeb.products index: name_1 dup key: { name: "ProdottoTest5" } 
+[2021-10-12 18:47:00][ERROR] : ValidationError: Product validation failed: subcategory: Path `subcategory` is required., category: Path `category` is required., description: Path `description` is required. 
+[2021-10-12 18:47:00][ERROR] : MongoServerError: E11000 duplicate key error collection: databaseProgettoTechWeb.products index: name_1 dup key: { name: "ProdottoTest5" } 
+[2021-10-12 18:47:03][ERROR] : ValidationError: Product validation failed: subcategory: Path `subcategory` is required., category: Path `category` is required., description: Path `description` is required. 
+[2021-10-12 18:47:03][ERROR] : MongoServerError: E11000 duplicate key error collection: databaseProgettoTechWeb.products index: name_1 dup key: { name: "ProdottoTest5" } 
+[2021-10-12 18:48:51][ERROR] : ValidationError: Product validation failed: subcategory: Path `subcategory` is required., category: Path `category` is required., description: Path `description` is required. 
+[2021-10-12 18:49:54][ERROR] : ValidationError: Product validation failed: subcategory: Path `subcategory` is required., category: Path `category` is required., description: Path `description` is required. 
+[2021-10-12 18:50:56][ERROR] : ValidationError: Product validation failed: subcategory: Path `subcategory` is required., category: Path `category` is required., description: Path `description` is required. 
+[2021-10-12 18:50:56][ERROR] : MongoServerError: E11000 duplicate key error collection: databaseProgettoTechWeb.products index: name_1 dup key: { name: "ProdottoTest4" } 
+[2021-10-12 18:51:21][ERROR] : ValidationError: Product validation failed: subcategory: Path `subcategory` is required., category: Path `category` is required., description: Path `description` is required. 
+[2021-10-12 18:52:19][ERROR] : ValidationError: Product validation failed: subcategory: Path `subcategory` is required., category: Path `category` is required., description: Path `description` is required. 
+[2021-10-12 18:53:38][ERROR] : ValidationError: Product validation failed: subcategory: Path `subcategory` is required., category: Path `category` is required., description: Path `description` is required. 
+[2021-10-12 19:00:39][ERROR] : ReferenceError: units is not defined 
+[2021-10-12 19:00:39][ERROR] : ValidationError: Product validation failed: subcategory: Path `subcategory` is required., category: Path `category` is required., description: Path `description` is required. 
+[2021-10-12 19:00:39][ERROR] : ReferenceError: units is not defined 
+[2021-10-12 19:00:39][ERROR] : ReferenceError: units is not defined 
+[2021-10-12 19:00:39][ERROR] : ReferenceError: units is not defined 
+[2021-10-12 19:01:07][ERROR] : ReferenceError: removeProduct is not defined 
+[2021-10-12 19:01:07][ERROR] : ValidationError: Product validation failed: subcategory: Path `subcategory` is required., category: Path `category` is required., description: Path `description` is required. 
+[2021-10-12 19:01:07][ERROR] : ReferenceError: removeProduct is not defined 
+[2021-10-12 19:01:07][ERROR] : ReferenceError: removeProduct is not defined 
+[2021-10-12 19:01:07][ERROR] : ReferenceError: removeProduct is not defined 
+[2021-10-12 19:01:27][ERROR] : ValidationError: Product validation failed: subcategory: Path `subcategory` is required., category: Path `category` is required., description: Path `description` is required. 
+[2021-10-12 19:01:59][ERROR] : ValidationError: Product validation failed: subcategory: Path `subcategory` is required., category: Path `category` is required., description: Path `description` is required. 
+[2021-10-12 19:03:55][ERROR] : TypeError: units is not iterable 
+[2021-10-12 19:03:55][ERROR] : ValidationError: Product validation failed: subcategory: Path `subcategory` is required., category: Path `category` is required., description: Path `description` is required. 
+[2021-10-12 19:03:55][ERROR] : TypeError: units is not iterable 
+[2021-10-12 19:03:55][ERROR] : TypeError: units is not iterable 
+[2021-10-12 19:03:55][ERROR] : TypeError: units is not iterable 
+[2021-10-12 19:04:38][ERROR] : TypeError: units is not iterable 
+[2021-10-12 19:04:38][ERROR] : ValidationError: Product validation failed: subcategory: Path `subcategory` is required., category: Path `category` is required., description: Path `description` is required. 
+[2021-10-12 19:04:38][ERROR] : TypeError: units is not iterable 
+[2021-10-12 19:04:38][ERROR] : TypeError: units is not iterable 
+[2021-10-12 19:04:38][ERROR] : TypeError: units is not iterable 
+[2021-10-12 19:05:13][ERROR] : MongoServerError: E11000 duplicate key error collection: databaseProgettoTechWeb.products index: name_1 dup key: { name: "ProdottoTest1" } 
+[2021-10-12 19:05:13][ERROR] : ValidationError: Product validation failed: subcategory: Path `subcategory` is required., category: Path `category` is required., description: Path `description` is required. 
+[2021-10-12 19:05:13][ERROR] : MongoServerError: E11000 duplicate key error collection: databaseProgettoTechWeb.products index: name_1 dup key: { name: "ProdottoTest2" } 
+[2021-10-12 19:05:13][ERROR] : MongoServerError: E11000 duplicate key error collection: databaseProgettoTechWeb.products index: name_1 dup key: { name: "ProdottoTest4" } 
+[2021-10-12 19:05:13][ERROR] : MongoServerError: E11000 duplicate key error collection: databaseProgettoTechWeb.products index: name_1 dup key: { name: "ProdottoTest5" } 
+[2021-10-12 19:05:57][ERROR] : ValidationError: Product validation failed: subcategory: Path `subcategory` is required., category: Path `category` is required., description: Path `description` is required. 
+[2021-10-12 19:06:09][ERROR] : ValidationError: Product validation failed: subcategory: Path `subcategory` is required., category: Path `category` is required., description: Path `description` is required. 
+[2021-10-12 19:31:11][ERROR] : ValidationError: Product validation failed: subcategory: Path `subcategory` is required., category: Path `category` is required., description: Path `description` is required. 
+[2021-10-13 09:15:58][ERROR] : ValidationError: Product validation failed: subcategory: Path `subcategory` is required., category: Path `category` is required., description: Path `description` is required. 

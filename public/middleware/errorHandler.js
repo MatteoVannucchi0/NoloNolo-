@@ -37,7 +37,7 @@ async function logErrorMessage(msg) {
 }
 
 function logToConsole(msg){
-    //console.error(chalk.red(msg));
+    console.error(chalk.red(msg));
 }
 
 module.exports.handle = handle;

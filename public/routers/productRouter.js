@@ -38,9 +38,17 @@ router.get('/:id', getProductById, async (req, res) => {
     res.json(res.product);
 })
 
+//TODO aggiungere una query per non fare cancellare anche le unità associate
 router.delete('/:id', authentication.verifyAuth(requiredAuthLevel, false), getProductById, async (req, res) => {
     try{
         let removedProduct = res.product;
+
+        let units = await removedProduct.getUnits();
+        for (unit of units){
+            await unit.remove();
+        }
+
+
         await res.product.remove();
         res.status(200).json(removedProduct);  
     } catch(error){
@@ -87,10 +95,10 @@ router.post('/:id/units', authentication.verifyAuth(requiredAuthLevel, false), g
 })
 
 //TODO da aggiungere nella specifica di openapi
-router.delete('/:id/units/:idunit', authentication.verifyAuth(requiredAuthLevel, false), getProductById, getUnitById ,async (req, res) => {
+router.delete('/:id/units/:idunit', authentication.verifyAuth(requiredAuthLevel, false), getUnitById ,async (req, res) => {
     try{
         let removedUnit = res.unit;
-        await res.unit.delete();
+        await res.unit.remove();
 
         res.status(200).json(removedUnit);
     } catch (error) {

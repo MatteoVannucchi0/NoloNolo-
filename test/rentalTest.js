@@ -8,6 +8,9 @@ const url = "/api/rentals/"
 
 describe('Unit test rental' ,function() {
 
+    const adminToken = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJhdXRoIjoiYWRtaW4iLCJ1c2VybmFtZSI6ImNpYW8iLCJpZCI6ImFzZG9pMDE5MjNlYXNkIiwiaWF0IjoxNjMzNzAwOTY0LCJleHAiOjE2MzYzNzkzNjR9._cIrkGfajb6DbVFiSxD0wU8SUjZ3kI3-ojV8Fu_a0Kw";
+    const authheader = {"Authorization": adminToken};
+
     async function getAuth(){
         return (await request(app).get(url).set(authheader));
     }
@@ -29,6 +32,12 @@ describe('Unit test rental' ,function() {
     }
 
     it('GET /rental should return an array of rental', async function() {
+        let req = await getAuth();
+        let value = req.body;
+        let statusCode = req.statusCode;
+        startingRental = value;
         
+        statusCode.should.equal(200);
+        value.should.be.a("array");
     })
 });

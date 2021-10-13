@@ -34,7 +34,7 @@ router.get('/', authentication.verifyAuth(requiredAuthLevel, true), async (req, 
 })
 
 router.post('/', authentication.verifyAuth(requiredAuthLevel, true), async (req, res) => {
-    const rental;
+    let rental;
     try{
         rental = await Rental(req.body);
     } catch (error) {

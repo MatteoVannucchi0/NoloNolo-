@@ -1,5 +1,6 @@
 const mongoose = require('mongoose');
-const priceEstimationSchema = require("bill").priceEstimationSchema;
+const priceEstimationSchema = require("../models/bill").priceEstimationSchema;
+//const {billmodel, priceEstimationSchema, billSchema} = require("bill");
 
 const rentalSchema = new mongoose.Schema({
     customer:{

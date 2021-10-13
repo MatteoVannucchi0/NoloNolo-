@@ -42,7 +42,7 @@ const billSchema = new mongoose.Schema({
     }
 })
 
-const priceEstimationSchema = mongoose.schema({
+const priceEstimationSchema = mongoose.Schema({
     basedprice: {
         type: Number,
         required: true

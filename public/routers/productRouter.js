@@ -68,6 +68,15 @@ router.patch('/:id', authentication.verifyAuth(requiredAuthLevel, false), getPro
     }
 })
 
+/*  TODO da implementare
+router.get('/:id/priceestimation', authentication.verifyAuth(requiredAuth, false), getProductByIdasync (req, res) => {
+    {
+        baseprice:
+        modifiers: 
+        finalprice: 
+    }
+})*/
+
 router.get('/:id/units', authentication.verifyAuth(requiredAuthLevel, false), getProductById, async (req, res) => {
     try{
         let units = await res.product.getUnits();
@@ -90,6 +99,7 @@ router.post('/:id/units', authentication.verifyAuth(requiredAuthLevel, false), g
         const newUnit = await unit.save();
         res.status(201).json(newUnit);
     } catch (error) {
+        console.log(error);
         return await handleError(error, res);
     }
 })
@@ -135,15 +145,17 @@ router.post('/:id/tags', authentication.verifyAuth(requiredAuthLevel, false), ge
 //TODO aggiungere una query per restiture un determinato tags
 router.delete('/:id/tags', authentication.verifyAuth(requiredAuthLevel, false), getProductById ,async (req, res) => {
     try {
-        let tag = res.product.tags.filter(tag => {return tag.key == req.query.key && tag.value == req.query.value});
+        let tags = res.product.tags.filter(tag => {return tag.key == req.query.key && tag.value == req.query.value});
         
-        const index = res.product.tags.indexOf(tag);
-        if(index > -1){
-            array.splice(index, 1);
+        for(tag of tags){
+            const index = res.product.tags.indexOf(tag);
+            if(index > -1){
+                res.product.tags.splice(index, 1);
+            }
         }
 
         await res.product.save();
-        res.status(200).json(tag);
+        return res.status(200).json(tags);
     } catch (error) {
         return await errorHandler.handle(error, res, 500);
     }
@@ -152,7 +164,7 @@ router.delete('/:id/tags', authentication.verifyAuth(requiredAuthLevel, false), 
 //TODO aggiungere una query per restiture un determinato tags
 router.get('/:id/altproducts', authentication.verifyAuth(requiredAuthLevel, false), getProductById ,async (req, res) => {
     try{
-        let altproducts = await res.product.populate("altproducts")
+        let altproducts = (await res.product.populate("altproducts")).altproducts
 
         res.status(200).json(altproducts);
     } catch (error) {
@@ -162,20 +174,38 @@ router.get('/:id/altproducts', authentication.verifyAuth(requiredAuthLevel, fals
 
 router.post('/:id/altproducts', authentication.verifyAuth(requiredAuthLevel, false), getProductById ,async (req, res) => {
     try{
-        if(res.product.altproducts.includes(req.body)){
+        let idalt = req.body._id;
+        if(res.product.altproducts.includes(idalt)){
             return await errorHandler.handle(error, res, 409);
         }
 
-        let altprod = await Product.findById(req.body);
+        let altprod = await Product.findById(idalt);
         if(altprod == null){
             return await errorHandler.handle(error, res, 404);
         } 
 
-        res.product.altproducts.push(req.body);
+        res.product.altproducts.push(idalt);
         await res.product.save();           //TODO forse non funziona
-        res.status(201).json(req.body);
+        res.status(201).json(altprod);
     } catch (error) {
         return await handleError(error, res);
+    }
+})
+
+router.delete('/:id/altproducts', authentication.verifyAuth(requiredAuthLevel, false), getProductById ,async (req, res) => {
+    try {
+        let idalt = req.body._id;
+
+        const index = res.product.altproducts.indexOf(idalt);
+        if(index > -1){
+            res.product.altproducts.splice(index);
+        }
+
+        await res.product.save();
+        let altprod = await Product.findById(idalt);
+        return res.status(200).json(altprod);
+    } catch (error) {
+        return await errorHandler.handle(error, res, 500);
     }
 })
 

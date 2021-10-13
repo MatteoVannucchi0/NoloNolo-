@@ -178,7 +178,7 @@ describe('Unit test product api', function () {
 
     })
 
-    it("GET and POST /units shoudl return an array of units", async function () {
+    it("GET, POST, DELETE /tags shoudl return an array of units, post a new unit and delete a specifi unit", async function () {
         const prod = {
             name: "ProdottoTest4",
             description: "Descrizione test",
@@ -200,19 +200,37 @@ describe('Unit test product api', function () {
         statusCode.should.equal(201);
         verify(value, prod);
 
-        const unit = {
+        const unit1 = {
             name: "UnitTest4-1",
             condition: "perfect",
             product: id,
-            rentals: []
+            price: 100,
+            rentals: [],
         }
 
-        req = (await request(app).post(url + id + "/units").set(authheader).send(unit));
+        const unit2 = {
+            name: "UnitTest4-2",
+            condition: "minor flaw",
+            product: id,
+            price: 125,
+            rentals: [],
+        }
+
+        req = (await request(app).post(url + id + "/units").set(authheader).send(unit1));
+        value = req.body;
+        statusCode = req.statusCode;
+
+        const idUnit1 = value._id;
+
+        statusCode.should.equal(201);
+        verify(value, unit1);
+
+        req = (await request(app).post(url + id + "/units").set(authheader).send(unit2));
         value = req.body;
         statusCode = req.statusCode;
 
         statusCode.should.equal(201);
-        verify(value, unit);
+        verify(value, unit2);
 
         req = (await request(app).get(url + id + "/units").set(authheader));
         value = req.body;
@@ -220,13 +238,30 @@ describe('Unit test product api', function () {
 
         statusCode.should.equal(200);
         value.should.be.an('array');
-        shouldContain(value, unit);
+        shouldContain(value, unit1);
+        shouldContain(value, unit2);
+
+        req = (await request(app).delete(url + id + "/units/" + idUnit1).set(authheader));
+        value = req.body;
+        statusCode = req.statusCode;
+
+        statusCode.should.equal(200);
+        verify(value, unit1);
+
+        req = (await request(app).get(url + id + "/units").set(authheader));
+        value = req.body;
+        statusCode = req.statusCode;
+
+        statusCode.should.equal(200);
+        value.should.be.an('array');
+        shouldNotContain(value, unit1);
+        shouldContain(value, unit2);
 
         req = await deleteAuth(id);
         req.statusCode.should.equal(200);
     })
 
-    it("GET and POST /tags shoudl return an array of tags", async function () {
+    it("GET, POST, DELETE /tags shoudl return an array of tags, post a new tag and delete a specifi tag", async function () {
         const tags = [{ key: "Marca", value: "bmw" },{ key: "Colore", value: "Oro" }];
 
         const prod = {
@@ -261,27 +296,53 @@ describe('Unit test product api', function () {
         statusCode.should.equal(201);
         verify(value, newTag);
 
-        req = (await request(app).get(url + id + "/tags").set(authheader));
+        req = (await request(app).delete(url + id + `/tags?key=${tags[0].key}&value=${tags[0].value}`).set(authheader));
         value = req.body;
         statusCode = req.statusCode;
 
         statusCode.should.equal(200);
-        value.should.be.an('array');
         shouldContain(value, tags[0]);
-        shouldContain(value, tags[1]);
-        shouldContain(value, tags[2]);
 
+        req = (await request(app).get(url + id + "/tags").set(authheader));
+        let arrTags = req.body;
+        statusCode = req.statusCode;
+
+        statusCode.should.equal(200);
+        value.should.be.an('array');
+
+        shouldNotContain(arrTags, tags[0]);
+        shouldContain(arrTags, tags[1]);
+        shouldContain(arrTags, tags[2]);
 
         req = await deleteAuth(id);
         req.statusCode.should.equal(200);
     })
 
-    it("GET and POST /tags shoudl return an array of tags", async function () {
+    it("GET, POST, DELETE /altproducts should return an array of altproducts, post a new altproducts and delete a specific altproducts", async function () {
         const tags = [{ key: "Marca", value: "bmw" },{ key: "Colore", value: "Oro" }];
 
         const prod = {
-            name: "ProdottoTest5",
+            name: "ProdottoTest6",
             description: "Descrizione test",
+            image: "/urldiprova/image1.png",
+            category: "Auto",
+            subcategory: "Lusso",
+            tags: tags,
+            altproducts: [],
+        }
+
+        const altprod1 = {
+            name: "altprodtest6-1",
+            description: "Descrizione test2",
+            image: "/urldiprova/image1.png",
+            category: "Auto",
+            subcategory: "Lusso",
+            tags: tags,
+            altproducts: [],
+        }
+        const altprod2 = {
+            name: "altprodtest6-2",
+            description: "Descrizione test2",
             image: "/urldiprova/image1.png",
             category: "Auto",
             subcategory: "Lusso",
@@ -297,32 +358,73 @@ describe('Unit test product api', function () {
         statusCode.should.equal(201);
         verify(value, prod);
 
-        const newTag = {
-            key: "Keytagprova",
-            value: "valuetagprova"
-        }
+        req = await postAuth(altprod1);
+        value = req.body;
+        statusCode = req.statusCode;
+        let idaltprod1 = value._id;
 
-        tags.push(newTag);
+        statusCode.should.equal(201);
+        verify(value, altprod1);
 
-        req = (await request(app).post(url + id + "/tags").set(authheader).send(newTag));
+        req = await postAuth(altprod2);
+        value = req.body;
+        statusCode = req.statusCode;
+        let idaltprod2 = value._id;
+
+        statusCode.should.equal(201);
+        verify(value, altprod2);
+
+        req = (await request(app).post(url + id + "/altproducts").set(authheader).send({_id: idaltprod1}));
         value = req.body;
         statusCode = req.statusCode;
 
         statusCode.should.equal(201);
-        verify(value, newTag);
+        verify(value, altprod1);
 
-        req = (await request(app).get(url + id + "/tags").set(authheader));
+        req = (await request(app).post(url + id + "/altproducts").set(authheader).send({_id: idaltprod2}));
+        value = req.body;
+        statusCode = req.statusCode;
+
+        statusCode.should.equal(201);
+        verify(value, altprod2);
+
+        req = (await request(app).get(url + id + "/altproducts").set(authheader));
+        let arr = req.body;
+        statusCode = req.statusCode;
+
+        statusCode.should.equal(200);
+        arr.should.be.an('array');
+
+        shouldNotContain(arr, prod);
+        shouldContain(arr, altprod1);
+        shouldContain(arr, altprod2);
+
+        req = (await request(app).delete(url + id + "/altproducts").set(authheader).send({_id: idaltprod2}));
         value = req.body;
         statusCode = req.statusCode;
 
         statusCode.should.equal(200);
-        value.should.be.an('array');
-        shouldContain(value, tags[0]);
-        shouldContain(value, tags[1]);
-        shouldContain(value, tags[2]);
+        verify(value, altprod2);
+
+        req = (await request(app).get(url + id + "/altproducts").set(authheader));
+        arr = req.body;
+        statusCode = req.statusCode;
+
+        statusCode.should.equal(200);
+        arr.should.be.an('array');
+
+        shouldNotContain(arr, prod);
+        shouldContain(arr, altprod1);
+        shouldNotContain(arr, altprod2);
 
 
         req = await deleteAuth(id);
+        req.statusCode.should.equal(200);
+
+        req = await deleteAuth(idaltprod1);
+        req.statusCode.should.equal(200);
+
+        req = await deleteAuth(idaltprod2);
         req.statusCode.should.equal(200);
     })
 })

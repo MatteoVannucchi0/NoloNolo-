@@ -19,6 +19,11 @@ const unitSchema = new mongoose.Schema({
         enum: [conditionLevel.perfect, conditionLevel.minorflaw, conditionLevel.majorflaw, conditionLevel.broken],
         required: true,
     },
+    price: {
+        type: Number,
+        required: true,
+        min: 0,
+    },
     product: {
         type: mongoose.Schema.Types.ObjectId,
         required: true,

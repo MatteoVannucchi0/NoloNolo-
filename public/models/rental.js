@@ -1,58 +1,50 @@
 const mongoose = require('mongoose');
-
-const modifierSchema = new mongoose.Schema({
-    value: {
-        type: integer,
-        required: true
-    },
-    condition: {
-        type: String,
-        required: true
-    }
-})
-
-const billSchema = new mongoose.Schema({
-    baseprice: {
-        type: integer,
-        required: true
-    },
-    modifier: {
-        type: Array, 
-        required: true
-    },
-    date: {
-        type: Date,
-        required: true
-    }
-})
+const priceEstimationSchema = require("bill").priceEstimationSchema;
 
 const rentalSchema = new mongoose.Schema({
     customer:{
-        type: ObjcetId,
-        required: true
+        type: mongoose.Schema.Types.ObjectId,
+        required: true,
+        ref: "Customer",
     },
     employee: {
-        type: ObjcetId,
-        required: true
+        //The employee that confirm the closed of the rent 
+        type: mongoose.Schema.Types.ObjectId,
+        ref: "Employee",
     },
-    bill: billSchema,
-    startdate: {    
+    prenotationdate:{
         type: Date,
         required: true
     },
-    enddate: {
+    open: {
+        type: Boolean,
+        required: true, 
+    },
+    //Until open is true bill is null
+    bill: {
+        type: mongoose.Schema.Types.ObjectId,
+        required: true,
+        ref: "Bill",
+    },
+    startdate: {
         type: Date,
         required: true
     },
-    rentdate: {
+    expextedenddate: {
         type: Date,
-        required: true
+    },
+    //The actual end of the rent is null until open is true
+    actualendrent: {
+        type: Date
     },
     unit: {
-        type: integer,
+        type: Number,
         required: true
+    },
+    priceEstimation: {
+        type: priceEstimationSchema,
+        required: true,
     }
-
 })
 
 module.exports = mongoose.model('Rental', rentalSchema);

@@ -25,12 +25,7 @@ router.post('/', authentication.hashPassword, async (req, res) => {
     let employee = null;
     let jwtToken = null;
     try{
-        employee = await Employee({
-            firstname: req.body.firstname,
-            lastname: req.body.lastname,
-            loginInfo: req.body.loginInfo,
-            authentication: req.body.authentication
-        });
+        employee = await Employee(req.body);
 
         jwtToken = await employee.generateToken();
     } catch (error) {

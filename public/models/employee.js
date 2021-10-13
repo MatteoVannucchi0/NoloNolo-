@@ -2,10 +2,6 @@ const mongoose = require('mongoose');
 const auth = require('../middleware/authentication');
 const { validateEmail, validateNotEmail } = require('../middleware/validation');
 
-
-//Dovrebbero avere altri campi tipo: Data di nascita o altro ?? (Intendo non opzionali)
-
-
 const employeeSchema = new mongoose.Schema({
     firstname:{
         type: String,

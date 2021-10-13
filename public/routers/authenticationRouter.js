@@ -1,7 +1,7 @@
 const express = require('express');
 const router = express.Router();
 const Employee = require('../models/customer');
-const Employee = null; //require('..//models/employee');
+//const Employee = null; //require('..//models/employee');
 const authentication = require("../middleware/authentication");
 const validation = require("../middleware/validation");
 

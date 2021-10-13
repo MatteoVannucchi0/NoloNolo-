@@ -8,8 +8,7 @@ const requiredAuthLevel = authentication.authLevel.admin
 
 router.get('/', authentication.verifyAuth(requiredAuthLevel, false), async (req, res) => {
     try {
-        let query = {} 
-        console.log('Ma ci arrivi ?');
+        let query = {}
         if(req.query.username)
             query["loginInfo.username"] = req.query.username;
         if(req.query.email)
@@ -26,7 +25,7 @@ router.post('/', authentication.hashPassword, async (req, res) => {
     let employee = null;
     let jwtToken = null;
     try{
-        const employee = await Employee({
+        employee = await Employee({
             firstname: req.body.firstname,
             lastname: req.body.lastname,
             loginInfo: req.body.loginInfo,
@@ -54,7 +53,7 @@ router.delete('/:id', authentication.verifyAuth(requiredAuthLevel, true), getEmp
     try{
         let removedEmployee = res.employee
         await res.employee.remove();
-        res.json({message: "Employee deleted from the database"});
+        res.status(200).json(removedEmployee);
     } catch(error){
         res.status(500).json({message: error.message});
     }
@@ -65,7 +64,7 @@ router.patch('/:id', authentication.verifyAuth(requiredAuthLevel, true), authent
         res.employee.set(req.body);
         await res.employee.save();
 
-        res.send(200).json(res.customer);
+        res.status(200).json(res.employee);
     } catch (error) {
         res.status(400).json({message: error.message})
     }

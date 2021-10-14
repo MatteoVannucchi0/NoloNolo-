@@ -2,7 +2,7 @@ const fs = require("fs").promises;
 const bcrypt = require('bcrypt');
 const crypto = require('crypto');
 const jwt = require('jsonwebtoken');
-const validation = require('../middleware/validation');
+const validation = require('../lib/validation');
 
 
 const authFileName = ".auth"

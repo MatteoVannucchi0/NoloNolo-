@@ -2,7 +2,7 @@ const express = require('express');
 const router = express.Router();
 const Customer = require('../models/customer').model;
 const Rental = null//require('../models/rental')
-const authentication = require('../middleware/authentication');
+const authentication = require('../lib/authentication');
 
 
 const requiredAuthLevel = authentication.authLevel.employee;

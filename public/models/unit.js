@@ -59,3 +59,4 @@ unitSchema.methods.availableFromTo = async function (from, to) {
 
 module.exports.model = mongoose.model('Unit', unitSchema);
 module.exports.schema = unitSchema;
+module.exports.conditionLevel = conditionLevel;

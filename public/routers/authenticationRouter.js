@@ -2,8 +2,8 @@ const express = require('express');
 const router = express.Router();
 const Customer = require('../models/customer');
 const Employee = null; //require('..//models/employee');
-const authentication = require("../middleware/authentication");
-const validation = require("../middleware/validation");
+const authentication = require("../lib/authentication");
+const validation = require("../lib/validation");
 
 router.post('/customers/login', async (req, res) => {
     try{

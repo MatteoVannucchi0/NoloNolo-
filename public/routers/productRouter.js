@@ -2,8 +2,10 @@ const express = require('express');
 const router = express.Router();
 const Product = require("../models/product").model;
 const Unit = require("../models/unit").model;
-const authentication = require('../middleware/authentication');
-const errorHandler = require('../middleware/errorHandler')
+const authentication = require('../lib/authentication');
+const errorHandler = require('../lib/errorHandler');
+const computePriceEstimation = require('../lib/priceCalculation').computePriceEstimation;
+
 
 const requiredAuthLevel = authentication.authLevel.employee;
 
@@ -67,15 +69,6 @@ router.patch('/:id', authentication.verifyAuth(requiredAuthLevel, false), getPro
         return await errorHandler.handle(error, res, 400);
     }
 })
-
-/*  TODO da implementare
-router.get('/:id/priceestimation', authentication.verifyAuth(requiredAuth, false), getProductByIdasync (req, res) => {
-    {
-        baseprice:
-        modifiers: 
-        finalprice: 
-    }
-})*/
 
 router.get('/:id/units', authentication.verifyAuth(requiredAuthLevel, false), getProductById, async (req, res) => {
     try{
@@ -209,6 +202,19 @@ router.delete('/:id/altproducts', authentication.verifyAuth(requiredAuthLevel, f
     }
 })
 
+//  TODO da implementare
+router.get('/:id/price-estimation', authentication.verifyAuth(requiredAuth, false), getProductById, async (req, res) => {
+    try{
+        let from = req.query.from || Date.now();
+        let to = req.query.to;
+        let availableUnits = (await Unit.find({product: req.params.id})).filter(x => x.availableFromTo(from, to));
+
+        let priceEstimation = computePriceEstimation(availableUnits, {from, to});
+        res.status(200).json(priceEstimation);
+    } catch (error) {
+        return await handleError(error, res);
+    }
+})
 
 
 async function getProductById(req, res, next) {

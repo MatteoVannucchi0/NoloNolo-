@@ -1,22 +1,8 @@
-[2021-10-13 15:00:37][ERROR] : ValidationError: Product validation failed: subcategory: Path `subcategory` is required., category: Path `category` is required., description: Path `description` is required. 
-[2021-10-13 15:04:19][ERROR] : ValidationError: Product validation failed: subcategory: Path `subcategory` is required., category: Path `category` is required., description: Path `description` is required. 
-[2021-10-13 15:06:16][ERROR] : ValidationError: Product validation failed: subcategory: Path `subcategory` is required., category: Path `category` is required., description: Path `description` is required. 
-[2021-10-13 15:07:09][ERROR] : ValidationError: Product validation failed: subcategory: Path `subcategory` is required., category: Path `category` is required., description: Path `description` is required. 
-[2021-10-13 15:07:39][ERROR] : ValidationError: Product validation failed: subcategory: Path `subcategory` is required., category: Path `category` is required., description: Path `description` is required. 
-[2021-10-13 15:08:01][ERROR] : ValidationError: Product validation failed: subcategory: Path `subcategory` is required., category: Path `category` is required., description: Path `description` is required. 
-[2021-10-13 15:11:06][ERROR] : ValidationError: Product validation failed: subcategory: Path `subcategory` is required., category: Path `category` is required., description: Path `description` is required. 
-[2021-10-13 15:11:56][ERROR] : ValidationError: Product validation failed: subcategory: Path `subcategory` is required., category: Path `category` is required., description: Path `description` is required. 
-[2021-10-13 15:12:31][ERROR] : ValidationError: Product validation failed: subcategory: Path `subcategory` is required., category: Path `category` is required., description: Path `description` is required. 
-[2021-10-13 15:13:51][ERROR] : ValidationError: Product validation failed: subcategory: Path `subcategory` is required., category: Path `category` is required., description: Path `description` is required. 
-[2021-10-13 15:14:44][ERROR] : ValidationError: Product validation failed: subcategory: Path `subcategory` is required., category: Path `category` is required., description: Path `description` is required. 
-[2021-10-13 15:16:37][ERROR] : ValidationError: Product validation failed: subcategory: Path `subcategory` is required., category: Path `category` is required., description: Path `description` is required. 
-[2021-10-13 15:17:07][ERROR] : ValidationError: Product validation failed: subcategory: Path `subcategory` is required., category: Path `category` is required., description: Path `description` is required. 
-[2021-10-13 15:17:30][ERROR] : ValidationError: Product validation failed: subcategory: Path `subcategory` is required., category: Path `category` is required., description: Path `description` is required. 
-[2021-10-13 15:17:44][ERROR] : ValidationError: Product validation failed: subcategory: Path `subcategory` is required., category: Path `category` is required., description: Path `description` is required. 
-[2021-10-13 15:18:14][ERROR] : ValidationError: Product validation failed: subcategory: Path `subcategory` is required., category: Path `category` is required., description: Path `description` is required. 
-[2021-10-13 15:18:53][ERROR] : ValidationError: Product validation failed: subcategory: Path `subcategory` is required., category: Path `category` is required., description: Path `description` is required. 
-[2021-10-13 15:19:08][ERROR] : ValidationError: Product validation failed: subcategory: Path `subcategory` is required., category: Path `category` is required., description: Path `description` is required. 
-[2021-10-13 15:26:28][ERROR] : ValidationError: Product validation failed: subcategory: Path `subcategory` is required., category: Path `category` is required., description: Path `description` is required. 
-[2021-10-13 15:26:57][ERROR] : ValidationError: Product validation failed: subcategory: Path `subcategory` is required., category: Path `category` is required., description: Path `description` is required. 
-[2021-10-13 15:27:36][ERROR] : ValidationError: Product validation failed: subcategory: Path `subcategory` is required., category: Path `category` is required., description: Path `description` is required. 
-[2021-10-13 15:27:45][ERROR] : ValidationError: Product validation failed: subcategory: Path `subcategory` is required., category: Path `category` is required., description: Path `description` is required. 
+MICHELE: LUN-MER => LUN-GIO
+MATTEO:  GIO-SAB
+			
+			Se esiste una unit (prendendo la migliore) di quel prodotto disponibile (per tutto il periodo di matteo)
+			la sostitusco a quella che Matteo aveva prenotato.
+				Se non esiste riduco il rent a VEN-SAB, gli faccio pagare solo VEN e SAB più un n% in meno
+				Se Michele me la consegna dopo SAB allora annullo il rent di Matteo, dandoli magari uno sconto per il prossimo rent.
+			in ogni caso a michele faccio pagare n% (non per forza lineare, magari esponeziale) in più.

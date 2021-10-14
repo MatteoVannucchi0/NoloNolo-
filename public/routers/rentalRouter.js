@@ -1,64 +1,79 @@
 const express = require('express');
-const rental = require('../models/rental');
+const Rental = require('../models/rental');
 const router = express.Router();
-const unit = require('../models/unit');
+const authentication = require('../middleware/authentication');
+const customer = require('../models/customer');
+const employee = require('../models/employee');
+//const unit = require('../models/unit');
 
-router.get('/', async (req, res) => {
+const requiredAuthLevel = authentication.authLevel.admin
+
+router.get('/', authentication.verifyAuth(requiredAuthLevel, true), async (req, res) => {
     try {
-        const rental = await Rental.find();
+        let query = {};
+        if(req.query.customerid) 
+            query["customer._id"] = req.query.customerid;
+        if(req.query.employeeid)
+            query["employee._id"] = req.query.employeeid;
+        if(req.query.unitid)
+            query["unit_id"] = req.query.unitid;
+        if(req.query.prenotationdate)
+            query["prenotationdate"] = req.query.prenotationdate;
+
+        const rental = await Rental.find(query);
+
+        if(req.query.maxfinalprice)
+            rental = rental.filter(x => x.finalprice <= req.query.maxfinalprice);
+        if(req.query.minfinalprice)
+            rental = rental.filter(x => x.finalprice >= req.query.minfinalprice);
+
         res.status(200).json(rental);
     } catch (error) {
         res.status(500).json({message: error.message});
     }
 })
 
-router.post('/', async (req, res) => {
+router.post('/', authentication.verifyAuth(requiredAuthLevel, true), async (req, res) => {
+    let rental;
     try{
-        const rental = await Rental({
-            customer : req.body.customer,
-            employee: req.body.employee,
-            bill: req.body.bill,
-            startdate: req.body.startdate,
-            enddate: req.body.enddate,
-            rentdate: req.body.rentdate,
-            unit: req.body.unit
-        });
+        rental = await Rental(req.body);
     } catch (error) {
         res.status(400).json({message: error.message})
     }
-
     try {
-        const newCustomer = await rental.save();
-        res.status(201).json(newCustomer);
+        const newRental = await rental.save();
+        res.status(201).json(newRental);
     } catch (error) {
         res.status(409).json({message: error.message});
     }
 })
 
-router.get('/{id}', getRentalById, async (req, res) => {
-    res.json(res.customer);
+router.get('/{id}', authentication.verifyAuth(requiredAuthLevel, true), getRentalById, async (req, res) => {
+    res.json(res.rental);
 })
 
-router.delete('/{id}', getRentalById, async (req, res) => {
+router.delete('/{id}', authentication.verifyAuth(requiredAuthLevel, false), getRentalById, async (req, res) => {
     try{
+        let removedRental = res.rental;
         await res.rental.remove();
-        res.json({message: "Rental deleted from the database"});
+        res.status(200).json(removedRental);
     } catch(error){
         res.status(500).json({message: error.message});
     }
 })
 
-router.patch('/{id}', async (req,res) => {
+router.patch('/{id}', authentication.verifyAuth(requiredAuthLevel, false),getRentalById, async (req,res) => {
     try{
-        let newRental =  await Rental.FindOneAndUpdate(req.params.id, req.body.rental, {new: true});
-        if (newRental == null)
-            res.send(404).json({message:"Rental not found"})
-        res.send(200).json({newRental: newRental});
+        res.rental.set(req.body);
+        await res.rental.save();
+
+        res.status(200).json(res.rental);
     } catch (error) {
         res.status(400).json({message: error.message})
     }
 })
 
+/* Non ho le unit 
 router.get('/{id}/unit', getRentalById, async (req, res) => {
     try {
         let unit = await Unit.find({rental: req.params.unit});
@@ -67,6 +82,7 @@ router.get('/{id}/unit', getRentalById, async (req, res) => {
         res.status(400).json({message: error.message});
     }
 })
+*/
 
 async function getRentalById(req, res, next) {
     let rental;

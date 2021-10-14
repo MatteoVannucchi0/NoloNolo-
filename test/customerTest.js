@@ -292,7 +292,6 @@ describe('Unit test customer', function() {
         statusCode.should.equal(400);
         value.should.have.property("message");
     })
-
     
     it('GET /customers/favorites should return an array', async function() {
         let diffLogin = customer5

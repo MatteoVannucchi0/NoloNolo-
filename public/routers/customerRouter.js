@@ -46,7 +46,7 @@ router.get('/:id', authentication.verifyAuth(requiredAuthLevel, true), getCustom
 
 router.delete('/:id', authentication.verifyAuth(requiredAuthLevel, true), getCustomerById, async (req, res) => {
     try{
-        let removedCustomer = res.customer
+        let removedCustomer = res.customer;
         await res.customer.remove();
         res.status(200).json(removedCustomer);   //{message: "Customer deleted from the database"});
     } catch(error){

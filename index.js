@@ -84,13 +84,17 @@ require('console-stamp')(console, '[HH:MM:ss.l]');
 const authentication = require(global.rootDir + '/public/routers/authenticationRouter');
 app.use("/api/authentication/", authentication.router);
 
-
 const customerRouter = require(global.rootDir + '/public/routers/customerRouter');
 app.use("/api/customers/", customerRouter);
 
 const productRouter = require(global.rootDir + '/public/routers/productRouter');
 app.use("/api/products/", productRouter);
 
+const employeeRouter = require(global.rootDir + '/public/routers/employeeRouter');
+app.use("/api/employees/", employeeRouter);
+
+const rentalRouter = require(global.rootDir + '/public/routers/rentalRouter');
+app.use("/api/rentals/", rentalRouter);
 
 /* ========================== */
 /*                            */

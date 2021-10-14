@@ -3,7 +3,7 @@ const Employee = require('../models/employee');
 const Customer = require('../models/customer');
 const Rental = require('../models/rental');
 const router = express.Router();
-const authentication = require('../middleware/authentication');
+const authentication = require('../lib/authentication');
 
 const requiredAuthLevel = authentication.authLevel.admin
 

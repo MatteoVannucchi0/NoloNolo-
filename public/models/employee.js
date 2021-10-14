@@ -1,6 +1,6 @@
 const mongoose = require('mongoose');
-const auth = require('../middleware/authentication');
-const { validateEmail, validateNotEmail } = require('../middleware/validation');
+const auth = require('../lib/authentication');
+const { validateEmail, validateNotEmail } = require('../lib/validation');
 
 const employeeSchema = new mongoose.Schema({
     firstname:{

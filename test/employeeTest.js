@@ -4,6 +4,7 @@ const should = chai.should();
 
 const request = require('supertest');
 const app = require('../index');
+const employee = require('../public/models/employee');
 const url = "/api/employees/"
 
 describe('Unit test employee', function() {
@@ -50,13 +51,13 @@ describe('Unit test employee', function() {
         authorization: 'employee'
     }
 
-    const employee2  = {
+    const employee2 = {
         firstname: 'Giovanni',
         lastname: 'Facendo',
         loginInfo: {
-            username: 'employee3',
+            username: 'employee2',
             password: 'SbucciaCarote48',
-            email: 'employee3@email.com'
+            email: 'employee2@email.com'
         },
         authorization: 'employee'
     }
@@ -155,5 +156,80 @@ describe('Unit test employee', function() {
 
         await deleteAuth(id);
     })
+    /*
+    it('Create some employee with POST and then made some query on them', async function() {
+        const employee4 = {
+            firstname: 'Nicola',
+            lastname: 'Gabbia',
+            loginInfo: {
+                username: 'employee4',
+                password: 'Realli!?',
+                email: 'employee4@email.com'
+            },
+            authorization: 'employee'
+        }
+        const employee5 = {
+            firstname: 'Silvestri',
+            lastname: 'Pasquale',
+            loginInfo: {
+                username: 'employee5',
+                password: 'nessunapassword',
+                email: 'employee5@email.com'
+            },
+            authorization: 'employee'
+        }
+        const rental1 = {
+            customer: "è un id ",
+            employee: employee1,
+            open: true,
+            prenotationDate: Date.now(),
+            bill: null,
+            startDate: Date.now(),
+            endDate: Date.now(),
+            unit: "per ora è una stringa",
+            priceEstimation: "Ed anche questo è un placeholder"
+        }
+            //Add five emplpoyee
+        let req = await postAuth(employee1);
+        let id1 = req.body._id;
+        req = await postAuth(employee2);
+        let id2 = req.body._id;
+        req = await postAuth(employee3);
+        let id3 = req.body._id;
+        req = await postAuth(employee4);
+        let id4 = req.body._id;
+        req = await postAuth(employee5);
+        let id5 = req.body._id;
+        req = await postAuthIsm(rental1);
+        let id6 = req.body._id;
 
+        //Made a query on a specific username
+        let usernameQuery = "employee2";
+        req = (await request(app).get('/api/employees?username=' + usernameQuery).set(authheader));
+        let value = req.body;
+        let statusCode = req.statusCode;
+        
+        statusCode.should.equal(200);
+        verifyEmployee(value[0], employee2);
+
+        //Search all Employee that have rent still open
+        req = (await request(app).get('/api/employees?openRent=').set(authheader));
+        value = req.body;
+        statusCode = req.statusCode;
+
+        statusCode.should.equal(200);
+        value.should.be.a("array");
+        console.log(value);
+
+            //remove the five employee
+        req = await deleteAuth(id1);
+        req = await deleteAuth(id2);
+        req = await deleteAuth(id3);
+        req = await deleteAuth(id4);
+        req = await deleteAuth(id5);
+            //remove the rent 
+        req = await deleteAuthIsm(id6);
+    })
+    */
+    
 })

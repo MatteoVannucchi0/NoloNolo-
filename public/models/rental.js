@@ -1,5 +1,4 @@
 const mongoose = require('mongoose');
-const priceEstimationSchema = require("../models/bill").priceEstimationSchema;
 //const {billmodel, priceEstimationSchema, billSchema} = require("bill");
 
 const rentalSchema = new mongoose.Schema({
@@ -13,7 +12,7 @@ const rentalSchema = new mongoose.Schema({
         type: mongoose.Schema.Types.ObjectId,
         ref: "Employee",
     },
-    prenotationdate:{
+    prenotationDate:{
         type: Date,
         required: true
     },
@@ -27,23 +26,25 @@ const rentalSchema = new mongoose.Schema({
         required: true,
         ref: "Bill",
     },
-    startdate: {
+    startDate: {
         type: Date,
         required: true
     },
-    expextedenddate: {
+    expectedEndDate: {
         type: Date,
+        required: true
     },
     //The actual end of the rent is null until open is true
-    actualendrent: {
+    actualEndDate: {
         type: Date
     },
     unit: {
-        type: Number,
-        required: true
+        type: mongoose.Schema.Types.ObjectId,
+        required: true,
+        ref: "Unit"
     },
     priceEstimation: {
-        type: priceEstimationSchema,
+        type: mongoose.Schema.Types.Mixed,
         required: true,
     }
 })

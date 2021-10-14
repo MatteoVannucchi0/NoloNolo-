@@ -1,6 +1,7 @@
 const express = require('express');
 const Employee = require('../models/employee');
 const Customer = require('../models/customer');
+const Rental = require('../models/rental');
 const router = express.Router();
 const authentication = require('../middleware/authentication');
 
@@ -13,9 +14,30 @@ router.get('/', authentication.verifyAuth(requiredAuthLevel, false), async (req,
             query["loginInfo.username"] = req.query.username;
         if(req.query.email)
             query["loginInfo.email"] = req.query.email;
+
+
+        let employees = await Employee.find(query);
         
-        const employee = await Employee.find(query);
-        res.status(200).json(employee);
+
+        if(req.query.openRent){
+            let rentals = await Rental.find();
+
+            //Prendo tutti i rental che sono true
+            rentals = rentals.filter(rent => rent.open == TRUE);
+            console.log("Verificare che i rent siano aperti");
+        
+            let final = [];
+
+            //Prendo tutti gli employee che sono associati ad uno di questi rental
+            for(employee of employees){
+            for(rent of rentals){
+                if(employee._id == rent.employee)
+                    final.push(employee);
+            }
+            }
+        res.status(200).json(final);
+        }
+        res.status(200).json(employees);
     } catch (error) {
         res.status(500).json({message: error.message});
     }

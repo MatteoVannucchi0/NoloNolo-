@@ -5,4 +5,7 @@ MATTEO:  GIO-SAB
 			la sostitusco a quella che Matteo aveva prenotato.
 				Se non esiste riduco il rent a VEN-SAB, gli faccio pagare solo VEN e SAB più un n% in meno
 				Se Michele me la consegna dopo SAB allora annullo il rent di Matteo, dandoli magari uno sconto per il prossimo rent.
-			in ogni caso a michele faccio pagare n% (non per forza lineare, magari esponeziale) in più.
+			in ogni caso a michele faccio pagare n% (non per forza lineare, magari esponeziale) in più.[2021-10-14 15:33:34][ERROR] : ValidationError: Product validation failed: subcategory: Path `subcategory` is required., category: Path `category` is required., description: Path `description` is required. 
+[2021-10-14 15:34:29][ERROR] : ValidationError: Product validation failed: subcategory: Path `subcategory` is required., category: Path `category` is required., description: Path `description` is required. 
+[2021-10-14 15:36:44][ERROR] : ValidationError: Product validation failed: subcategory: Path `subcategory` is required., category: Path `category` is required., description: Path `description` is required. 
+[2021-10-14 15:36:53][ERROR] : ValidationError: Product validation failed: subcategory: Path `subcategory` is required., category: Path `category` is required., description: Path `description` is required. 

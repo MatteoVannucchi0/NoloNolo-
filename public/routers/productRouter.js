@@ -203,7 +203,7 @@ router.delete('/:id/altproducts', authentication.verifyAuth(requiredAuthLevel, f
 })
 
 //  TODO da implementare
-router.get('/:id/price-estimation', authentication.verifyAuth(requiredAuth, false), getProductById, async (req, res) => {
+router.get('/:id/price-estimation', authentication.verifyAuth(requiredAuthLevel, false), getProductById, async (req, res) => {
     try{
         let from = req.query.from || Date.now();
         let to = req.query.to;

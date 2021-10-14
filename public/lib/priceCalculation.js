@@ -1,4 +1,5 @@
-import { modifiersList } from "../lib/modifiers";
+const modifiersList = require("./modifiers").modifiersList;
+
 
 class Modifiers {
     constructor(value, shortExplanation, longExplanation) {
@@ -56,4 +57,4 @@ function computeModifiers(info) {
     return modifiers;
 }
 
-export { computePriceEstimation };
+module.exports.computePriceEstimation = computePriceEstimation;

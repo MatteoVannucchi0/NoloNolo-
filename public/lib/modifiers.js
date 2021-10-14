@@ -1,5 +1,5 @@
-import {conditionLevel} from "../models/unit";
-import * as helper from "../lib/helper";
+const conditionLevel = require("../models/unit").conditionLevel;
+const helper = require("./helper");
 
 const discoutBasedOnCondition = {
     condition: ({unit, from, to, ...others}) => {
@@ -47,4 +47,4 @@ const modifiersList = [
     premiumBasedOnWeekendDays
 ]
 
-export {modifiersList};
+module.exports.modifiersList = modifiersList;

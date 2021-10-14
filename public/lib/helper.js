@@ -7,4 +7,4 @@ function isWeekend(date){
     return day === 6 || day === 0;
 }
 
-export {dayDifference, isWeekend};
+module.exports = {dayDifference, isWeekend}

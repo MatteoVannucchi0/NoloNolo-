@@ -439,7 +439,7 @@ describe('Unit test customer', function() {
 
         statusCode.should.equal(201);
 
-        const auth = require("../public/middleware/authentication");
+        const auth = require("../public/lib/authentication");
         const userToken = await auth.generateToken("customers", value.loginInfo.username, id);
 
         req = (await request(app).delete(url + '/customers/' + id).set({"Authorization": userToken}));

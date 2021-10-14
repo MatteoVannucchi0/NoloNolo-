@@ -1,6 +1,5 @@
-import {model as Customer} from "../models/customer";
-import {model as Employee} from "../models/employee";
-
+const Customer = require("../models/customer").model;
+const Employee = null;//require("../models/employee").model;
 
 const validateEmail = function(email) {
     const re = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/;

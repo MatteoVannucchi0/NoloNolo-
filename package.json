@@ -4,8 +4,8 @@
   "description": "prova prova prova",
   "main": "index.js",
   "scripts": {
-    "test": "nodemon --exec \"mocha --recursive\"",
-    "start": "nodemon index.js"
+    "test": "nodemon --experimental-modules --exec \"mocha --recursive\"",
+    "start": "nodemon --experimental-modules index.js"
   },
   "repository": {
     "type": "git",

@@ -62,11 +62,18 @@ app.use(cors())
 // https://stackoverflow.com/questions/40459511/in-express-js-req-protocol-is-not-picking-up-https-for-my-secure-link-it-alwa
 app.enable('trust proxy');
 
-const objectsRouter = require(global.rootDir + '/public/routers/'); 
-app.use('/api/', Router);
+const authentication = require(global.rootDir + '/public/routers/authenticationRouter');
+app.use("/api/authentication/", authentication.router);
 
 const customerRouter = require(global.rootDir + '/public/routers/customerRouter');
-app.use("/api/customers", customerRouter);
+app.use("/api/customers/", customerRouter);
+
+const employeeRouter = require(global.rootDir + '/public/routers/employeeRouter');
+app.use("/api/employees/", employeeRouter);
+
+const rentalRouter = require(global.rootDir + '/public/routers/rentalRouter');
+app.use("/api/rentals/", rentalRouter);
+
 /* ========================== */
 /*                            */
 /*           MONGODB          */
@@ -84,6 +91,7 @@ const mongooseOptions = {
 	useNewUrlParser: true,
 }
 
+//mongodb://matteo:vannucchi@localhost/databaseProgettoTechWeb
 const mongouri = `mongodb://${mongoCredentials.user}:${mongoCredentials.pwd}@${process.env.DATABASE_URL}/${mongooseOptions.dbName}`;
 
 mongoose.connect(mongouri, mongooseOptions);

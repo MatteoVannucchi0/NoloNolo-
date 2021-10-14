@@ -1,62 +1,52 @@
 const mongoose = require('mongoose');
-
-const modifierSchema = new mongoose.Schema({
-    value: {
-        type: integer,
-        required: true
-    },
-    condition: {
-        type: String,
-        required: true
-    }
-})
-
-const billSchema = new mongoose.Schema({
-    baseprice: {
-        type: integer,
-        required: true
-    },
-    currency: {
-        type: String,
-        required: true
-    },
-    modifier: {
-        type: Array
-        //Come dire che è un'array di modifier  ??
-    },
-    date: {
-        type: Date,
-        required: true
-    }
-})
+//const {billmodel, priceEstimationSchema, billSchema} = require("bill");
 
 const rentalSchema = new mongoose.Schema({
     customer:{
-        type: integer,
-        required: true
+        type: mongoose.Schema.Types.ObjectId,
+        required: true,
+        ref: "Customer",
     },
     employee: {
-        type: interger,
-        required: true
+        //The employee that confirm the closed of the rent 
+        type: mongoose.Schema.Types.ObjectId,
+        ref: "Employee",
     },
-    bill: billSchema,
-    startdate: {    
+    prenotationDate:{
         type: Date,
         required: true
     },
-    enddate: {
+    open: {
+        type: Boolean,
+        required: true, 
+    },
+    //Until open is true bill is null
+    bill: {
+        type: mongoose.Schema.Types.ObjectId,
+        required: true,
+        ref: "Bill",
+    },
+    startDate: {
         type: Date,
         required: true
     },
-    rentdate: {
+    expectedEndDate: {
         type: Date,
         required: true
+    },
+    //The actual end of the rent is null until open is true
+    actualEndDate: {
+        type: Date
     },
     unit: {
-        type: integer,
-        required: true
+        type: mongoose.Schema.Types.ObjectId,
+        required: true,
+        ref: "Unit"
+    },
+    priceEstimation: {
+        type: mongoose.Schema.Types.Mixed,
+        required: true,
     }
-
 })
 
-module.exports = mongoose.model('Rental', clientSchema);
+module.exports = mongoose.model('Rental', rentalSchema);

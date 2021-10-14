@@ -1,9 +1,9 @@
-    const mongoose = require('mongoose');
-
-var validateEmail = function(email) {
-    var re = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/;
-    return re.test(email)
-};
+const mongoose = require('mongoose');
+const auth = require('../middleware/authentication');
+const { validateEmail, validateNotEmail } = require('../middleware/validation');
+ 
+//const loginInfoSchema = require('../models/loginInfo');
+//var uniqueValidator = require('mongoose-unique-validator');
 
 const addressSchema = new mongoose.Schema({
     country: {
@@ -22,7 +22,7 @@ const addressSchema = new mongoose.Schema({
         type: String,
         required: true,
     }
-})
+}, { _id : false });
 
 const customerSchema = new mongoose.Schema({
     firstname:{
@@ -33,26 +33,34 @@ const customerSchema = new mongoose.Schema({
         type: String,
         required: false,
     },
-    username: {
-        type: String,
-        required: true,
-    },
-    password: {
-        type: String,
-        required: true,
-        min: 8,
-    },
-    email: {
-        type: String,
-        required: true,
-        validate: validateEmail,
-    },
     dateOfBirth:{
         type: Date,
         required: true,
         default: Date.now(),
     },
+    loginInfo: {
+        username: {
+            type: String,
+            required: true,
+            unique: true,
+            validate: validateNotEmail,
+        },
+        password: {
+            type: String,
+            required: true,
+        },
+        email: {
+            type: String,
+            required: true,
+            unique: true,
+            validate: validateEmail,
+        },
+    },
     address: addressSchema,
 })
 
+customerSchema.methods.generateToken = async function() {
+    return await auth.generateToken(auth.authLevel.customer, this.username, this._id);
+}
+    
 module.exports = mongoose.model('Customer', customerSchema);

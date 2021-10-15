@@ -1,8 +1,10 @@
 const conditionLevel = require("../models/unit").conditionLevel;
 const helper = require("./helper");
 
+//TODO magari rendere condition async
+
 const discoutBasedOnCondition = {
-    condition: ({unit, from, to, ...others}) => {
+    condition: async ({unit, from, to, ...others}) => {
         switch(unit.condition) {
             case conditionLevel.perfect:
                 return false; //Nel caso in cui sia perfect non va aggiunto un modifier
@@ -28,16 +30,19 @@ const discoutBasedOnCondition = {
 
 const premiumBasedOnWeekendDays = {
     //This modifier modify the price based on how much day are on the weekend
-    condition: ({unit, from, to, ...others}) => {
-        const numberOfDays = helper.calculateDays(from, to);
-        
+    condition: async ({unit, from, to, ...others}) => {
+        const numberOfDays = helper.dayDifference(from, to);
+        return true;
 
         //Contare il numero di giorni fra from e to
         //Contare il numero di giorni fra from e to che sono weekend
         //Fare il rapporto fra i due e moltiplicare per una variabile in base a ciò
     },
     value: 1,
-    explanation: function(){
+    shortExplanation: () => {
+        return "";
+    },
+    longExplanation: () => {
         return "A discout of " + this.value * 100 + "% is applied because the unit has some " + unit.condition;
     }
 };

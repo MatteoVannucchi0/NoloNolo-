@@ -43,20 +43,18 @@ const productSchema = new mongoose.Schema({
 })
 
 //TODO da aggiungere nella specifica di openapi
-productSchema.virtual("available").get(function () {
-    let unitsAvaible = Unit.find({product: this._id, available: true})
-    .filter(x => x.available);
+productSchema.methods.available = async function () {
+    let unitsAvaible = await this.getUnits().filter(x => x.available);
 
     return unitsAvaible.length > 0;
-});
+};
 
 productSchema.methods.getUnits = async function () {
     return await Unit.find({product: this._id});
 }
 
 productSchema.methods.availableFromTo = async function (from, to) {
-    let unitsAvaible = Unit.find({product: this._id, available: true})
-        .filter(x => x.availableFromTo(from, to));
+    let unitsAvaible = await this.getUnits().filter(x => x.availableFromTo(from, to));
 
     return unitsAvaible.length > 0;
 }

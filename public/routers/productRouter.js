@@ -22,7 +22,7 @@ router.get('/', async (req, res) => {
 
 router.post('/', authentication.verifyAuth(requiredAuthLevel, false), async (req, res) => {
     let product = null;
-    try{
+    try {
         product = await Product(req.body);
     } catch (error) {
         return await errorHandler.handle(error, res, 400);
@@ -42,24 +42,24 @@ router.get('/:id', getProductById, async (req, res) => {
 
 //TODO aggiungere una query per non fare cancellare anche le unità associate
 router.delete('/:id', authentication.verifyAuth(requiredAuthLevel, false), getProductById, async (req, res) => {
-    try{
+    try {
         let removedProduct = res.product;
 
         let units = await removedProduct.getUnits();
-        for (unit of units){
+        for (unit of units) {
             await unit.remove();
         }
 
 
         await res.product.remove();
-        res.status(200).json(removedProduct);  
-    } catch(error){
+        res.status(200).json(removedProduct);
+    } catch (error) {
         return await errorHandler.handle(error, res, 500);
     }
 })
 
-router.patch('/:id', authentication.verifyAuth(requiredAuthLevel, false), getProductById, async (req,res) => {    
-    try{
+router.patch('/:id', authentication.verifyAuth(requiredAuthLevel, false), getProductById, async (req, res) => {
+    try {
         res.product.set(req.body);
         await res.product.save();
 
@@ -71,7 +71,7 @@ router.patch('/:id', authentication.verifyAuth(requiredAuthLevel, false), getPro
 })
 
 router.get('/:id/units', authentication.verifyAuth(requiredAuthLevel, false), getProductById, async (req, res) => {
-    try{
+    try {
         let units = await res.product.getUnits();
         res.status(200).json(units)
     } catch (error) {
@@ -81,9 +81,9 @@ router.get('/:id/units', authentication.verifyAuth(requiredAuthLevel, false), ge
 
 router.post('/:id/units', authentication.verifyAuth(requiredAuthLevel, false), getProductById, async (req, res) => {
     let unit = null;
-    try{
+    try {
         unit = await Unit(req.body);
-        unit.set({product: req.params.id});     //L'id del prodotto associato a quella unita è quello del prodotto in cui fa la post
+        unit.set({ product: req.params.id });     //L'id del prodotto associato a quella unita è quello del prodotto in cui fa la post
     } catch (error) {
         return await errorHandler.handle(error, res, 400);
     }
@@ -98,8 +98,8 @@ router.post('/:id/units', authentication.verifyAuth(requiredAuthLevel, false), g
 })
 
 //TODO da aggiungere nella specifica di openapi
-router.delete('/:id/units/:idunit', authentication.verifyAuth(requiredAuthLevel, false), getUnitById ,async (req, res) => {
-    try{
+router.delete('/:id/units/:idunit', authentication.verifyAuth(requiredAuthLevel, false), getUnitById, async (req, res) => {
+    try {
         let removedUnit = res.unit;
         await res.unit.remove();
 
@@ -110,8 +110,8 @@ router.delete('/:id/units/:idunit', authentication.verifyAuth(requiredAuthLevel,
 })
 
 //TODO aggiungere una query per restiture un determinato tags
-router.get('/:id/tags', authentication.verifyAuth(requiredAuthLevel, false), getProductById ,async (req, res) => {
-    try{
+router.get('/:id/tags', authentication.verifyAuth(requiredAuthLevel, false), getProductById, async (req, res) => {
+    try {
         let query = {};
 
         res.status(200).json(res.product.tags);
@@ -120,9 +120,9 @@ router.get('/:id/tags', authentication.verifyAuth(requiredAuthLevel, false), get
     }
 })
 
-router.post('/:id/tags', authentication.verifyAuth(requiredAuthLevel, false), getProductById ,async (req, res) => {
-    try{
-        if(res.product.tags.includes(req.body)){
+router.post('/:id/tags', authentication.verifyAuth(requiredAuthLevel, false), getProductById, async (req, res) => {
+    try {
+        if (res.product.tags.includes(req.body)) {
             return await errorHandler.handle(error, res, 409);
         }
 
@@ -136,13 +136,13 @@ router.post('/:id/tags', authentication.verifyAuth(requiredAuthLevel, false), ge
 })
 
 //TODO aggiungere una query per restiture un determinato tags
-router.delete('/:id/tags', authentication.verifyAuth(requiredAuthLevel, false), getProductById ,async (req, res) => {
+router.delete('/:id/tags', authentication.verifyAuth(requiredAuthLevel, false), getProductById, async (req, res) => {
     try {
-        let tags = res.product.tags.filter(tag => {return tag.key == req.query.key && tag.value == req.query.value});
-        
-        for(tag of tags){
+        let tags = res.product.tags.filter(tag => { return tag.key == req.query.key && tag.value == req.query.value });
+
+        for (tag of tags) {
             const index = res.product.tags.indexOf(tag);
-            if(index > -1){
+            if (index > -1) {
                 res.product.tags.splice(index, 1);
             }
         }
@@ -155,8 +155,8 @@ router.delete('/:id/tags', authentication.verifyAuth(requiredAuthLevel, false), 
 })
 
 //TODO aggiungere una query per restiture un determinato tags
-router.get('/:id/altproducts', authentication.verifyAuth(requiredAuthLevel, false), getProductById ,async (req, res) => {
-    try{
+router.get('/:id/altproducts', authentication.verifyAuth(requiredAuthLevel, false), getProductById, async (req, res) => {
+    try {
         let altproducts = (await res.product.populate("altproducts")).altproducts
 
         res.status(200).json(altproducts);
@@ -165,17 +165,17 @@ router.get('/:id/altproducts', authentication.verifyAuth(requiredAuthLevel, fals
     }
 })
 
-router.post('/:id/altproducts', authentication.verifyAuth(requiredAuthLevel, false), getProductById ,async (req, res) => {
-    try{
+router.post('/:id/altproducts', authentication.verifyAuth(requiredAuthLevel, false), getProductById, async (req, res) => {
+    try {
         let idalt = req.body._id;
-        if(res.product.altproducts.includes(idalt)){
+        if (res.product.altproducts.includes(idalt)) {
             return await errorHandler.handle(error, res, 409);
         }
 
         let altprod = await Product.findById(idalt);
-        if(altprod == null){
+        if (altprod == null) {
             return await errorHandler.handle(error, res, 404);
-        } 
+        }
 
         res.product.altproducts.push(idalt);
         await res.product.save();           //TODO forse non funziona
@@ -185,12 +185,12 @@ router.post('/:id/altproducts', authentication.verifyAuth(requiredAuthLevel, fal
     }
 })
 
-router.delete('/:id/altproducts', authentication.verifyAuth(requiredAuthLevel, false), getProductById ,async (req, res) => {
+router.delete('/:id/altproducts', authentication.verifyAuth(requiredAuthLevel, false), getProductById, async (req, res) => {
     try {
         let idalt = req.body._id;
 
         const index = res.product.altproducts.indexOf(idalt);
-        if(index > -1){
+        if (index > -1) {
             res.product.altproducts.splice(index);
         }
 
@@ -203,13 +203,14 @@ router.delete('/:id/altproducts', authentication.verifyAuth(requiredAuthLevel, f
 })
 
 //  TODO da implementare
-router.get('/:id/price-estimation', authentication.verifyAuth(requiredAuthLevel, false), getProductById, async (req, res) => {
-    try{
+router.get('/:id/price_estimation', authentication.verifyAuth(requiredAuthLevel, false), authentication.getIdFromToken, getProductById, async (req, res) => {
+    try {        
         let from = req.query.from || Date.now();
         let to = req.query.to;
-        let availableUnits = (await Unit.find({product: req.params.id})).filter(x => x.availableFromTo(from, to));
+        let availableUnits = (await Unit.find({ product: req.params.id })).filter(x => x.availableFromTo(from, to));
+        let agentId = req.agentId;
 
-        let priceEstimation = computePriceEstimation(availableUnits, {from, to});
+        let priceEstimation = await computePriceEstimation(availableUnits, { from, to, agentId, });
         res.status(200).json(priceEstimation);
     } catch (error) {
         return await handleError(error, res);
@@ -222,8 +223,9 @@ async function getProductById(req, res, next) {
     try {
         product = await Product.findById(req.params.id);
 
-        if(product == null){
-            return await errorHandler.handle(error, res, 404);
+        if (product == null) {
+            const errmsg = "Product with id " + req.params.id + " not found on the database";
+            return await errorHandler.handleMsg(errmsg, res, 404);
         }
     } catch (error) {
         return await handleError(error, res);
@@ -238,8 +240,9 @@ async function getUnitById(req, res, next) {
     try {
         unit = await Unit.findById(req.params.idunit);
 
-        if(unit == null){
-            return await errorHandler.handle(error, res, 404);
+        if (unit == null) {
+            const errmsg = "Unit with id " + req.params.id + " not found on the database";
+            return await errorHandler.handleMsg(errmsg, res, 404);
         }
     } catch (error) {
         return await handleError(error, res);

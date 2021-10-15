@@ -115,8 +115,22 @@ function verifyAuth(requiredAuthLevel, checkId = false){
     }
 }
 
-//------------ Token handling --------------------------------
+async function getIdFromToken(req, res, next) {
+    const token = req.headers["authorization"];
+    if(!token) {
+        next();             //Nel caso in cui non ci sia un token da cui prendere l'id dello username vado oltre
+    }
 
+    try{
+        const decodedToken = await jwt.verify(token, privateKey);
+        req.agentId = decodedToken.id;
+        next();
+    } catch (error) {
+        return res.status(401).json({message: "Invalid authentication token [" + err.message + "]"});
+    }
+}
+
+//------------ Token handling --------------------------------
 
 module.exports.verifyCredential = verifyCredential;
 module.exports.generateToken = generateToken;
@@ -124,4 +138,4 @@ module.exports.authLevel = authLevel;
 module.exports.hashPassword = hashPassword;
 module.exports.verifyAuth = verifyAuth;
 module.exports.hash = hash;
-
+module.exports.getIdFromToken = getIdFromToken

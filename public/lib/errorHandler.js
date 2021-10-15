@@ -4,11 +4,11 @@ var path = require('path');
 
 const errorFileName = ".errorlog.txt";
 const errorFilePath = path.join(__dirname, '../../log/' + errorFileName);
-
-console.log(errorFilePath);
+const isInTest = typeof global.it === 'function';
 
 function getErrorCode(error){
     switch (error.name) {
+        case "CastError":
         case "ValidationError":
             return 400;
         case "MongoServerError":
@@ -23,6 +23,12 @@ async function handle(error, res, code = undefined) {
     code = code || getErrorCode(error);
     await logError(error);
     return res.status(code).json({ message: error.message });
+}
+
+async function handleMsg(msg, res, code) {
+    code = code || getErrorCode(error);
+    await logErrorMessage(msg);
+    return res.status(code).json({ message: msg });
 }
 
 async function logError(error) {
@@ -40,7 +46,9 @@ async function logErrorMessage(msg) {
 }
 
 function logToConsole(msg){
-    console.error(chalk.red(msg));
+    if (!isInTest)
+        console.error(chalk.red(msg));
 }
 
 module.exports.handle = handle;
+module.exports.handleMsg = handleMsg;

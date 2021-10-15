@@ -3,6 +3,7 @@ const router = express.Router();
 const Customer = require('../models/customer').model;
 const Rental = null//require('../models/rental')
 const authentication = require('../lib/authentication');
+const errorHandler = require('../lib/errorHandler');
 
 
 const requiredAuthLevel = authentication.authLevel.employee;
@@ -18,7 +19,7 @@ router.get('/', authentication.verifyAuth(requiredAuthLevel, false), async (req,
         const customer = await Customer.find(query);
         res.status(200).json(customer);
     } catch (error) {
-        res.status(500).json({message: error.message});
+        return await errorHandler.handle(error, res, 500);
     }
 })
 
@@ -29,14 +30,14 @@ router.post('/', authentication.hashPassword, async (req, res) => {
         customer = await Customer(req.body);
         jwtToken = await customer.generateToken();
     } catch (error) {
-        res.status(400).json({message: error.message})
+        return await errorHandler.handle(error, res, 400);
     }
 
     try {
         const newCustomer = await customer.save();
         res.status(201).set({"Authorization": jwtToken}).json(newCustomer);
     } catch (error) {
-        res.status(409).json({message: error.message});
+        return await errorHandler.handle(error, res);
     }
 })
 
@@ -50,7 +51,7 @@ router.delete('/:id', authentication.verifyAuth(requiredAuthLevel, true), getCus
         await res.customer.remove();
         res.status(200).json(removedCustomer);   //{message: "Customer deleted from the database"});
     } catch(error){
-        res.status(500).json({message: error.message});
+        return await errorHandler.handle(error, res, 500);
     }
 })
 
@@ -61,7 +62,7 @@ router.patch('/:id', authentication.verifyAuth(requiredAuthLevel, true), authent
 
         res.status(200).json(res.customer);
     } catch (error) {
-        res.status(400).json({message: error.message})          //Non so se restituire 400 o 404
+        return await errorHandler.handle(error, res, 400);          //Non so se restituire 400 o 404
     }
 })
 
@@ -70,13 +71,13 @@ router.get('/:id/rentals', authentication.verifyAuth(requiredAuthLevel, true) ,g
         let rentals =  await Rental.find({customer: req.params.id})
         res.status(200).json({rentals})
     } catch (error) {
-        res.status(400).json({message: error.message})          //Non so se restituire 400 o 404
+        return await errorHandler.handle(error, res, 400);         //Non so se restituire 400 o 404
     }
 })
 
 router.get('/:id/favorites', authentication.verifyAuth(requiredAuthLevel, true) ,async (req, res) => {
     let max = req.query.max;
-    res.status(404).json({message: 'Non ancora implementanto'});
+    return await errorHandler.handleMsg("Non ancora implementanto", res, 404);
 })
 
 async function getCustomerById(req, res, next) {
@@ -85,10 +86,11 @@ async function getCustomerById(req, res, next) {
         customer = await Customer.findById(req.params.id);
 
         if(customer == null){
-            return res.status(404).json({message: "Customer with id " + req.params.id + " not found on the database"});
+            const errmsg = "Customer with id " + req.params.id + " not found on the database";
+            return await errorHandler.handleMsg(errmsg, res, 404);
         }
     } catch (error) {
-        return res.status(400).json({message: error.message});
+        return await errorHandler.handle(error, res);
     }
 
     res.customer = customer;

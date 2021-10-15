@@ -1,12 +1,102 @@
-MICHELE: LUN-MER => LUN-GIO
-MATTEO:  GIO-SAB
-			
-			Se esiste una unit (prendendo la migliore) di quel prodotto disponibile (per tutto il periodo di matteo)
-			la sostitusco a quella che Matteo aveva prenotato.
-				Se non esiste riduco il rent a VEN-SAB, gli faccio pagare solo VEN e SAB più un n% in meno
-				Se Michele me la consegna dopo SAB allora annullo il rent di Matteo, dandoli magari uno sconto per il prossimo rent.
-			in ogni caso a michele faccio pagare n% (non per forza lineare, magari esponeziale) in più.[2021-10-14 15:33:34][ERROR] : ValidationError: Product validation failed: subcategory: Path `subcategory` is required., category: Path `category` is required., description: Path `description` is required. 
-[2021-10-14 15:34:29][ERROR] : ValidationError: Product validation failed: subcategory: Path `subcategory` is required., category: Path `category` is required., description: Path `description` is required. 
-[2021-10-14 15:36:44][ERROR] : ValidationError: Product validation failed: subcategory: Path `subcategory` is required., category: Path `category` is required., description: Path `description` is required. 
-[2021-10-14 15:36:53][ERROR] : ValidationError: Product validation failed: subcategory: Path `subcategory` is required., category: Path `category` is required., description: Path `description` is required. 
-[2021-10-14 15:54:13][ERROR] : ValidationError: Product validation failed: subcategory: Path `subcategory` is required., category: Path `category` is required., description: Path `description` is required. 
+[2021-10-15 09:48:18][ERROR] : Customer with id 616050300f33629454139b9a not found on the database 
+[2021-10-15 09:48:18][ERROR] : CastError: Cast to ObjectId failed for value "!" (type string) at path "_id" for model "Customer" 
+[2021-10-15 09:48:18][ERROR] : Customer with id 616050300f55729454809b9a not found on the database 
+[2021-10-15 09:48:18][ERROR] : Customer with id 507f191e810c19729de860ea not found on the database 
+[2021-10-15 09:48:18][ERROR] : CastError: Cast to ObjectId failed for value "wrongurl" (type string) at path "_id" for model "Customer" 
+[2021-10-15 09:48:18][ERROR] : MongoServerError: E11000 duplicate key error collection: databaseProgettoTechWeb.customers index: loginInfo.username_1 dup key: { loginInfo.username: "alsddfsdf" } 
+[2021-10-15 09:48:18][ERROR] : CastError: Cast to ObjectId failed for value "undefined" (type string) at path "_id" for model "Customer" 
+[2021-10-15 09:48:18][ERROR] : Customer with id 507f191e810c19729de860ea not found on the database 
+[2021-10-15 09:48:18][ERROR] : CastError: Cast to ObjectId failed for value "!" (type string) at path "_id" for model "Customer" 
+[2021-10-15 09:48:18][ERROR] : MongoServerError: E11000 duplicate key error collection: databaseProgettoTechWeb.customers index: loginInfo.username_1 dup key: { loginInfo.username: "testtest" } 
+[2021-10-15 09:48:18][ERROR] : Non ancora implementanto 
+[2021-10-15 09:48:19][ERROR] : Non ancora implementanto 
+[2021-10-15 09:48:19][ERROR] : CastError: Cast to ObjectId failed for value "!" (type string) at path "_id" for model "Customer" 
+[2021-10-15 09:48:19][ERROR] : ValidationError: Product validation failed: subcategory: Path `subcategory` is required., category: Path `category` is required., description: Path `description` is required. 
+[2021-10-15 09:50:34][ERROR] : Customer with id 616050300f33629454139b9a not found on the database 
+[2021-10-15 09:50:34][ERROR] : CastError: Cast to ObjectId failed for value "!" (type string) at path "_id" for model "Customer" 
+[2021-10-15 09:50:34][ERROR] : Customer with id 616050300f55729454809b9a not found on the database 
+[2021-10-15 09:50:34][ERROR] : Customer with id 507f191e810c19729de860ea not found on the database 
+[2021-10-15 09:50:34][ERROR] : CastError: Cast to ObjectId failed for value "wrongurl" (type string) at path "_id" for model "Customer" 
+[2021-10-15 09:50:34][ERROR] : MongoServerError: E11000 duplicate key error collection: databaseProgettoTechWeb.customers index: loginInfo.username_1 dup key: { loginInfo.username: "alsddfsdf" } 
+[2021-10-15 09:50:34][ERROR] : CastError: Cast to ObjectId failed for value "undefined" (type string) at path "_id" for model "Customer" 
+[2021-10-15 09:50:34][ERROR] : Customer with id 507f191e810c19729de860ea not found on the database 
+[2021-10-15 09:50:34][ERROR] : CastError: Cast to ObjectId failed for value "!" (type string) at path "_id" for model "Customer" 
+[2021-10-15 09:50:34][ERROR] : MongoServerError: E11000 duplicate key error collection: databaseProgettoTechWeb.customers index: loginInfo.username_1 dup key: { loginInfo.username: "testtest" } 
+[2021-10-15 09:50:34][ERROR] : Non ancora implementanto 
+[2021-10-15 09:50:34][ERROR] : Non ancora implementanto 
+[2021-10-15 09:50:34][ERROR] : CastError: Cast to ObjectId failed for value "!" (type string) at path "_id" for model "Customer" 
+[2021-10-15 09:50:34][ERROR] : ValidationError: Product validation failed: subcategory: Path `subcategory` is required., category: Path `category` is required., description: Path `description` is required. 
+[2021-10-15 09:51:06][ERROR] : Customer with id 616050300f33629454139b9a not found on the database 
+[2021-10-15 09:51:06][ERROR] : CastError: Cast to ObjectId failed for value "!" (type string) at path "_id" for model "Customer" 
+[2021-10-15 09:51:06][ERROR] : Customer with id 616050300f55729454809b9a not found on the database 
+[2021-10-15 09:51:06][ERROR] : Customer with id 507f191e810c19729de860ea not found on the database 
+[2021-10-15 09:51:06][ERROR] : CastError: Cast to ObjectId failed for value "wrongurl" (type string) at path "_id" for model "Customer" 
+[2021-10-15 09:51:06][ERROR] : MongoServerError: E11000 duplicate key error collection: databaseProgettoTechWeb.customers index: loginInfo.username_1 dup key: { loginInfo.username: "alsddfsdf" } 
+[2021-10-15 09:51:06][ERROR] : CastError: Cast to ObjectId failed for value "undefined" (type string) at path "_id" for model "Customer" 
+[2021-10-15 09:51:06][ERROR] : Customer with id 507f191e810c19729de860ea not found on the database 
+[2021-10-15 09:51:06][ERROR] : CastError: Cast to ObjectId failed for value "!" (type string) at path "_id" for model "Customer" 
+[2021-10-15 09:51:06][ERROR] : MongoServerError: E11000 duplicate key error collection: databaseProgettoTechWeb.customers index: loginInfo.username_1 dup key: { loginInfo.username: "testtest" } 
+[2021-10-15 09:51:06][ERROR] : Non ancora implementanto 
+[2021-10-15 09:51:06][ERROR] : Non ancora implementanto 
+[2021-10-15 09:51:06][ERROR] : CastError: Cast to ObjectId failed for value "!" (type string) at path "_id" for model "Customer" 
+[2021-10-15 09:51:06][ERROR] : ValidationError: Product validation failed: subcategory: Path `subcategory` is required., category: Path `category` is required., description: Path `description` is required. 
+[2021-10-15 09:51:45][ERROR] : Customer with id 616050300f33629454139b9a not found on the database 
+[2021-10-15 09:51:45][ERROR] : CastError: Cast to ObjectId failed for value "!" (type string) at path "_id" for model "Customer" 
+[2021-10-15 09:51:45][ERROR] : Customer with id 616050300f55729454809b9a not found on the database 
+[2021-10-15 09:51:45][ERROR] : Customer with id 507f191e810c19729de860ea not found on the database 
+[2021-10-15 09:51:45][ERROR] : CastError: Cast to ObjectId failed for value "wrongurl" (type string) at path "_id" for model "Customer" 
+[2021-10-15 09:51:45][ERROR] : MongoServerError: E11000 duplicate key error collection: databaseProgettoTechWeb.customers index: loginInfo.username_1 dup key: { loginInfo.username: "alsddfsdf" } 
+[2021-10-15 09:51:45][ERROR] : CastError: Cast to ObjectId failed for value "undefined" (type string) at path "_id" for model "Customer" 
+[2021-10-15 09:51:45][ERROR] : Customer with id 507f191e810c19729de860ea not found on the database 
+[2021-10-15 09:51:45][ERROR] : CastError: Cast to ObjectId failed for value "!" (type string) at path "_id" for model "Customer" 
+[2021-10-15 09:51:45][ERROR] : MongoServerError: E11000 duplicate key error collection: databaseProgettoTechWeb.customers index: loginInfo.username_1 dup key: { loginInfo.username: "testtest" } 
+[2021-10-15 09:51:45][ERROR] : Non ancora implementanto 
+[2021-10-15 09:51:45][ERROR] : Non ancora implementanto 
+[2021-10-15 09:51:45][ERROR] : CastError: Cast to ObjectId failed for value "!" (type string) at path "_id" for model "Customer" 
+[2021-10-15 09:51:45][ERROR] : ValidationError: Product validation failed: subcategory: Path `subcategory` is required., category: Path `category` is required., description: Path `description` is required. 
+[2021-10-15 09:54:00][ERROR] : Customer with id 616050300f33629454139b9a not found on the database 
+[2021-10-15 09:54:00][ERROR] : CastError: Cast to ObjectId failed for value "!" (type string) at path "_id" for model "Customer" 
+[2021-10-15 09:54:00][ERROR] : Customer with id 616050300f55729454809b9a not found on the database 
+[2021-10-15 09:54:00][ERROR] : Customer with id 507f191e810c19729de860ea not found on the database 
+[2021-10-15 09:54:00][ERROR] : CastError: Cast to ObjectId failed for value "wrongurl" (type string) at path "_id" for model "Customer" 
+[2021-10-15 09:54:00][ERROR] : MongoServerError: E11000 duplicate key error collection: databaseProgettoTechWeb.customers index: loginInfo.username_1 dup key: { loginInfo.username: "alsddfsdf" } 
+[2021-10-15 09:54:00][ERROR] : CastError: Cast to ObjectId failed for value "undefined" (type string) at path "_id" for model "Customer" 
+[2021-10-15 09:54:00][ERROR] : Customer with id 507f191e810c19729de860ea not found on the database 
+[2021-10-15 09:54:00][ERROR] : CastError: Cast to ObjectId failed for value "!" (type string) at path "_id" for model "Customer" 
+[2021-10-15 09:54:00][ERROR] : MongoServerError: E11000 duplicate key error collection: databaseProgettoTechWeb.customers index: loginInfo.username_1 dup key: { loginInfo.username: "testtest" } 
+[2021-10-15 09:54:00][ERROR] : Non ancora implementanto 
+[2021-10-15 09:54:00][ERROR] : Non ancora implementanto 
+[2021-10-15 09:54:00][ERROR] : CastError: Cast to ObjectId failed for value "!" (type string) at path "_id" for model "Customer" 
+[2021-10-15 09:54:00][ERROR] : ValidationError: Product validation failed: subcategory: Path `subcategory` is required., category: Path `category` is required., description: Path `description` is required. 
+[2021-10-15 09:55:51][ERROR] : Customer with id 616050300f33629454139b9a not found on the database 
+[2021-10-15 09:55:51][ERROR] : CastError: Cast to ObjectId failed for value "!" (type string) at path "_id" for model "Customer" 
+[2021-10-15 09:55:51][ERROR] : Customer with id 616050300f55729454809b9a not found on the database 
+[2021-10-15 09:55:51][ERROR] : Customer with id 507f191e810c19729de860ea not found on the database 
+[2021-10-15 09:55:51][ERROR] : CastError: Cast to ObjectId failed for value "wrongurl" (type string) at path "_id" for model "Customer" 
+[2021-10-15 09:55:51][ERROR] : MongoServerError: E11000 duplicate key error collection: databaseProgettoTechWeb.customers index: loginInfo.username_1 dup key: { loginInfo.username: "alsddfsdf" } 
+[2021-10-15 09:55:51][ERROR] : CastError: Cast to ObjectId failed for value "undefined" (type string) at path "_id" for model "Customer" 
+[2021-10-15 09:55:51][ERROR] : Customer with id 507f191e810c19729de860ea not found on the database 
+[2021-10-15 09:55:51][ERROR] : CastError: Cast to ObjectId failed for value "!" (type string) at path "_id" for model "Customer" 
+[2021-10-15 09:55:51][ERROR] : MongoServerError: E11000 duplicate key error collection: databaseProgettoTechWeb.customers index: loginInfo.username_1 dup key: { loginInfo.username: "testtest" } 
+[2021-10-15 09:55:51][ERROR] : Non ancora implementanto 
+[2021-10-15 09:55:51][ERROR] : Non ancora implementanto 
+[2021-10-15 09:55:51][ERROR] : CastError: Cast to ObjectId failed for value "!" (type string) at path "_id" for model "Customer" 
+[2021-10-15 09:55:51][ERROR] : ValidationError: Product validation failed: subcategory: Path `subcategory` is required., category: Path `category` is required., description: Path `description` is required. 
+[2021-10-15 09:56:10][ERROR] : Customer with id 616050300f33629454139b9a not found on the database 
+[2021-10-15 09:56:10][ERROR] : CastError: Cast to ObjectId failed for value "!" (type string) at path "_id" for model "Customer" 
+[2021-10-15 09:56:10][ERROR] : Customer with id 616050300f55729454809b9a not found on the database 
+[2021-10-15 09:56:10][ERROR] : Customer with id 507f191e810c19729de860ea not found on the database 
+[2021-10-15 09:56:10][ERROR] : CastError: Cast to ObjectId failed for value "wrongurl" (type string) at path "_id" for model "Customer" 
+[2021-10-15 09:56:10][ERROR] : MongoServerError: E11000 duplicate key error collection: databaseProgettoTechWeb.customers index: loginInfo.username_1 dup key: { loginInfo.username: "alsddfsdf" } 
+[2021-10-15 09:56:10][ERROR] : CastError: Cast to ObjectId failed for value "undefined" (type string) at path "_id" for model "Customer" 
+[2021-10-15 09:56:10][ERROR] : Customer with id 507f191e810c19729de860ea not found on the database 
+[2021-10-15 09:56:10][ERROR] : CastError: Cast to ObjectId failed for value "!" (type string) at path "_id" for model "Customer" 
+[2021-10-15 09:56:10][ERROR] : MongoServerError: E11000 duplicate key error collection: databaseProgettoTechWeb.customers index: loginInfo.username_1 dup key: { loginInfo.username: "testtest" } 
+[2021-10-15 09:56:10][ERROR] : Non ancora implementanto 
+[2021-10-15 09:56:10][ERROR] : Non ancora implementanto 
+[2021-10-15 09:56:10][ERROR] : CastError: Cast to ObjectId failed for value "!" (type string) at path "_id" for model "Customer" 
+[2021-10-15 09:56:11][ERROR] : ValidationError: Product validation failed: subcategory: Path `subcategory` is required., category: Path `category` is required., description: Path `description` is required. 
+[2021-10-15 10:15:52][ERROR] : MongoServerError: E11000 duplicate key error collection: databaseProgettoTechWeb.customers index: loginInfo.username_1 dup key: { loginInfo.username: "testUser" } 
+[2021-10-15 10:15:54][ERROR] : MongoServerError: E11000 duplicate key error collection: databaseProgettoTechWeb.customers index: loginInfo.username_1 dup key: { loginInfo.username: "testUser" } 
+[2021-10-15 10:15:54][ERROR] : MongoServerError: E11000 duplicate key error collection: databaseProgettoTechWeb.customers index: loginInfo.username_1 dup key: { loginInfo.username: "testUser" } 
+[2021-10-15 10:15:55][ERROR] : MongoServerError: E11000 duplicate key error collection: databaseProgettoTechWeb.customers index: loginInfo.username_1 dup key: { loginInfo.username: "testUser" } 

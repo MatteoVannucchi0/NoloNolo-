@@ -52,7 +52,7 @@ router.get('/{id}', authentication.verifyAuth(requiredAuthLevel, true), getRenta
     res.json(res.rental);
 })
 
-router.delete('/{id}', authentication.verifyAuth(requiredAuthLevel, false), getRentalById, async (req, res) => {
+router.delete('/:id', authentication.verifyAuth(requiredAuthLevel, false), getRentalById, async (req, res) => {
     try{
         let removedRental = res.rental;
         await res.rental.remove();

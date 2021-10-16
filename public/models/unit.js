@@ -32,6 +32,7 @@ const unitSchema = new mongoose.Schema({
     rentals: {
         type: [mongoose.Schema.Types.ObjectId],
         required: true,
+        default: [],
         ref: "Rental",
     },
 })

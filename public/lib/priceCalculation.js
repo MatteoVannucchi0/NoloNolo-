@@ -9,10 +9,11 @@ class Modifiers {
 }
 
 class PriceEstimation{
-    constructor(basePrice, modifiersList, finalPrice){
+    constructor(basePrice, modifiersList, finalPrice, unitID){
         this.basePrice = basePrice;
         this.modifiersList = modifiersList;
         this.finalPrice = finalPrice;
+        this.unitID = unitID;
     }
 }
 
@@ -42,7 +43,7 @@ async function unitPriceEstimation(unit, info) {
     for (modifier of computedModifiers)
         finalPrice = finalPrice * modifier.value;
 
-    return new PriceEstimation(unit.price, computedModifiers, finalPrice);
+    return new PriceEstimation(unit.price, computedModifiers, finalPrice, unit._id);
 }
 
 async function computeModifiers(info) {

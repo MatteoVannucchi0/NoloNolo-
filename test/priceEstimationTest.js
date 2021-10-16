@@ -13,7 +13,7 @@ const url = "/api/products/"
 describe('Unit test product api', function () {
 
     function verify(got, expected) {
-        expect(got).excluding(['_id', '__v']).to.deep.equal(expected);
+        expect(got).excluding(['_id', '__v','productImage']).to.deep.equal(expected);
 
         /*got.name.should.equal(expected.name);
         got.description.should.equal(expected.description);
@@ -28,7 +28,7 @@ describe('Unit test product api', function () {
     }
 
     function shouldContain(arr, obj) {
-        expect(arr).excluding(['_id', '__v']).to.include.something.that.deep.equals(obj);
+        expect(arr).excluding(['_id', '__v', , 'productImage']).to.include.something.that.deep.equals(obj);
     }
 
     function shouldNotContain(arr, obj) {
@@ -38,29 +38,50 @@ describe('Unit test product api', function () {
     const adminToken = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJhdXRoIjoiYWRtaW4iLCJ1c2VybmFtZSI6ImNpYW8iLCJpZCI6ImFzZG9pMDE5MjNlYXNkIiwiaWF0IjoxNjMzNzAwOTY0LCJleHAiOjE2MzYzNzkzNjR9._cIrkGfajb6DbVFiSxD0wU8SUjZ3kI3-ojV8Fu_a0Kw";
     const authheader = { "Authorization": adminToken };
 
-    async function postAuth(prod) {
-        return await (request(app).post(url).set(authheader).send(prod));
+    async function postAuth(prod, urlMethod=url) {
+        let req = await (request(app).post(urlMethod).set(authheader).send(prod));;
+        let value = req.body;
+        let statusCode = req.statusCode;
+        let id = value._id;
+
+        statusCode.should.equal(201);
+        verify(value, prod);
+
+        return {value, statusCode, id};
     }
 
-    async function getAuth() {
-        return (await request(app).get(url).set(authheader));
+    async function getAuth(urlMethod=url) {
+        let req = (await request(app).get(urlMethod).set(authheader));
+        let value = req.body;
+        let statusCode = req.statusCode;
+        let id = value._id;
+
+        statusCode.should.equal(200);
+        return {value, statusCode, id};
     }
 
-    async function getAuthId(id) {
-        return (await request(app).get(url + id).set(authheader));
+    async function patchAuth(idMethod, customer) {
+        let req = (await request(app).patch(url + idMethod).set(authheader).send(customer));
+        let value = req.body;
+        let statusCode = req.statusCode;
+        let id = value._id;
+
+        statusCode.should.equal(200);
+        return {value, statusCode, id};
     }
 
-    async function patchAuth(id, customer) {
-        return (await request(app).patch(url + id).set(authheader).send(customer));
-    }
+    async function deleteAuth(idMethod) {
+        let req = (await request(app).delete(url + idMethod).set(authheader));
+        let value = req.body;
+        let statusCode = req.statusCode;
+        let id = value._id;
 
-    async function deleteAuth(id) {
-        return (await request(app).delete(url + id).set(authheader));
+        statusCode.should.equal(200);
+        return {value, statusCode, id};
     }
 
     it("should post a product with two unit inside and request a priceEstimation", async function () {
         const tags = [{ key: "Marca", value: "bmw" },{ key: "Colore", value: "Oro" }];
-
         const prod = {
             name: "prodottoPriceEstTest1",
             description: "Descrizione test",
@@ -71,14 +92,7 @@ describe('Unit test product api', function () {
             altproducts: [],
         }
 
-
-        let req = await postAuth(prod);
-        let value = req.body;
-        let statusCode = req.statusCode;
-        let id = value._id;
-
-        statusCode.should.equal(201);
-        verify(value, prod);
+        let {id} = await postAuth(prod);
 
         const unit1 = {
             name: "UnitTestPriceEst1-1",
@@ -95,28 +109,12 @@ describe('Unit test product api', function () {
             price: 100,
             rentals: [],
         }
+        
+        const idUnit1 = (await postAuth(unit1, url + id + "/units")).id;
 
-        req = (await request(app).post(url + id + "/units").set(authheader).send(unit1));
-        value = req.body;
-        statusCode = req.statusCode;
-        const idUnit1 = value._id;
+        const idUnit2 = (await postAuth(unit2, url + id + "/units")).id;
 
-        statusCode.should.equal(201);
-        verify(value, unit1);
-
-        req = (await request(app).post(url + id + "/units").set(authheader).send(unit2));
-        value = req.body;
-        statusCode = req.statusCode;
-        const idUnit2 = value._id;
-
-        statusCode.should.equal(201);
-        verify(value, unit2);
-
-        req = (await request(app).get(url + id + "/units").set(authheader));
-        value = req.body;
-        statusCode = req.statusCode;
-
-        statusCode.should.equal(200);
+        let value = (await getAuth(url + id + "/units")).value;
         value.should.be.an('array');
         shouldContain(value, unit1);
         shouldContain(value, unit2);
@@ -125,16 +123,10 @@ describe('Unit test product api', function () {
         const twoDayAfterToday = (new Date()).setDate(new Date().getDate() + 2);
 
         let uri = encodeURI(url + id + "/price_estimation?from="+ today +"&to=" + twoDayAfterToday);
-        req = (await request(app).get(uri).set(authheader));
-        value = req.body;
-        statusCode = req.statusCode;
 
-        console.log(value);
-
-        statusCode.should.equal(200);
+        value = (await getAuth(uri)).value;
         value.should.be.an('array');
 
         req = await deleteAuth(id);
-        req.statusCode.should.equal(200);
     })
 })

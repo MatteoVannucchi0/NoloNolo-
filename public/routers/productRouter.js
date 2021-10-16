@@ -4,14 +4,34 @@ const Product = require("../models/product").model;
 const Unit = require("../models/unit").model;
 const authentication = require('../lib/authentication');
 const errorHandler = require('../lib/errorHandler');
+const fs = require("fs").promises;
+const path = require('path')
 const computePriceEstimation = require('../lib/priceCalculation').computePriceEstimation;
 
+const multer = require('multer');
+const imageRelativePath =  "/image/"
+const imagePath = path.join(__dirname,"..", imageRelativePath);
+const storage = multer.diskStorage({
+    destination: function (req, file, cb) {
+      cb(null, imagePath)
+    },
+    filename: function (req, file, cb) {
+      const uniqueName = req.body.name + '-' + Date.now() + path.extname(file.originalname);
+      cb(null, uniqueName)
+    }
+})
+  
+const upload = multer({ storage: storage })
 
 const requiredAuthLevel = authentication.authLevel.employee;
 
 router.get('/', async (req, res) => {
     try {
-        let query = {};
+        let query = {}
+        if(req.query.name)
+            query["name"] = req.query.name;
+
+        console.log(query);
 
         const product = await Product.find(query);
         return res.status(200).json(product);
@@ -20,9 +40,11 @@ router.get('/', async (req, res) => {
     }
 })
 
-router.post('/', authentication.verifyAuth(requiredAuthLevel, false), async (req, res) => {
+router.post('/', authentication.verifyAuth(requiredAuthLevel, false), upload.single('image'), async (req, res) => {
     let product = null;
     try {
+        if(req.file)
+            req.body.image = path.join(imageRelativePath, req.file.filename);
         product = await Product(req.body);
     } catch (error) {
         return await errorHandler.handle(error, res, 400);
@@ -32,6 +54,12 @@ router.post('/', authentication.verifyAuth(requiredAuthLevel, false), async (req
         const newProduct = await product.save();
         return res.status(201).json(newProduct);
     } catch (error) {
+        try{
+            if(req.file)
+                await fs.unlink(path.join(imagePath, req.file.filename));
+        } catch(error){
+            return await errorHandler.handle(error, res, 400);
+        }
         return await errorHandler.handle(error, res);
     }
 })
@@ -213,7 +241,7 @@ router.get('/:id/price_estimation', authentication.verifyAuth(requiredAuthLevel,
         let priceEstimation = await computePriceEstimation(availableUnits, { from, to, agentId, });
         res.status(200).json(priceEstimation);
     } catch (error) {
-        return await handleError(error, res);
+        return await errorHandler.handle(error, res);
     }
 })
 

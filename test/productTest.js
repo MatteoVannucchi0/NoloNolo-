@@ -2,6 +2,8 @@ const chai = require('chai');
 const expect = chai.expect;
 const should = chai.should();
 
+const fs = require('fs').promises;
+
 chai.use(require("chai-things"));
 chai.use(require('chai-exclude'));
 
@@ -11,10 +13,14 @@ const url = "/api/products/"
 
 
 
-describe('Unit test product api', function () {
+describe('Unit test product api', async function () {
+
+    const placeholderImg = await fs.readFile('placeholder.jpg');
+
+    console.log(placeholderImg);
 
     function verify(got, expected) {
-        expect(got).excluding(['_id', '__v']).to.deep.equal(expected);
+        expect(got).excluding(['_id', '__v', 'productImage']).to.deep.equal(expected);
 
         /*got.name.should.equal(expected.name);
         got.description.should.equal(expected.description);
@@ -29,11 +35,11 @@ describe('Unit test product api', function () {
     }
 
     function shouldContain(arr, obj) {
-        expect(arr).excluding(['_id', '__v']).to.include.something.that.deep.equals(obj);
+        expect(arr).excluding(['_id', '__v', 'productImage']).to.include.something.that.deep.equals(obj);
     }
 
     function shouldNotContain(arr, obj) {
-        expect(arr).excluding(['_id', '__v']).to.not.include.something.that.deep.equals(obj);
+        expect(arr).excluding(['_id', '__v', 'productImage']).to.not.include.something.that.deep.equals(obj);
     }
 
     const adminToken = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJhdXRoIjoiYWRtaW4iLCJ1c2VybmFtZSI6ImNpYW8iLCJpZCI6ImFzZG9pMDE5MjNlYXNkIiwiaWF0IjoxNjMzNzAwOTY0LCJleHAiOjE2MzYzNzkzNjR9._cIrkGfajb6DbVFiSxD0wU8SUjZ3kI3-ojV8Fu_a0Kw";
@@ -178,7 +184,7 @@ describe('Unit test product api', function () {
 
     })
 
-    it("GET, POST, DELETE /tags shoudl return an array of units, post a new unit and delete a specifi unit", async function () {
+    it("GET, POST, DELETE /units shoudl return an array of units, post a new unit and delete a specifi unit", async function () {
         const prod = {
             name: "ProdottoTest4",
             description: "Descrizione test",

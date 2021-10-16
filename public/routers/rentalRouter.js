@@ -2,9 +2,10 @@ const express = require('express');
 const Rental = require('../models/rental');
 const router = express.Router();
 const authentication = require('../lib/authentication');
-const customer = require('../models/customer');
-const employee = require('../models/employee');
-//const unit = require('../models/unit');
+const Customer = require('../models/customer');
+const Employee = require('../models/employee');
+const Bill = require('../models/bill');
+const Unit = require('../models/unit');
 
 const requiredAuthLevel = authentication.authLevel.admin
 
@@ -44,15 +45,16 @@ router.post('/', authentication.verifyAuth(requiredAuthLevel, true), async (req,
         const newRental = await rental.save();
         res.status(201).json(newRental);
     } catch (error) {
+        console.log(error.message);
         res.status(409).json({message: error.message});
     }
 })
 
-router.get('/{id}', authentication.verifyAuth(requiredAuthLevel, true), getRentalById, async (req, res) => {
+router.get('/:id', authentication.verifyAuth(requiredAuthLevel, true), getRentalById, async (req, res) => {
     res.json(res.rental);
 })
 
-router.delete('/{id}', authentication.verifyAuth(requiredAuthLevel, false), getRentalById, async (req, res) => {
+router.delete('/:id', authentication.verifyAuth(requiredAuthLevel, false), getRentalById, async (req, res) => {
     try{
         let removedRental = res.rental;
         await res.rental.remove();
@@ -62,7 +64,7 @@ router.delete('/{id}', authentication.verifyAuth(requiredAuthLevel, false), getR
     }
 })
 
-router.patch('/{id}', authentication.verifyAuth(requiredAuthLevel, false),getRentalById, async (req,res) => {
+router.patch('/:id', authentication.verifyAuth(requiredAuthLevel, false),getRentalById, async (req,res) => {
     try{
         res.rental.set(req.body);
         await res.rental.save();
@@ -73,16 +75,24 @@ router.patch('/{id}', authentication.verifyAuth(requiredAuthLevel, false),getRen
     }
 })
 
-/* Non ho le unit 
-router.get('/{id}/unit', getRentalById, async (req, res) => {
+
+router.get('/:id/bill', authentication.verifyAuth(requiredAuthLevel, false), getRentalById,async function() {
     try {
-        let unit = await Unit.find({rental: req.params.unit});
-        res.send(200).json({message: error.message});
+        let bill = Bill.find({rental: req.params.bill});
+        res.status(200).json(bill);
     } catch (error) {
         res.status(400).json({message: error.message});
     }
 })
-*/
+
+router.get('/:id/unit', async function() {
+    try {
+        let unit = Unit.find({rental: req.params.unit});
+        res.status(200).json(unit);
+    } catch (error) {
+        res.status(400).json({message: error.message});
+    }
+})  
 
 async function getRentalById(req, res, next) {
     let rental;

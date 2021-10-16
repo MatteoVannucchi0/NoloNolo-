@@ -2,22 +2,30 @@ const chai = require('chai');
 const expect = chai.expect;
 const should = chai.should();
 
+chai.use(require("chai-things"));
+chai.use(require('chai-exclude'));
+
 const request = require('supertest');
 const app = require('../index');
-const employee = require('../public/models/employee');
 const url = "/api/employees/"
+const employee = require('../public/models/employee');
 
 describe('Unit test employee', function() {
 
     const adminToken = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJhdXRoIjoiYWRtaW4iLCJ1c2VybmFtZSI6ImNpYW8iLCJpZCI6ImFzZG9pMDE5MjNlYXNkIiwiaWF0IjoxNjMzNzAwOTY0LCJleHAiOjE2MzYzNzkzNjR9._cIrkGfajb6DbVFiSxD0wU8SUjZ3kI3-ojV8Fu_a0Kw";
     const authheader = {"Authorization": adminToken};
 
-    function verifyEmployee(got, expect){
+    function verifyEmployee(got, expected){
+        //Cheating ... 
+        got.loginInfo.password = expected.loginInfo.password;
+        expect(got).excluding(['_id', '__v']).to.deep.equal(expected);
+        /*
         got.firstname.should.equal(expect.firstname);
         got.lastname.should.equal(expect.lastname);
         got.loginInfo.username.should.equal(expect.loginInfo.username);
         got.loginInfo.email.should.equal(expect.loginInfo.email);
         got.authorization.should.equal(expect.authorization);
+        */
     }
 
     async function getAuth(){
@@ -231,5 +239,5 @@ describe('Unit test employee', function() {
         req = await deleteAuthIsm(id6);
     })
     */
-    
+
 })

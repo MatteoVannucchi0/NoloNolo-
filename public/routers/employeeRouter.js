@@ -22,8 +22,8 @@ router.get('/', authentication.verifyAuth(requiredAuthLevel, false), async (req,
         if(req.query.openRent){
             let rentals = await Rental.find();
 
-            //Prendo tutti i rental che sono true
-            rentals = rentals.filter(rent => rent.open == TRUE);
+            //Prendo tutti i rental che sono open
+            rentals = rentals.filter(rent => rent.state == "open");
             console.log("Verificare che i rent siano aperti");
         
             let final = [];
@@ -113,6 +113,7 @@ async function getEmployeeById(req, res, next) {
             return res.status(404).json({message: "Employee not found on the database"});
         }
     } catch (error) {
+        console.log(error.message);
         return res.status(400).json({message: error.message});
     }
 

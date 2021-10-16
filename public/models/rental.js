@@ -8,44 +8,40 @@ const rentalSchema = new mongoose.Schema({
         ref: "Customer",
     },
     employee: {
-        //The employee that confirm the closed of the rent 
+        //The employee is null until state is pending
         type: mongoose.Schema.Types.ObjectId,
         ref: "Employee",
     },
     prenotationDate:{
         type: Date,
-        required: true
     },
-    open: {
-        type: Boolean,
+    state: {
+        type: String,
+        enum: ['pending','open','close'],
         required: true, 
+        default: 'pending'
     },
-    //Until open is true bill is null
+    //Until the state is open, bill is null
     bill: {
         type: mongoose.Schema.Types.ObjectId,
-        required: true,
         ref: "Bill",
     },
     startDate: {
         type: Date,
-        required: true
     },
     expectedEndDate: {
         type: Date,
-        required: true
     },
-    //The actual end of the rent is null until open is true
+    //The actual end of the rent is null until state is open
     actualEndDate: {
         type: Date
     },
     unit: {
         type: mongoose.Schema.Types.ObjectId,
-        required: true,
         ref: "Unit"
     },
     priceEstimation: {
         type: mongoose.Schema.Types.Mixed,
-        required: true,
     }
 })
 

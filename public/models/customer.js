@@ -1,9 +1,11 @@
 const mongoose = require('mongoose');
+
 const auth = require('../lib/authentication');
 const { validateEmail, validateNotEmail } = require('../lib/validation');
  
 //const loginInfoSchema = require('../models/loginInfo');
 //var uniqueValidator = require('mongoose-unique-validator');
+
 
 const addressSchema = new mongoose.Schema({
     country: {

@@ -10,6 +10,7 @@ const rentalSchema = new mongoose.Schema({
     employee: {
         //The employee is null until state is pending
         type: mongoose.Schema.Types.ObjectId,
+        required: true,
         ref: "Employee",
     },
     prenotationDate:{
@@ -28,9 +29,11 @@ const rentalSchema = new mongoose.Schema({
     },
     startDate: {
         type: Date,
+        required: true
     },
     expectedEndDate: {
         type: Date,
+        required: true
     },
     //The actual end of the rent is null until state is open
     actualEndDate: {
@@ -38,10 +41,12 @@ const rentalSchema = new mongoose.Schema({
     },
     unit: {
         type: mongoose.Schema.Types.ObjectId,
-        ref: "Unit"
+        ref: "Unit",
+        required: true
     },
     priceEstimation: {
         type: mongoose.Schema.Types.Mixed,
+        required: true
     }
 })
 

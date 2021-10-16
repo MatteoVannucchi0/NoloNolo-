@@ -178,7 +178,7 @@ describe('Unit test product api', function () {
 
     })
 
-    it("GET, POST, DELETE /tags shoudl return an array of units, post a new unit and delete a specifi unit", async function () {
+    it("GET, POST, DELETE /units shoudl return an array of units, post a new unit and delete a specifi unit", async function () {
         const prod = {
             name: "ProdottoTest4",
             description: "Descrizione test",

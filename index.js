@@ -96,6 +96,9 @@ app.use("/api/employees/", employeeRouter);
 const rentalRouter = require(global.rootDir + '/public/routers/rentalRouter');
 app.use("/api/rentals/", rentalRouter);
 
+const billRouter = require(global.rootDir + '/public/routers/billRouter');
+app.use('/api/bills/', billRouter);
+
 /* ========================== */
 /*                            */
 /*           MONGODB          */

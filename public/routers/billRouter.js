@@ -1,5 +1,5 @@
 const express = require('express');
-const Bill = require('../models/bill');
+const Bill = require('../models/bill').model;
 const router = express.Router();
 const authentication = require('../lib/authentication');
 
@@ -16,9 +16,8 @@ router.get('/', authentication.verifyAuth(requiredAuthLevel, true), async (req, 
 })
 
 router.post('/', authentication.verifyAuth(requiredAuthLevel, true), async (req, res) => {
-    let bill;
     try{
-        bill = await Rental(req.body);
+        bill = await Bill(req.body);
     } catch (error) {
         res.status(400).json({message: error.message})
     }
@@ -26,6 +25,7 @@ router.post('/', authentication.verifyAuth(requiredAuthLevel, true), async (req,
         const newBill = await bill.save();
         res.status(201).json(newBill);
     } catch (error) {
+        console.log(error.message);
         res.status(409).json({message: error.message});
     }
 })

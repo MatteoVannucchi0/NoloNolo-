@@ -10,10 +10,16 @@ const app = require('../index');
 const urlEmployee = "/api/employees/";
 const urlCustomer = "/api/customers/";
 const urlRental = "/api/rentals/";
+const urlProduct = "/api/products/";
+const urlBill = "/api/bills/";
 
 const employee = require('../public/models/employee');
 const customer = require('../public/models/customer');
 const rental = require('../public/models/rental');
+const product = require('../public/models/product');
+const unit = require('../public/models/unit');
+const bill = require('../public/models/bill');
+const { patch } = require('superagent');
 
 
 describe('Mixed test unit (Rental,Customer,Employee)', function() {
@@ -21,6 +27,8 @@ describe('Mixed test unit (Rental,Customer,Employee)', function() {
     //AuthToken
     const adminToken = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJhdXRoIjoiYWRtaW4iLCJ1c2VybmFtZSI6ImNpYW8iLCJpZCI6ImFzZG9pMDE5MjNlYXNkIiwiaWF0IjoxNjMzNzAwOTY0LCJleHAiOjE2MzYzNzkzNjR9._cIrkGfajb6DbVFiSxD0wU8SUjZ3kI3-ojV8Fu_a0Kw";
     const authheader = {"Authorization": adminToken};
+    //const employeeToken = "";
+    //const authemployee = {"Authorization": employeeToken}
 
     //Verify function 
     function verify(got, expected){
@@ -38,7 +46,7 @@ describe('Mixed test unit (Rental,Customer,Employee)', function() {
 
     //Function for CRUD rental 
     async function getAuthRental(){
-        return (await request(app).get(urlRental)).set(authheader);
+        return (await request(app).get(urlRental).set(authheader));
     }
 
     async function postAuthRental(rental){
@@ -59,7 +67,7 @@ describe('Mixed test unit (Rental,Customer,Employee)', function() {
 
     //Function for CRUD employee
     async function getAuthEmployee(){
-        return (await request(app).get(urlEmployee)).set(authheader);
+        return (await request(app).get(urlEmployee).set(authheader));
     }
 
     async function postAuthEmployee(employee){
@@ -80,7 +88,7 @@ describe('Mixed test unit (Rental,Customer,Employee)', function() {
 
     //Function for CRUD customer 
     async function getAuthCustomer(){
-        return (await request(app).get(urlCustomer)).set(authheader);
+        return (await request(app).get(urlCustomer).set(authheader));
     }
 
     async function postAuthCustomer(customer){
@@ -97,6 +105,40 @@ describe('Mixed test unit (Rental,Customer,Employee)', function() {
 
     async function deleteAuthIdCustomer(id){
         return (await request(app).delete(urlCustomer + id).set(authheader));
+    }
+
+    //Function for CRUD product
+    async function getAuthProduct(){
+        return (await request(app).get(urlProduct).set(authheader));
+    }
+    async function postAuthProduct(product){
+        return (await request(app).post(urlProduct).set(authheader).send(product));
+    }
+    async function getAuthIdProduct(id){
+        return (await request(app).get(urlProduct + id).set(authheader));
+    }
+    async function patchAuthIdProduct(id, product){
+        return (await request(app).patch(urlProduct + id).set(authheader).send(product));
+    }
+    async function deleteAuthIdProduct(id){
+        return (await request(app).delete(urlProduct + id).set(authheader));
+    }
+
+    //Function for CRUD bill 
+    async function getAuthBill(){
+        return (await request(app).get(urlBill).set(authheader));
+    }
+    async function postAuthBill(bill){
+        return (await request(app).post(urlBill).set(authheader).send(bill));
+    }
+    async function getAuthIdBill(id){
+        return (await request(app).get(urlBill + id).set(authheader));
+    }
+    async function patchAuthIdBill(id, bill){
+        return (await request(app).patch(urlBill + id).set(authheader).send(bill));
+    }
+    async function deleteAuthIdBill(id){
+        return (await request(app).delete(urlBill + id).set(authheader));
     }
 
     //Example of Customers 
@@ -183,6 +225,50 @@ describe('Mixed test unit (Rental,Customer,Employee)', function() {
         authorization: "employee"
     }
 
+    //Example of Products
+    let product1 = {
+        name: "Product1",
+        description: "Descrizione test",
+        image: "/urldiprova/image1.png",
+        category: "Auto",
+        subcategory: "Lusso",
+        tags: [
+            { key: "Marca", value: "audi" },
+            { key: "Colore", value: "bianca" },
+        ],
+        altproducts: [],
+    }
+    let product2 = {
+        name: "Product2",
+        description: "Descrizione test",
+        image: "/urldiprova/image2.png",
+        category: "Auto",
+        subcategory: "Lusso",
+        tags: [
+            { key: "Marca", value: "bmw" },
+            { key: "Colore", value: "Oro" },
+        ],
+        altproducts: [],
+    }
+    let product3 = {
+        name: "Product3",
+        description: "Descrizione test",
+        image: "/urldiprova/image3.png",
+        category: "Yatch",
+        subcategory: "Piccola",
+        tags: [],
+        altproducts: [],
+    }
+    let product4 = {
+        name: "Product4",
+        description: "Descrizione test",
+        image: "/urldiprova/image1.png",
+        category: "Yatch",
+        subcategory: "Grande",
+        tags: [],
+        altproducts: [],
+    }
+
     //Rental Structure
     let rentalExample = {
         customer: "",
@@ -196,6 +282,7 @@ describe('Mixed test unit (Rental,Customer,Employee)', function() {
         unit: "",
         priceEstimation: "",
     }
+
 
     //Function for sure operations
     //Employee
@@ -260,6 +347,7 @@ describe('Mixed test unit (Rental,Customer,Employee)', function() {
         statusCode.should.equal(200);
         verifyWithoutPasswordAndBirthDate(value,customer);
     }
+
     //Rental
     async function getByIdVerifiedRental(id, rental) {
         let req = await getAuthIdRental(id);
@@ -291,7 +379,71 @@ describe('Mixed test unit (Rental,Customer,Employee)', function() {
         statusCode.should.equal(200);
         verify(value,rental);
     }
-    
+
+    //Product
+    async function getByIdVerifiedProduct(id, product) {
+        let req = await getAuthIdProduct(id);
+        let value = req.body;
+        let statusCode = req.statusCode;
+        
+        statusCode.should.equal(200);
+        verify(value, product);
+
+        return value;
+    }
+
+    async function postVerifiedProduct(product) {
+        let req = await postAuthProduct(product);
+        let statusCode = req.statusCode;
+        let id = req.body._id;
+
+        statusCode.should.equal(201);
+        getByIdVerifiedProduct(id,product);
+        
+        return id;
+    }
+
+    async function deleteVerifiedProduct(id, product) {
+        let req = await deleteAuthIdProduct(id);
+        value = req.body;
+        statusCode = req.statusCode;
+
+        statusCode.should.equal(200);
+        verify(value,product);
+    }
+
+    //Bill
+    async function getByIdVerifiedBill(id, bill) {
+        let req = await getAuthIdBill(id);
+        let value = req.body;
+        let statusCode = req.statusCode;
+        
+        statusCode.should.equal(200);
+        verify(value, bill);
+
+        return value;
+    }
+
+    async function postVerifiedBill(bill) {
+        let req = await postAuthBill(bill);
+        let statusCode = req.statusCode;
+        let id = req.body._id;
+
+        statusCode.should.equal(201);
+        getByIdVerifiedBill(id,bill);
+        
+        return id;
+    }
+
+    async function deleteVerifiedBill(id, bill) {
+        let req = await deleteAuthIdBill(id);
+        value = req.body;
+        statusCode = req.statusCode;
+
+        statusCode.should.equal(200);
+        verify(value,product);
+    }
+
 
     //TEST
 
@@ -341,16 +493,24 @@ describe('Mixed test unit (Rental,Customer,Employee)', function() {
         deleteVerifiedEmployee(id4,employee4);
 
     })
-
-
+/*
     it('Create an employee and a Customer to post a minimal version of rental', async function(){
         let idE = await postVerifiedEmployee(employee3);
         let idC = await postVerifiedCustomer(customer3);
 
         let newRental = {
+            employee: idE,
             customer: idC,
+            prenotationDate: Date.now(),
             state: "open",
-            bill: null
+            bill: idB,
+            startDate: Date.now(),
+            expectedEndDate: Date.now(),
+            actualEndDate: Date.now(),
+            unit: "",
+            priceEstimation: {
+
+            },
         }
 
         let idR = await postVerifiedRental(newRental);
@@ -358,13 +518,19 @@ describe('Mixed test unit (Rental,Customer,Employee)', function() {
         let value = await getByIdVerifiedRental(idR, newRental);
 
         let patchRental = {
+            employee: idE,
             customer: idC,
+            prenotationDate: "14/02/1642",
             state: "close",
-            bill: null,
+            bill: idB,
+            startDate: Date.now(),
+            expectedEndDate: Date.now(),
+            actualEndDate: Date.now(),
+            unit: "",
+            priceEstimation: "",
         }
 
         value = await patchAuthIdRental(idR, patchRental);
-        console.log(value.body);
     
 
         deleteVerifiedRental(idR, newRental);
@@ -372,11 +538,132 @@ describe('Mixed test unit (Rental,Customer,Employee)', function() {
         deleteVerifiedCustomer(idC, customer3);
         deleteVerifiedEmployee(idE, employee3);
     })
+*/
+    it('Create and delete one product', async function(){
+        let id = await postVerifiedProduct(product1);
 
-    //Devo provare a lavorare con la versione effettiva di rent 
-    //Sono necessarie le unit !!, e le price estimation ! !
-    //Devo gestire il funzionamento delle bill
+        let value = await getByIdVerifiedProduct(id,product1);
 
-   //TODO:
-   //   Verificare le query su rental
+        deleteVerifiedProduct(id,product1);
+    })
+
+    it('Create and delete two unit inside a product', async function(){
+        let idP = await postVerifiedProduct(product2);
+
+        const unit1 = {
+            name: "UnitTest4-1",
+            condition: "perfect",
+            product: idP,
+            price: 100,
+            rentals: [],
+        }
+
+        const unit2 = {
+            name: "UnitTest4-2",
+            condition: "minor flaw",
+            product: idP,
+            price: 125,
+            rentals: [],
+        }
+
+        let req = (await request(app).post(urlProduct + idP + "/units").set(authheader).send(unit1));
+        let value = req.body;
+        let statusCode = req.statusCode;
+
+        const idUnit1 = value._id;
+
+        statusCode.should.equal(201);
+        verify(value, unit1);
+
+        req = (await request(app).post(urlProduct + idP + "/units").set(authheader).send(unit2));
+        value = req.body;
+        statusCode = req.statusCode;
+
+        const idUnit2 = value._id;
+
+        statusCode.should.equal(201);
+        verify(value, unit2);
+
+        req = (await request(app).delete(urlProduct + idUnit1 + '/units').set(authheader));
+        req = (await request(app).delete(urlProduct + idUnit2 + '/units').set(authheader));
+        deleteVerifiedProduct(idP,product2);
+    })
+
+    it('Create and delete a bill about one customer, one employee and about a specific unit', async function(){
+        let idC = await postVerifiedCustomer(customer3);
+        let idE = await postVerifiedEmployee(employee3);
+        let idP = await postVerifiedProduct(product2);
+
+        const unit1 = {
+            name: "UnitTest4-1",
+            condition: "perfect",
+            product: idP,
+            price: 100,
+            rentals: [],
+        }
+
+        const unit2 = {
+            name: "UnitTest4-2",
+            condition: "minor flaw",
+            product: idP,
+            price: 125,
+            rentals: [],
+        }
+
+        let req = (await request(app).post(urlProduct + idP + "/units").set(authheader).send(unit1));
+        let value = req.body;
+        let statusCode = req.statusCode;
+
+        const idUnit1 = value._id;
+
+        statusCode.should.equal(201);
+        verify(value, unit1);
+
+        req = (await request(app).post(urlProduct + idP + "/units").set(authheader).send(unit2));
+        value = req.body;
+        statusCode = req.statusCode;
+
+        const idUnit2 = value._id;
+
+        statusCode.should.equal(201);
+        verify(value, unit2);
+
+        //Creo una bill 
+        let bill1 = {
+            customer: idC,
+            employee: idE,
+            basePrice: 120,
+            modifier: [],
+            finalPrice: 150,
+            startRent: "1998-12-13T00:00:00.000Z",
+            endRent: "1998-12-16T00:00:00.000Z",
+            unit: idUnit1
+        }
+
+        //Post a bill 
+        let idB = await postVerifiedBill(bill1);
+        let valore = await getByIdVerifiedBill(idB,bill1);
+
+        let newbill= {
+            customer: idC,
+            employee: idE,
+            basePrice: 120,
+            modifier: [],
+            finalPrice: 132,
+            startRent: "1998-12-13T00:00:00.000Z",
+            endRent: "1998-12-16T00:00:00.000Z",
+            unit: idUnit1
+        }
+
+        let potente = await patchAuthIdBill(idB, newbill);
+        console.log(potente.body);
+
+        deleteAuthIdBill(idB, bill1);
+
+        req = (await request(app).delete(urlProduct + idUnit1 + '/units').set(authheader));
+        req = (await request(app).delete(urlProduct + idUnit2 + '/units').set(authheader));
+        deleteVerifiedProduct(idP,product2);
+        deleteVerifiedCustomer(idC, customer3);
+        deleteVerifiedEmployee(idE,employee3);
+    })
 });

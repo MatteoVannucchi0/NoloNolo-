@@ -44,3 +44,6 @@ MATTEO:  GIO-SAB
 [2021-10-16 15:12:39][ERROR] : MongoServerError: E11000 duplicate key error collection: databaseProgettoTechWeb.products index: name_1 dup key: { : "Product2" } 
 [2021-10-16 15:15:22][ERROR] : MongoServerError: E11000 duplicate key error collection: databaseProgettoTechWeb.products index: name_1 dup key: { : "Product2" } 
 [2021-10-16 15:21:44][ERROR] : MongoServerError: E11000 duplicate key error collection: databaseProgettoTechWeb.products index: name_1 dup key: { : "Product2" } 
+[2021-10-17 16:32:01][ERROR] : MongoServerError: E11000 duplicate key error collection: databaseProgettoTechWeb.products index: name_1 dup key: { : "Product2" } 
+[2021-10-17 16:40:07][ERROR] : MongoServerError: E11000 duplicate key error collection: databaseProgettoTechWeb.products index: name_1 dup key: { : "Product2" } 
+[2021-10-17 16:50:31][ERROR] : MongoServerError: E11000 duplicate key error collection: databaseProgettoTechWeb.products index: name_1 dup key: { : "Product2" } 

@@ -15,6 +15,7 @@ const rentalSchema = new mongoose.Schema({
     },
     prenotationDate:{
         type: Date,
+        required: true
     },
     state: {
         type: String,
@@ -46,7 +47,7 @@ const rentalSchema = new mongoose.Schema({
     },
     priceEstimation: {
         type: mongoose.Schema.Types.Mixed,
-        required: true
+        required: true,
     }
 })
 

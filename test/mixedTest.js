@@ -493,52 +493,7 @@ describe('Mixed test unit (Rental,Customer,Employee)', function() {
         deleteVerifiedEmployee(id4,employee4);
 
     })
-/*
-    it('Create an employee and a Customer to post a minimal version of rental', async function(){
-        let idE = await postVerifiedEmployee(employee3);
-        let idC = await postVerifiedCustomer(customer3);
 
-        let newRental = {
-            employee: idE,
-            customer: idC,
-            prenotationDate: Date.now(),
-            state: "open",
-            bill: idB,
-            startDate: Date.now(),
-            expectedEndDate: Date.now(),
-            actualEndDate: Date.now(),
-            unit: "",
-            priceEstimation: {
-
-            },
-        }
-
-        let idR = await postVerifiedRental(newRental);
-
-        let value = await getByIdVerifiedRental(idR, newRental);
-
-        let patchRental = {
-            employee: idE,
-            customer: idC,
-            prenotationDate: "14/02/1642",
-            state: "close",
-            bill: idB,
-            startDate: Date.now(),
-            expectedEndDate: Date.now(),
-            actualEndDate: Date.now(),
-            unit: "",
-            priceEstimation: "",
-        }
-
-        value = await patchAuthIdRental(idR, patchRental);
-    
-
-        deleteVerifiedRental(idR, newRental);
-        
-        deleteVerifiedCustomer(idC, customer3);
-        deleteVerifiedEmployee(idE, employee3);
-    })
-*/
     it('Create and delete one product', async function(){
         let id = await postVerifiedProduct(product1);
 
@@ -589,7 +544,7 @@ describe('Mixed test unit (Rental,Customer,Employee)', function() {
         deleteVerifiedProduct(idP,product2);
     })
 
-    it('Create and delete a bill about one customer, one employee and about a specific unit', async function(){
+    it('Create and delete a rental and a bill about one customer, one employee and about a specific unit of a prouct', async function(){
         let idC = await postVerifiedCustomer(customer3);
         let idE = await postVerifiedEmployee(employee3);
         let idP = await postVerifiedProduct(product2);
@@ -637,27 +592,31 @@ describe('Mixed test unit (Rental,Customer,Employee)', function() {
             finalPrice: 150,
             startRent: "1998-12-13T00:00:00.000Z",
             endRent: "1998-12-16T00:00:00.000Z",
-            unit: idUnit1
+            unit: idUnit1,
         }
 
         //Post a bill 
         let idB = await postVerifiedBill(bill1);
         let valore = await getByIdVerifiedBill(idB,bill1);
 
-        let newbill= {
-            customer: idC,
+        //creo un rental
+        let rent = {
             employee: idE,
-            basePrice: 120,
-            modifier: [],
-            finalPrice: 132,
-            startRent: "1998-12-13T00:00:00.000Z",
-            endRent: "1998-12-16T00:00:00.000Z",
-            unit: idUnit1
+            customer: idC,
+            prenotationDate: "1998-12-13T00:00:00.000Z",
+            state: "open",
+            startDate: "1998-12-13T00:00:00.000Z",
+            expectedEndDate: "1998-12-13T00:00:00.000Z",
+            actualEndDate: "1998-12-13T00:00:00.000Z",
+            unit: idUnit1,
+            priceEstimation: []
         }
 
-        let potente = await patchAuthIdBill(idB, newbill);
-        console.log(potente.body);
+        let idR = await postVerifiedRental(rent);
+        valore = await getByIdVerifiedRental(idR, rent);
 
+        //Rimozione 
+        deleteAuthIdRental(idR, rent);
         deleteAuthIdBill(idB, bill1);
 
         req = (await request(app).delete(urlProduct + idUnit1 + '/units').set(authheader));

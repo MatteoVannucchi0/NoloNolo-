@@ -45,7 +45,6 @@ router.post('/', authentication.verifyAuth(requiredAuthLevel, true), async (req,
         const newRental = await rental.save();
         res.status(201).json(newRental);
     } catch (error) {
-        console.log(error.message);
         res.status(409).json({message: error.message});
     }
 })

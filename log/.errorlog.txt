@@ -604,3 +604,363 @@
 [2021-10-16 18:55:25][ERROR] : Non ancora implementanto 
 [2021-10-16 18:55:25][ERROR] : Customer with id 507f191e810c19729de860ea not found on the database 
 [2021-10-16 18:55:25][ERROR] : CastError: Cast to ObjectId failed for value "!" (type string) at path "_id" for model "Customer" 
+[2021-10-16 18:56:30][ERROR] : Customer with id 616050300f33629454139b9a not found on the database 
+[2021-10-16 18:56:30][ERROR] : CastError: Cast to ObjectId failed for value "!" (type string) at path "_id" for model "Customer" 
+[2021-10-16 18:56:30][ERROR] : Customer with id 616050300f55729454809b9a not found on the database 
+[2021-10-16 18:56:30][ERROR] : Customer with id 507f191e810c19729de860ea not found on the database 
+[2021-10-16 18:56:30][ERROR] : CastError: Cast to ObjectId failed for value "wrongurl" (type string) at path "_id" for model "Customer" 
+[2021-10-16 18:56:31][ERROR] : Customer with id 507f191e810c19729de860ea not found on the database 
+[2021-10-16 18:56:31][ERROR] : CastError: Cast to ObjectId failed for value "!" (type string) at path "_id" for model "Customer" 
+[2021-10-16 18:56:31][ERROR] : Non ancora implementanto 
+[2021-10-16 18:56:31][ERROR] : Customer with id 507f191e810c19729de860ea not found on the database 
+[2021-10-16 18:56:31][ERROR] : CastError: Cast to ObjectId failed for value "!" (type string) at path "_id" for model "Customer" 
+[2021-10-17 15:41:50][ERROR] : Customer with id 616050300f33629454139b9a not found on the database 
+[2021-10-17 15:41:50][ERROR] : CastError: Cast to ObjectId failed for value "!" (type string) at path "_id" for model "Customer" 
+[2021-10-17 15:41:50][ERROR] : Customer with id 616050300f55729454809b9a not found on the database 
+[2021-10-17 15:41:50][ERROR] : Customer with id 507f191e810c19729de860ea not found on the database 
+[2021-10-17 15:41:50][ERROR] : CastError: Cast to ObjectId failed for value "wrongurl" (type string) at path "_id" for model "Customer" 
+[2021-10-17 15:41:51][ERROR] : Customer with id 507f191e810c19729de860ea not found on the database 
+[2021-10-17 15:41:51][ERROR] : CastError: Cast to ObjectId failed for value "!" (type string) at path "_id" for model "Customer" 
+[2021-10-17 15:41:51][ERROR] : Non ancora implementanto 
+[2021-10-17 15:41:51][ERROR] : Customer with id 507f191e810c19729de860ea not found on the database 
+[2021-10-17 15:41:51][ERROR] : CastError: Cast to ObjectId failed for value "!" (type string) at path "_id" for model "Customer" 
+[2021-10-17 15:42:35][ERROR] : Customer with id 616050300f33629454139b9a not found on the database 
+[2021-10-17 15:42:35][ERROR] : CastError: Cast to ObjectId failed for value "!" (type string) at path "_id" for model "Customer" 
+[2021-10-17 15:42:35][ERROR] : Customer with id 616050300f55729454809b9a not found on the database 
+[2021-10-17 15:42:35][ERROR] : Customer with id 507f191e810c19729de860ea not found on the database 
+[2021-10-17 15:42:35][ERROR] : CastError: Cast to ObjectId failed for value "wrongurl" (type string) at path "_id" for model "Customer" 
+[2021-10-17 15:42:36][ERROR] : Customer with id 507f191e810c19729de860ea not found on the database 
+[2021-10-17 15:42:36][ERROR] : CastError: Cast to ObjectId failed for value "!" (type string) at path "_id" for model "Customer" 
+[2021-10-17 15:42:36][ERROR] : Non ancora implementanto 
+[2021-10-17 15:42:36][ERROR] : Customer with id 507f191e810c19729de860ea not found on the database 
+[2021-10-17 15:42:36][ERROR] : CastError: Cast to ObjectId failed for value "!" (type string) at path "_id" for model "Customer" 
+[2021-10-17 15:42:36][ERROR] : ValidationError: Product validation failed: subcategory: Path `subcategory` is required., category: Path `category` is required., description: Path `description` is required. 
+[2021-10-17 15:43:27][ERROR] : Customer with id 616050300f33629454139b9a not found on the database 
+[2021-10-17 15:43:27][ERROR] : CastError: Cast to ObjectId failed for value "!" (type string) at path "_id" for model "Customer" 
+[2021-10-17 15:43:27][ERROR] : Customer with id 616050300f55729454809b9a not found on the database 
+[2021-10-17 15:43:27][ERROR] : Customer with id 507f191e810c19729de860ea not found on the database 
+[2021-10-17 15:43:27][ERROR] : CastError: Cast to ObjectId failed for value "wrongurl" (type string) at path "_id" for model "Customer" 
+[2021-10-17 15:43:28][ERROR] : Customer with id 507f191e810c19729de860ea not found on the database 
+[2021-10-17 15:43:28][ERROR] : CastError: Cast to ObjectId failed for value "!" (type string) at path "_id" for model "Customer" 
+[2021-10-17 15:43:28][ERROR] : Non ancora implementanto 
+[2021-10-17 15:43:28][ERROR] : Customer with id 507f191e810c19729de860ea not found on the database 
+[2021-10-17 15:43:28][ERROR] : CastError: Cast to ObjectId failed for value "!" (type string) at path "_id" for model "Customer" 
+[2021-10-17 15:43:28][ERROR] : ValidationError: Product validation failed: subcategory: Path `subcategory` is required., category: Path `category` is required., description: Path `description` is required. 
+[2021-10-17 15:44:26][ERROR] : Customer with id 616050300f33629454139b9a not found on the database 
+[2021-10-17 15:44:26][ERROR] : CastError: Cast to ObjectId failed for value "!" (type string) at path "_id" for model "Customer" 
+[2021-10-17 15:44:26][ERROR] : Customer with id 616050300f55729454809b9a not found on the database 
+[2021-10-17 15:44:26][ERROR] : Customer with id 507f191e810c19729de860ea not found on the database 
+[2021-10-17 15:44:26][ERROR] : CastError: Cast to ObjectId failed for value "wrongurl" (type string) at path "_id" for model "Customer" 
+[2021-10-17 15:44:27][ERROR] : Customer with id 507f191e810c19729de860ea not found on the database 
+[2021-10-17 15:44:27][ERROR] : CastError: Cast to ObjectId failed for value "!" (type string) at path "_id" for model "Customer" 
+[2021-10-17 15:44:27][ERROR] : Non ancora implementanto 
+[2021-10-17 15:44:27][ERROR] : Customer with id 507f191e810c19729de860ea not found on the database 
+[2021-10-17 15:44:27][ERROR] : CastError: Cast to ObjectId failed for value "!" (type string) at path "_id" for model "Customer" 
+[2021-10-17 15:44:27][ERROR] : ValidationError: Product validation failed: subcategory: Path `subcategory` is required., category: Path `category` is required., description: Path `description` is required. 
+[2021-10-17 15:44:46][ERROR] : Customer with id 616050300f33629454139b9a not found on the database 
+[2021-10-17 15:44:46][ERROR] : CastError: Cast to ObjectId failed for value "!" (type string) at path "_id" for model "Customer" 
+[2021-10-17 15:44:46][ERROR] : Customer with id 616050300f55729454809b9a not found on the database 
+[2021-10-17 15:44:46][ERROR] : Customer with id 507f191e810c19729de860ea not found on the database 
+[2021-10-17 15:44:46][ERROR] : CastError: Cast to ObjectId failed for value "wrongurl" (type string) at path "_id" for model "Customer" 
+[2021-10-17 15:44:47][ERROR] : Customer with id 507f191e810c19729de860ea not found on the database 
+[2021-10-17 15:44:47][ERROR] : CastError: Cast to ObjectId failed for value "!" (type string) at path "_id" for model "Customer" 
+[2021-10-17 15:44:47][ERROR] : Non ancora implementanto 
+[2021-10-17 15:44:47][ERROR] : Customer with id 507f191e810c19729de860ea not found on the database 
+[2021-10-17 15:44:47][ERROR] : CastError: Cast to ObjectId failed for value "!" (type string) at path "_id" for model "Customer" 
+[2021-10-17 15:44:47][ERROR] : ValidationError: Product validation failed: subcategory: Path `subcategory` is required., category: Path `category` is required., description: Path `description` is required. 
+[2021-10-17 15:48:02][ERROR] : Customer with id 616050300f33629454139b9a not found on the database 
+[2021-10-17 15:48:02][ERROR] : CastError: Cast to ObjectId failed for value "!" (type string) at path "_id" for model "Customer" 
+[2021-10-17 15:48:02][ERROR] : Customer with id 616050300f55729454809b9a not found on the database 
+[2021-10-17 15:48:02][ERROR] : Customer with id 507f191e810c19729de860ea not found on the database 
+[2021-10-17 15:48:02][ERROR] : CastError: Cast to ObjectId failed for value "wrongurl" (type string) at path "_id" for model "Customer" 
+[2021-10-17 15:48:03][ERROR] : Customer with id 507f191e810c19729de860ea not found on the database 
+[2021-10-17 15:48:03][ERROR] : CastError: Cast to ObjectId failed for value "!" (type string) at path "_id" for model "Customer" 
+[2021-10-17 15:48:03][ERROR] : Non ancora implementanto 
+[2021-10-17 15:48:03][ERROR] : Customer with id 507f191e810c19729de860ea not found on the database 
+[2021-10-17 15:48:03][ERROR] : CastError: Cast to ObjectId failed for value "!" (type string) at path "_id" for model "Customer" 
+[2021-10-17 15:48:04][ERROR] : ValidationError: Product validation failed: subcategory: Path `subcategory` is required., category: Path `category` is required., description: Path `description` is required. 
+[2021-10-17 15:49:38][ERROR] : Customer with id 616050300f33629454139b9a not found on the database 
+[2021-10-17 15:49:38][ERROR] : CastError: Cast to ObjectId failed for value "!" (type string) at path "_id" for model "Customer" 
+[2021-10-17 15:49:38][ERROR] : Customer with id 616050300f55729454809b9a not found on the database 
+[2021-10-17 15:49:38][ERROR] : Customer with id 507f191e810c19729de860ea not found on the database 
+[2021-10-17 15:49:38][ERROR] : CastError: Cast to ObjectId failed for value "wrongurl" (type string) at path "_id" for model "Customer" 
+[2021-10-17 15:49:39][ERROR] : Customer with id 616c46139bb17479aa3f97ec not found on the database 
+[2021-10-17 15:49:39][ERROR] : Customer with id 507f191e810c19729de860ea not found on the database 
+[2021-10-17 15:49:39][ERROR] : CastError: Cast to ObjectId failed for value "!" (type string) at path "_id" for model "Customer" 
+[2021-10-17 15:49:39][ERROR] : Non ancora implementanto 
+[2021-10-17 15:49:39][ERROR] : Customer with id 507f191e810c19729de860ea not found on the database 
+[2021-10-17 15:49:39][ERROR] : CastError: Cast to ObjectId failed for value "!" (type string) at path "_id" for model "Customer" 
+[2021-10-17 15:49:40][ERROR] : ValidationError: Product validation failed: subcategory: Path `subcategory` is required., category: Path `category` is required., description: Path `description` is required. 
+[2021-10-17 15:50:18][ERROR] : Customer with id 616050300f33629454139b9a not found on the database 
+[2021-10-17 15:50:18][ERROR] : CastError: Cast to ObjectId failed for value "!" (type string) at path "_id" for model "Customer" 
+[2021-10-17 15:50:18][ERROR] : Customer with id 616050300f55729454809b9a not found on the database 
+[2021-10-17 15:50:18][ERROR] : Customer with id 507f191e810c19729de860ea not found on the database 
+[2021-10-17 15:50:18][ERROR] : CastError: Cast to ObjectId failed for value "wrongurl" (type string) at path "_id" for model "Customer" 
+[2021-10-17 15:50:19][ERROR] : Customer with id 616c463b18b3a5baf1571bee not found on the database 
+[2021-10-17 15:50:19][ERROR] : Customer with id 507f191e810c19729de860ea not found on the database 
+[2021-10-17 15:50:19][ERROR] : CastError: Cast to ObjectId failed for value "!" (type string) at path "_id" for model "Customer" 
+[2021-10-17 15:50:19][ERROR] : Non ancora implementanto 
+[2021-10-17 15:50:19][ERROR] : Customer with id 507f191e810c19729de860ea not found on the database 
+[2021-10-17 15:50:19][ERROR] : CastError: Cast to ObjectId failed for value "!" (type string) at path "_id" for model "Customer" 
+[2021-10-17 15:50:20][ERROR] : ValidationError: Product validation failed: subcategory: Path `subcategory` is required., category: Path `category` is required., description: Path `description` is required. 
+[2021-10-17 15:50:59][ERROR] : Customer with id 616050300f33629454139b9a not found on the database 
+[2021-10-17 15:50:59][ERROR] : CastError: Cast to ObjectId failed for value "!" (type string) at path "_id" for model "Customer" 
+[2021-10-17 15:50:59][ERROR] : Customer with id 616050300f55729454809b9a not found on the database 
+[2021-10-17 15:50:59][ERROR] : Customer with id 507f191e810c19729de860ea not found on the database 
+[2021-10-17 15:50:59][ERROR] : CastError: Cast to ObjectId failed for value "wrongurl" (type string) at path "_id" for model "Customer" 
+[2021-10-17 15:51:00][ERROR] : Customer with id 507f191e810c19729de860ea not found on the database 
+[2021-10-17 15:51:00][ERROR] : CastError: Cast to ObjectId failed for value "!" (type string) at path "_id" for model "Customer" 
+[2021-10-17 15:51:00][ERROR] : Non ancora implementanto 
+[2021-10-17 15:51:00][ERROR] : Customer with id 507f191e810c19729de860ea not found on the database 
+[2021-10-17 15:51:00][ERROR] : CastError: Cast to ObjectId failed for value "!" (type string) at path "_id" for model "Customer" 
+[2021-10-17 15:51:00][ERROR] : ValidationError: Product validation failed: subcategory: Path `subcategory` is required., category: Path `category` is required., description: Path `description` is required. 
+[2021-10-17 15:51:56][ERROR] : Customer with id 616050300f33629454139b9a not found on the database 
+[2021-10-17 15:51:56][ERROR] : CastError: Cast to ObjectId failed for value "!" (type string) at path "_id" for model "Customer" 
+[2021-10-17 15:51:56][ERROR] : Customer with id 616050300f55729454809b9a not found on the database 
+[2021-10-17 15:51:56][ERROR] : Customer with id 507f191e810c19729de860ea not found on the database 
+[2021-10-17 15:51:56][ERROR] : CastError: Cast to ObjectId failed for value "wrongurl" (type string) at path "_id" for model "Customer" 
+[2021-10-17 15:51:57][ERROR] : Customer with id 507f191e810c19729de860ea not found on the database 
+[2021-10-17 15:51:57][ERROR] : CastError: Cast to ObjectId failed for value "!" (type string) at path "_id" for model "Customer" 
+[2021-10-17 15:51:57][ERROR] : Non ancora implementanto 
+[2021-10-17 15:51:57][ERROR] : Customer with id 507f191e810c19729de860ea not found on the database 
+[2021-10-17 15:51:57][ERROR] : CastError: Cast to ObjectId failed for value "!" (type string) at path "_id" for model "Customer" 
+[2021-10-17 15:51:57][ERROR] : ValidationError: Product validation failed: subcategory: Path `subcategory` is required., category: Path `category` is required., description: Path `description` is required. 
+[2021-10-17 15:56:49][ERROR] : Customer with id 616050300f33629454139b9a not found on the database 
+[2021-10-17 15:56:49][ERROR] : CastError: Cast to ObjectId failed for value "!" (type string) at path "_id" for model "Customer" 
+[2021-10-17 15:56:49][ERROR] : Customer with id 616050300f55729454809b9a not found on the database 
+[2021-10-17 15:56:49][ERROR] : Customer with id 507f191e810c19729de860ea not found on the database 
+[2021-10-17 15:56:49][ERROR] : CastError: Cast to ObjectId failed for value "wrongurl" (type string) at path "_id" for model "Customer" 
+[2021-10-17 15:56:50][ERROR] : Customer with id 507f191e810c19729de860ea not found on the database 
+[2021-10-17 15:56:50][ERROR] : CastError: Cast to ObjectId failed for value "!" (type string) at path "_id" for model "Customer" 
+[2021-10-17 15:56:50][ERROR] : Non ancora implementanto 
+[2021-10-17 15:56:50][ERROR] : Customer with id 507f191e810c19729de860ea not found on the database 
+[2021-10-17 15:56:50][ERROR] : CastError: Cast to ObjectId failed for value "!" (type string) at path "_id" for model "Customer" 
+[2021-10-17 15:56:50][ERROR] : ValidationError: Product validation failed: subcategory: Path `subcategory` is required., category: Path `category` is required., description: Path `description` is required. 
+[2021-10-17 15:58:21][ERROR] : Customer with id 616050300f33629454139b9a not found on the database 
+[2021-10-17 15:58:21][ERROR] : CastError: Cast to ObjectId failed for value "!" (type string) at path "_id" for model "Customer" 
+[2021-10-17 15:58:21][ERROR] : Customer with id 616050300f55729454809b9a not found on the database 
+[2021-10-17 15:58:21][ERROR] : Customer with id 507f191e810c19729de860ea not found on the database 
+[2021-10-17 15:58:21][ERROR] : CastError: Cast to ObjectId failed for value "wrongurl" (type string) at path "_id" for model "Customer" 
+[2021-10-17 15:58:26][ERROR] : Customer with id 616050300f33629454139b9a not found on the database 
+[2021-10-17 15:58:26][ERROR] : CastError: Cast to ObjectId failed for value "!" (type string) at path "_id" for model "Customer" 
+[2021-10-17 15:58:26][ERROR] : Customer with id 616050300f55729454809b9a not found on the database 
+[2021-10-17 15:58:26][ERROR] : Customer with id 507f191e810c19729de860ea not found on the database 
+[2021-10-17 15:58:26][ERROR] : CastError: Cast to ObjectId failed for value "wrongurl" (type string) at path "_id" for model "Customer" 
+[2021-10-17 15:58:27][ERROR] : Customer with id 507f191e810c19729de860ea not found on the database 
+[2021-10-17 15:58:27][ERROR] : CastError: Cast to ObjectId failed for value "!" (type string) at path "_id" for model "Customer" 
+[2021-10-17 15:58:27][ERROR] : Non ancora implementanto 
+[2021-10-17 15:58:27][ERROR] : Customer with id 507f191e810c19729de860ea not found on the database 
+[2021-10-17 15:58:27][ERROR] : CastError: Cast to ObjectId failed for value "!" (type string) at path "_id" for model "Customer" 
+[2021-10-17 15:58:27][ERROR] : ValidationError: Product validation failed: subcategory: Path `subcategory` is required., category: Path `category` is required., description: Path `description` is required. 
+[2021-10-17 16:02:06][ERROR] : Customer with id 616050300f33629454139b9a not found on the database 
+[2021-10-17 16:02:06][ERROR] : CastError: Cast to ObjectId failed for value "!" (type string) at path "_id" for model "Customer" 
+[2021-10-17 16:02:06][ERROR] : Customer with id 616050300f55729454809b9a not found on the database 
+[2021-10-17 16:02:06][ERROR] : Customer with id 507f191e810c19729de860ea not found on the database 
+[2021-10-17 16:02:06][ERROR] : CastError: Cast to ObjectId failed for value "wrongurl" (type string) at path "_id" for model "Customer" 
+[2021-10-17 16:02:07][ERROR] : CastError: Cast to ObjectId failed for value "!" (type string) at path "_id" for model "Customer" 
+[2021-10-17 16:02:07][ERROR] : Non ancora implementanto 
+[2021-10-17 16:02:07][ERROR] : Customer with id 507f191e810c19729de860ea not found on the database 
+[2021-10-17 16:02:07][ERROR] : CastError: Cast to ObjectId failed for value "!" (type string) at path "_id" for model "Customer" 
+[2021-10-17 16:02:08][ERROR] : ValidationError: Product validation failed: subcategory: Path `subcategory` is required., category: Path `category` is required., description: Path `description` is required. 
+[2021-10-17 16:02:23][ERROR] : Customer with id 616050300f33629454139b9a not found on the database 
+[2021-10-17 16:02:23][ERROR] : CastError: Cast to ObjectId failed for value "!" (type string) at path "_id" for model "Customer" 
+[2021-10-17 16:02:23][ERROR] : Customer with id 616050300f55729454809b9a not found on the database 
+[2021-10-17 16:02:23][ERROR] : Customer with id 507f191e810c19729de860ea not found on the database 
+[2021-10-17 16:02:23][ERROR] : CastError: Cast to ObjectId failed for value "wrongurl" (type string) at path "_id" for model "Customer" 
+[2021-10-17 16:02:24][ERROR] : Customer with id 507f191e810c19729de860ea not found on the database 
+[2021-10-17 16:02:24][ERROR] : CastError: Cast to ObjectId failed for value "!" (type string) at path "_id" for model "Customer" 
+[2021-10-17 16:02:24][ERROR] : Non ancora implementanto 
+[2021-10-17 16:02:24][ERROR] : Customer with id 507f191e810c19729de860ea not found on the database 
+[2021-10-17 16:02:24][ERROR] : CastError: Cast to ObjectId failed for value "!" (type string) at path "_id" for model "Customer" 
+[2021-10-17 16:02:24][ERROR] : ValidationError: Product validation failed: subcategory: Path `subcategory` is required., category: Path `category` is required., description: Path `description` is required. 
+[2021-10-17 16:05:21][ERROR] : Customer with id 616050300f33629454139b9a not found on the database 
+[2021-10-17 16:05:21][ERROR] : CastError: Cast to ObjectId failed for value "!" (type string) at path "_id" for model "Customer" 
+[2021-10-17 16:05:21][ERROR] : Customer with id 616050300f55729454809b9a not found on the database 
+[2021-10-17 16:05:21][ERROR] : Customer with id 507f191e810c19729de860ea not found on the database 
+[2021-10-17 16:05:21][ERROR] : CastError: Cast to ObjectId failed for value "wrongurl" (type string) at path "_id" for model "Customer" 
+[2021-10-17 16:05:22][ERROR] : Customer with id 507f191e810c19729de860ea not found on the database 
+[2021-10-17 16:05:22][ERROR] : CastError: Cast to ObjectId failed for value "!" (type string) at path "_id" for model "Customer" 
+[2021-10-17 16:05:22][ERROR] : Non ancora implementanto 
+[2021-10-17 16:05:22][ERROR] : Customer with id 507f191e810c19729de860ea not found on the database 
+[2021-10-17 16:05:22][ERROR] : CastError: Cast to ObjectId failed for value "!" (type string) at path "_id" for model "Customer" 
+[2021-10-17 16:05:23][ERROR] : ValidationError: Product validation failed: subcategory: Path `subcategory` is required., category: Path `category` is required., description: Path `description` is required. 
+[2021-10-17 16:05:33][ERROR] : Customer with id 616050300f33629454139b9a not found on the database 
+[2021-10-17 16:05:33][ERROR] : CastError: Cast to ObjectId failed for value "!" (type string) at path "_id" for model "Customer" 
+[2021-10-17 16:05:33][ERROR] : Customer with id 616050300f55729454809b9a not found on the database 
+[2021-10-17 16:05:33][ERROR] : Customer with id 507f191e810c19729de860ea not found on the database 
+[2021-10-17 16:05:33][ERROR] : CastError: Cast to ObjectId failed for value "wrongurl" (type string) at path "_id" for model "Customer" 
+[2021-10-17 16:05:34][ERROR] : Customer with id 507f191e810c19729de860ea not found on the database 
+[2021-10-17 16:05:34][ERROR] : CastError: Cast to ObjectId failed for value "!" (type string) at path "_id" for model "Customer" 
+[2021-10-17 16:05:34][ERROR] : Non ancora implementanto 
+[2021-10-17 16:05:34][ERROR] : Customer with id 507f191e810c19729de860ea not found on the database 
+[2021-10-17 16:05:34][ERROR] : CastError: Cast to ObjectId failed for value "!" (type string) at path "_id" for model "Customer" 
+[2021-10-17 16:05:35][ERROR] : ValidationError: Product validation failed: subcategory: Path `subcategory` is required., category: Path `category` is required., description: Path `description` is required. 
+[2021-10-17 16:05:56][ERROR] : Customer with id 616050300f33629454139b9a not found on the database 
+[2021-10-17 16:05:56][ERROR] : CastError: Cast to ObjectId failed for value "!" (type string) at path "_id" for model "Customer" 
+[2021-10-17 16:05:56][ERROR] : Customer with id 616050300f55729454809b9a not found on the database 
+[2021-10-17 16:05:56][ERROR] : Customer with id 507f191e810c19729de860ea not found on the database 
+[2021-10-17 16:05:56][ERROR] : CastError: Cast to ObjectId failed for value "wrongurl" (type string) at path "_id" for model "Customer" 
+[2021-10-17 16:05:57][ERROR] : Customer with id 507f191e810c19729de860ea not found on the database 
+[2021-10-17 16:05:57][ERROR] : CastError: Cast to ObjectId failed for value "!" (type string) at path "_id" for model "Customer" 
+[2021-10-17 16:05:57][ERROR] : Non ancora implementanto 
+[2021-10-17 16:05:57][ERROR] : Customer with id 507f191e810c19729de860ea not found on the database 
+[2021-10-17 16:05:57][ERROR] : CastError: Cast to ObjectId failed for value "!" (type string) at path "_id" for model "Customer" 
+[2021-10-17 16:05:58][ERROR] : ValidationError: Product validation failed: subcategory: Path `subcategory` is required., category: Path `category` is required., description: Path `description` is required. 
+[2021-10-17 16:08:01][ERROR] : Customer with id 616050300f33629454139b9a not found on the database 
+[2021-10-17 16:08:01][ERROR] : CastError: Cast to ObjectId failed for value "!" (type string) at path "_id" for model "Customer" 
+[2021-10-17 16:08:01][ERROR] : Customer with id 616050300f55729454809b9a not found on the database 
+[2021-10-17 16:08:02][ERROR] : Customer with id 507f191e810c19729de860ea not found on the database 
+[2021-10-17 16:08:02][ERROR] : CastError: Cast to ObjectId failed for value "wrongurl" (type string) at path "_id" for model "Customer" 
+[2021-10-17 16:08:02][ERROR] : Customer with id 507f191e810c19729de860ea not found on the database 
+[2021-10-17 16:08:02][ERROR] : CastError: Cast to ObjectId failed for value "!" (type string) at path "_id" for model "Customer" 
+[2021-10-17 16:08:03][ERROR] : Non ancora implementanto 
+[2021-10-17 16:08:03][ERROR] : Customer with id 507f191e810c19729de860ea not found on the database 
+[2021-10-17 16:08:03][ERROR] : CastError: Cast to ObjectId failed for value "!" (type string) at path "_id" for model "Customer" 
+[2021-10-17 16:08:03][ERROR] : ValidationError: Product validation failed: subcategory: Path `subcategory` is required., category: Path `category` is required., description: Path `description` is required. 
+[2021-10-17 16:08:25][ERROR] : Customer with id 616050300f33629454139b9a not found on the database 
+[2021-10-17 16:08:25][ERROR] : CastError: Cast to ObjectId failed for value "!" (type string) at path "_id" for model "Customer" 
+[2021-10-17 16:08:25][ERROR] : Customer with id 616050300f55729454809b9a not found on the database 
+[2021-10-17 16:08:25][ERROR] : Customer with id 507f191e810c19729de860ea not found on the database 
+[2021-10-17 16:08:25][ERROR] : CastError: Cast to ObjectId failed for value "wrongurl" (type string) at path "_id" for model "Customer" 
+[2021-10-17 16:08:26][ERROR] : Customer with id 507f191e810c19729de860ea not found on the database 
+[2021-10-17 16:08:26][ERROR] : CastError: Cast to ObjectId failed for value "!" (type string) at path "_id" for model "Customer" 
+[2021-10-17 16:08:26][ERROR] : Non ancora implementanto 
+[2021-10-17 16:08:26][ERROR] : Customer with id 507f191e810c19729de860ea not found on the database 
+[2021-10-17 16:08:26][ERROR] : CastError: Cast to ObjectId failed for value "!" (type string) at path "_id" for model "Customer" 
+[2021-10-17 16:08:26][ERROR] : ValidationError: Product validation failed: subcategory: Path `subcategory` is required., category: Path `category` is required., description: Path `description` is required. 
+[2021-10-17 16:12:06][ERROR] : Customer with id 616050300f33629454139b9a not found on the database 
+[2021-10-17 16:12:06][ERROR] : CastError: Cast to ObjectId failed for value "!" (type string) at path "_id" for model "Customer" 
+[2021-10-17 16:12:06][ERROR] : Customer with id 616050300f55729454809b9a not found on the database 
+[2021-10-17 16:12:06][ERROR] : Customer with id 507f191e810c19729de860ea not found on the database 
+[2021-10-17 16:12:06][ERROR] : CastError: Cast to ObjectId failed for value "wrongurl" (type string) at path "_id" for model "Customer" 
+[2021-10-17 16:12:07][ERROR] : CastError: Cast to ObjectId failed for value "!" (type string) at path "_id" for model "Customer" 
+[2021-10-17 16:12:07][ERROR] : Non ancora implementanto 
+[2021-10-17 16:12:07][ERROR] : Customer with id 507f191e810c19729de860ea not found on the database 
+[2021-10-17 16:12:07][ERROR] : CastError: Cast to ObjectId failed for value "!" (type string) at path "_id" for model "Customer" 
+[2021-10-17 16:12:07][ERROR] : ValidationError: Product validation failed: subcategory: Path `subcategory` is required., category: Path `category` is required., description: Path `description` is required. 
+[2021-10-17 16:12:15][ERROR] : Customer with id 616050300f33629454139b9a not found on the database 
+[2021-10-17 16:12:15][ERROR] : CastError: Cast to ObjectId failed for value "!" (type string) at path "_id" for model "Customer" 
+[2021-10-17 16:12:15][ERROR] : Customer with id 616050300f55729454809b9a not found on the database 
+[2021-10-17 16:12:15][ERROR] : Customer with id 507f191e810c19729de860ea not found on the database 
+[2021-10-17 16:12:15][ERROR] : CastError: Cast to ObjectId failed for value "wrongurl" (type string) at path "_id" for model "Customer" 
+[2021-10-17 16:12:16][ERROR] : Customer with id 507f191e810c19729de860ea not found on the database 
+[2021-10-17 16:12:16][ERROR] : CastError: Cast to ObjectId failed for value "!" (type string) at path "_id" for model "Customer" 
+[2021-10-17 16:12:16][ERROR] : Non ancora implementanto 
+[2021-10-17 16:12:16][ERROR] : Customer with id 507f191e810c19729de860ea not found on the database 
+[2021-10-17 16:12:16][ERROR] : CastError: Cast to ObjectId failed for value "!" (type string) at path "_id" for model "Customer" 
+[2021-10-17 16:12:16][ERROR] : ValidationError: Product validation failed: subcategory: Path `subcategory` is required., category: Path `category` is required., description: Path `description` is required. 
+[2021-10-17 16:13:34][ERROR] : Customer with id 616050300f33629454139b9a not found on the database 
+[2021-10-17 16:13:34][ERROR] : CastError: Cast to ObjectId failed for value "!" (type string) at path "_id" for model "Customer" 
+[2021-10-17 16:13:34][ERROR] : Customer with id 616050300f55729454809b9a not found on the database 
+[2021-10-17 16:13:34][ERROR] : Customer with id 507f191e810c19729de860ea not found on the database 
+[2021-10-17 16:13:34][ERROR] : CastError: Cast to ObjectId failed for value "wrongurl" (type string) at path "_id" for model "Customer" 
+[2021-10-17 16:13:35][ERROR] : Customer with id 507f191e810c19729de860ea not found on the database 
+[2021-10-17 16:13:35][ERROR] : CastError: Cast to ObjectId failed for value "!" (type string) at path "_id" for model "Customer" 
+[2021-10-17 16:13:35][ERROR] : Non ancora implementanto 
+[2021-10-17 16:13:35][ERROR] : Customer with id 507f191e810c19729de860ea not found on the database 
+[2021-10-17 16:13:35][ERROR] : CastError: Cast to ObjectId failed for value "!" (type string) at path "_id" for model "Customer" 
+[2021-10-17 16:13:35][ERROR] : ValidationError: Product validation failed: subcategory: Path `subcategory` is required., category: Path `category` is required., description: Path `description` is required. 
+[2021-10-17 16:13:45][ERROR] : Customer with id 616050300f33629454139b9a not found on the database 
+[2021-10-17 16:13:45][ERROR] : CastError: Cast to ObjectId failed for value "!" (type string) at path "_id" for model "Customer" 
+[2021-10-17 16:13:45][ERROR] : Customer with id 616050300f55729454809b9a not found on the database 
+[2021-10-17 16:13:46][ERROR] : Customer with id 507f191e810c19729de860ea not found on the database 
+[2021-10-17 16:13:46][ERROR] : CastError: Cast to ObjectId failed for value "wrongurl" (type string) at path "_id" for model "Customer" 
+[2021-10-17 16:13:46][ERROR] : Customer with id 507f191e810c19729de860ea not found on the database 
+[2021-10-17 16:13:46][ERROR] : CastError: Cast to ObjectId failed for value "!" (type string) at path "_id" for model "Customer" 
+[2021-10-17 16:13:46][ERROR] : Non ancora implementanto 
+[2021-10-17 16:13:46][ERROR] : Customer with id 507f191e810c19729de860ea not found on the database 
+[2021-10-17 16:13:46][ERROR] : CastError: Cast to ObjectId failed for value "!" (type string) at path "_id" for model "Customer" 
+[2021-10-17 16:13:47][ERROR] : ValidationError: Product validation failed: subcategory: Path `subcategory` is required., category: Path `category` is required., description: Path `description` is required. 
+[2021-10-17 16:14:02][ERROR] : Customer with id 616050300f33629454139b9a not found on the database 
+[2021-10-17 16:14:02][ERROR] : CastError: Cast to ObjectId failed for value "!" (type string) at path "_id" for model "Customer" 
+[2021-10-17 16:14:02][ERROR] : Customer with id 616050300f55729454809b9a not found on the database 
+[2021-10-17 16:14:02][ERROR] : Customer with id 507f191e810c19729de860ea not found on the database 
+[2021-10-17 16:14:02][ERROR] : CastError: Cast to ObjectId failed for value "wrongurl" (type string) at path "_id" for model "Customer" 
+[2021-10-17 16:14:03][ERROR] : Customer with id 507f191e810c19729de860ea not found on the database 
+[2021-10-17 16:14:03][ERROR] : CastError: Cast to ObjectId failed for value "!" (type string) at path "_id" for model "Customer" 
+[2021-10-17 16:14:03][ERROR] : Non ancora implementanto 
+[2021-10-17 16:14:03][ERROR] : Customer with id 507f191e810c19729de860ea not found on the database 
+[2021-10-17 16:14:03][ERROR] : CastError: Cast to ObjectId failed for value "!" (type string) at path "_id" for model "Customer" 
+[2021-10-17 16:14:03][ERROR] : ValidationError: Product validation failed: subcategory: Path `subcategory` is required., category: Path `category` is required., description: Path `description` is required. 
+[2021-10-17 16:15:01][ERROR] : Customer with id 616050300f33629454139b9a not found on the database 
+[2021-10-17 16:15:01][ERROR] : CastError: Cast to ObjectId failed for value "!" (type string) at path "_id" for model "Customer" 
+[2021-10-17 16:15:01][ERROR] : Customer with id 616050300f55729454809b9a not found on the database 
+[2021-10-17 16:15:01][ERROR] : Customer with id 507f191e810c19729de860ea not found on the database 
+[2021-10-17 16:15:01][ERROR] : CastError: Cast to ObjectId failed for value "wrongurl" (type string) at path "_id" for model "Customer" 
+[2021-10-17 16:15:02][ERROR] : Customer with id 507f191e810c19729de860ea not found on the database 
+[2021-10-17 16:15:02][ERROR] : CastError: Cast to ObjectId failed for value "!" (type string) at path "_id" for model "Customer" 
+[2021-10-17 16:15:02][ERROR] : Non ancora implementanto 
+[2021-10-17 16:15:02][ERROR] : Customer with id 507f191e810c19729de860ea not found on the database 
+[2021-10-17 16:15:02][ERROR] : CastError: Cast to ObjectId failed for value "!" (type string) at path "_id" for model "Customer" 
+[2021-10-17 16:15:02][ERROR] : ValidationError: Product validation failed: subcategory: Path `subcategory` is required., category: Path `category` is required., description: Path `description` is required. 
+[2021-10-17 16:17:21][ERROR] : Customer with id 616050300f33629454139b9a not found on the database 
+[2021-10-17 16:17:21][ERROR] : CastError: Cast to ObjectId failed for value "!" (type string) at path "_id" for model "Customer" 
+[2021-10-17 16:17:21][ERROR] : Customer with id 616050300f55729454809b9a not found on the database 
+[2021-10-17 16:17:21][ERROR] : Customer with id 507f191e810c19729de860ea not found on the database 
+[2021-10-17 16:17:21][ERROR] : CastError: Cast to ObjectId failed for value "wrongurl" (type string) at path "_id" for model "Customer" 
+[2021-10-17 16:17:22][ERROR] : Customer with id 507f191e810c19729de860ea not found on the database 
+[2021-10-17 16:17:22][ERROR] : CastError: Cast to ObjectId failed for value "!" (type string) at path "_id" for model "Customer" 
+[2021-10-17 16:17:22][ERROR] : Non ancora implementanto 
+[2021-10-17 16:17:22][ERROR] : Customer with id 507f191e810c19729de860ea not found on the database 
+[2021-10-17 16:17:22][ERROR] : CastError: Cast to ObjectId failed for value "!" (type string) at path "_id" for model "Customer" 
+[2021-10-17 16:17:22][ERROR] : ValidationError: Product validation failed: subcategory: Path `subcategory` is required., category: Path `category` is required., description: Path `description` is required. 
+[2021-10-17 16:17:32][ERROR] : Customer with id 616050300f33629454139b9a not found on the database 
+[2021-10-17 16:17:32][ERROR] : CastError: Cast to ObjectId failed for value "!" (type string) at path "_id" for model "Customer" 
+[2021-10-17 16:17:32][ERROR] : Customer with id 616050300f55729454809b9a not found on the database 
+[2021-10-17 16:17:32][ERROR] : Customer with id 507f191e810c19729de860ea not found on the database 
+[2021-10-17 16:17:32][ERROR] : CastError: Cast to ObjectId failed for value "wrongurl" (type string) at path "_id" for model "Customer" 
+[2021-10-17 16:17:33][ERROR] : Customer with id 507f191e810c19729de860ea not found on the database 
+[2021-10-17 16:17:33][ERROR] : CastError: Cast to ObjectId failed for value "!" (type string) at path "_id" for model "Customer" 
+[2021-10-17 16:17:33][ERROR] : Non ancora implementanto 
+[2021-10-17 16:17:33][ERROR] : Customer with id 507f191e810c19729de860ea not found on the database 
+[2021-10-17 16:17:33][ERROR] : CastError: Cast to ObjectId failed for value "!" (type string) at path "_id" for model "Customer" 
+[2021-10-17 16:17:33][ERROR] : ValidationError: Product validation failed: subcategory: Path `subcategory` is required., category: Path `category` is required., description: Path `description` is required. 
+[2021-10-17 16:19:46][ERROR] : Customer with id 616050300f33629454139b9a not found on the database 
+[2021-10-17 16:19:46][ERROR] : CastError: Cast to ObjectId failed for value "!" (type string) at path "_id" for model "Customer" 
+[2021-10-17 16:19:46][ERROR] : Customer with id 616050300f55729454809b9a not found on the database 
+[2021-10-17 16:19:46][ERROR] : Customer with id 507f191e810c19729de860ea not found on the database 
+[2021-10-17 16:19:46][ERROR] : CastError: Cast to ObjectId failed for value "wrongurl" (type string) at path "_id" for model "Customer" 
+[2021-10-17 16:19:47][ERROR] : Customer with id 507f191e810c19729de860ea not found on the database 
+[2021-10-17 16:19:47][ERROR] : CastError: Cast to ObjectId failed for value "!" (type string) at path "_id" for model "Customer" 
+[2021-10-17 16:19:47][ERROR] : Non ancora implementanto 
+[2021-10-17 16:19:47][ERROR] : Customer with id 507f191e810c19729de860ea not found on the database 
+[2021-10-17 16:19:47][ERROR] : CastError: Cast to ObjectId failed for value "!" (type string) at path "_id" for model "Customer" 
+[2021-10-17 16:19:48][ERROR] : ValidationError: Product validation failed: subcategory: Path `subcategory` is required., category: Path `category` is required., description: Path `description` is required. 
+[2021-10-17 16:20:52][ERROR] : Customer with id 616050300f33629454139b9a not found on the database 
+[2021-10-17 16:20:52][ERROR] : CastError: Cast to ObjectId failed for value "!" (type string) at path "_id" for model "Customer" 
+[2021-10-17 16:20:52][ERROR] : Customer with id 616050300f55729454809b9a not found on the database 
+[2021-10-17 16:20:52][ERROR] : Customer with id 507f191e810c19729de860ea not found on the database 
+[2021-10-17 16:20:52][ERROR] : CastError: Cast to ObjectId failed for value "wrongurl" (type string) at path "_id" for model "Customer" 
+[2021-10-17 16:20:53][ERROR] : Customer with id 507f191e810c19729de860ea not found on the database 
+[2021-10-17 16:20:53][ERROR] : CastError: Cast to ObjectId failed for value "!" (type string) at path "_id" for model "Customer" 
+[2021-10-17 16:20:53][ERROR] : Non ancora implementanto 
+[2021-10-17 16:20:53][ERROR] : Customer with id 507f191e810c19729de860ea not found on the database 
+[2021-10-17 16:20:53][ERROR] : CastError: Cast to ObjectId failed for value "!" (type string) at path "_id" for model "Customer" 
+[2021-10-17 16:20:54][ERROR] : ValidationError: Product validation failed: subcategory: Path `subcategory` is required., category: Path `category` is required., description: Path `description` is required. 
+[2021-10-17 16:23:22][ERROR] : Customer with id 616050300f33629454139b9a not found on the database 
+[2021-10-17 16:23:22][ERROR] : CastError: Cast to ObjectId failed for value "!" (type string) at path "_id" for model "Customer" 
+[2021-10-17 16:23:22][ERROR] : Customer with id 616050300f55729454809b9a not found on the database 
+[2021-10-17 16:23:22][ERROR] : Customer with id 507f191e810c19729de860ea not found on the database 
+[2021-10-17 16:23:22][ERROR] : CastError: Cast to ObjectId failed for value "wrongurl" (type string) at path "_id" for model "Customer" 
+[2021-10-17 16:23:23][ERROR] : Customer with id 507f191e810c19729de860ea not found on the database 
+[2021-10-17 16:23:23][ERROR] : CastError: Cast to ObjectId failed for value "!" (type string) at path "_id" for model "Customer" 
+[2021-10-17 16:23:23][ERROR] : Non ancora implementanto 
+[2021-10-17 16:23:23][ERROR] : Customer with id 507f191e810c19729de860ea not found on the database 
+[2021-10-17 16:23:23][ERROR] : CastError: Cast to ObjectId failed for value "!" (type string) at path "_id" for model "Customer" 
+[2021-10-17 16:23:23][ERROR] : ValidationError: Product validation failed: subcategory: Path `subcategory` is required., category: Path `category` is required., description: Path `description` is required. 
+[2021-10-17 16:25:50][ERROR] : Customer with id 616050300f33629454139b9a not found on the database 
+[2021-10-17 16:25:50][ERROR] : CastError: Cast to ObjectId failed for value "!" (type string) at path "_id" for model "Customer" 
+[2021-10-17 16:25:50][ERROR] : Customer with id 616050300f55729454809b9a not found on the database 
+[2021-10-17 16:25:50][ERROR] : Customer with id 507f191e810c19729de860ea not found on the database 
+[2021-10-17 16:25:50][ERROR] : CastError: Cast to ObjectId failed for value "wrongurl" (type string) at path "_id" for model "Customer" 
+[2021-10-17 16:25:56][ERROR] : Customer with id 616050300f33629454139b9a not found on the database 
+[2021-10-17 16:25:56][ERROR] : CastError: Cast to ObjectId failed for value "!" (type string) at path "_id" for model "Customer" 
+[2021-10-17 16:25:56][ERROR] : Customer with id 616050300f55729454809b9a not found on the database 
+[2021-10-17 16:25:56][ERROR] : Customer with id 507f191e810c19729de860ea not found on the database 
+[2021-10-17 16:25:56][ERROR] : CastError: Cast to ObjectId failed for value "wrongurl" (type string) at path "_id" for model "Customer" 
+[2021-10-17 16:25:57][ERROR] : Customer with id 507f191e810c19729de860ea not found on the database 
+[2021-10-17 16:25:57][ERROR] : CastError: Cast to ObjectId failed for value "!" (type string) at path "_id" for model "Customer" 
+[2021-10-17 16:25:57][ERROR] : Non ancora implementanto 
+[2021-10-17 16:25:57][ERROR] : Customer with id 507f191e810c19729de860ea not found on the database 
+[2021-10-17 16:25:57][ERROR] : CastError: Cast to ObjectId failed for value "!" (type string) at path "_id" for model "Customer" 
+[2021-10-17 16:25:57][ERROR] : ValidationError: Product validation failed: subcategory: Path `subcategory` is required., category: Path `category` is required., description: Path `description` is required. 

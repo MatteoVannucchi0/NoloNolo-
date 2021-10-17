@@ -79,12 +79,11 @@ router.get('/:id/rentals', authentication.verifyAuth(requiredAuthLevel, true), g
 
 router.get('/:id/favorites', authentication.verifyAuth(requiredAuthLevel, true), getCustomerById, async (req, res) => {
     let max = req.query.max;
-
     try {
         let rentals = await Rental.find({ customer: req.params.id })
 
         let map = new Map();
-        for (rental of rentals){
+        for (const rental of rentals){
             let unit = await Unit.findById(rental.unit);
             let product = await Product.findById(unit.product)
             if (map.has(product))

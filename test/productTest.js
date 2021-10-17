@@ -15,10 +15,6 @@ const url = "/api/products/"
 
 describe('Unit test product api', async function () {
 
-    const placeholderImg = await fs.readFile('placeholder.jpg');
-
-    console.log(placeholderImg);
-
     function verify(got, expected) {
         expect(got).excluding(['_id', '__v', 'productImage']).to.deep.equal(expected);
 

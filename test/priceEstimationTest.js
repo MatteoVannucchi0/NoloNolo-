@@ -10,21 +10,10 @@ const app = require('../index');
 const url = "/api/products/"
 
 
-describe('Unit test product api', function () {
+describe('Unit test price for price estimanation and modifiers', function () {
 
     function verify(got, expected) {
         expect(got).excluding(['_id', '__v','productImage']).to.deep.equal(expected);
-
-        /*got.name.should.equal(expected.name);
-        got.description.should.equal(expected.description);
-        got.image.should.equal(expected.image);
-        got.category.should.equal(expected.category);
-        got.subcategory.should.equal(expected.subcategory);
-        got.tags.should.deep.equal(expected.tags);
-
-
-        console.log("got: ", got, "expected: ", expected);
-        got.altproducts.should.deep.equal(expected.altproducts);*/
     }
 
     function shouldContain(arr, obj) {

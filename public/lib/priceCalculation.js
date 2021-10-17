@@ -21,7 +21,7 @@ async function computePriceEstimation(units, info) {
     //let priceToEstimate = {};
     let estimations = [];
 
-    for (unit of units) {
+    for (const unit of units) {
         estimations.push(await unitPriceEstimation(unit, info));
 
         /* TODO nel caso in cui si vogliono raggrupare unità per stesso prezzo aggiungerlo, però si perdono informazioni sulla causa del prezzo
@@ -40,7 +40,7 @@ async function unitPriceEstimation(unit, info) {
     let computedModifiers = await computeModifiers({ unit, ...info });
     let finalPrice = unit.price;
 
-    for (modifier of computedModifiers)
+    for (const modifier of computedModifiers)
         finalPrice = finalPrice * modifier.value;
 
     return new PriceEstimation(unit.price, computedModifiers, finalPrice, unit._id);
@@ -48,7 +48,7 @@ async function unitPriceEstimation(unit, info) {
 
 async function computeModifiers(info) {
     let modifiers = [];
-    for (modifier of modifiersList) {
+    for (const modifier of modifiersList) {
         if (await modifier.condition(info)){
             modifiers.push(new Modifiers(modifier.value, modifier.shortExplanation(info), modifier.longExplanation(info)));
         } 

@@ -291,6 +291,8 @@ describe('Unit test customer', function() {
         req = await deleteAuth(oldId);
         value = req.body;
         statusCode = req.statusCode;
+
+        statusCode.should.equal(200);
     })
 
     it('GET /customers/rentals with an non existant id should return 404', async function() {

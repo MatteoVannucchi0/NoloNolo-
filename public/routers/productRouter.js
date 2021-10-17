@@ -20,7 +20,6 @@ const storage = multer.diskStorage({
         cb(null, uniqueName)
     }
 })
-
 const upload = multer({ storage: storage })
 
 const requiredAuthLevel = authentication.authLevel.employee;
@@ -76,7 +75,7 @@ router.delete('/:id', authentication.verifyAuth(requiredAuthLevel, false), getPr
         let removedProduct = res.product;
 
         let units = await removedProduct.getUnits();
-        for (unit of units) {
+        for (const unit of units) {
             await unit.remove();
         }
 
@@ -122,8 +121,7 @@ router.post('/:id/units', authentication.verifyAuth(requiredAuthLevel, false), g
         const newUnit = await unit.save();
         res.status(201).json(newUnit);
     } catch (error) {
-        console.log(error);
-        return await handleError(error, res);
+        return await errorHandler.handle(error, res);
     }
 })
 
@@ -153,7 +151,8 @@ router.get('/:id/tags', authentication.verifyAuth(requiredAuthLevel, false), get
 router.post('/:id/tags', authentication.verifyAuth(requiredAuthLevel, false), getProductById, async (req, res) => {
     try {
         if (res.product.tags.includes(req.body)) {
-            return await errorHandler.handle(error, res, 409);
+            const errmsg = "The tags posted is already on the tags list (" + req.body  + ")";
+            return await errorHandler.handleMsg(errmsg, res, 409);
         }
 
         res.product.tags.push(req.body);
@@ -168,9 +167,9 @@ router.post('/:id/tags', authentication.verifyAuth(requiredAuthLevel, false), ge
 //TODO aggiungere una query per restiture un determinato tags
 router.delete('/:id/tags', authentication.verifyAuth(requiredAuthLevel, false), getProductById, async (req, res) => {
     try {
-        let tags = res.product.tags.filter(tag => { return tag.key == req.query.key && tag.value == req.query.value });
+        const tags = res.product.tags.filter(tag => { return tag.key == req.query.key && tag.value == req.query.value });
 
-        for (tag of tags) {
+        for (const tag of tags) {
             const index = res.product.tags.indexOf(tag);
             if (index > -1) {
                 res.product.tags.splice(index, 1);
@@ -191,7 +190,7 @@ router.get('/:id/altproducts', authentication.verifyAuth(requiredAuthLevel, fals
 
         res.status(200).json(altproducts);
     } catch (error) {
-        return await handleError(error, res);
+        return await errorHandler.handle(error, res);
     }
 })
 
@@ -213,7 +212,7 @@ router.post('/:id/altproducts', authentication.verifyAuth(requiredAuthLevel, fal
         await res.product.save();           //TODO forse non funziona
         res.status(201).json(altprod);
     } catch (error) {
-        return await handleError(error, res);
+        return await errorHandler.handle(error, res);
     }
 })
 
@@ -264,7 +263,7 @@ async function getProductById(req, res, next) {
             return await errorHandler.handleMsg(errmsg, res, 404);
         }
     } catch (error) {
-        return await handleError(error, res);
+        return await errorHandler.handle(error, res);
     }
 
     res.product = product;
@@ -281,7 +280,7 @@ async function getUnitById(req, res, next) {
             return await errorHandler.handleMsg(errmsg, res, 404);
         }
     } catch (error) {
-        return await handleError(error, res);
+        return await errorHandler.handle(error, res);
     }
 
     res.unit = unit;

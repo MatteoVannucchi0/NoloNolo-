@@ -29,3 +29,5 @@ const validateEmployeeExistence = function(id){
 
 module.exports.validateEmail = validateEmail;
 module.exports.validateNotEmail = validateNotEmail;
+module.exports.validateCustomerExistence = validateCustomerExistence;
+module.exports.validateEmployeeExistence = validateEmployeeExistence;

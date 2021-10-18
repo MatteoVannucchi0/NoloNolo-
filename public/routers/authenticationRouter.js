@@ -24,7 +24,7 @@ router.post('/customers/login', async (req, res) => {
         if (!authentication.verifyCredential(req.body, customer.loginInfo))
             return res.status(403).json({ message: "Password incorrect" });
 
-        jwtToken = await customer.generateToken();
+        const jwtToken = await customer.generateToken();
         
         return res.status(200).set({ "Authorization": jwtToken }).send();
     } catch (error) {
@@ -50,7 +50,7 @@ router.post('/employees/login', async (req, res) => {
         if (!authentication.verifyCredential(req.body, employee.loginInfo))
             return res.status(403).json({ message: "Password incorrect" });
 
-        jwtToken = await employee.generateToken();
+        const jwtToken = await employee.generateToken();
         return res.status(200).set({ "Authorization": jwtToken });
     } catch (error) {
         return res.status(400).json({ message: error.message });

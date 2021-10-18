@@ -92,7 +92,7 @@ router.get('/:id/favorites', authentication.verifyAuth(requiredAuthLevel, true),
                 map.set(product, 1);
         }
 
-        const sortedMap = [...map.entries()].sort((a, b) => b[1] - a[1]);
+        let sortedMap = [...map.entries()].sort((a, b) => b[1] - a[1]);
         if (max)
             sortedMap = sortedMap.slice(0, max);
 

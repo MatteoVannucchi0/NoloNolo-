@@ -1,977 +1,546 @@
-[2021-10-16 15:41:47][ERROR] : MongoServerError: E11000 duplicate key error collection: databaseProgettoTechWeb.products index: name_1 dup key: { name: "NomeProdottoTest" } 
-[2021-10-16 15:45:25][ERROR] : ValidationError: Product validation failed: subcategory: Path `subcategory` is required., category: Path `category` is required., description: Path `description` is required., name: Path `name` is required. 
-[2021-10-16 15:47:52][ERROR] : MongoServerError: E11000 duplicate key error collection: databaseProgettoTechWeb.products index: name_1 dup key: { name: "NomeProdottoTest" } 
-[2021-10-16 15:48:08][ERROR] : MongoServerError: E11000 duplicate key error collection: databaseProgettoTechWeb.products index: name_1 dup key: { name: "NomeProdottoTest" } 
-[2021-10-16 15:48:36][ERROR] : MongoServerError: E11000 duplicate key error collection: databaseProgettoTechWeb.products index: name_1 dup key: { name: "NomeProdottoTest" } 
-[2021-10-16 15:48:39][ERROR] : MongoServerError: E11000 duplicate key error collection: databaseProgettoTechWeb.products index: name_1 dup key: { name: "NomeProdottoTest" } 
-[2021-10-16 15:48:41][ERROR] : MongoServerError: E11000 duplicate key error collection: databaseProgettoTechWeb.products index: name_1 dup key: { name: "NomeProdottoTest" } 
-[2021-10-16 15:52:03][ERROR] : MongoServerError: E11000 duplicate key error collection: databaseProgettoTechWeb.products index: name_1 dup key: { name: "NomeProdottoTest" } 
-[2021-10-16 15:52:22][ERROR] : MongoServerError: E11000 duplicate key error collection: databaseProgettoTechWeb.products index: name_1 dup key: { name: "NomeProdottoTest" } 
-[2021-10-16 15:52:53][ERROR] : MongoServerError: E11000 duplicate key error collection: databaseProgettoTechWeb.products index: name_1 dup key: { name: "NomeProdottoTest" } 
-[2021-10-16 15:53:12][ERROR] : MongoServerError: E11000 duplicate key error collection: databaseProgettoTechWeb.products index: name_1 dup key: { name: "NomeProdottoTest" } 
-[2021-10-16 15:57:12][ERROR] : MongoServerError: E11000 duplicate key error collection: databaseProgettoTechWeb.products index: name_1 dup key: { name: "NomeProdottoTest" } 
-[2021-10-16 16:00:26][ERROR] : TypeError: The "path" argument must be of type string. Received an instance of Object 
-[2021-10-16 16:00:42][ERROR] : TypeError: The "path" argument must be of type string. Received an instance of Object 
-[2021-10-16 16:02:54][ERROR] : TypeError: Cannot read property 'filename' of undefined 
-[2021-10-16 16:13:45][ERROR] : ValidationError: Product validation failed: name: Error, expected `name` to be unique. Value: `ProdottoTest` 
-[2021-10-16 16:13:52][ERROR] : ValidationError: Product validation failed: name: Error, expected `name` to be unique. Value: `ProdottoTest` 
-[2021-10-16 16:14:20][ERROR] : ValidationError: Product validation failed: name: Error, expected `name` to be unique. Value: `ProdottoTest` 
-[2021-10-16 16:16:26][ERROR] : MongoServerError: E11000 duplicate key error collection: databaseProgettoTechWeb.products index: name_1 dup key: { name: "ProdottoTest" } 
-[2021-10-16 16:18:51][ERROR] : TypeError: Callback must be a function. Received undefined 
-[2021-10-16 16:20:08][ERROR] : Error: ENOENT: no such file or directory, unlink 'C:\image\1634401208301-711919372.jpeg' 
-[2021-10-16 16:20:34][ERROR] : MongoServerError: E11000 duplicate key error collection: databaseProgettoTechWeb.products index: name_1 dup key: { name: "ProdottoTest" } 
-[2021-10-16 16:20:43][ERROR] : MongoServerError: E11000 duplicate key error collection: databaseProgettoTechWeb.products index: name_1 dup key: { name: "ProdottoTest" } 
-[2021-10-16 16:20:44][ERROR] : MongoServerError: E11000 duplicate key error collection: databaseProgettoTechWeb.products index: name_1 dup key: { name: "ProdottoTest" } 
-[2021-10-16 16:20:45][ERROR] : MongoServerError: E11000 duplicate key error collection: databaseProgettoTechWeb.products index: name_1 dup key: { name: "ProdottoTest" } 
-[2021-10-16 16:20:45][ERROR] : MongoServerError: E11000 duplicate key error collection: databaseProgettoTechWeb.products index: name_1 dup key: { name: "ProdottoTest" } 
-[2021-10-16 16:20:45][ERROR] : MongoServerError: E11000 duplicate key error collection: databaseProgettoTechWeb.products index: name_1 dup key: { name: "ProdottoTest" } 
-[2021-10-16 16:20:46][ERROR] : MongoServerError: E11000 duplicate key error collection: databaseProgettoTechWeb.products index: name_1 dup key: { name: "ProdottoTest" } 
-[2021-10-16 16:20:46][ERROR] : MongoServerError: E11000 duplicate key error collection: databaseProgettoTechWeb.products index: name_1 dup key: { name: "ProdottoTest" } 
-[2021-10-16 17:02:55][ERROR] : Customer with id 616050300f33629454139b9a not found on the database 
-[2021-10-16 17:02:55][ERROR] : CastError: Cast to ObjectId failed for value "!" (type string) at path "_id" for model "Customer" 
-[2021-10-16 17:02:55][ERROR] : Customer with id 616050300f55729454809b9a not found on the database 
-[2021-10-16 17:02:55][ERROR] : Customer with id 507f191e810c19729de860ea not found on the database 
-[2021-10-16 17:02:55][ERROR] : CastError: Cast to ObjectId failed for value "wrongurl" (type string) at path "_id" for model "Customer" 
-[2021-10-16 17:02:55][ERROR] : TypeError: Cannot read property 'find' of null 
-[2021-10-16 17:02:55][ERROR] : Customer with id 507f191e810c19729de860ea not found on the database 
-[2021-10-16 17:02:55][ERROR] : CastError: Cast to ObjectId failed for value "!" (type string) at path "_id" for model "Customer" 
-[2021-10-16 17:02:55][ERROR] : Non ancora implementanto 
-[2021-10-16 17:02:55][ERROR] : Non ancora implementanto 
-[2021-10-16 17:02:55][ERROR] : CastError: Cast to ObjectId failed for value "!" (type string) at path "_id" for model "Customer" 
-[2021-10-16 17:02:56][ERROR] : TypeError: Cannot read property 'filename' of undefined 
-[2021-10-16 17:02:56][ERROR] : TypeError: Cannot read property 'filename' of undefined 
-[2021-10-16 17:02:56][ERROR] : TypeError: Cannot read property 'filename' of undefined 
-[2021-10-16 17:02:56][ERROR] : TypeError: Cannot read property 'filename' of undefined 
-[2021-10-16 17:02:56][ERROR] : TypeError: Cannot read property 'filename' of undefined 
-[2021-10-16 17:02:56][ERROR] : TypeError: Cannot read property 'filename' of undefined 
-[2021-10-16 17:02:56][ERROR] : TypeError: Cannot read property 'filename' of undefined 
-[2021-10-16 17:04:08][ERROR] : Customer with id 616050300f33629454139b9a not found on the database 
-[2021-10-16 17:04:08][ERROR] : CastError: Cast to ObjectId failed for value "!" (type string) at path "_id" for model "Customer" 
-[2021-10-16 17:04:08][ERROR] : Customer with id 616050300f55729454809b9a not found on the database 
-[2021-10-16 17:04:08][ERROR] : Customer with id 507f191e810c19729de860ea not found on the database 
-[2021-10-16 17:04:08][ERROR] : CastError: Cast to ObjectId failed for value "wrongurl" (type string) at path "_id" for model "Customer" 
-[2021-10-16 17:04:08][ERROR] : TypeError: Cannot read property 'find' of null 
-[2021-10-16 17:04:08][ERROR] : Customer with id 507f191e810c19729de860ea not found on the database 
-[2021-10-16 17:04:08][ERROR] : CastError: Cast to ObjectId failed for value "!" (type string) at path "_id" for model "Customer" 
-[2021-10-16 17:04:08][ERROR] : Non ancora implementanto 
-[2021-10-16 17:04:08][ERROR] : Non ancora implementanto 
-[2021-10-16 17:04:08][ERROR] : CastError: Cast to ObjectId failed for value "!" (type string) at path "_id" for model "Customer" 
-[2021-10-16 17:04:08][ERROR] : TypeError: Cannot read property 'filename' of undefined 
-[2021-10-16 17:04:08][ERROR] : TypeError: Cannot read property 'filename' of undefined 
-[2021-10-16 17:04:08][ERROR] : TypeError: Cannot read property 'filename' of undefined 
-[2021-10-16 17:04:08][ERROR] : TypeError: Cannot read property 'filename' of undefined 
-[2021-10-16 17:04:08][ERROR] : TypeError: Cannot read property 'filename' of undefined 
-[2021-10-16 17:04:08][ERROR] : TypeError: Cannot read property 'filename' of undefined 
-[2021-10-16 17:04:08][ERROR] : TypeError: Cannot read property 'filename' of undefined 
-[2021-10-16 17:09:49][ERROR] : Customer with id 616050300f33629454139b9a not found on the database 
-[2021-10-16 17:09:49][ERROR] : CastError: Cast to ObjectId failed for value "!" (type string) at path "_id" for model "Customer" 
-[2021-10-16 17:09:49][ERROR] : Customer with id 616050300f55729454809b9a not found on the database 
-[2021-10-16 17:09:49][ERROR] : Customer with id 507f191e810c19729de860ea not found on the database 
-[2021-10-16 17:09:49][ERROR] : CastError: Cast to ObjectId failed for value "wrongurl" (type string) at path "_id" for model "Customer" 
-[2021-10-16 17:09:49][ERROR] : MongoServerError: E11000 duplicate key error collection: databaseProgettoTechWeb.customers index: loginInfo.username_1 dup key: { loginInfo.username: "alsddfsdf" } 
-[2021-10-16 17:09:49][ERROR] : CastError: Cast to ObjectId failed for value "undefined" (type string) at path "_id" for model "Customer" 
-[2021-10-16 17:09:49][ERROR] : Customer with id 507f191e810c19729de860ea not found on the database 
-[2021-10-16 17:09:49][ERROR] : CastError: Cast to ObjectId failed for value "!" (type string) at path "_id" for model "Customer" 
-[2021-10-16 17:09:49][ERROR] : MongoServerError: E11000 duplicate key error collection: databaseProgettoTechWeb.customers index: loginInfo.username_1 dup key: { loginInfo.username: "testtest" } 
-[2021-10-16 17:09:49][ERROR] : Non ancora implementanto 
-[2021-10-16 17:09:49][ERROR] : Non ancora implementanto 
-[2021-10-16 17:09:49][ERROR] : CastError: Cast to ObjectId failed for value "!" (type string) at path "_id" for model "Customer" 
-[2021-10-16 17:09:49][ERROR] : TypeError: Cannot read property 'filename' of undefined 
-[2021-10-16 17:10:42][ERROR] : Customer with id 616050300f33629454139b9a not found on the database 
-[2021-10-16 17:10:42][ERROR] : CastError: Cast to ObjectId failed for value "!" (type string) at path "_id" for model "Customer" 
-[2021-10-16 17:10:42][ERROR] : Customer with id 616050300f55729454809b9a not found on the database 
-[2021-10-16 17:10:42][ERROR] : Customer with id 507f191e810c19729de860ea not found on the database 
-[2021-10-16 17:10:42][ERROR] : CastError: Cast to ObjectId failed for value "wrongurl" (type string) at path "_id" for model "Customer" 
-[2021-10-16 17:10:42][ERROR] : MongoServerError: E11000 duplicate key error collection: databaseProgettoTechWeb.customers index: loginInfo.username_1 dup key: { loginInfo.username: "alsddfsdf" } 
-[2021-10-16 17:10:42][ERROR] : CastError: Cast to ObjectId failed for value "undefined" (type string) at path "_id" for model "Customer" 
-[2021-10-16 17:10:42][ERROR] : Customer with id 507f191e810c19729de860ea not found on the database 
-[2021-10-16 17:10:42][ERROR] : CastError: Cast to ObjectId failed for value "!" (type string) at path "_id" for model "Customer" 
-[2021-10-16 17:10:42][ERROR] : MongoServerError: E11000 duplicate key error collection: databaseProgettoTechWeb.customers index: loginInfo.username_1 dup key: { loginInfo.username: "testtest" } 
-[2021-10-16 17:10:42][ERROR] : Non ancora implementanto 
-[2021-10-16 17:10:42][ERROR] : Non ancora implementanto 
-[2021-10-16 17:10:42][ERROR] : CastError: Cast to ObjectId failed for value "!" (type string) at path "_id" for model "Customer" 
-[2021-10-16 17:10:42][ERROR] : TypeError: Cannot read property 'filename' of undefined 
-[2021-10-16 17:11:44][ERROR] : Customer with id 616050300f33629454139b9a not found on the database 
-[2021-10-16 17:11:44][ERROR] : CastError: Cast to ObjectId failed for value "!" (type string) at path "_id" for model "Customer" 
-[2021-10-16 17:11:44][ERROR] : Customer with id 616050300f55729454809b9a not found on the database 
-[2021-10-16 17:11:44][ERROR] : Customer with id 507f191e810c19729de860ea not found on the database 
-[2021-10-16 17:11:44][ERROR] : CastError: Cast to ObjectId failed for value "wrongurl" (type string) at path "_id" for model "Customer" 
-[2021-10-16 17:11:44][ERROR] : MongoServerError: E11000 duplicate key error collection: databaseProgettoTechWeb.customers index: loginInfo.username_1 dup key: { loginInfo.username: "alsddfsdf" } 
-[2021-10-16 17:11:44][ERROR] : CastError: Cast to ObjectId failed for value "undefined" (type string) at path "_id" for model "Customer" 
-[2021-10-16 17:11:44][ERROR] : Customer with id 507f191e810c19729de860ea not found on the database 
-[2021-10-16 17:11:44][ERROR] : CastError: Cast to ObjectId failed for value "!" (type string) at path "_id" for model "Customer" 
-[2021-10-16 17:11:44][ERROR] : MongoServerError: E11000 duplicate key error collection: databaseProgettoTechWeb.customers index: loginInfo.username_1 dup key: { loginInfo.username: "testtest" } 
-[2021-10-16 17:11:44][ERROR] : Non ancora implementanto 
-[2021-10-16 17:11:44][ERROR] : Non ancora implementanto 
-[2021-10-16 17:11:44][ERROR] : CastError: Cast to ObjectId failed for value "!" (type string) at path "_id" for model "Customer" 
-[2021-10-16 17:11:44][ERROR] : TypeError: Cannot read property 'filename' of undefined 
-[2021-10-16 17:12:43][ERROR] : Customer with id 616050300f33629454139b9a not found on the database 
-[2021-10-16 17:12:43][ERROR] : CastError: Cast to ObjectId failed for value "!" (type string) at path "_id" for model "Customer" 
-[2021-10-16 17:12:43][ERROR] : Customer with id 616050300f55729454809b9a not found on the database 
-[2021-10-16 17:12:43][ERROR] : Customer with id 507f191e810c19729de860ea not found on the database 
-[2021-10-16 17:12:43][ERROR] : CastError: Cast to ObjectId failed for value "wrongurl" (type string) at path "_id" for model "Customer" 
-[2021-10-16 17:12:43][ERROR] : MongoServerError: E11000 duplicate key error collection: databaseProgettoTechWeb.customers index: loginInfo.username_1 dup key: { loginInfo.username: "alsddfsdf" } 
-[2021-10-16 17:12:43][ERROR] : CastError: Cast to ObjectId failed for value "undefined" (type string) at path "_id" for model "Customer" 
-[2021-10-16 17:12:43][ERROR] : Customer with id 507f191e810c19729de860ea not found on the database 
-[2021-10-16 17:12:43][ERROR] : CastError: Cast to ObjectId failed for value "!" (type string) at path "_id" for model "Customer" 
-[2021-10-16 17:12:43][ERROR] : MongoServerError: E11000 duplicate key error collection: databaseProgettoTechWeb.customers index: loginInfo.username_1 dup key: { loginInfo.username: "testtest" } 
-[2021-10-16 17:12:43][ERROR] : Non ancora implementanto 
-[2021-10-16 17:12:43][ERROR] : Non ancora implementanto 
-[2021-10-16 17:12:43][ERROR] : CastError: Cast to ObjectId failed for value "!" (type string) at path "_id" for model "Customer" 
-[2021-10-16 17:12:43][ERROR] : TypeError: Cannot read property 'filename' of undefined 
-[2021-10-16 17:13:20][ERROR] : Customer with id 616050300f33629454139b9a not found on the database 
-[2021-10-16 17:13:20][ERROR] : CastError: Cast to ObjectId failed for value "!" (type string) at path "_id" for model "Customer" 
-[2021-10-16 17:13:20][ERROR] : Customer with id 616050300f55729454809b9a not found on the database 
-[2021-10-16 17:13:20][ERROR] : Customer with id 507f191e810c19729de860ea not found on the database 
-[2021-10-16 17:13:20][ERROR] : CastError: Cast to ObjectId failed for value "wrongurl" (type string) at path "_id" for model "Customer" 
-[2021-10-16 17:13:20][ERROR] : MongoServerError: E11000 duplicate key error collection: databaseProgettoTechWeb.customers index: loginInfo.username_1 dup key: { loginInfo.username: "alsddfsdf" } 
-[2021-10-16 17:13:20][ERROR] : CastError: Cast to ObjectId failed for value "undefined" (type string) at path "_id" for model "Customer" 
-[2021-10-16 17:13:20][ERROR] : Customer with id 507f191e810c19729de860ea not found on the database 
-[2021-10-16 17:13:20][ERROR] : CastError: Cast to ObjectId failed for value "!" (type string) at path "_id" for model "Customer" 
-[2021-10-16 17:13:20][ERROR] : MongoServerError: E11000 duplicate key error collection: databaseProgettoTechWeb.customers index: loginInfo.username_1 dup key: { loginInfo.username: "testtest" } 
-[2021-10-16 17:13:20][ERROR] : Non ancora implementanto 
-[2021-10-16 17:13:20][ERROR] : Non ancora implementanto 
-[2021-10-16 17:13:20][ERROR] : CastError: Cast to ObjectId failed for value "!" (type string) at path "_id" for model "Customer" 
-[2021-10-16 17:13:38][ERROR] : Customer with id 616050300f33629454139b9a not found on the database 
-[2021-10-16 17:13:38][ERROR] : CastError: Cast to ObjectId failed for value "!" (type string) at path "_id" for model "Customer" 
-[2021-10-16 17:13:38][ERROR] : Customer with id 616050300f55729454809b9a not found on the database 
-[2021-10-16 17:13:38][ERROR] : Customer with id 507f191e810c19729de860ea not found on the database 
-[2021-10-16 17:13:38][ERROR] : CastError: Cast to ObjectId failed for value "wrongurl" (type string) at path "_id" for model "Customer" 
-[2021-10-16 17:13:38][ERROR] : MongoServerError: E11000 duplicate key error collection: databaseProgettoTechWeb.customers index: loginInfo.username_1 dup key: { loginInfo.username: "alsddfsdf" } 
-[2021-10-16 17:13:38][ERROR] : CastError: Cast to ObjectId failed for value "undefined" (type string) at path "_id" for model "Customer" 
-[2021-10-16 17:13:38][ERROR] : Customer with id 507f191e810c19729de860ea not found on the database 
-[2021-10-16 17:13:38][ERROR] : CastError: Cast to ObjectId failed for value "!" (type string) at path "_id" for model "Customer" 
-[2021-10-16 17:13:38][ERROR] : MongoServerError: E11000 duplicate key error collection: databaseProgettoTechWeb.customers index: loginInfo.username_1 dup key: { loginInfo.username: "testtest" } 
-[2021-10-16 17:13:38][ERROR] : Non ancora implementanto 
-[2021-10-16 17:13:38][ERROR] : Non ancora implementanto 
-[2021-10-16 17:13:38][ERROR] : CastError: Cast to ObjectId failed for value "!" (type string) at path "_id" for model "Customer" 
-[2021-10-16 17:15:20][ERROR] : Customer with id 616050300f33629454139b9a not found on the database 
-[2021-10-16 17:15:20][ERROR] : CastError: Cast to ObjectId failed for value "!" (type string) at path "_id" for model "Customer" 
-[2021-10-16 17:15:20][ERROR] : Customer with id 616050300f55729454809b9a not found on the database 
-[2021-10-16 17:15:20][ERROR] : Customer with id 507f191e810c19729de860ea not found on the database 
-[2021-10-16 17:15:20][ERROR] : CastError: Cast to ObjectId failed for value "wrongurl" (type string) at path "_id" for model "Customer" 
-[2021-10-16 17:15:20][ERROR] : MongoServerError: E11000 duplicate key error collection: databaseProgettoTechWeb.customers index: loginInfo.username_1 dup key: { loginInfo.username: "alsddfsdf" } 
-[2021-10-16 17:15:20][ERROR] : CastError: Cast to ObjectId failed for value "undefined" (type string) at path "_id" for model "Customer" 
-[2021-10-16 17:15:20][ERROR] : Customer with id 507f191e810c19729de860ea not found on the database 
-[2021-10-16 17:15:20][ERROR] : CastError: Cast to ObjectId failed for value "!" (type string) at path "_id" for model "Customer" 
-[2021-10-16 17:15:20][ERROR] : MongoServerError: E11000 duplicate key error collection: databaseProgettoTechWeb.customers index: loginInfo.username_1 dup key: { loginInfo.username: "testtest" } 
-[2021-10-16 17:15:20][ERROR] : Non ancora implementanto 
-[2021-10-16 17:15:20][ERROR] : Non ancora implementanto 
-[2021-10-16 17:15:20][ERROR] : CastError: Cast to ObjectId failed for value "!" (type string) at path "_id" for model "Customer" 
-[2021-10-16 17:15:46][ERROR] : Customer with id 616050300f33629454139b9a not found on the database 
-[2021-10-16 17:15:46][ERROR] : CastError: Cast to ObjectId failed for value "!" (type string) at path "_id" for model "Customer" 
-[2021-10-16 17:15:46][ERROR] : Customer with id 616050300f55729454809b9a not found on the database 
-[2021-10-16 17:15:47][ERROR] : Customer with id 507f191e810c19729de860ea not found on the database 
-[2021-10-16 17:15:47][ERROR] : CastError: Cast to ObjectId failed for value "wrongurl" (type string) at path "_id" for model "Customer" 
-[2021-10-16 17:15:47][ERROR] : MongoServerError: E11000 duplicate key error collection: databaseProgettoTechWeb.customers index: loginInfo.username_1 dup key: { loginInfo.username: "alsddfsdf" } 
-[2021-10-16 17:15:47][ERROR] : CastError: Cast to ObjectId failed for value "undefined" (type string) at path "_id" for model "Customer" 
-[2021-10-16 17:15:47][ERROR] : Customer with id 507f191e810c19729de860ea not found on the database 
-[2021-10-16 17:15:47][ERROR] : CastError: Cast to ObjectId failed for value "!" (type string) at path "_id" for model "Customer" 
-[2021-10-16 17:15:47][ERROR] : MongoServerError: E11000 duplicate key error collection: databaseProgettoTechWeb.customers index: loginInfo.username_1 dup key: { loginInfo.username: "testtest" } 
-[2021-10-16 17:15:47][ERROR] : Non ancora implementanto 
-[2021-10-16 17:15:47][ERROR] : Non ancora implementanto 
-[2021-10-16 17:15:47][ERROR] : CastError: Cast to ObjectId failed for value "!" (type string) at path "_id" for model "Customer" 
-[2021-10-16 17:17:18][ERROR] : Customer with id 616050300f33629454139b9a not found on the database 
-[2021-10-16 17:17:18][ERROR] : CastError: Cast to ObjectId failed for value "!" (type string) at path "_id" for model "Customer" 
-[2021-10-16 17:17:18][ERROR] : Customer with id 616050300f55729454809b9a not found on the database 
-[2021-10-16 17:17:18][ERROR] : Customer with id 507f191e810c19729de860ea not found on the database 
-[2021-10-16 17:17:18][ERROR] : CastError: Cast to ObjectId failed for value "wrongurl" (type string) at path "_id" for model "Customer" 
-[2021-10-16 17:17:19][ERROR] : Customer with id 507f191e810c19729de860ea not found on the database 
-[2021-10-16 17:17:19][ERROR] : CastError: Cast to ObjectId failed for value "!" (type string) at path "_id" for model "Customer" 
-[2021-10-16 17:17:19][ERROR] : Non ancora implementanto 
-[2021-10-16 17:17:19][ERROR] : Non ancora implementanto 
-[2021-10-16 17:17:19][ERROR] : CastError: Cast to ObjectId failed for value "!" (type string) at path "_id" for model "Customer" 
-[2021-10-16 17:17:48][ERROR] : Customer with id 616050300f33629454139b9a not found on the database 
-[2021-10-16 17:17:48][ERROR] : CastError: Cast to ObjectId failed for value "!" (type string) at path "_id" for model "Customer" 
-[2021-10-16 17:17:48][ERROR] : Customer with id 616050300f55729454809b9a not found on the database 
-[2021-10-16 17:17:48][ERROR] : Customer with id 507f191e810c19729de860ea not found on the database 
-[2021-10-16 17:17:48][ERROR] : CastError: Cast to ObjectId failed for value "wrongurl" (type string) at path "_id" for model "Customer" 
-[2021-10-16 17:17:49][ERROR] : Customer with id 507f191e810c19729de860ea not found on the database 
-[2021-10-16 17:17:49][ERROR] : CastError: Cast to ObjectId failed for value "!" (type string) at path "_id" for model "Customer" 
-[2021-10-16 17:17:49][ERROR] : Non ancora implementanto 
-[2021-10-16 17:17:49][ERROR] : Non ancora implementanto 
-[2021-10-16 17:17:49][ERROR] : CastError: Cast to ObjectId failed for value "!" (type string) at path "_id" for model "Customer" 
-[2021-10-16 17:18:29][ERROR] : Customer with id 616050300f33629454139b9a not found on the database 
-[2021-10-16 17:18:29][ERROR] : CastError: Cast to ObjectId failed for value "!" (type string) at path "_id" for model "Customer" 
-[2021-10-16 17:18:29][ERROR] : Customer with id 616050300f55729454809b9a not found on the database 
-[2021-10-16 17:18:29][ERROR] : Customer with id 507f191e810c19729de860ea not found on the database 
-[2021-10-16 17:18:29][ERROR] : CastError: Cast to ObjectId failed for value "wrongurl" (type string) at path "_id" for model "Customer" 
-[2021-10-16 17:18:30][ERROR] : Customer with id 507f191e810c19729de860ea not found on the database 
-[2021-10-16 17:18:30][ERROR] : CastError: Cast to ObjectId failed for value "!" (type string) at path "_id" for model "Customer" 
-[2021-10-16 17:18:30][ERROR] : Non ancora implementanto 
-[2021-10-16 17:18:30][ERROR] : Non ancora implementanto 
-[2021-10-16 17:18:30][ERROR] : CastError: Cast to ObjectId failed for value "!" (type string) at path "_id" for model "Customer" 
-[2021-10-16 17:18:54][ERROR] : Customer with id 616050300f33629454139b9a not found on the database 
-[2021-10-16 17:18:54][ERROR] : CastError: Cast to ObjectId failed for value "!" (type string) at path "_id" for model "Customer" 
-[2021-10-16 17:18:54][ERROR] : Customer with id 616050300f55729454809b9a not found on the database 
-[2021-10-16 17:18:54][ERROR] : Customer with id 507f191e810c19729de860ea not found on the database 
-[2021-10-16 17:18:54][ERROR] : CastError: Cast to ObjectId failed for value "wrongurl" (type string) at path "_id" for model "Customer" 
-[2021-10-16 17:18:55][ERROR] : Customer with id 507f191e810c19729de860ea not found on the database 
-[2021-10-16 17:18:55][ERROR] : CastError: Cast to ObjectId failed for value "!" (type string) at path "_id" for model "Customer" 
-[2021-10-16 17:18:55][ERROR] : MongoServerError: E11000 duplicate key error collection: databaseProgettoTechWeb.customers index: loginInfo.username_1 dup key: { loginInfo.username: "testtest" } 
-[2021-10-16 17:18:55][ERROR] : CastError: Cast to ObjectId failed for value "undefined" (type string) at path "customer" for model "Rental" 
-[2021-10-16 17:18:55][ERROR] : Non ancora implementanto 
-[2021-10-16 17:18:55][ERROR] : CastError: Cast to ObjectId failed for value "!" (type string) at path "_id" for model "Customer" 
-[2021-10-16 17:26:46][ERROR] : Customer with id 616050300f33629454139b9a not found on the database 
-[2021-10-16 17:26:46][ERROR] : CastError: Cast to ObjectId failed for value "!" (type string) at path "_id" for model "Customer" 
-[2021-10-16 17:26:46][ERROR] : Customer with id 616050300f55729454809b9a not found on the database 
-[2021-10-16 17:26:46][ERROR] : Customer with id 507f191e810c19729de860ea not found on the database 
-[2021-10-16 17:26:46][ERROR] : CastError: Cast to ObjectId failed for value "wrongurl" (type string) at path "_id" for model "Customer" 
-[2021-10-16 17:26:47][ERROR] : Customer with id 507f191e810c19729de860ea not found on the database 
-[2021-10-16 17:26:47][ERROR] : CastError: Cast to ObjectId failed for value "!" (type string) at path "_id" for model "Customer" 
-[2021-10-16 17:26:47][ERROR] : MongoServerError: E11000 duplicate key error collection: databaseProgettoTechWeb.customers index: loginInfo.username_1 dup key: { loginInfo.username: "testtest" } 
-[2021-10-16 17:26:47][ERROR] : CastError: Cast to ObjectId failed for value "undefined" (type string) at path "customer" for model "Rental" 
-[2021-10-16 17:26:47][ERROR] : Non ancora implementanto 
-[2021-10-16 17:26:47][ERROR] : CastError: Cast to ObjectId failed for value "!" (type string) at path "_id" for model "Customer" 
-[2021-10-16 18:06:14][ERROR] : Customer with id 616050300f33629454139b9a not found on the database 
-[2021-10-16 18:06:14][ERROR] : CastError: Cast to ObjectId failed for value "!" (type string) at path "_id" for model "Customer" 
-[2021-10-16 18:06:14][ERROR] : Customer with id 616050300f55729454809b9a not found on the database 
-[2021-10-16 18:06:14][ERROR] : Customer with id 507f191e810c19729de860ea not found on the database 
-[2021-10-16 18:06:14][ERROR] : CastError: Cast to ObjectId failed for value "wrongurl" (type string) at path "_id" for model "Customer" 
-[2021-10-16 18:06:15][ERROR] : Customer with id 507f191e810c19729de860ea not found on the database 
-[2021-10-16 18:06:15][ERROR] : CastError: Cast to ObjectId failed for value "!" (type string) at path "_id" for model "Customer" 
-[2021-10-16 18:06:15][ERROR] : MongoServerError: E11000 duplicate key error collection: databaseProgettoTechWeb.customers index: loginInfo.username_1 dup key: { loginInfo.username: "testtest" } 
-[2021-10-16 18:06:15][ERROR] : CastError: Cast to ObjectId failed for value "undefined" (type string) at path "customer" for model "Rental" 
-[2021-10-16 18:06:15][ERROR] : Non ancora implementanto 
-[2021-10-16 18:06:15][ERROR] : CastError: Cast to ObjectId failed for value "!" (type string) at path "_id" for model "Customer" 
-[2021-10-16 18:11:36][ERROR] : Customer with id 616050300f33629454139b9a not found on the database 
-[2021-10-16 18:11:36][ERROR] : CastError: Cast to ObjectId failed for value "!" (type string) at path "_id" for model "Customer" 
-[2021-10-16 18:11:36][ERROR] : Customer with id 616050300f55729454809b9a not found on the database 
-[2021-10-16 18:11:36][ERROR] : Customer with id 507f191e810c19729de860ea not found on the database 
-[2021-10-16 18:11:36][ERROR] : CastError: Cast to ObjectId failed for value "wrongurl" (type string) at path "_id" for model "Customer" 
-[2021-10-16 18:11:38][ERROR] : Customer with id 616050300f33629454139b9a not found on the database 
-[2021-10-16 18:11:38][ERROR] : CastError: Cast to ObjectId failed for value "!" (type string) at path "_id" for model "Customer" 
-[2021-10-16 18:11:38][ERROR] : Customer with id 616050300f55729454809b9a not found on the database 
-[2021-10-16 18:11:38][ERROR] : Customer with id 507f191e810c19729de860ea not found on the database 
-[2021-10-16 18:11:38][ERROR] : CastError: Cast to ObjectId failed for value "wrongurl" (type string) at path "_id" for model "Customer" 
-[2021-10-16 18:11:39][ERROR] : Customer with id 507f191e810c19729de860ea not found on the database 
-[2021-10-16 18:11:39][ERROR] : CastError: Cast to ObjectId failed for value "!" (type string) at path "_id" for model "Customer" 
-[2021-10-16 18:11:39][ERROR] : MongoServerError: E11000 duplicate key error collection: databaseProgettoTechWeb.customers index: loginInfo.username_1 dup key: { loginInfo.username: "testtest" } 
-[2021-10-16 18:11:39][ERROR] : CastError: Cast to ObjectId failed for value "undefined" (type string) at path "customer" for model "Rental" 
-[2021-10-16 18:11:39][ERROR] : TypeError: map.entries is not a function or its return value is not iterable 
-[2021-10-16 18:11:39][ERROR] : CastError: Cast to ObjectId failed for value "!" (type string) at path "_id" for model "Customer" 
-[2021-10-16 18:11:54][ERROR] : Customer with id 616050300f33629454139b9a not found on the database 
-[2021-10-16 18:11:54][ERROR] : CastError: Cast to ObjectId failed for value "!" (type string) at path "_id" for model "Customer" 
-[2021-10-16 18:11:54][ERROR] : Customer with id 616050300f55729454809b9a not found on the database 
-[2021-10-16 18:11:54][ERROR] : Customer with id 507f191e810c19729de860ea not found on the database 
-[2021-10-16 18:11:54][ERROR] : CastError: Cast to ObjectId failed for value "wrongurl" (type string) at path "_id" for model "Customer" 
-[2021-10-16 18:11:55][ERROR] : Customer with id 507f191e810c19729de860ea not found on the database 
-[2021-10-16 18:11:55][ERROR] : CastError: Cast to ObjectId failed for value "!" (type string) at path "_id" for model "Customer" 
-[2021-10-16 18:11:55][ERROR] : MongoServerError: E11000 duplicate key error collection: databaseProgettoTechWeb.customers index: loginInfo.username_1 dup key: { loginInfo.username: "testtest" } 
-[2021-10-16 18:11:55][ERROR] : CastError: Cast to ObjectId failed for value "undefined" (type string) at path "customer" for model "Rental" 
-[2021-10-16 18:11:55][ERROR] : TypeError: map.entries is not a function or its return value is not iterable 
-[2021-10-16 18:11:55][ERROR] : CastError: Cast to ObjectId failed for value "!" (type string) at path "_id" for model "Customer" 
-[2021-10-16 18:12:50][ERROR] : Customer with id 616050300f33629454139b9a not found on the database 
-[2021-10-16 18:12:50][ERROR] : CastError: Cast to ObjectId failed for value "!" (type string) at path "_id" for model "Customer" 
-[2021-10-16 18:12:50][ERROR] : Customer with id 616050300f55729454809b9a not found on the database 
-[2021-10-16 18:12:50][ERROR] : Customer with id 507f191e810c19729de860ea not found on the database 
-[2021-10-16 18:12:50][ERROR] : CastError: Cast to ObjectId failed for value "wrongurl" (type string) at path "_id" for model "Customer" 
-[2021-10-16 18:12:50][ERROR] : Customer with id 507f191e810c19729de860ea not found on the database 
-[2021-10-16 18:12:50][ERROR] : CastError: Cast to ObjectId failed for value "!" (type string) at path "_id" for model "Customer" 
-[2021-10-16 18:12:50][ERROR] : MongoServerError: E11000 duplicate key error collection: databaseProgettoTechWeb.customers index: loginInfo.username_1 dup key: { loginInfo.username: "testtest" } 
-[2021-10-16 18:12:50][ERROR] : CastError: Cast to ObjectId failed for value "undefined" (type string) at path "customer" for model "Rental" 
-[2021-10-16 18:12:51][ERROR] : TypeError: map.entries is not a function or its return value is not iterable 
-[2021-10-16 18:12:51][ERROR] : CastError: Cast to ObjectId failed for value "!" (type string) at path "_id" for model "Customer" 
-[2021-10-16 18:13:06][ERROR] : Customer with id 616050300f33629454139b9a not found on the database 
-[2021-10-16 18:13:06][ERROR] : CastError: Cast to ObjectId failed for value "!" (type string) at path "_id" for model "Customer" 
-[2021-10-16 18:13:06][ERROR] : Customer with id 616050300f55729454809b9a not found on the database 
-[2021-10-16 18:13:06][ERROR] : Customer with id 507f191e810c19729de860ea not found on the database 
-[2021-10-16 18:13:06][ERROR] : CastError: Cast to ObjectId failed for value "wrongurl" (type string) at path "_id" for model "Customer" 
-[2021-10-16 18:13:07][ERROR] : Customer with id 507f191e810c19729de860ea not found on the database 
-[2021-10-16 18:13:07][ERROR] : CastError: Cast to ObjectId failed for value "!" (type string) at path "_id" for model "Customer" 
-[2021-10-16 18:13:07][ERROR] : MongoServerError: E11000 duplicate key error collection: databaseProgettoTechWeb.customers index: loginInfo.username_1 dup key: { loginInfo.username: "testtest" } 
-[2021-10-16 18:13:07][ERROR] : CastError: Cast to ObjectId failed for value "undefined" (type string) at path "customer" for model "Rental" 
-[2021-10-16 18:13:07][ERROR] : TypeError: map.entries is not a function or its return value is not iterable 
-[2021-10-16 18:13:07][ERROR] : CastError: Cast to ObjectId failed for value "!" (type string) at path "_id" for model "Customer" 
-[2021-10-16 18:13:48][ERROR] : Customer with id 616050300f33629454139b9a not found on the database 
-[2021-10-16 18:13:48][ERROR] : CastError: Cast to ObjectId failed for value "!" (type string) at path "_id" for model "Customer" 
-[2021-10-16 18:13:48][ERROR] : Customer with id 616050300f55729454809b9a not found on the database 
-[2021-10-16 18:13:48][ERROR] : Customer with id 507f191e810c19729de860ea not found on the database 
-[2021-10-16 18:13:48][ERROR] : CastError: Cast to ObjectId failed for value "wrongurl" (type string) at path "_id" for model "Customer" 
-[2021-10-16 18:13:49][ERROR] : Customer with id 507f191e810c19729de860ea not found on the database 
-[2021-10-16 18:13:49][ERROR] : CastError: Cast to ObjectId failed for value "!" (type string) at path "_id" for model "Customer" 
-[2021-10-16 18:13:49][ERROR] : MongoServerError: E11000 duplicate key error collection: databaseProgettoTechWeb.customers index: loginInfo.username_1 dup key: { loginInfo.username: "testtest" } 
-[2021-10-16 18:13:49][ERROR] : CastError: Cast to ObjectId failed for value "undefined" (type string) at path "customer" for model "Rental" 
-[2021-10-16 18:13:49][ERROR] : TypeError: map.entries is not a function or its return value is not iterable 
-[2021-10-16 18:13:49][ERROR] : CastError: Cast to ObjectId failed for value "!" (type string) at path "_id" for model "Customer" 
-[2021-10-16 18:14:42][ERROR] : Customer with id 616050300f33629454139b9a not found on the database 
-[2021-10-16 18:14:42][ERROR] : CastError: Cast to ObjectId failed for value "!" (type string) at path "_id" for model "Customer" 
-[2021-10-16 18:14:42][ERROR] : Customer with id 616050300f55729454809b9a not found on the database 
-[2021-10-16 18:14:42][ERROR] : Customer with id 507f191e810c19729de860ea not found on the database 
-[2021-10-16 18:14:42][ERROR] : CastError: Cast to ObjectId failed for value "wrongurl" (type string) at path "_id" for model "Customer" 
-[2021-10-16 18:14:43][ERROR] : Customer with id 507f191e810c19729de860ea not found on the database 
-[2021-10-16 18:14:43][ERROR] : CastError: Cast to ObjectId failed for value "!" (type string) at path "_id" for model "Customer" 
-[2021-10-16 18:14:43][ERROR] : TypeError: map.entries is not a function or its return value is not iterable 
-[2021-10-16 18:14:43][ERROR] : CastError: Cast to ObjectId failed for value "!" (type string) at path "_id" for model "Customer" 
-[2021-10-16 18:25:57][ERROR] : Customer with id 616050300f33629454139b9a not found on the database 
-[2021-10-16 18:25:57][ERROR] : CastError: Cast to ObjectId failed for value "!" (type string) at path "_id" for model "Customer" 
-[2021-10-16 18:25:57][ERROR] : Customer with id 616050300f55729454809b9a not found on the database 
-[2021-10-16 18:25:57][ERROR] : Customer with id 507f191e810c19729de860ea not found on the database 
-[2021-10-16 18:25:57][ERROR] : CastError: Cast to ObjectId failed for value "wrongurl" (type string) at path "_id" for model "Customer" 
-[2021-10-16 18:25:58][ERROR] : Customer with id 507f191e810c19729de860ea not found on the database 
-[2021-10-16 18:25:58][ERROR] : CastError: Cast to ObjectId failed for value "!" (type string) at path "_id" for model "Customer" 
-[2021-10-16 18:25:58][ERROR] : TypeError: map.entries is not a function or its return value is not iterable 
-[2021-10-16 18:25:58][ERROR] : CastError: Cast to ObjectId failed for value "!" (type string) at path "_id" for model "Customer" 
-[2021-10-16 18:28:00][ERROR] : Customer with id 616050300f33629454139b9a not found on the database 
-[2021-10-16 18:28:00][ERROR] : CastError: Cast to ObjectId failed for value "!" (type string) at path "_id" for model "Customer" 
-[2021-10-16 18:28:00][ERROR] : Customer with id 616050300f55729454809b9a not found on the database 
-[2021-10-16 18:28:00][ERROR] : Customer with id 507f191e810c19729de860ea not found on the database 
-[2021-10-16 18:28:00][ERROR] : CastError: Cast to ObjectId failed for value "wrongurl" (type string) at path "_id" for model "Customer" 
-[2021-10-16 18:28:01][ERROR] : Customer with id 507f191e810c19729de860ea not found on the database 
-[2021-10-16 18:28:01][ERROR] : CastError: Cast to ObjectId failed for value "!" (type string) at path "_id" for model "Customer" 
-[2021-10-16 18:28:01][ERROR] : TypeError: map.entries is not a function or its return value is not iterable 
-[2021-10-16 18:28:01][ERROR] : CastError: Cast to ObjectId failed for value "!" (type string) at path "_id" for model "Customer" 
-[2021-10-16 18:28:38][ERROR] : Customer with id 616050300f33629454139b9a not found on the database 
-[2021-10-16 18:28:38][ERROR] : CastError: Cast to ObjectId failed for value "!" (type string) at path "_id" for model "Customer" 
-[2021-10-16 18:28:38][ERROR] : Customer with id 616050300f55729454809b9a not found on the database 
-[2021-10-16 18:28:38][ERROR] : Customer with id 507f191e810c19729de860ea not found on the database 
-[2021-10-16 18:28:38][ERROR] : CastError: Cast to ObjectId failed for value "wrongurl" (type string) at path "_id" for model "Customer" 
-[2021-10-16 18:28:38][ERROR] : Customer with id 507f191e810c19729de860ea not found on the database 
-[2021-10-16 18:28:38][ERROR] : CastError: Cast to ObjectId failed for value "!" (type string) at path "_id" for model "Customer" 
-[2021-10-16 18:28:38][ERROR] : TypeError: map.entries is not a function or its return value is not iterable 
-[2021-10-16 18:28:38][ERROR] : CastError: Cast to ObjectId failed for value "!" (type string) at path "_id" for model "Customer" 
-[2021-10-16 18:29:04][ERROR] : Customer with id 616050300f33629454139b9a not found on the database 
-[2021-10-16 18:29:04][ERROR] : CastError: Cast to ObjectId failed for value "!" (type string) at path "_id" for model "Customer" 
-[2021-10-16 18:29:04][ERROR] : Customer with id 616050300f55729454809b9a not found on the database 
-[2021-10-16 18:29:04][ERROR] : Customer with id 507f191e810c19729de860ea not found on the database 
-[2021-10-16 18:29:04][ERROR] : CastError: Cast to ObjectId failed for value "wrongurl" (type string) at path "_id" for model "Customer" 
-[2021-10-16 18:29:05][ERROR] : Customer with id 507f191e810c19729de860ea not found on the database 
-[2021-10-16 18:29:05][ERROR] : CastError: Cast to ObjectId failed for value "!" (type string) at path "_id" for model "Customer" 
-[2021-10-16 18:29:05][ERROR] : TypeError: map.entries is not a function or its return value is not iterable 
-[2021-10-16 18:29:05][ERROR] : CastError: Cast to ObjectId failed for value "!" (type string) at path "_id" for model "Customer" 
-[2021-10-16 18:29:39][ERROR] : Customer with id 616050300f33629454139b9a not found on the database 
-[2021-10-16 18:29:39][ERROR] : CastError: Cast to ObjectId failed for value "!" (type string) at path "_id" for model "Customer" 
-[2021-10-16 18:29:39][ERROR] : Customer with id 616050300f55729454809b9a not found on the database 
-[2021-10-16 18:29:39][ERROR] : Customer with id 507f191e810c19729de860ea not found on the database 
-[2021-10-16 18:29:39][ERROR] : CastError: Cast to ObjectId failed for value "wrongurl" (type string) at path "_id" for model "Customer" 
-[2021-10-16 18:29:40][ERROR] : Customer with id 507f191e810c19729de860ea not found on the database 
-[2021-10-16 18:29:40][ERROR] : CastError: Cast to ObjectId failed for value "!" (type string) at path "_id" for model "Customer" 
-[2021-10-16 18:29:40][ERROR] : TypeError: map.entries is not a function or its return value is not iterable 
-[2021-10-16 18:29:40][ERROR] : CastError: Cast to ObjectId failed for value "!" (type string) at path "_id" for model "Customer" 
-[2021-10-16 18:30:25][ERROR] : Customer with id 616050300f33629454139b9a not found on the database 
-[2021-10-16 18:30:25][ERROR] : CastError: Cast to ObjectId failed for value "!" (type string) at path "_id" for model "Customer" 
-[2021-10-16 18:30:25][ERROR] : Customer with id 616050300f55729454809b9a not found on the database 
-[2021-10-16 18:30:25][ERROR] : Customer with id 507f191e810c19729de860ea not found on the database 
-[2021-10-16 18:30:25][ERROR] : CastError: Cast to ObjectId failed for value "wrongurl" (type string) at path "_id" for model "Customer" 
-[2021-10-16 18:30:25][ERROR] : Customer with id 507f191e810c19729de860ea not found on the database 
-[2021-10-16 18:30:25][ERROR] : CastError: Cast to ObjectId failed for value "!" (type string) at path "_id" for model "Customer" 
-[2021-10-16 18:30:25][ERROR] : TypeError: map.entries is not a function or its return value is not iterable 
-[2021-10-16 18:30:25][ERROR] : CastError: Cast to ObjectId failed for value "!" (type string) at path "_id" for model "Customer" 
-[2021-10-16 18:30:44][ERROR] : Customer with id 616050300f33629454139b9a not found on the database 
-[2021-10-16 18:30:44][ERROR] : CastError: Cast to ObjectId failed for value "!" (type string) at path "_id" for model "Customer" 
-[2021-10-16 18:30:44][ERROR] : Customer with id 616050300f55729454809b9a not found on the database 
-[2021-10-16 18:30:44][ERROR] : Customer with id 507f191e810c19729de860ea not found on the database 
-[2021-10-16 18:30:44][ERROR] : CastError: Cast to ObjectId failed for value "wrongurl" (type string) at path "_id" for model "Customer" 
-[2021-10-16 18:30:45][ERROR] : Customer with id 507f191e810c19729de860ea not found on the database 
-[2021-10-16 18:30:45][ERROR] : CastError: Cast to ObjectId failed for value "!" (type string) at path "_id" for model "Customer" 
-[2021-10-16 18:30:45][ERROR] : TypeError: map.entries is not a function or its return value is not iterable 
-[2021-10-16 18:30:45][ERROR] : CastError: Cast to ObjectId failed for value "!" (type string) at path "_id" for model "Customer" 
-[2021-10-16 18:31:26][ERROR] : MongoServerError: E11000 duplicate key error collection: databaseProgettoTechWeb.customers index: loginInfo.username_1 dup key: { loginInfo.username: "customer1" } 
-[2021-10-16 18:31:26][ERROR] : Customer with id 616050300f33629454139b9a not found on the database 
-[2021-10-16 18:31:26][ERROR] : CastError: Cast to ObjectId failed for value "!" (type string) at path "_id" for model "Customer" 
-[2021-10-16 18:31:26][ERROR] : Customer with id 616050300f55729454809b9a not found on the database 
-[2021-10-16 18:31:26][ERROR] : Customer with id 507f191e810c19729de860ea not found on the database 
-[2021-10-16 18:31:26][ERROR] : CastError: Cast to ObjectId failed for value "wrongurl" (type string) at path "_id" for model "Customer" 
-[2021-10-16 18:31:26][ERROR] : Customer with id 507f191e810c19729de860ea not found on the database 
-[2021-10-16 18:31:26][ERROR] : CastError: Cast to ObjectId failed for value "!" (type string) at path "_id" for model "Customer" 
-[2021-10-16 18:31:26][ERROR] : TypeError: map.entries is not a function or its return value is not iterable 
-[2021-10-16 18:31:27][ERROR] : TypeError: map.entries is not a function or its return value is not iterable 
-[2021-10-16 18:31:27][ERROR] : CastError: Cast to ObjectId failed for value "!" (type string) at path "_id" for model "Customer" 
-[2021-10-16 18:31:57][ERROR] : Customer with id 616050300f33629454139b9a not found on the database 
-[2021-10-16 18:31:57][ERROR] : CastError: Cast to ObjectId failed for value "!" (type string) at path "_id" for model "Customer" 
-[2021-10-16 18:31:57][ERROR] : Customer with id 616050300f55729454809b9a not found on the database 
-[2021-10-16 18:31:57][ERROR] : Customer with id 507f191e810c19729de860ea not found on the database 
-[2021-10-16 18:31:57][ERROR] : CastError: Cast to ObjectId failed for value "wrongurl" (type string) at path "_id" for model "Customer" 
-[2021-10-16 18:31:58][ERROR] : Customer with id 507f191e810c19729de860ea not found on the database 
-[2021-10-16 18:31:58][ERROR] : CastError: Cast to ObjectId failed for value "!" (type string) at path "_id" for model "Customer" 
-[2021-10-16 18:31:58][ERROR] : TypeError: map.entries is not a function or its return value is not iterable 
-[2021-10-16 18:31:58][ERROR] : TypeError: map.entries is not a function or its return value is not iterable 
-[2021-10-16 18:31:58][ERROR] : CastError: Cast to ObjectId failed for value "!" (type string) at path "_id" for model "Customer" 
-[2021-10-16 18:34:20][ERROR] : Customer with id 616050300f33629454139b9a not found on the database 
-[2021-10-16 18:34:20][ERROR] : CastError: Cast to ObjectId failed for value "!" (type string) at path "_id" for model "Customer" 
-[2021-10-16 18:34:20][ERROR] : Customer with id 616050300f55729454809b9a not found on the database 
-[2021-10-16 18:34:20][ERROR] : Customer with id 507f191e810c19729de860ea not found on the database 
-[2021-10-16 18:34:20][ERROR] : CastError: Cast to ObjectId failed for value "wrongurl" (type string) at path "_id" for model "Customer" 
-[2021-10-16 18:34:21][ERROR] : Customer with id 507f191e810c19729de860ea not found on the database 
-[2021-10-16 18:34:21][ERROR] : CastError: Cast to ObjectId failed for value "!" (type string) at path "_id" for model "Customer" 
-[2021-10-16 18:34:21][ERROR] : Non ancora implementanto 
-[2021-10-16 18:34:21][ERROR] : Non ancora implementanto 
-[2021-10-16 18:34:21][ERROR] : CastError: Cast to ObjectId failed for value "!" (type string) at path "_id" for model "Customer" 
-[2021-10-16 18:35:12][ERROR] : Customer with id 616050300f33629454139b9a not found on the database 
-[2021-10-16 18:35:12][ERROR] : CastError: Cast to ObjectId failed for value "!" (type string) at path "_id" for model "Customer" 
-[2021-10-16 18:35:12][ERROR] : Customer with id 616050300f55729454809b9a not found on the database 
-[2021-10-16 18:35:31][ERROR] : Customer with id 616050300f33629454139b9a not found on the database 
-[2021-10-16 18:35:31][ERROR] : CastError: Cast to ObjectId failed for value "!" (type string) at path "_id" for model "Customer" 
-[2021-10-16 18:35:31][ERROR] : Customer with id 616050300f55729454809b9a not found on the database 
-[2021-10-16 18:35:31][ERROR] : Customer with id 507f191e810c19729de860ea not found on the database 
-[2021-10-16 18:35:31][ERROR] : CastError: Cast to ObjectId failed for value "wrongurl" (type string) at path "_id" for model "Customer" 
-[2021-10-16 18:35:32][ERROR] : Customer with id 507f191e810c19729de860ea not found on the database 
-[2021-10-16 18:35:32][ERROR] : CastError: Cast to ObjectId failed for value "!" (type string) at path "_id" for model "Customer" 
-[2021-10-16 18:35:32][ERROR] : Non ancora implementanto 
-[2021-10-16 18:35:32][ERROR] : Non ancora implementanto 
-[2021-10-16 18:35:32][ERROR] : CastError: Cast to ObjectId failed for value "!" (type string) at path "_id" for model "Customer" 
-[2021-10-16 18:36:24][ERROR] : Customer with id 616050300f33629454139b9a not found on the database 
-[2021-10-16 18:36:24][ERROR] : CastError: Cast to ObjectId failed for value "!" (type string) at path "_id" for model "Customer" 
-[2021-10-16 18:36:24][ERROR] : Customer with id 616050300f55729454809b9a not found on the database 
-[2021-10-16 18:36:24][ERROR] : Customer with id 507f191e810c19729de860ea not found on the database 
-[2021-10-16 18:36:24][ERROR] : CastError: Cast to ObjectId failed for value "wrongurl" (type string) at path "_id" for model "Customer" 
-[2021-10-16 18:36:25][ERROR] : Customer with id 507f191e810c19729de860ea not found on the database 
-[2021-10-16 18:36:25][ERROR] : CastError: Cast to ObjectId failed for value "!" (type string) at path "_id" for model "Customer" 
-[2021-10-16 18:36:25][ERROR] : MongoServerError: E11000 duplicate key error collection: databaseProgettoTechWeb.customers index: loginInfo.username_1 dup key: { loginInfo.username: "customerTestGetFavorites" } 
-[2021-10-16 18:36:25][ERROR] : MongoServerError: E11000 duplicate key error collection: databaseProgettoTechWeb.products index: name_1 dup key: { name: "ProductTest" } 
-[2021-10-16 18:36:25][ERROR] : Non ancora implementanto 
-[2021-10-16 18:36:25][ERROR] : CastError: Cast to ObjectId failed for value "!" (type string) at path "_id" for model "Customer" 
-[2021-10-16 18:36:39][ERROR] : Customer with id 616050300f33629454139b9a not found on the database 
-[2021-10-16 18:36:39][ERROR] : CastError: Cast to ObjectId failed for value "!" (type string) at path "_id" for model "Customer" 
-[2021-10-16 18:36:39][ERROR] : Customer with id 616050300f55729454809b9a not found on the database 
-[2021-10-16 18:36:39][ERROR] : Customer with id 507f191e810c19729de860ea not found on the database 
-[2021-10-16 18:36:39][ERROR] : CastError: Cast to ObjectId failed for value "wrongurl" (type string) at path "_id" for model "Customer" 
-[2021-10-16 18:36:39][ERROR] : Customer with id 507f191e810c19729de860ea not found on the database 
-[2021-10-16 18:36:39][ERROR] : CastError: Cast to ObjectId failed for value "!" (type string) at path "_id" for model "Customer" 
-[2021-10-16 18:36:39][ERROR] : Non ancora implementanto 
-[2021-10-16 18:36:40][ERROR] : Non ancora implementanto 
-[2021-10-16 18:36:40][ERROR] : CastError: Cast to ObjectId failed for value "!" (type string) at path "_id" for model "Customer" 
-[2021-10-16 18:37:13][ERROR] : Customer with id 616050300f33629454139b9a not found on the database 
-[2021-10-16 18:37:13][ERROR] : CastError: Cast to ObjectId failed for value "!" (type string) at path "_id" for model "Customer" 
-[2021-10-16 18:37:13][ERROR] : Customer with id 616050300f55729454809b9a not found on the database 
-[2021-10-16 18:37:13][ERROR] : Customer with id 507f191e810c19729de860ea not found on the database 
-[2021-10-16 18:37:13][ERROR] : CastError: Cast to ObjectId failed for value "wrongurl" (type string) at path "_id" for model "Customer" 
-[2021-10-16 18:37:14][ERROR] : Customer with id 507f191e810c19729de860ea not found on the database 
-[2021-10-16 18:37:14][ERROR] : CastError: Cast to ObjectId failed for value "!" (type string) at path "_id" for model "Customer" 
-[2021-10-16 18:37:14][ERROR] : MongoServerError: E11000 duplicate key error collection: databaseProgettoTechWeb.customers index: loginInfo.username_1 dup key: { loginInfo.username: "customerTestGetFavorites" } 
-[2021-10-16 18:37:14][ERROR] : MongoServerError: E11000 duplicate key error collection: databaseProgettoTechWeb.products index: name_1 dup key: { name: "ProductTest" } 
-[2021-10-16 18:37:14][ERROR] : Non ancora implementanto 
-[2021-10-16 18:37:14][ERROR] : CastError: Cast to ObjectId failed for value "!" (type string) at path "_id" for model "Customer" 
-[2021-10-16 18:38:11][ERROR] : Customer with id 616050300f33629454139b9a not found on the database 
-[2021-10-16 18:38:11][ERROR] : CastError: Cast to ObjectId failed for value "!" (type string) at path "_id" for model "Customer" 
-[2021-10-16 18:38:11][ERROR] : Customer with id 616050300f55729454809b9a not found on the database 
-[2021-10-16 18:38:11][ERROR] : Customer with id 507f191e810c19729de860ea not found on the database 
-[2021-10-16 18:38:11][ERROR] : CastError: Cast to ObjectId failed for value "wrongurl" (type string) at path "_id" for model "Customer" 
-[2021-10-16 18:38:12][ERROR] : Customer with id 507f191e810c19729de860ea not found on the database 
-[2021-10-16 18:38:12][ERROR] : CastError: Cast to ObjectId failed for value "!" (type string) at path "_id" for model "Customer" 
-[2021-10-16 18:38:12][ERROR] : Non ancora implementanto 
-[2021-10-16 18:38:12][ERROR] : Non ancora implementanto 
-[2021-10-16 18:38:12][ERROR] : CastError: Cast to ObjectId failed for value "!" (type string) at path "_id" for model "Customer" 
-[2021-10-16 18:38:49][ERROR] : Customer with id 616050300f33629454139b9a not found on the database 
-[2021-10-16 18:38:49][ERROR] : CastError: Cast to ObjectId failed for value "!" (type string) at path "_id" for model "Customer" 
-[2021-10-16 18:38:49][ERROR] : Customer with id 616050300f55729454809b9a not found on the database 
-[2021-10-16 18:38:49][ERROR] : Customer with id 507f191e810c19729de860ea not found on the database 
-[2021-10-16 18:38:49][ERROR] : CastError: Cast to ObjectId failed for value "wrongurl" (type string) at path "_id" for model "Customer" 
-[2021-10-16 18:38:50][ERROR] : Customer with id 507f191e810c19729de860ea not found on the database 
-[2021-10-16 18:38:50][ERROR] : CastError: Cast to ObjectId failed for value "!" (type string) at path "_id" for model "Customer" 
-[2021-10-16 18:38:50][ERROR] : Non ancora implementanto 
-[2021-10-16 18:38:50][ERROR] : Non ancora implementanto 
-[2021-10-16 18:38:50][ERROR] : CastError: Cast to ObjectId failed for value "!" (type string) at path "_id" for model "Customer" 
-[2021-10-16 18:39:43][ERROR] : Customer with id 616050300f33629454139b9a not found on the database 
-[2021-10-16 18:39:43][ERROR] : CastError: Cast to ObjectId failed for value "!" (type string) at path "_id" for model "Customer" 
-[2021-10-16 18:39:43][ERROR] : Customer with id 616050300f55729454809b9a not found on the database 
-[2021-10-16 18:39:43][ERROR] : Customer with id 507f191e810c19729de860ea not found on the database 
-[2021-10-16 18:39:43][ERROR] : CastError: Cast to ObjectId failed for value "wrongurl" (type string) at path "_id" for model "Customer" 
-[2021-10-16 18:39:43][ERROR] : Customer with id 507f191e810c19729de860ea not found on the database 
-[2021-10-16 18:39:43][ERROR] : CastError: Cast to ObjectId failed for value "!" (type string) at path "_id" for model "Customer" 
-[2021-10-16 18:39:43][ERROR] : Non ancora implementanto 
-[2021-10-16 18:39:43][ERROR] : Non ancora implementanto 
-[2021-10-16 18:39:43][ERROR] : CastError: Cast to ObjectId failed for value "!" (type string) at path "_id" for model "Customer" 
-[2021-10-16 18:40:20][ERROR] : Customer with id 616050300f33629454139b9a not found on the database 
-[2021-10-16 18:40:20][ERROR] : CastError: Cast to ObjectId failed for value "!" (type string) at path "_id" for model "Customer" 
-[2021-10-16 18:40:20][ERROR] : Customer with id 616050300f55729454809b9a not found on the database 
-[2021-10-16 18:40:20][ERROR] : Customer with id 507f191e810c19729de860ea not found on the database 
-[2021-10-16 18:40:20][ERROR] : CastError: Cast to ObjectId failed for value "wrongurl" (type string) at path "_id" for model "Customer" 
-[2021-10-16 18:40:21][ERROR] : Customer with id 507f191e810c19729de860ea not found on the database 
-[2021-10-16 18:40:21][ERROR] : CastError: Cast to ObjectId failed for value "!" (type string) at path "_id" for model "Customer" 
-[2021-10-16 18:40:21][ERROR] : Non ancora implementanto 
-[2021-10-16 18:40:21][ERROR] : Non ancora implementanto 
-[2021-10-16 18:40:21][ERROR] : CastError: Cast to ObjectId failed for value "!" (type string) at path "_id" for model "Customer" 
-[2021-10-16 18:44:32][ERROR] : Customer with id 616050300f33629454139b9a not found on the database 
-[2021-10-16 18:44:32][ERROR] : CastError: Cast to ObjectId failed for value "!" (type string) at path "_id" for model "Customer" 
-[2021-10-16 18:44:32][ERROR] : Customer with id 616050300f55729454809b9a not found on the database 
-[2021-10-16 18:44:32][ERROR] : Customer with id 507f191e810c19729de860ea not found on the database 
-[2021-10-16 18:44:32][ERROR] : CastError: Cast to ObjectId failed for value "wrongurl" (type string) at path "_id" for model "Customer" 
-[2021-10-16 18:44:33][ERROR] : Customer with id 507f191e810c19729de860ea not found on the database 
-[2021-10-16 18:44:33][ERROR] : CastError: Cast to ObjectId failed for value "!" (type string) at path "_id" for model "Customer" 
-[2021-10-16 18:44:33][ERROR] : MongoServerError: E11000 duplicate key error collection: databaseProgettoTechWeb.customers index: loginInfo.username_1 dup key: { loginInfo.username: "customerTestGetFavorites" } 
-[2021-10-16 18:44:33][ERROR] : MongoServerError: E11000 duplicate key error collection: databaseProgettoTechWeb.products index: name_1 dup key: { name: "ProductTest" } 
-[2021-10-16 18:44:33][ERROR] : Non ancora implementanto 
-[2021-10-16 18:44:33][ERROR] : CastError: Cast to ObjectId failed for value "!" (type string) at path "_id" for model "Customer" 
-[2021-10-16 18:45:08][ERROR] : Customer with id 616050300f33629454139b9a not found on the database 
-[2021-10-16 18:45:08][ERROR] : CastError: Cast to ObjectId failed for value "!" (type string) at path "_id" for model "Customer" 
-[2021-10-16 18:45:08][ERROR] : Customer with id 616050300f55729454809b9a not found on the database 
-[2021-10-16 18:45:08][ERROR] : Customer with id 507f191e810c19729de860ea not found on the database 
-[2021-10-16 18:45:08][ERROR] : CastError: Cast to ObjectId failed for value "wrongurl" (type string) at path "_id" for model "Customer" 
-[2021-10-16 18:45:09][ERROR] : Customer with id 507f191e810c19729de860ea not found on the database 
-[2021-10-16 18:45:09][ERROR] : CastError: Cast to ObjectId failed for value "!" (type string) at path "_id" for model "Customer" 
-[2021-10-16 18:45:09][ERROR] : MongoServerError: E11000 duplicate key error collection: databaseProgettoTechWeb.customers index: loginInfo.username_1 dup key: { loginInfo.username: "customerTestGetFavorites" } 
-[2021-10-16 18:45:09][ERROR] : MongoServerError: E11000 duplicate key error collection: databaseProgettoTechWeb.products index: name_1 dup key: { name: "ProductTest" } 
-[2021-10-16 18:45:09][ERROR] : Non ancora implementanto 
-[2021-10-16 18:45:09][ERROR] : CastError: Cast to ObjectId failed for value "!" (type string) at path "_id" for model "Customer" 
-[2021-10-16 18:45:36][ERROR] : Customer with id 616050300f33629454139b9a not found on the database 
-[2021-10-16 18:45:36][ERROR] : CastError: Cast to ObjectId failed for value "!" (type string) at path "_id" for model "Customer" 
-[2021-10-16 18:45:36][ERROR] : Customer with id 616050300f55729454809b9a not found on the database 
-[2021-10-16 18:45:36][ERROR] : Customer with id 507f191e810c19729de860ea not found on the database 
-[2021-10-16 18:45:36][ERROR] : CastError: Cast to ObjectId failed for value "wrongurl" (type string) at path "_id" for model "Customer" 
-[2021-10-16 18:45:37][ERROR] : Customer with id 507f191e810c19729de860ea not found on the database 
-[2021-10-16 18:45:37][ERROR] : CastError: Cast to ObjectId failed for value "!" (type string) at path "_id" for model "Customer" 
-[2021-10-16 18:45:37][ERROR] : Non ancora implementanto 
-[2021-10-16 18:45:37][ERROR] : Non ancora implementanto 
-[2021-10-16 18:45:37][ERROR] : CastError: Cast to ObjectId failed for value "!" (type string) at path "_id" for model "Customer" 
-[2021-10-16 18:46:39][ERROR] : Customer with id 616050300f33629454139b9a not found on the database 
-[2021-10-16 18:46:39][ERROR] : CastError: Cast to ObjectId failed for value "!" (type string) at path "_id" for model "Customer" 
-[2021-10-16 18:46:39][ERROR] : Customer with id 616050300f55729454809b9a not found on the database 
-[2021-10-16 18:46:40][ERROR] : Customer with id 507f191e810c19729de860ea not found on the database 
-[2021-10-16 18:46:40][ERROR] : CastError: Cast to ObjectId failed for value "wrongurl" (type string) at path "_id" for model "Customer" 
-[2021-10-16 18:46:40][ERROR] : Customer with id 507f191e810c19729de860ea not found on the database 
-[2021-10-16 18:46:40][ERROR] : CastError: Cast to ObjectId failed for value "!" (type string) at path "_id" for model "Customer" 
-[2021-10-16 18:46:40][ERROR] : MongoServerError: E11000 duplicate key error collection: databaseProgettoTechWeb.products index: name_1 dup key: { name: "ProductTest" } 
-[2021-10-16 18:46:40][ERROR] : Customer with id 507f191e810c19729de860ea not found on the database 
-[2021-10-16 18:46:40][ERROR] : CastError: Cast to ObjectId failed for value "!" (type string) at path "_id" for model "Customer" 
-[2021-10-16 18:47:02][ERROR] : Customer with id 616050300f33629454139b9a not found on the database 
-[2021-10-16 18:47:02][ERROR] : CastError: Cast to ObjectId failed for value "!" (type string) at path "_id" for model "Customer" 
-[2021-10-16 18:47:02][ERROR] : Customer with id 616050300f55729454809b9a not found on the database 
-[2021-10-16 18:47:02][ERROR] : Customer with id 507f191e810c19729de860ea not found on the database 
-[2021-10-16 18:47:02][ERROR] : CastError: Cast to ObjectId failed for value "wrongurl" (type string) at path "_id" for model "Customer" 
-[2021-10-16 18:47:03][ERROR] : Customer with id 507f191e810c19729de860ea not found on the database 
-[2021-10-16 18:47:03][ERROR] : CastError: Cast to ObjectId failed for value "!" (type string) at path "_id" for model "Customer" 
-[2021-10-16 18:47:03][ERROR] : Non ancora implementanto 
-[2021-10-16 18:47:03][ERROR] : Customer with id 507f191e810c19729de860ea not found on the database 
-[2021-10-16 18:47:03][ERROR] : CastError: Cast to ObjectId failed for value "!" (type string) at path "_id" for model "Customer" 
-[2021-10-16 18:47:12][ERROR] : Customer with id 616050300f33629454139b9a not found on the database 
-[2021-10-16 18:47:12][ERROR] : CastError: Cast to ObjectId failed for value "!" (type string) at path "_id" for model "Customer" 
-[2021-10-16 18:47:12][ERROR] : Customer with id 616050300f55729454809b9a not found on the database 
-[2021-10-16 18:47:12][ERROR] : Customer with id 507f191e810c19729de860ea not found on the database 
-[2021-10-16 18:47:12][ERROR] : CastError: Cast to ObjectId failed for value "wrongurl" (type string) at path "_id" for model "Customer" 
-[2021-10-16 18:47:13][ERROR] : Customer with id 507f191e810c19729de860ea not found on the database 
-[2021-10-16 18:47:13][ERROR] : CastError: Cast to ObjectId failed for value "!" (type string) at path "_id" for model "Customer" 
-[2021-10-16 18:47:13][ERROR] : MongoServerError: E11000 duplicate key error collection: databaseProgettoTechWeb.products index: name_1 dup key: { name: "ProductTest" } 
-[2021-10-16 18:47:13][ERROR] : Customer with id 507f191e810c19729de860ea not found on the database 
-[2021-10-16 18:47:13][ERROR] : CastError: Cast to ObjectId failed for value "!" (type string) at path "_id" for model "Customer" 
-[2021-10-16 18:49:34][ERROR] : Customer with id 616050300f33629454139b9a not found on the database 
-[2021-10-16 18:49:34][ERROR] : CastError: Cast to ObjectId failed for value "!" (type string) at path "_id" for model "Customer" 
-[2021-10-16 18:49:34][ERROR] : Customer with id 616050300f55729454809b9a not found on the database 
-[2021-10-16 18:49:34][ERROR] : Customer with id 507f191e810c19729de860ea not found on the database 
-[2021-10-16 18:49:34][ERROR] : CastError: Cast to ObjectId failed for value "wrongurl" (type string) at path "_id" for model "Customer" 
-[2021-10-16 18:49:35][ERROR] : Customer with id 507f191e810c19729de860ea not found on the database 
-[2021-10-16 18:49:35][ERROR] : CastError: Cast to ObjectId failed for value "!" (type string) at path "_id" for model "Customer" 
-[2021-10-16 18:49:35][ERROR] : Non ancora implementanto 
-[2021-10-16 18:49:35][ERROR] : Customer with id 507f191e810c19729de860ea not found on the database 
-[2021-10-16 18:49:35][ERROR] : CastError: Cast to ObjectId failed for value "!" (type string) at path "_id" for model "Customer" 
-[2021-10-16 18:51:23][ERROR] : Customer with id 616050300f33629454139b9a not found on the database 
-[2021-10-16 18:51:23][ERROR] : CastError: Cast to ObjectId failed for value "!" (type string) at path "_id" for model "Customer" 
-[2021-10-16 18:51:23][ERROR] : Customer with id 616050300f55729454809b9a not found on the database 
-[2021-10-16 18:51:23][ERROR] : Customer with id 507f191e810c19729de860ea not found on the database 
-[2021-10-16 18:51:23][ERROR] : CastError: Cast to ObjectId failed for value "wrongurl" (type string) at path "_id" for model "Customer" 
-[2021-10-16 18:51:24][ERROR] : Customer with id 507f191e810c19729de860ea not found on the database 
-[2021-10-16 18:51:24][ERROR] : CastError: Cast to ObjectId failed for value "!" (type string) at path "_id" for model "Customer" 
-[2021-10-16 18:51:24][ERROR] : Non ancora implementanto 
-[2021-10-16 18:51:24][ERROR] : Customer with id 507f191e810c19729de860ea not found on the database 
-[2021-10-16 18:51:24][ERROR] : CastError: Cast to ObjectId failed for value "!" (type string) at path "_id" for model "Customer" 
-[2021-10-16 18:53:48][ERROR] : Customer with id 616050300f33629454139b9a not found on the database 
-[2021-10-16 18:53:48][ERROR] : CastError: Cast to ObjectId failed for value "!" (type string) at path "_id" for model "Customer" 
-[2021-10-16 18:53:48][ERROR] : Customer with id 616050300f55729454809b9a not found on the database 
-[2021-10-16 18:53:48][ERROR] : Customer with id 507f191e810c19729de860ea not found on the database 
-[2021-10-16 18:53:48][ERROR] : CastError: Cast to ObjectId failed for value "wrongurl" (type string) at path "_id" for model "Customer" 
-[2021-10-16 18:53:49][ERROR] : Customer with id 507f191e810c19729de860ea not found on the database 
-[2021-10-16 18:53:49][ERROR] : CastError: Cast to ObjectId failed for value "!" (type string) at path "_id" for model "Customer" 
-[2021-10-16 18:53:49][ERROR] : Non ancora implementanto 
-[2021-10-16 18:53:49][ERROR] : Customer with id 507f191e810c19729de860ea not found on the database 
-[2021-10-16 18:53:49][ERROR] : CastError: Cast to ObjectId failed for value "!" (type string) at path "_id" for model "Customer" 
-[2021-10-16 18:54:59][ERROR] : Customer with id 616050300f33629454139b9a not found on the database 
-[2021-10-16 18:54:59][ERROR] : CastError: Cast to ObjectId failed for value "!" (type string) at path "_id" for model "Customer" 
-[2021-10-16 18:54:59][ERROR] : Customer with id 616050300f55729454809b9a not found on the database 
-[2021-10-16 18:54:59][ERROR] : Customer with id 507f191e810c19729de860ea not found on the database 
-[2021-10-16 18:54:59][ERROR] : CastError: Cast to ObjectId failed for value "wrongurl" (type string) at path "_id" for model "Customer" 
-[2021-10-16 18:55:00][ERROR] : Customer with id 507f191e810c19729de860ea not found on the database 
-[2021-10-16 18:55:00][ERROR] : CastError: Cast to ObjectId failed for value "!" (type string) at path "_id" for model "Customer" 
-[2021-10-16 18:55:00][ERROR] : Non ancora implementanto 
-[2021-10-16 18:55:00][ERROR] : Customer with id 507f191e810c19729de860ea not found on the database 
-[2021-10-16 18:55:00][ERROR] : CastError: Cast to ObjectId failed for value "!" (type string) at path "_id" for model "Customer" 
-[2021-10-16 18:55:10][ERROR] : Customer with id 616050300f33629454139b9a not found on the database 
-[2021-10-16 18:55:10][ERROR] : CastError: Cast to ObjectId failed for value "!" (type string) at path "_id" for model "Customer" 
-[2021-10-16 18:55:10][ERROR] : Customer with id 616050300f55729454809b9a not found on the database 
-[2021-10-16 18:55:10][ERROR] : Customer with id 507f191e810c19729de860ea not found on the database 
-[2021-10-16 18:55:10][ERROR] : CastError: Cast to ObjectId failed for value "wrongurl" (type string) at path "_id" for model "Customer" 
-[2021-10-16 18:55:11][ERROR] : Customer with id 507f191e810c19729de860ea not found on the database 
-[2021-10-16 18:55:11][ERROR] : CastError: Cast to ObjectId failed for value "!" (type string) at path "_id" for model "Customer" 
-[2021-10-16 18:55:11][ERROR] : Non ancora implementanto 
-[2021-10-16 18:55:11][ERROR] : Customer with id 507f191e810c19729de860ea not found on the database 
-[2021-10-16 18:55:11][ERROR] : CastError: Cast to ObjectId failed for value "!" (type string) at path "_id" for model "Customer" 
-[2021-10-16 18:55:24][ERROR] : Customer with id 616050300f33629454139b9a not found on the database 
-[2021-10-16 18:55:24][ERROR] : CastError: Cast to ObjectId failed for value "!" (type string) at path "_id" for model "Customer" 
-[2021-10-16 18:55:24][ERROR] : Customer with id 616050300f55729454809b9a not found on the database 
-[2021-10-16 18:55:24][ERROR] : Customer with id 507f191e810c19729de860ea not found on the database 
-[2021-10-16 18:55:24][ERROR] : CastError: Cast to ObjectId failed for value "wrongurl" (type string) at path "_id" for model "Customer" 
-[2021-10-16 18:55:25][ERROR] : Customer with id 507f191e810c19729de860ea not found on the database 
-[2021-10-16 18:55:25][ERROR] : CastError: Cast to ObjectId failed for value "!" (type string) at path "_id" for model "Customer" 
-[2021-10-16 18:55:25][ERROR] : Non ancora implementanto 
-[2021-10-16 18:55:25][ERROR] : Customer with id 507f191e810c19729de860ea not found on the database 
-[2021-10-16 18:55:25][ERROR] : CastError: Cast to ObjectId failed for value "!" (type string) at path "_id" for model "Customer" 
-[2021-10-16 18:56:30][ERROR] : Customer with id 616050300f33629454139b9a not found on the database 
-[2021-10-16 18:56:30][ERROR] : CastError: Cast to ObjectId failed for value "!" (type string) at path "_id" for model "Customer" 
-[2021-10-16 18:56:30][ERROR] : Customer with id 616050300f55729454809b9a not found on the database 
-[2021-10-16 18:56:30][ERROR] : Customer with id 507f191e810c19729de860ea not found on the database 
-[2021-10-16 18:56:30][ERROR] : CastError: Cast to ObjectId failed for value "wrongurl" (type string) at path "_id" for model "Customer" 
-[2021-10-16 18:56:31][ERROR] : Customer with id 507f191e810c19729de860ea not found on the database 
-[2021-10-16 18:56:31][ERROR] : CastError: Cast to ObjectId failed for value "!" (type string) at path "_id" for model "Customer" 
-[2021-10-16 18:56:31][ERROR] : Non ancora implementanto 
-[2021-10-16 18:56:31][ERROR] : Customer with id 507f191e810c19729de860ea not found on the database 
-[2021-10-16 18:56:31][ERROR] : CastError: Cast to ObjectId failed for value "!" (type string) at path "_id" for model "Customer" 
-[2021-10-17 15:41:50][ERROR] : Customer with id 616050300f33629454139b9a not found on the database 
-[2021-10-17 15:41:50][ERROR] : CastError: Cast to ObjectId failed for value "!" (type string) at path "_id" for model "Customer" 
-[2021-10-17 15:41:50][ERROR] : Customer with id 616050300f55729454809b9a not found on the database 
-[2021-10-17 15:41:50][ERROR] : Customer with id 507f191e810c19729de860ea not found on the database 
-[2021-10-17 15:41:50][ERROR] : CastError: Cast to ObjectId failed for value "wrongurl" (type string) at path "_id" for model "Customer" 
-[2021-10-17 15:41:51][ERROR] : Customer with id 507f191e810c19729de860ea not found on the database 
-[2021-10-17 15:41:51][ERROR] : CastError: Cast to ObjectId failed for value "!" (type string) at path "_id" for model "Customer" 
-[2021-10-17 15:41:51][ERROR] : Non ancora implementanto 
-[2021-10-17 15:41:51][ERROR] : Customer with id 507f191e810c19729de860ea not found on the database 
-[2021-10-17 15:41:51][ERROR] : CastError: Cast to ObjectId failed for value "!" (type string) at path "_id" for model "Customer" 
-[2021-10-17 15:42:35][ERROR] : Customer with id 616050300f33629454139b9a not found on the database 
-[2021-10-17 15:42:35][ERROR] : CastError: Cast to ObjectId failed for value "!" (type string) at path "_id" for model "Customer" 
-[2021-10-17 15:42:35][ERROR] : Customer with id 616050300f55729454809b9a not found on the database 
-[2021-10-17 15:42:35][ERROR] : Customer with id 507f191e810c19729de860ea not found on the database 
-[2021-10-17 15:42:35][ERROR] : CastError: Cast to ObjectId failed for value "wrongurl" (type string) at path "_id" for model "Customer" 
-[2021-10-17 15:42:36][ERROR] : Customer with id 507f191e810c19729de860ea not found on the database 
-[2021-10-17 15:42:36][ERROR] : CastError: Cast to ObjectId failed for value "!" (type string) at path "_id" for model "Customer" 
-[2021-10-17 15:42:36][ERROR] : Non ancora implementanto 
-[2021-10-17 15:42:36][ERROR] : Customer with id 507f191e810c19729de860ea not found on the database 
-[2021-10-17 15:42:36][ERROR] : CastError: Cast to ObjectId failed for value "!" (type string) at path "_id" for model "Customer" 
-[2021-10-17 15:42:36][ERROR] : ValidationError: Product validation failed: subcategory: Path `subcategory` is required., category: Path `category` is required., description: Path `description` is required. 
-[2021-10-17 15:43:27][ERROR] : Customer with id 616050300f33629454139b9a not found on the database 
-[2021-10-17 15:43:27][ERROR] : CastError: Cast to ObjectId failed for value "!" (type string) at path "_id" for model "Customer" 
-[2021-10-17 15:43:27][ERROR] : Customer with id 616050300f55729454809b9a not found on the database 
-[2021-10-17 15:43:27][ERROR] : Customer with id 507f191e810c19729de860ea not found on the database 
-[2021-10-17 15:43:27][ERROR] : CastError: Cast to ObjectId failed for value "wrongurl" (type string) at path "_id" for model "Customer" 
-[2021-10-17 15:43:28][ERROR] : Customer with id 507f191e810c19729de860ea not found on the database 
-[2021-10-17 15:43:28][ERROR] : CastError: Cast to ObjectId failed for value "!" (type string) at path "_id" for model "Customer" 
-[2021-10-17 15:43:28][ERROR] : Non ancora implementanto 
-[2021-10-17 15:43:28][ERROR] : Customer with id 507f191e810c19729de860ea not found on the database 
-[2021-10-17 15:43:28][ERROR] : CastError: Cast to ObjectId failed for value "!" (type string) at path "_id" for model "Customer" 
-[2021-10-17 15:43:28][ERROR] : ValidationError: Product validation failed: subcategory: Path `subcategory` is required., category: Path `category` is required., description: Path `description` is required. 
-[2021-10-17 15:44:26][ERROR] : Customer with id 616050300f33629454139b9a not found on the database 
-[2021-10-17 15:44:26][ERROR] : CastError: Cast to ObjectId failed for value "!" (type string) at path "_id" for model "Customer" 
-[2021-10-17 15:44:26][ERROR] : Customer with id 616050300f55729454809b9a not found on the database 
-[2021-10-17 15:44:26][ERROR] : Customer with id 507f191e810c19729de860ea not found on the database 
-[2021-10-17 15:44:26][ERROR] : CastError: Cast to ObjectId failed for value "wrongurl" (type string) at path "_id" for model "Customer" 
-[2021-10-17 15:44:27][ERROR] : Customer with id 507f191e810c19729de860ea not found on the database 
-[2021-10-17 15:44:27][ERROR] : CastError: Cast to ObjectId failed for value "!" (type string) at path "_id" for model "Customer" 
-[2021-10-17 15:44:27][ERROR] : Non ancora implementanto 
-[2021-10-17 15:44:27][ERROR] : Customer with id 507f191e810c19729de860ea not found on the database 
-[2021-10-17 15:44:27][ERROR] : CastError: Cast to ObjectId failed for value "!" (type string) at path "_id" for model "Customer" 
-[2021-10-17 15:44:27][ERROR] : ValidationError: Product validation failed: subcategory: Path `subcategory` is required., category: Path `category` is required., description: Path `description` is required. 
-[2021-10-17 15:44:46][ERROR] : Customer with id 616050300f33629454139b9a not found on the database 
-[2021-10-17 15:44:46][ERROR] : CastError: Cast to ObjectId failed for value "!" (type string) at path "_id" for model "Customer" 
-[2021-10-17 15:44:46][ERROR] : Customer with id 616050300f55729454809b9a not found on the database 
-[2021-10-17 15:44:46][ERROR] : Customer with id 507f191e810c19729de860ea not found on the database 
-[2021-10-17 15:44:46][ERROR] : CastError: Cast to ObjectId failed for value "wrongurl" (type string) at path "_id" for model "Customer" 
-[2021-10-17 15:44:47][ERROR] : Customer with id 507f191e810c19729de860ea not found on the database 
-[2021-10-17 15:44:47][ERROR] : CastError: Cast to ObjectId failed for value "!" (type string) at path "_id" for model "Customer" 
-[2021-10-17 15:44:47][ERROR] : Non ancora implementanto 
-[2021-10-17 15:44:47][ERROR] : Customer with id 507f191e810c19729de860ea not found on the database 
-[2021-10-17 15:44:47][ERROR] : CastError: Cast to ObjectId failed for value "!" (type string) at path "_id" for model "Customer" 
-[2021-10-17 15:44:47][ERROR] : ValidationError: Product validation failed: subcategory: Path `subcategory` is required., category: Path `category` is required., description: Path `description` is required. 
-[2021-10-17 15:48:02][ERROR] : Customer with id 616050300f33629454139b9a not found on the database 
-[2021-10-17 15:48:02][ERROR] : CastError: Cast to ObjectId failed for value "!" (type string) at path "_id" for model "Customer" 
-[2021-10-17 15:48:02][ERROR] : Customer with id 616050300f55729454809b9a not found on the database 
-[2021-10-17 15:48:02][ERROR] : Customer with id 507f191e810c19729de860ea not found on the database 
-[2021-10-17 15:48:02][ERROR] : CastError: Cast to ObjectId failed for value "wrongurl" (type string) at path "_id" for model "Customer" 
-[2021-10-17 15:48:03][ERROR] : Customer with id 507f191e810c19729de860ea not found on the database 
-[2021-10-17 15:48:03][ERROR] : CastError: Cast to ObjectId failed for value "!" (type string) at path "_id" for model "Customer" 
-[2021-10-17 15:48:03][ERROR] : Non ancora implementanto 
-[2021-10-17 15:48:03][ERROR] : Customer with id 507f191e810c19729de860ea not found on the database 
-[2021-10-17 15:48:03][ERROR] : CastError: Cast to ObjectId failed for value "!" (type string) at path "_id" for model "Customer" 
-[2021-10-17 15:48:04][ERROR] : ValidationError: Product validation failed: subcategory: Path `subcategory` is required., category: Path `category` is required., description: Path `description` is required. 
-[2021-10-17 15:49:38][ERROR] : Customer with id 616050300f33629454139b9a not found on the database 
-[2021-10-17 15:49:38][ERROR] : CastError: Cast to ObjectId failed for value "!" (type string) at path "_id" for model "Customer" 
-[2021-10-17 15:49:38][ERROR] : Customer with id 616050300f55729454809b9a not found on the database 
-[2021-10-17 15:49:38][ERROR] : Customer with id 507f191e810c19729de860ea not found on the database 
-[2021-10-17 15:49:38][ERROR] : CastError: Cast to ObjectId failed for value "wrongurl" (type string) at path "_id" for model "Customer" 
-[2021-10-17 15:49:39][ERROR] : Customer with id 616c46139bb17479aa3f97ec not found on the database 
-[2021-10-17 15:49:39][ERROR] : Customer with id 507f191e810c19729de860ea not found on the database 
-[2021-10-17 15:49:39][ERROR] : CastError: Cast to ObjectId failed for value "!" (type string) at path "_id" for model "Customer" 
-[2021-10-17 15:49:39][ERROR] : Non ancora implementanto 
-[2021-10-17 15:49:39][ERROR] : Customer with id 507f191e810c19729de860ea not found on the database 
-[2021-10-17 15:49:39][ERROR] : CastError: Cast to ObjectId failed for value "!" (type string) at path "_id" for model "Customer" 
-[2021-10-17 15:49:40][ERROR] : ValidationError: Product validation failed: subcategory: Path `subcategory` is required., category: Path `category` is required., description: Path `description` is required. 
-[2021-10-17 15:50:18][ERROR] : Customer with id 616050300f33629454139b9a not found on the database 
-[2021-10-17 15:50:18][ERROR] : CastError: Cast to ObjectId failed for value "!" (type string) at path "_id" for model "Customer" 
-[2021-10-17 15:50:18][ERROR] : Customer with id 616050300f55729454809b9a not found on the database 
-[2021-10-17 15:50:18][ERROR] : Customer with id 507f191e810c19729de860ea not found on the database 
-[2021-10-17 15:50:18][ERROR] : CastError: Cast to ObjectId failed for value "wrongurl" (type string) at path "_id" for model "Customer" 
-[2021-10-17 15:50:19][ERROR] : Customer with id 616c463b18b3a5baf1571bee not found on the database 
-[2021-10-17 15:50:19][ERROR] : Customer with id 507f191e810c19729de860ea not found on the database 
-[2021-10-17 15:50:19][ERROR] : CastError: Cast to ObjectId failed for value "!" (type string) at path "_id" for model "Customer" 
-[2021-10-17 15:50:19][ERROR] : Non ancora implementanto 
-[2021-10-17 15:50:19][ERROR] : Customer with id 507f191e810c19729de860ea not found on the database 
-[2021-10-17 15:50:19][ERROR] : CastError: Cast to ObjectId failed for value "!" (type string) at path "_id" for model "Customer" 
-[2021-10-17 15:50:20][ERROR] : ValidationError: Product validation failed: subcategory: Path `subcategory` is required., category: Path `category` is required., description: Path `description` is required. 
-[2021-10-17 15:50:59][ERROR] : Customer with id 616050300f33629454139b9a not found on the database 
-[2021-10-17 15:50:59][ERROR] : CastError: Cast to ObjectId failed for value "!" (type string) at path "_id" for model "Customer" 
-[2021-10-17 15:50:59][ERROR] : Customer with id 616050300f55729454809b9a not found on the database 
-[2021-10-17 15:50:59][ERROR] : Customer with id 507f191e810c19729de860ea not found on the database 
-[2021-10-17 15:50:59][ERROR] : CastError: Cast to ObjectId failed for value "wrongurl" (type string) at path "_id" for model "Customer" 
-[2021-10-17 15:51:00][ERROR] : Customer with id 507f191e810c19729de860ea not found on the database 
-[2021-10-17 15:51:00][ERROR] : CastError: Cast to ObjectId failed for value "!" (type string) at path "_id" for model "Customer" 
-[2021-10-17 15:51:00][ERROR] : Non ancora implementanto 
-[2021-10-17 15:51:00][ERROR] : Customer with id 507f191e810c19729de860ea not found on the database 
-[2021-10-17 15:51:00][ERROR] : CastError: Cast to ObjectId failed for value "!" (type string) at path "_id" for model "Customer" 
-[2021-10-17 15:51:00][ERROR] : ValidationError: Product validation failed: subcategory: Path `subcategory` is required., category: Path `category` is required., description: Path `description` is required. 
-[2021-10-17 15:51:56][ERROR] : Customer with id 616050300f33629454139b9a not found on the database 
-[2021-10-17 15:51:56][ERROR] : CastError: Cast to ObjectId failed for value "!" (type string) at path "_id" for model "Customer" 
-[2021-10-17 15:51:56][ERROR] : Customer with id 616050300f55729454809b9a not found on the database 
-[2021-10-17 15:51:56][ERROR] : Customer with id 507f191e810c19729de860ea not found on the database 
-[2021-10-17 15:51:56][ERROR] : CastError: Cast to ObjectId failed for value "wrongurl" (type string) at path "_id" for model "Customer" 
-[2021-10-17 15:51:57][ERROR] : Customer with id 507f191e810c19729de860ea not found on the database 
-[2021-10-17 15:51:57][ERROR] : CastError: Cast to ObjectId failed for value "!" (type string) at path "_id" for model "Customer" 
-[2021-10-17 15:51:57][ERROR] : Non ancora implementanto 
-[2021-10-17 15:51:57][ERROR] : Customer with id 507f191e810c19729de860ea not found on the database 
-[2021-10-17 15:51:57][ERROR] : CastError: Cast to ObjectId failed for value "!" (type string) at path "_id" for model "Customer" 
-[2021-10-17 15:51:57][ERROR] : ValidationError: Product validation failed: subcategory: Path `subcategory` is required., category: Path `category` is required., description: Path `description` is required. 
-[2021-10-17 15:56:49][ERROR] : Customer with id 616050300f33629454139b9a not found on the database 
-[2021-10-17 15:56:49][ERROR] : CastError: Cast to ObjectId failed for value "!" (type string) at path "_id" for model "Customer" 
-[2021-10-17 15:56:49][ERROR] : Customer with id 616050300f55729454809b9a not found on the database 
-[2021-10-17 15:56:49][ERROR] : Customer with id 507f191e810c19729de860ea not found on the database 
-[2021-10-17 15:56:49][ERROR] : CastError: Cast to ObjectId failed for value "wrongurl" (type string) at path "_id" for model "Customer" 
-[2021-10-17 15:56:50][ERROR] : Customer with id 507f191e810c19729de860ea not found on the database 
-[2021-10-17 15:56:50][ERROR] : CastError: Cast to ObjectId failed for value "!" (type string) at path "_id" for model "Customer" 
-[2021-10-17 15:56:50][ERROR] : Non ancora implementanto 
-[2021-10-17 15:56:50][ERROR] : Customer with id 507f191e810c19729de860ea not found on the database 
-[2021-10-17 15:56:50][ERROR] : CastError: Cast to ObjectId failed for value "!" (type string) at path "_id" for model "Customer" 
-[2021-10-17 15:56:50][ERROR] : ValidationError: Product validation failed: subcategory: Path `subcategory` is required., category: Path `category` is required., description: Path `description` is required. 
-[2021-10-17 15:58:21][ERROR] : Customer with id 616050300f33629454139b9a not found on the database 
-[2021-10-17 15:58:21][ERROR] : CastError: Cast to ObjectId failed for value "!" (type string) at path "_id" for model "Customer" 
-[2021-10-17 15:58:21][ERROR] : Customer with id 616050300f55729454809b9a not found on the database 
-[2021-10-17 15:58:21][ERROR] : Customer with id 507f191e810c19729de860ea not found on the database 
-[2021-10-17 15:58:21][ERROR] : CastError: Cast to ObjectId failed for value "wrongurl" (type string) at path "_id" for model "Customer" 
-[2021-10-17 15:58:26][ERROR] : Customer with id 616050300f33629454139b9a not found on the database 
-[2021-10-17 15:58:26][ERROR] : CastError: Cast to ObjectId failed for value "!" (type string) at path "_id" for model "Customer" 
-[2021-10-17 15:58:26][ERROR] : Customer with id 616050300f55729454809b9a not found on the database 
-[2021-10-17 15:58:26][ERROR] : Customer with id 507f191e810c19729de860ea not found on the database 
-[2021-10-17 15:58:26][ERROR] : CastError: Cast to ObjectId failed for value "wrongurl" (type string) at path "_id" for model "Customer" 
-[2021-10-17 15:58:27][ERROR] : Customer with id 507f191e810c19729de860ea not found on the database 
-[2021-10-17 15:58:27][ERROR] : CastError: Cast to ObjectId failed for value "!" (type string) at path "_id" for model "Customer" 
-[2021-10-17 15:58:27][ERROR] : Non ancora implementanto 
-[2021-10-17 15:58:27][ERROR] : Customer with id 507f191e810c19729de860ea not found on the database 
-[2021-10-17 15:58:27][ERROR] : CastError: Cast to ObjectId failed for value "!" (type string) at path "_id" for model "Customer" 
-[2021-10-17 15:58:27][ERROR] : ValidationError: Product validation failed: subcategory: Path `subcategory` is required., category: Path `category` is required., description: Path `description` is required. 
-[2021-10-17 16:02:06][ERROR] : Customer with id 616050300f33629454139b9a not found on the database 
-[2021-10-17 16:02:06][ERROR] : CastError: Cast to ObjectId failed for value "!" (type string) at path "_id" for model "Customer" 
-[2021-10-17 16:02:06][ERROR] : Customer with id 616050300f55729454809b9a not found on the database 
-[2021-10-17 16:02:06][ERROR] : Customer with id 507f191e810c19729de860ea not found on the database 
-[2021-10-17 16:02:06][ERROR] : CastError: Cast to ObjectId failed for value "wrongurl" (type string) at path "_id" for model "Customer" 
-[2021-10-17 16:02:07][ERROR] : CastError: Cast to ObjectId failed for value "!" (type string) at path "_id" for model "Customer" 
-[2021-10-17 16:02:07][ERROR] : Non ancora implementanto 
-[2021-10-17 16:02:07][ERROR] : Customer with id 507f191e810c19729de860ea not found on the database 
-[2021-10-17 16:02:07][ERROR] : CastError: Cast to ObjectId failed for value "!" (type string) at path "_id" for model "Customer" 
-[2021-10-17 16:02:08][ERROR] : ValidationError: Product validation failed: subcategory: Path `subcategory` is required., category: Path `category` is required., description: Path `description` is required. 
-[2021-10-17 16:02:23][ERROR] : Customer with id 616050300f33629454139b9a not found on the database 
-[2021-10-17 16:02:23][ERROR] : CastError: Cast to ObjectId failed for value "!" (type string) at path "_id" for model "Customer" 
-[2021-10-17 16:02:23][ERROR] : Customer with id 616050300f55729454809b9a not found on the database 
-[2021-10-17 16:02:23][ERROR] : Customer with id 507f191e810c19729de860ea not found on the database 
-[2021-10-17 16:02:23][ERROR] : CastError: Cast to ObjectId failed for value "wrongurl" (type string) at path "_id" for model "Customer" 
-[2021-10-17 16:02:24][ERROR] : Customer with id 507f191e810c19729de860ea not found on the database 
-[2021-10-17 16:02:24][ERROR] : CastError: Cast to ObjectId failed for value "!" (type string) at path "_id" for model "Customer" 
-[2021-10-17 16:02:24][ERROR] : Non ancora implementanto 
-[2021-10-17 16:02:24][ERROR] : Customer with id 507f191e810c19729de860ea not found on the database 
-[2021-10-17 16:02:24][ERROR] : CastError: Cast to ObjectId failed for value "!" (type string) at path "_id" for model "Customer" 
-[2021-10-17 16:02:24][ERROR] : ValidationError: Product validation failed: subcategory: Path `subcategory` is required., category: Path `category` is required., description: Path `description` is required. 
-[2021-10-17 16:05:21][ERROR] : Customer with id 616050300f33629454139b9a not found on the database 
-[2021-10-17 16:05:21][ERROR] : CastError: Cast to ObjectId failed for value "!" (type string) at path "_id" for model "Customer" 
-[2021-10-17 16:05:21][ERROR] : Customer with id 616050300f55729454809b9a not found on the database 
-[2021-10-17 16:05:21][ERROR] : Customer with id 507f191e810c19729de860ea not found on the database 
-[2021-10-17 16:05:21][ERROR] : CastError: Cast to ObjectId failed for value "wrongurl" (type string) at path "_id" for model "Customer" 
-[2021-10-17 16:05:22][ERROR] : Customer with id 507f191e810c19729de860ea not found on the database 
-[2021-10-17 16:05:22][ERROR] : CastError: Cast to ObjectId failed for value "!" (type string) at path "_id" for model "Customer" 
-[2021-10-17 16:05:22][ERROR] : Non ancora implementanto 
-[2021-10-17 16:05:22][ERROR] : Customer with id 507f191e810c19729de860ea not found on the database 
-[2021-10-17 16:05:22][ERROR] : CastError: Cast to ObjectId failed for value "!" (type string) at path "_id" for model "Customer" 
-[2021-10-17 16:05:23][ERROR] : ValidationError: Product validation failed: subcategory: Path `subcategory` is required., category: Path `category` is required., description: Path `description` is required. 
-[2021-10-17 16:05:33][ERROR] : Customer with id 616050300f33629454139b9a not found on the database 
-[2021-10-17 16:05:33][ERROR] : CastError: Cast to ObjectId failed for value "!" (type string) at path "_id" for model "Customer" 
-[2021-10-17 16:05:33][ERROR] : Customer with id 616050300f55729454809b9a not found on the database 
-[2021-10-17 16:05:33][ERROR] : Customer with id 507f191e810c19729de860ea not found on the database 
-[2021-10-17 16:05:33][ERROR] : CastError: Cast to ObjectId failed for value "wrongurl" (type string) at path "_id" for model "Customer" 
-[2021-10-17 16:05:34][ERROR] : Customer with id 507f191e810c19729de860ea not found on the database 
-[2021-10-17 16:05:34][ERROR] : CastError: Cast to ObjectId failed for value "!" (type string) at path "_id" for model "Customer" 
-[2021-10-17 16:05:34][ERROR] : Non ancora implementanto 
-[2021-10-17 16:05:34][ERROR] : Customer with id 507f191e810c19729de860ea not found on the database 
-[2021-10-17 16:05:34][ERROR] : CastError: Cast to ObjectId failed for value "!" (type string) at path "_id" for model "Customer" 
-[2021-10-17 16:05:35][ERROR] : ValidationError: Product validation failed: subcategory: Path `subcategory` is required., category: Path `category` is required., description: Path `description` is required. 
-[2021-10-17 16:05:56][ERROR] : Customer with id 616050300f33629454139b9a not found on the database 
-[2021-10-17 16:05:56][ERROR] : CastError: Cast to ObjectId failed for value "!" (type string) at path "_id" for model "Customer" 
-[2021-10-17 16:05:56][ERROR] : Customer with id 616050300f55729454809b9a not found on the database 
-[2021-10-17 16:05:56][ERROR] : Customer with id 507f191e810c19729de860ea not found on the database 
-[2021-10-17 16:05:56][ERROR] : CastError: Cast to ObjectId failed for value "wrongurl" (type string) at path "_id" for model "Customer" 
-[2021-10-17 16:05:57][ERROR] : Customer with id 507f191e810c19729de860ea not found on the database 
-[2021-10-17 16:05:57][ERROR] : CastError: Cast to ObjectId failed for value "!" (type string) at path "_id" for model "Customer" 
-[2021-10-17 16:05:57][ERROR] : Non ancora implementanto 
-[2021-10-17 16:05:57][ERROR] : Customer with id 507f191e810c19729de860ea not found on the database 
-[2021-10-17 16:05:57][ERROR] : CastError: Cast to ObjectId failed for value "!" (type string) at path "_id" for model "Customer" 
-[2021-10-17 16:05:58][ERROR] : ValidationError: Product validation failed: subcategory: Path `subcategory` is required., category: Path `category` is required., description: Path `description` is required. 
-[2021-10-17 16:08:01][ERROR] : Customer with id 616050300f33629454139b9a not found on the database 
-[2021-10-17 16:08:01][ERROR] : CastError: Cast to ObjectId failed for value "!" (type string) at path "_id" for model "Customer" 
-[2021-10-17 16:08:01][ERROR] : Customer with id 616050300f55729454809b9a not found on the database 
-[2021-10-17 16:08:02][ERROR] : Customer with id 507f191e810c19729de860ea not found on the database 
-[2021-10-17 16:08:02][ERROR] : CastError: Cast to ObjectId failed for value "wrongurl" (type string) at path "_id" for model "Customer" 
-[2021-10-17 16:08:02][ERROR] : Customer with id 507f191e810c19729de860ea not found on the database 
-[2021-10-17 16:08:02][ERROR] : CastError: Cast to ObjectId failed for value "!" (type string) at path "_id" for model "Customer" 
-[2021-10-17 16:08:03][ERROR] : Non ancora implementanto 
-[2021-10-17 16:08:03][ERROR] : Customer with id 507f191e810c19729de860ea not found on the database 
-[2021-10-17 16:08:03][ERROR] : CastError: Cast to ObjectId failed for value "!" (type string) at path "_id" for model "Customer" 
-[2021-10-17 16:08:03][ERROR] : ValidationError: Product validation failed: subcategory: Path `subcategory` is required., category: Path `category` is required., description: Path `description` is required. 
-[2021-10-17 16:08:25][ERROR] : Customer with id 616050300f33629454139b9a not found on the database 
-[2021-10-17 16:08:25][ERROR] : CastError: Cast to ObjectId failed for value "!" (type string) at path "_id" for model "Customer" 
-[2021-10-17 16:08:25][ERROR] : Customer with id 616050300f55729454809b9a not found on the database 
-[2021-10-17 16:08:25][ERROR] : Customer with id 507f191e810c19729de860ea not found on the database 
-[2021-10-17 16:08:25][ERROR] : CastError: Cast to ObjectId failed for value "wrongurl" (type string) at path "_id" for model "Customer" 
-[2021-10-17 16:08:26][ERROR] : Customer with id 507f191e810c19729de860ea not found on the database 
-[2021-10-17 16:08:26][ERROR] : CastError: Cast to ObjectId failed for value "!" (type string) at path "_id" for model "Customer" 
-[2021-10-17 16:08:26][ERROR] : Non ancora implementanto 
-[2021-10-17 16:08:26][ERROR] : Customer with id 507f191e810c19729de860ea not found on the database 
-[2021-10-17 16:08:26][ERROR] : CastError: Cast to ObjectId failed for value "!" (type string) at path "_id" for model "Customer" 
-[2021-10-17 16:08:26][ERROR] : ValidationError: Product validation failed: subcategory: Path `subcategory` is required., category: Path `category` is required., description: Path `description` is required. 
-[2021-10-17 16:12:06][ERROR] : Customer with id 616050300f33629454139b9a not found on the database 
-[2021-10-17 16:12:06][ERROR] : CastError: Cast to ObjectId failed for value "!" (type string) at path "_id" for model "Customer" 
-[2021-10-17 16:12:06][ERROR] : Customer with id 616050300f55729454809b9a not found on the database 
-[2021-10-17 16:12:06][ERROR] : Customer with id 507f191e810c19729de860ea not found on the database 
-[2021-10-17 16:12:06][ERROR] : CastError: Cast to ObjectId failed for value "wrongurl" (type string) at path "_id" for model "Customer" 
-[2021-10-17 16:12:07][ERROR] : CastError: Cast to ObjectId failed for value "!" (type string) at path "_id" for model "Customer" 
-[2021-10-17 16:12:07][ERROR] : Non ancora implementanto 
-[2021-10-17 16:12:07][ERROR] : Customer with id 507f191e810c19729de860ea not found on the database 
-[2021-10-17 16:12:07][ERROR] : CastError: Cast to ObjectId failed for value "!" (type string) at path "_id" for model "Customer" 
-[2021-10-17 16:12:07][ERROR] : ValidationError: Product validation failed: subcategory: Path `subcategory` is required., category: Path `category` is required., description: Path `description` is required. 
-[2021-10-17 16:12:15][ERROR] : Customer with id 616050300f33629454139b9a not found on the database 
-[2021-10-17 16:12:15][ERROR] : CastError: Cast to ObjectId failed for value "!" (type string) at path "_id" for model "Customer" 
-[2021-10-17 16:12:15][ERROR] : Customer with id 616050300f55729454809b9a not found on the database 
-[2021-10-17 16:12:15][ERROR] : Customer with id 507f191e810c19729de860ea not found on the database 
-[2021-10-17 16:12:15][ERROR] : CastError: Cast to ObjectId failed for value "wrongurl" (type string) at path "_id" for model "Customer" 
-[2021-10-17 16:12:16][ERROR] : Customer with id 507f191e810c19729de860ea not found on the database 
-[2021-10-17 16:12:16][ERROR] : CastError: Cast to ObjectId failed for value "!" (type string) at path "_id" for model "Customer" 
-[2021-10-17 16:12:16][ERROR] : Non ancora implementanto 
-[2021-10-17 16:12:16][ERROR] : Customer with id 507f191e810c19729de860ea not found on the database 
-[2021-10-17 16:12:16][ERROR] : CastError: Cast to ObjectId failed for value "!" (type string) at path "_id" for model "Customer" 
-[2021-10-17 16:12:16][ERROR] : ValidationError: Product validation failed: subcategory: Path `subcategory` is required., category: Path `category` is required., description: Path `description` is required. 
-[2021-10-17 16:13:34][ERROR] : Customer with id 616050300f33629454139b9a not found on the database 
-[2021-10-17 16:13:34][ERROR] : CastError: Cast to ObjectId failed for value "!" (type string) at path "_id" for model "Customer" 
-[2021-10-17 16:13:34][ERROR] : Customer with id 616050300f55729454809b9a not found on the database 
-[2021-10-17 16:13:34][ERROR] : Customer with id 507f191e810c19729de860ea not found on the database 
-[2021-10-17 16:13:34][ERROR] : CastError: Cast to ObjectId failed for value "wrongurl" (type string) at path "_id" for model "Customer" 
-[2021-10-17 16:13:35][ERROR] : Customer with id 507f191e810c19729de860ea not found on the database 
-[2021-10-17 16:13:35][ERROR] : CastError: Cast to ObjectId failed for value "!" (type string) at path "_id" for model "Customer" 
-[2021-10-17 16:13:35][ERROR] : Non ancora implementanto 
-[2021-10-17 16:13:35][ERROR] : Customer with id 507f191e810c19729de860ea not found on the database 
-[2021-10-17 16:13:35][ERROR] : CastError: Cast to ObjectId failed for value "!" (type string) at path "_id" for model "Customer" 
-[2021-10-17 16:13:35][ERROR] : ValidationError: Product validation failed: subcategory: Path `subcategory` is required., category: Path `category` is required., description: Path `description` is required. 
-[2021-10-17 16:13:45][ERROR] : Customer with id 616050300f33629454139b9a not found on the database 
-[2021-10-17 16:13:45][ERROR] : CastError: Cast to ObjectId failed for value "!" (type string) at path "_id" for model "Customer" 
-[2021-10-17 16:13:45][ERROR] : Customer with id 616050300f55729454809b9a not found on the database 
-[2021-10-17 16:13:46][ERROR] : Customer with id 507f191e810c19729de860ea not found on the database 
-[2021-10-17 16:13:46][ERROR] : CastError: Cast to ObjectId failed for value "wrongurl" (type string) at path "_id" for model "Customer" 
-[2021-10-17 16:13:46][ERROR] : Customer with id 507f191e810c19729de860ea not found on the database 
-[2021-10-17 16:13:46][ERROR] : CastError: Cast to ObjectId failed for value "!" (type string) at path "_id" for model "Customer" 
-[2021-10-17 16:13:46][ERROR] : Non ancora implementanto 
-[2021-10-17 16:13:46][ERROR] : Customer with id 507f191e810c19729de860ea not found on the database 
-[2021-10-17 16:13:46][ERROR] : CastError: Cast to ObjectId failed for value "!" (type string) at path "_id" for model "Customer" 
-[2021-10-17 16:13:47][ERROR] : ValidationError: Product validation failed: subcategory: Path `subcategory` is required., category: Path `category` is required., description: Path `description` is required. 
-[2021-10-17 16:14:02][ERROR] : Customer with id 616050300f33629454139b9a not found on the database 
-[2021-10-17 16:14:02][ERROR] : CastError: Cast to ObjectId failed for value "!" (type string) at path "_id" for model "Customer" 
-[2021-10-17 16:14:02][ERROR] : Customer with id 616050300f55729454809b9a not found on the database 
-[2021-10-17 16:14:02][ERROR] : Customer with id 507f191e810c19729de860ea not found on the database 
-[2021-10-17 16:14:02][ERROR] : CastError: Cast to ObjectId failed for value "wrongurl" (type string) at path "_id" for model "Customer" 
-[2021-10-17 16:14:03][ERROR] : Customer with id 507f191e810c19729de860ea not found on the database 
-[2021-10-17 16:14:03][ERROR] : CastError: Cast to ObjectId failed for value "!" (type string) at path "_id" for model "Customer" 
-[2021-10-17 16:14:03][ERROR] : Non ancora implementanto 
-[2021-10-17 16:14:03][ERROR] : Customer with id 507f191e810c19729de860ea not found on the database 
-[2021-10-17 16:14:03][ERROR] : CastError: Cast to ObjectId failed for value "!" (type string) at path "_id" for model "Customer" 
-[2021-10-17 16:14:03][ERROR] : ValidationError: Product validation failed: subcategory: Path `subcategory` is required., category: Path `category` is required., description: Path `description` is required. 
-[2021-10-17 16:15:01][ERROR] : Customer with id 616050300f33629454139b9a not found on the database 
-[2021-10-17 16:15:01][ERROR] : CastError: Cast to ObjectId failed for value "!" (type string) at path "_id" for model "Customer" 
-[2021-10-17 16:15:01][ERROR] : Customer with id 616050300f55729454809b9a not found on the database 
-[2021-10-17 16:15:01][ERROR] : Customer with id 507f191e810c19729de860ea not found on the database 
-[2021-10-17 16:15:01][ERROR] : CastError: Cast to ObjectId failed for value "wrongurl" (type string) at path "_id" for model "Customer" 
-[2021-10-17 16:15:02][ERROR] : Customer with id 507f191e810c19729de860ea not found on the database 
-[2021-10-17 16:15:02][ERROR] : CastError: Cast to ObjectId failed for value "!" (type string) at path "_id" for model "Customer" 
-[2021-10-17 16:15:02][ERROR] : Non ancora implementanto 
-[2021-10-17 16:15:02][ERROR] : Customer with id 507f191e810c19729de860ea not found on the database 
-[2021-10-17 16:15:02][ERROR] : CastError: Cast to ObjectId failed for value "!" (type string) at path "_id" for model "Customer" 
-[2021-10-17 16:15:02][ERROR] : ValidationError: Product validation failed: subcategory: Path `subcategory` is required., category: Path `category` is required., description: Path `description` is required. 
-[2021-10-17 16:17:21][ERROR] : Customer with id 616050300f33629454139b9a not found on the database 
-[2021-10-17 16:17:21][ERROR] : CastError: Cast to ObjectId failed for value "!" (type string) at path "_id" for model "Customer" 
-[2021-10-17 16:17:21][ERROR] : Customer with id 616050300f55729454809b9a not found on the database 
-[2021-10-17 16:17:21][ERROR] : Customer with id 507f191e810c19729de860ea not found on the database 
-[2021-10-17 16:17:21][ERROR] : CastError: Cast to ObjectId failed for value "wrongurl" (type string) at path "_id" for model "Customer" 
-[2021-10-17 16:17:22][ERROR] : Customer with id 507f191e810c19729de860ea not found on the database 
-[2021-10-17 16:17:22][ERROR] : CastError: Cast to ObjectId failed for value "!" (type string) at path "_id" for model "Customer" 
-[2021-10-17 16:17:22][ERROR] : Non ancora implementanto 
-[2021-10-17 16:17:22][ERROR] : Customer with id 507f191e810c19729de860ea not found on the database 
-[2021-10-17 16:17:22][ERROR] : CastError: Cast to ObjectId failed for value "!" (type string) at path "_id" for model "Customer" 
-[2021-10-17 16:17:22][ERROR] : ValidationError: Product validation failed: subcategory: Path `subcategory` is required., category: Path `category` is required., description: Path `description` is required. 
-[2021-10-17 16:17:32][ERROR] : Customer with id 616050300f33629454139b9a not found on the database 
-[2021-10-17 16:17:32][ERROR] : CastError: Cast to ObjectId failed for value "!" (type string) at path "_id" for model "Customer" 
-[2021-10-17 16:17:32][ERROR] : Customer with id 616050300f55729454809b9a not found on the database 
-[2021-10-17 16:17:32][ERROR] : Customer with id 507f191e810c19729de860ea not found on the database 
-[2021-10-17 16:17:32][ERROR] : CastError: Cast to ObjectId failed for value "wrongurl" (type string) at path "_id" for model "Customer" 
-[2021-10-17 16:17:33][ERROR] : Customer with id 507f191e810c19729de860ea not found on the database 
-[2021-10-17 16:17:33][ERROR] : CastError: Cast to ObjectId failed for value "!" (type string) at path "_id" for model "Customer" 
-[2021-10-17 16:17:33][ERROR] : Non ancora implementanto 
-[2021-10-17 16:17:33][ERROR] : Customer with id 507f191e810c19729de860ea not found on the database 
-[2021-10-17 16:17:33][ERROR] : CastError: Cast to ObjectId failed for value "!" (type string) at path "_id" for model "Customer" 
-[2021-10-17 16:17:33][ERROR] : ValidationError: Product validation failed: subcategory: Path `subcategory` is required., category: Path `category` is required., description: Path `description` is required. 
-[2021-10-17 16:19:46][ERROR] : Customer with id 616050300f33629454139b9a not found on the database 
-[2021-10-17 16:19:46][ERROR] : CastError: Cast to ObjectId failed for value "!" (type string) at path "_id" for model "Customer" 
-[2021-10-17 16:19:46][ERROR] : Customer with id 616050300f55729454809b9a not found on the database 
-[2021-10-17 16:19:46][ERROR] : Customer with id 507f191e810c19729de860ea not found on the database 
-[2021-10-17 16:19:46][ERROR] : CastError: Cast to ObjectId failed for value "wrongurl" (type string) at path "_id" for model "Customer" 
-[2021-10-17 16:19:47][ERROR] : Customer with id 507f191e810c19729de860ea not found on the database 
-[2021-10-17 16:19:47][ERROR] : CastError: Cast to ObjectId failed for value "!" (type string) at path "_id" for model "Customer" 
-[2021-10-17 16:19:47][ERROR] : Non ancora implementanto 
-[2021-10-17 16:19:47][ERROR] : Customer with id 507f191e810c19729de860ea not found on the database 
-[2021-10-17 16:19:47][ERROR] : CastError: Cast to ObjectId failed for value "!" (type string) at path "_id" for model "Customer" 
-[2021-10-17 16:19:48][ERROR] : ValidationError: Product validation failed: subcategory: Path `subcategory` is required., category: Path `category` is required., description: Path `description` is required. 
-[2021-10-17 16:20:52][ERROR] : Customer with id 616050300f33629454139b9a not found on the database 
-[2021-10-17 16:20:52][ERROR] : CastError: Cast to ObjectId failed for value "!" (type string) at path "_id" for model "Customer" 
-[2021-10-17 16:20:52][ERROR] : Customer with id 616050300f55729454809b9a not found on the database 
-[2021-10-17 16:20:52][ERROR] : Customer with id 507f191e810c19729de860ea not found on the database 
-[2021-10-17 16:20:52][ERROR] : CastError: Cast to ObjectId failed for value "wrongurl" (type string) at path "_id" for model "Customer" 
-[2021-10-17 16:20:53][ERROR] : Customer with id 507f191e810c19729de860ea not found on the database 
-[2021-10-17 16:20:53][ERROR] : CastError: Cast to ObjectId failed for value "!" (type string) at path "_id" for model "Customer" 
-[2021-10-17 16:20:53][ERROR] : Non ancora implementanto 
-[2021-10-17 16:20:53][ERROR] : Customer with id 507f191e810c19729de860ea not found on the database 
-[2021-10-17 16:20:53][ERROR] : CastError: Cast to ObjectId failed for value "!" (type string) at path "_id" for model "Customer" 
-[2021-10-17 16:20:54][ERROR] : ValidationError: Product validation failed: subcategory: Path `subcategory` is required., category: Path `category` is required., description: Path `description` is required. 
-[2021-10-17 16:23:22][ERROR] : Customer with id 616050300f33629454139b9a not found on the database 
-[2021-10-17 16:23:22][ERROR] : CastError: Cast to ObjectId failed for value "!" (type string) at path "_id" for model "Customer" 
-[2021-10-17 16:23:22][ERROR] : Customer with id 616050300f55729454809b9a not found on the database 
-[2021-10-17 16:23:22][ERROR] : Customer with id 507f191e810c19729de860ea not found on the database 
-[2021-10-17 16:23:22][ERROR] : CastError: Cast to ObjectId failed for value "wrongurl" (type string) at path "_id" for model "Customer" 
-[2021-10-17 16:23:23][ERROR] : Customer with id 507f191e810c19729de860ea not found on the database 
-[2021-10-17 16:23:23][ERROR] : CastError: Cast to ObjectId failed for value "!" (type string) at path "_id" for model "Customer" 
-[2021-10-17 16:23:23][ERROR] : Non ancora implementanto 
-[2021-10-17 16:23:23][ERROR] : Customer with id 507f191e810c19729de860ea not found on the database 
-[2021-10-17 16:23:23][ERROR] : CastError: Cast to ObjectId failed for value "!" (type string) at path "_id" for model "Customer" 
-[2021-10-17 16:23:23][ERROR] : ValidationError: Product validation failed: subcategory: Path `subcategory` is required., category: Path `category` is required., description: Path `description` is required. 
-[2021-10-17 16:25:50][ERROR] : Customer with id 616050300f33629454139b9a not found on the database 
-[2021-10-17 16:25:50][ERROR] : CastError: Cast to ObjectId failed for value "!" (type string) at path "_id" for model "Customer" 
-[2021-10-17 16:25:50][ERROR] : Customer with id 616050300f55729454809b9a not found on the database 
-[2021-10-17 16:25:50][ERROR] : Customer with id 507f191e810c19729de860ea not found on the database 
-[2021-10-17 16:25:50][ERROR] : CastError: Cast to ObjectId failed for value "wrongurl" (type string) at path "_id" for model "Customer" 
-[2021-10-17 16:25:56][ERROR] : Customer with id 616050300f33629454139b9a not found on the database 
-[2021-10-17 16:25:56][ERROR] : CastError: Cast to ObjectId failed for value "!" (type string) at path "_id" for model "Customer" 
-[2021-10-17 16:25:56][ERROR] : Customer with id 616050300f55729454809b9a not found on the database 
-[2021-10-17 16:25:56][ERROR] : Customer with id 507f191e810c19729de860ea not found on the database 
-[2021-10-17 16:25:56][ERROR] : CastError: Cast to ObjectId failed for value "wrongurl" (type string) at path "_id" for model "Customer" 
-[2021-10-17 16:25:57][ERROR] : Customer with id 507f191e810c19729de860ea not found on the database 
-[2021-10-17 16:25:57][ERROR] : CastError: Cast to ObjectId failed for value "!" (type string) at path "_id" for model "Customer" 
-[2021-10-17 16:25:57][ERROR] : Non ancora implementanto 
-[2021-10-17 16:25:57][ERROR] : Customer with id 507f191e810c19729de860ea not found on the database 
-[2021-10-17 16:25:57][ERROR] : CastError: Cast to ObjectId failed for value "!" (type string) at path "_id" for model "Customer" 
-[2021-10-17 16:25:57][ERROR] : ValidationError: Product validation failed: subcategory: Path `subcategory` is required., category: Path `category` is required., description: Path `description` is required. 
-[2021-10-17 16:32:37][ERROR] : Customer with id 616050300f33629454139b9a not found on the database 
-[2021-10-17 16:32:37][ERROR] : CastError: Cast to ObjectId failed for value "!" (type string) at path "_id" for model "Customer" 
-[2021-10-17 16:32:37][ERROR] : Customer with id 616050300f55729454809b9a not found on the database 
-[2021-10-17 16:32:37][ERROR] : Customer with id 507f191e810c19729de860ea not found on the database 
-[2021-10-17 16:32:37][ERROR] : CastError: Cast to ObjectId failed for value "wrongurl" (type string) at path "_id" for model "Customer" 
-[2021-10-17 16:32:38][ERROR] : Customer with id 507f191e810c19729de860ea not found on the database 
-[2021-10-17 16:32:38][ERROR] : CastError: Cast to ObjectId failed for value "!" (type string) at path "_id" for model "Customer" 
-[2021-10-17 16:32:38][ERROR] : Non ancora implementanto 
-[2021-10-17 16:32:38][ERROR] : Customer with id 507f191e810c19729de860ea not found on the database 
-[2021-10-17 16:32:38][ERROR] : CastError: Cast to ObjectId failed for value "!" (type string) at path "_id" for model "Customer" 
-[2021-10-17 16:32:38][ERROR] : ValidationError: Product validation failed: subcategory: Path `subcategory` is required., category: Path `category` is required., description: Path `description` is required. 
+[2021-10-17 22:17:04][ERROR] : Customer with id 616050300f33629454139b9a not found on the database
+	[
+	Error
+    at Object.handleMsg (C:\Users\matte\Documents\Università\Tecnologie Web\Progetto TechWeb\Backend\public\lib\errorHandler.js:29:48)
+    at getCustomerById (C:\Users\matte\Documents\Università\Tecnologie Web\Progetto TechWeb\Backend\public\routers\customerRouter.js:116:39)
+    at processTicksAndRejections (internal/process/task_queues.js:95:5)
+	] 
+[2021-10-17 22:17:04][ERROR] : CastError: Cast to ObjectId failed for value "!" (type string) at path "_id" for model "Customer"
+	[
+	CastError: Cast to ObjectId failed for value "!" (type string) at path "_id" for model "Customer"
+    at model.Query.exec (C:\Users\matte\Documents\Università\Tecnologie Web\Progetto TechWeb\Backend\node_modules\mongoose\lib\query.js:4540:21)
+    at model.Query.Query.then (C:\Users\matte\Documents\Università\Tecnologie Web\Progetto TechWeb\Backend\node_modules\mongoose\lib\query.js:4639:15)
+    at processTicksAndRejections (internal/process/task_queues.js:95:5)
+	] 
+[2021-10-17 22:17:04][ERROR] : Customer with id 616050300f55729454809b9a not found on the database
+	[
+	Error
+    at Object.handleMsg (C:\Users\matte\Documents\Università\Tecnologie Web\Progetto TechWeb\Backend\public\lib\errorHandler.js:29:48)
+    at getCustomerById (C:\Users\matte\Documents\Università\Tecnologie Web\Progetto TechWeb\Backend\public\routers\customerRouter.js:116:39)
+    at processTicksAndRejections (internal/process/task_queues.js:95:5)
+	] 
+[2021-10-17 22:17:04][ERROR] : Customer with id 507f191e810c19729de860ea not found on the database
+	[
+	Error
+    at Object.handleMsg (C:\Users\matte\Documents\Università\Tecnologie Web\Progetto TechWeb\Backend\public\lib\errorHandler.js:29:48)
+    at getCustomerById (C:\Users\matte\Documents\Università\Tecnologie Web\Progetto TechWeb\Backend\public\routers\customerRouter.js:116:39)
+    at processTicksAndRejections (internal/process/task_queues.js:95:5)
+	] 
+[2021-10-17 22:17:04][ERROR] : CastError: Cast to ObjectId failed for value "wrongurl" (type string) at path "_id" for model "Customer"
+	[
+	CastError: Cast to ObjectId failed for value "wrongurl" (type string) at path "_id" for model "Customer"
+    at model.Query.exec (C:\Users\matte\Documents\Università\Tecnologie Web\Progetto TechWeb\Backend\node_modules\mongoose\lib\query.js:4540:21)
+    at model.Query.Query.then (C:\Users\matte\Documents\Università\Tecnologie Web\Progetto TechWeb\Backend\node_modules\mongoose\lib\query.js:4639:15)
+    at processTicksAndRejections (internal/process/task_queues.js:95:5)
+	] 
+[2021-10-17 22:17:05][ERROR] : Customer with id 507f191e810c19729de860ea not found on the database
+	[
+	Error
+    at Object.handleMsg (C:\Users\matte\Documents\Università\Tecnologie Web\Progetto TechWeb\Backend\public\lib\errorHandler.js:29:48)
+    at getCustomerById (C:\Users\matte\Documents\Università\Tecnologie Web\Progetto TechWeb\Backend\public\routers\customerRouter.js:116:39)
+    at processTicksAndRejections (internal/process/task_queues.js:95:5)
+	] 
+[2021-10-17 22:17:05][ERROR] : CastError: Cast to ObjectId failed for value "!" (type string) at path "_id" for model "Customer"
+	[
+	CastError: Cast to ObjectId failed for value "!" (type string) at path "_id" for model "Customer"
+    at model.Query.exec (C:\Users\matte\Documents\Università\Tecnologie Web\Progetto TechWeb\Backend\node_modules\mongoose\lib\query.js:4540:21)
+    at model.Query.Query.then (C:\Users\matte\Documents\Università\Tecnologie Web\Progetto TechWeb\Backend\node_modules\mongoose\lib\query.js:4639:15)
+    at processTicksAndRejections (internal/process/task_queues.js:95:5)
+	] 
+[2021-10-17 22:17:05][ERROR] : Non ancora implementanto
+	[
+	Error
+    at Object.handleMsg (C:\Users\matte\Documents\Università\Tecnologie Web\Progetto TechWeb\Backend\public\lib\errorHandler.js:29:48)
+    at C:\Users\matte\Documents\Università\Tecnologie Web\Progetto TechWeb\Backend\public\routers\customerRouter.js:106:31
+    at processTicksAndRejections (internal/process/task_queues.js:95:5)
+	] 
+[2021-10-17 22:17:05][ERROR] : Customer with id 507f191e810c19729de860ea not found on the database
+	[
+	Error
+    at Object.handleMsg (C:\Users\matte\Documents\Università\Tecnologie Web\Progetto TechWeb\Backend\public\lib\errorHandler.js:29:48)
+    at getCustomerById (C:\Users\matte\Documents\Università\Tecnologie Web\Progetto TechWeb\Backend\public\routers\customerRouter.js:116:39)
+    at processTicksAndRejections (internal/process/task_queues.js:95:5)
+	] 
+[2021-10-17 22:17:05][ERROR] : CastError: Cast to ObjectId failed for value "!" (type string) at path "_id" for model "Customer"
+	[
+	CastError: Cast to ObjectId failed for value "!" (type string) at path "_id" for model "Customer"
+    at model.Query.exec (C:\Users\matte\Documents\Università\Tecnologie Web\Progetto TechWeb\Backend\node_modules\mongoose\lib\query.js:4540:21)
+    at model.Query.Query.then (C:\Users\matte\Documents\Università\Tecnologie Web\Progetto TechWeb\Backend\node_modules\mongoose\lib\query.js:4639:15)
+    at processTicksAndRejections (internal/process/task_queues.js:95:5)
+	] 
+[2021-10-17 22:17:06][ERROR] : ValidationError: Product validation failed: subcategory: Path `subcategory` is required., category: Path `category` is required., description: Path `description` is required.
+	[
+	ValidationError: Product validation failed: subcategory: Path `subcategory` is required., category: Path `category` is required., description: Path `description` is required.
+    at model.Document.invalidate (C:\Users\matte\Documents\Università\Tecnologie Web\Progetto TechWeb\Backend\node_modules\mongoose\lib\document.js:2890:32)
+    at C:\Users\matte\Documents\Università\Tecnologie Web\Progetto TechWeb\Backend\node_modules\mongoose\lib\document.js:2681:17
+    at C:\Users\matte\Documents\Università\Tecnologie Web\Progetto TechWeb\Backend\node_modules\mongoose\lib\schematype.js:1280:9
+    at processTicksAndRejections (internal/process/task_queues.js:77:11)
+	] 
+[2021-10-17 22:17:08][ERROR] : Customer with id 616050300f33629454139b9a not found on the database
+	[
+	Error
+    at Object.handleMsg (C:\Users\matte\Documents\Università\Tecnologie Web\Progetto TechWeb\Backend\public\lib\errorHandler.js:29:48)
+    at getCustomerById (C:\Users\matte\Documents\Università\Tecnologie Web\Progetto TechWeb\Backend\public\routers\customerRouter.js:116:39)
+    at processTicksAndRejections (internal/process/task_queues.js:95:5)
+	] 
+[2021-10-17 22:17:08][ERROR] : CastError: Cast to ObjectId failed for value "!" (type string) at path "_id" for model "Customer"
+	[
+	CastError: Cast to ObjectId failed for value "!" (type string) at path "_id" for model "Customer"
+    at model.Query.exec (C:\Users\matte\Documents\Università\Tecnologie Web\Progetto TechWeb\Backend\node_modules\mongoose\lib\query.js:4540:21)
+    at model.Query.Query.then (C:\Users\matte\Documents\Università\Tecnologie Web\Progetto TechWeb\Backend\node_modules\mongoose\lib\query.js:4639:15)
+    at processTicksAndRejections (internal/process/task_queues.js:95:5)
+	] 
+[2021-10-17 22:17:08][ERROR] : Customer with id 616050300f55729454809b9a not found on the database
+	[
+	Error
+    at Object.handleMsg (C:\Users\matte\Documents\Università\Tecnologie Web\Progetto TechWeb\Backend\public\lib\errorHandler.js:29:48)
+    at getCustomerById (C:\Users\matte\Documents\Università\Tecnologie Web\Progetto TechWeb\Backend\public\routers\customerRouter.js:116:39)
+    at processTicksAndRejections (internal/process/task_queues.js:95:5)
+	] 
+[2021-10-17 22:17:08][ERROR] : Customer with id 507f191e810c19729de860ea not found on the database
+	[
+	Error
+    at Object.handleMsg (C:\Users\matte\Documents\Università\Tecnologie Web\Progetto TechWeb\Backend\public\lib\errorHandler.js:29:48)
+    at getCustomerById (C:\Users\matte\Documents\Università\Tecnologie Web\Progetto TechWeb\Backend\public\routers\customerRouter.js:116:39)
+    at processTicksAndRejections (internal/process/task_queues.js:95:5)
+	] 
+[2021-10-17 22:17:08][ERROR] : CastError: Cast to ObjectId failed for value "wrongurl" (type string) at path "_id" for model "Customer"
+	[
+	CastError: Cast to ObjectId failed for value "wrongurl" (type string) at path "_id" for model "Customer"
+    at model.Query.exec (C:\Users\matte\Documents\Università\Tecnologie Web\Progetto TechWeb\Backend\node_modules\mongoose\lib\query.js:4540:21)
+    at model.Query.Query.then (C:\Users\matte\Documents\Università\Tecnologie Web\Progetto TechWeb\Backend\node_modules\mongoose\lib\query.js:4639:15)
+    at processTicksAndRejections (internal/process/task_queues.js:95:5)
+	] 
+[2021-10-17 22:17:09][ERROR] : Customer with id 507f191e810c19729de860ea not found on the database
+	[
+	Error
+    at Object.handleMsg (C:\Users\matte\Documents\Università\Tecnologie Web\Progetto TechWeb\Backend\public\lib\errorHandler.js:29:48)
+    at getCustomerById (C:\Users\matte\Documents\Università\Tecnologie Web\Progetto TechWeb\Backend\public\routers\customerRouter.js:116:39)
+    at processTicksAndRejections (internal/process/task_queues.js:95:5)
+	] 
+[2021-10-17 22:17:09][ERROR] : CastError: Cast to ObjectId failed for value "!" (type string) at path "_id" for model "Customer"
+	[
+	CastError: Cast to ObjectId failed for value "!" (type string) at path "_id" for model "Customer"
+    at model.Query.exec (C:\Users\matte\Documents\Università\Tecnologie Web\Progetto TechWeb\Backend\node_modules\mongoose\lib\query.js:4540:21)
+    at model.Query.Query.then (C:\Users\matte\Documents\Università\Tecnologie Web\Progetto TechWeb\Backend\node_modules\mongoose\lib\query.js:4639:15)
+    at processTicksAndRejections (internal/process/task_queues.js:95:5)
+	] 
+[2021-10-17 22:17:09][ERROR] : Non ancora implementanto
+	[
+	Error
+    at Object.handleMsg (C:\Users\matte\Documents\Università\Tecnologie Web\Progetto TechWeb\Backend\public\lib\errorHandler.js:29:48)
+    at C:\Users\matte\Documents\Università\Tecnologie Web\Progetto TechWeb\Backend\public\routers\customerRouter.js:106:31
+    at processTicksAndRejections (internal/process/task_queues.js:95:5)
+	] 
+[2021-10-17 22:17:09][ERROR] : Customer with id 507f191e810c19729de860ea not found on the database
+	[
+	Error
+    at Object.handleMsg (C:\Users\matte\Documents\Università\Tecnologie Web\Progetto TechWeb\Backend\public\lib\errorHandler.js:29:48)
+    at getCustomerById (C:\Users\matte\Documents\Università\Tecnologie Web\Progetto TechWeb\Backend\public\routers\customerRouter.js:116:39)
+    at processTicksAndRejections (internal/process/task_queues.js:95:5)
+	] 
+[2021-10-17 22:17:09][ERROR] : CastError: Cast to ObjectId failed for value "!" (type string) at path "_id" for model "Customer"
+	[
+	CastError: Cast to ObjectId failed for value "!" (type string) at path "_id" for model "Customer"
+    at model.Query.exec (C:\Users\matte\Documents\Università\Tecnologie Web\Progetto TechWeb\Backend\node_modules\mongoose\lib\query.js:4540:21)
+    at model.Query.Query.then (C:\Users\matte\Documents\Università\Tecnologie Web\Progetto TechWeb\Backend\node_modules\mongoose\lib\query.js:4639:15)
+    at processTicksAndRejections (internal/process/task_queues.js:95:5)
+	] 
+[2021-10-17 22:17:09][ERROR] : ValidationError: Product validation failed: subcategory: Path `subcategory` is required., category: Path `category` is required., description: Path `description` is required.
+	[
+	ValidationError: Product validation failed: subcategory: Path `subcategory` is required., category: Path `category` is required., description: Path `description` is required.
+    at model.Document.invalidate (C:\Users\matte\Documents\Università\Tecnologie Web\Progetto TechWeb\Backend\node_modules\mongoose\lib\document.js:2890:32)
+    at C:\Users\matte\Documents\Università\Tecnologie Web\Progetto TechWeb\Backend\node_modules\mongoose\lib\document.js:2681:17
+    at C:\Users\matte\Documents\Università\Tecnologie Web\Progetto TechWeb\Backend\node_modules\mongoose\lib\schematype.js:1280:9
+    at processTicksAndRejections (internal/process/task_queues.js:77:11)
+	] 
+[2021-10-17 22:17:12][ERROR] : Customer with id 616050300f33629454139b9a not found on the database
+	[
+	Error
+    at Object.handleMsg (C:\Users\matte\Documents\Università\Tecnologie Web\Progetto TechWeb\Backend\public\lib\errorHandler.js:29:48)
+    at getCustomerById (C:\Users\matte\Documents\Università\Tecnologie Web\Progetto TechWeb\Backend\public\routers\customerRouter.js:116:39)
+    at processTicksAndRejections (internal/process/task_queues.js:95:5)
+	] 
+[2021-10-17 22:17:12][ERROR] : CastError: Cast to ObjectId failed for value "!" (type string) at path "_id" for model "Customer"
+	[
+	CastError: Cast to ObjectId failed for value "!" (type string) at path "_id" for model "Customer"
+    at model.Query.exec (C:\Users\matte\Documents\Università\Tecnologie Web\Progetto TechWeb\Backend\node_modules\mongoose\lib\query.js:4540:21)
+    at model.Query.Query.then (C:\Users\matte\Documents\Università\Tecnologie Web\Progetto TechWeb\Backend\node_modules\mongoose\lib\query.js:4639:15)
+    at processTicksAndRejections (internal/process/task_queues.js:95:5)
+	] 
+[2021-10-17 22:17:12][ERROR] : Customer with id 616050300f55729454809b9a not found on the database
+	[
+	Error
+    at Object.handleMsg (C:\Users\matte\Documents\Università\Tecnologie Web\Progetto TechWeb\Backend\public\lib\errorHandler.js:29:48)
+    at getCustomerById (C:\Users\matte\Documents\Università\Tecnologie Web\Progetto TechWeb\Backend\public\routers\customerRouter.js:116:39)
+    at processTicksAndRejections (internal/process/task_queues.js:95:5)
+	] 
+[2021-10-17 22:17:12][ERROR] : Customer with id 507f191e810c19729de860ea not found on the database
+	[
+	Error
+    at Object.handleMsg (C:\Users\matte\Documents\Università\Tecnologie Web\Progetto TechWeb\Backend\public\lib\errorHandler.js:29:48)
+    at getCustomerById (C:\Users\matte\Documents\Università\Tecnologie Web\Progetto TechWeb\Backend\public\routers\customerRouter.js:116:39)
+    at processTicksAndRejections (internal/process/task_queues.js:95:5)
+	] 
+[2021-10-17 22:17:12][ERROR] : CastError: Cast to ObjectId failed for value "wrongurl" (type string) at path "_id" for model "Customer"
+	[
+	CastError: Cast to ObjectId failed for value "wrongurl" (type string) at path "_id" for model "Customer"
+    at model.Query.exec (C:\Users\matte\Documents\Università\Tecnologie Web\Progetto TechWeb\Backend\node_modules\mongoose\lib\query.js:4540:21)
+    at model.Query.Query.then (C:\Users\matte\Documents\Università\Tecnologie Web\Progetto TechWeb\Backend\node_modules\mongoose\lib\query.js:4639:15)
+    at processTicksAndRejections (internal/process/task_queues.js:95:5)
+	] 
+[2021-10-17 22:17:13][ERROR] : Customer with id 507f191e810c19729de860ea not found on the database
+	[
+	Error
+    at Object.handleMsg (C:\Users\matte\Documents\Università\Tecnologie Web\Progetto TechWeb\Backend\public\lib\errorHandler.js:29:48)
+    at getCustomerById (C:\Users\matte\Documents\Università\Tecnologie Web\Progetto TechWeb\Backend\public\routers\customerRouter.js:116:39)
+    at processTicksAndRejections (internal/process/task_queues.js:95:5)
+	] 
+[2021-10-17 22:17:13][ERROR] : CastError: Cast to ObjectId failed for value "!" (type string) at path "_id" for model "Customer"
+	[
+	CastError: Cast to ObjectId failed for value "!" (type string) at path "_id" for model "Customer"
+    at model.Query.exec (C:\Users\matte\Documents\Università\Tecnologie Web\Progetto TechWeb\Backend\node_modules\mongoose\lib\query.js:4540:21)
+    at model.Query.Query.then (C:\Users\matte\Documents\Università\Tecnologie Web\Progetto TechWeb\Backend\node_modules\mongoose\lib\query.js:4639:15)
+    at processTicksAndRejections (internal/process/task_queues.js:95:5)
+	] 
+[2021-10-17 22:17:13][ERROR] : Non ancora implementanto
+	[
+	Error
+    at Object.handleMsg (C:\Users\matte\Documents\Università\Tecnologie Web\Progetto TechWeb\Backend\public\lib\errorHandler.js:29:48)
+    at C:\Users\matte\Documents\Università\Tecnologie Web\Progetto TechWeb\Backend\public\routers\customerRouter.js:106:31
+    at processTicksAndRejections (internal/process/task_queues.js:95:5)
+	] 
+[2021-10-17 22:17:13][ERROR] : Customer with id 507f191e810c19729de860ea not found on the database
+	[
+	Error
+    at Object.handleMsg (C:\Users\matte\Documents\Università\Tecnologie Web\Progetto TechWeb\Backend\public\lib\errorHandler.js:29:48)
+    at getCustomerById (C:\Users\matte\Documents\Università\Tecnologie Web\Progetto TechWeb\Backend\public\routers\customerRouter.js:116:39)
+    at processTicksAndRejections (internal/process/task_queues.js:95:5)
+	] 
+[2021-10-17 22:17:13][ERROR] : CastError: Cast to ObjectId failed for value "!" (type string) at path "_id" for model "Customer"
+	[
+	CastError: Cast to ObjectId failed for value "!" (type string) at path "_id" for model "Customer"
+    at model.Query.exec (C:\Users\matte\Documents\Università\Tecnologie Web\Progetto TechWeb\Backend\node_modules\mongoose\lib\query.js:4540:21)
+    at model.Query.Query.then (C:\Users\matte\Documents\Università\Tecnologie Web\Progetto TechWeb\Backend\node_modules\mongoose\lib\query.js:4639:15)
+    at processTicksAndRejections (internal/process/task_queues.js:95:5)
+	] 
+[2021-10-17 22:17:14][ERROR] : ValidationError: Product validation failed: subcategory: Path `subcategory` is required., category: Path `category` is required., description: Path `description` is required.
+	[
+	ValidationError: Product validation failed: subcategory: Path `subcategory` is required., category: Path `category` is required., description: Path `description` is required.
+    at model.Document.invalidate (C:\Users\matte\Documents\Università\Tecnologie Web\Progetto TechWeb\Backend\node_modules\mongoose\lib\document.js:2890:32)
+    at C:\Users\matte\Documents\Università\Tecnologie Web\Progetto TechWeb\Backend\node_modules\mongoose\lib\document.js:2681:17
+    at C:\Users\matte\Documents\Università\Tecnologie Web\Progetto TechWeb\Backend\node_modules\mongoose\lib\schematype.js:1280:9
+    at processTicksAndRejections (internal/process/task_queues.js:77:11)
+	] 
+[2021-10-17 22:17:16][ERROR] : Customer with id 616050300f33629454139b9a not found on the database
+	[
+	Error
+    at Object.handleMsg (C:\Users\matte\Documents\Università\Tecnologie Web\Progetto TechWeb\Backend\public\lib\errorHandler.js:29:48)
+    at getCustomerById (C:\Users\matte\Documents\Università\Tecnologie Web\Progetto TechWeb\Backend\public\routers\customerRouter.js:116:39)
+    at processTicksAndRejections (internal/process/task_queues.js:95:5)
+	] 
+[2021-10-17 22:17:16][ERROR] : CastError: Cast to ObjectId failed for value "!" (type string) at path "_id" for model "Customer"
+	[
+	CastError: Cast to ObjectId failed for value "!" (type string) at path "_id" for model "Customer"
+    at model.Query.exec (C:\Users\matte\Documents\Università\Tecnologie Web\Progetto TechWeb\Backend\node_modules\mongoose\lib\query.js:4540:21)
+    at model.Query.Query.then (C:\Users\matte\Documents\Università\Tecnologie Web\Progetto TechWeb\Backend\node_modules\mongoose\lib\query.js:4639:15)
+    at processTicksAndRejections (internal/process/task_queues.js:95:5)
+	] 
+[2021-10-17 22:17:16][ERROR] : Customer with id 616050300f55729454809b9a not found on the database
+	[
+	Error
+    at Object.handleMsg (C:\Users\matte\Documents\Università\Tecnologie Web\Progetto TechWeb\Backend\public\lib\errorHandler.js:29:48)
+    at getCustomerById (C:\Users\matte\Documents\Università\Tecnologie Web\Progetto TechWeb\Backend\public\routers\customerRouter.js:116:39)
+    at processTicksAndRejections (internal/process/task_queues.js:95:5)
+	] 
+[2021-10-17 22:17:16][ERROR] : Customer with id 507f191e810c19729de860ea not found on the database
+	[
+	Error
+    at Object.handleMsg (C:\Users\matte\Documents\Università\Tecnologie Web\Progetto TechWeb\Backend\public\lib\errorHandler.js:29:48)
+    at getCustomerById (C:\Users\matte\Documents\Università\Tecnologie Web\Progetto TechWeb\Backend\public\routers\customerRouter.js:116:39)
+    at processTicksAndRejections (internal/process/task_queues.js:95:5)
+	] 
+[2021-10-17 22:17:16][ERROR] : CastError: Cast to ObjectId failed for value "wrongurl" (type string) at path "_id" for model "Customer"
+	[
+	CastError: Cast to ObjectId failed for value "wrongurl" (type string) at path "_id" for model "Customer"
+    at model.Query.exec (C:\Users\matte\Documents\Università\Tecnologie Web\Progetto TechWeb\Backend\node_modules\mongoose\lib\query.js:4540:21)
+    at model.Query.Query.then (C:\Users\matte\Documents\Università\Tecnologie Web\Progetto TechWeb\Backend\node_modules\mongoose\lib\query.js:4639:15)
+    at processTicksAndRejections (internal/process/task_queues.js:95:5)
+	] 
+[2021-10-17 22:17:17][ERROR] : Customer with id 507f191e810c19729de860ea not found on the database
+	[
+	Error
+    at Object.handleMsg (C:\Users\matte\Documents\Università\Tecnologie Web\Progetto TechWeb\Backend\public\lib\errorHandler.js:29:48)
+    at getCustomerById (C:\Users\matte\Documents\Università\Tecnologie Web\Progetto TechWeb\Backend\public\routers\customerRouter.js:116:39)
+    at processTicksAndRejections (internal/process/task_queues.js:95:5)
+	] 
+[2021-10-17 22:17:17][ERROR] : CastError: Cast to ObjectId failed for value "!" (type string) at path "_id" for model "Customer"
+	[
+	CastError: Cast to ObjectId failed for value "!" (type string) at path "_id" for model "Customer"
+    at model.Query.exec (C:\Users\matte\Documents\Università\Tecnologie Web\Progetto TechWeb\Backend\node_modules\mongoose\lib\query.js:4540:21)
+    at model.Query.Query.then (C:\Users\matte\Documents\Università\Tecnologie Web\Progetto TechWeb\Backend\node_modules\mongoose\lib\query.js:4639:15)
+    at processTicksAndRejections (internal/process/task_queues.js:95:5)
+	] 
+[2021-10-17 22:17:17][ERROR] : Non ancora implementanto
+	[
+	Error
+    at Object.handleMsg (C:\Users\matte\Documents\Università\Tecnologie Web\Progetto TechWeb\Backend\public\lib\errorHandler.js:29:48)
+    at C:\Users\matte\Documents\Università\Tecnologie Web\Progetto TechWeb\Backend\public\routers\customerRouter.js:106:31
+    at processTicksAndRejections (internal/process/task_queues.js:95:5)
+	] 
+[2021-10-17 22:17:17][ERROR] : Customer with id 507f191e810c19729de860ea not found on the database
+	[
+	Error
+    at Object.handleMsg (C:\Users\matte\Documents\Università\Tecnologie Web\Progetto TechWeb\Backend\public\lib\errorHandler.js:29:48)
+    at getCustomerById (C:\Users\matte\Documents\Università\Tecnologie Web\Progetto TechWeb\Backend\public\routers\customerRouter.js:116:39)
+    at processTicksAndRejections (internal/process/task_queues.js:95:5)
+	] 
+[2021-10-17 22:17:17][ERROR] : CastError: Cast to ObjectId failed for value "!" (type string) at path "_id" for model "Customer"
+	[
+	CastError: Cast to ObjectId failed for value "!" (type string) at path "_id" for model "Customer"
+    at model.Query.exec (C:\Users\matte\Documents\Università\Tecnologie Web\Progetto TechWeb\Backend\node_modules\mongoose\lib\query.js:4540:21)
+    at model.Query.Query.then (C:\Users\matte\Documents\Università\Tecnologie Web\Progetto TechWeb\Backend\node_modules\mongoose\lib\query.js:4639:15)
+    at processTicksAndRejections (internal/process/task_queues.js:95:5)
+	] 
+[2021-10-17 22:17:17][ERROR] : ValidationError: Product validation failed: subcategory: Path `subcategory` is required., category: Path `category` is required., description: Path `description` is required.
+	[
+	ValidationError: Product validation failed: subcategory: Path `subcategory` is required., category: Path `category` is required., description: Path `description` is required.
+    at model.Document.invalidate (C:\Users\matte\Documents\Università\Tecnologie Web\Progetto TechWeb\Backend\node_modules\mongoose\lib\document.js:2890:32)
+    at C:\Users\matte\Documents\Università\Tecnologie Web\Progetto TechWeb\Backend\node_modules\mongoose\lib\document.js:2681:17
+    at C:\Users\matte\Documents\Università\Tecnologie Web\Progetto TechWeb\Backend\node_modules\mongoose\lib\schematype.js:1280:9
+    at processTicksAndRejections (internal/process/task_queues.js:77:11)
+	] 
+[2021-10-17 22:17:20][ERROR] : Customer with id 616050300f33629454139b9a not found on the database
+	[
+	Error
+    at Object.handleMsg (C:\Users\matte\Documents\Università\Tecnologie Web\Progetto TechWeb\Backend\public\lib\errorHandler.js:29:48)
+    at getCustomerById (C:\Users\matte\Documents\Università\Tecnologie Web\Progetto TechWeb\Backend\public\routers\customerRouter.js:116:39)
+    at processTicksAndRejections (internal/process/task_queues.js:95:5)
+	] 
+[2021-10-17 22:17:20][ERROR] : CastError: Cast to ObjectId failed for value "!" (type string) at path "_id" for model "Customer"
+	[
+	CastError: Cast to ObjectId failed for value "!" (type string) at path "_id" for model "Customer"
+    at model.Query.exec (C:\Users\matte\Documents\Università\Tecnologie Web\Progetto TechWeb\Backend\node_modules\mongoose\lib\query.js:4540:21)
+    at model.Query.Query.then (C:\Users\matte\Documents\Università\Tecnologie Web\Progetto TechWeb\Backend\node_modules\mongoose\lib\query.js:4639:15)
+    at processTicksAndRejections (internal/process/task_queues.js:95:5)
+	] 
+[2021-10-17 22:17:20][ERROR] : Customer with id 616050300f55729454809b9a not found on the database
+	[
+	Error
+    at Object.handleMsg (C:\Users\matte\Documents\Università\Tecnologie Web\Progetto TechWeb\Backend\public\lib\errorHandler.js:29:48)
+    at getCustomerById (C:\Users\matte\Documents\Università\Tecnologie Web\Progetto TechWeb\Backend\public\routers\customerRouter.js:116:39)
+    at processTicksAndRejections (internal/process/task_queues.js:95:5)
+	] 
+[2021-10-17 22:17:20][ERROR] : Customer with id 507f191e810c19729de860ea not found on the database
+	[
+	Error
+    at Object.handleMsg (C:\Users\matte\Documents\Università\Tecnologie Web\Progetto TechWeb\Backend\public\lib\errorHandler.js:29:48)
+    at getCustomerById (C:\Users\matte\Documents\Università\Tecnologie Web\Progetto TechWeb\Backend\public\routers\customerRouter.js:116:39)
+    at processTicksAndRejections (internal/process/task_queues.js:95:5)
+	] 
+[2021-10-17 22:17:20][ERROR] : CastError: Cast to ObjectId failed for value "wrongurl" (type string) at path "_id" for model "Customer"
+	[
+	CastError: Cast to ObjectId failed for value "wrongurl" (type string) at path "_id" for model "Customer"
+    at model.Query.exec (C:\Users\matte\Documents\Università\Tecnologie Web\Progetto TechWeb\Backend\node_modules\mongoose\lib\query.js:4540:21)
+    at model.Query.Query.then (C:\Users\matte\Documents\Università\Tecnologie Web\Progetto TechWeb\Backend\node_modules\mongoose\lib\query.js:4639:15)
+    at processTicksAndRejections (internal/process/task_queues.js:95:5)
+	] 
+[2021-10-17 22:17:21][ERROR] : Customer with id 507f191e810c19729de860ea not found on the database
+	[
+	Error
+    at Object.handleMsg (C:\Users\matte\Documents\Università\Tecnologie Web\Progetto TechWeb\Backend\public\lib\errorHandler.js:29:48)
+    at getCustomerById (C:\Users\matte\Documents\Università\Tecnologie Web\Progetto TechWeb\Backend\public\routers\customerRouter.js:116:39)
+    at processTicksAndRejections (internal/process/task_queues.js:95:5)
+	] 
+[2021-10-17 22:17:21][ERROR] : CastError: Cast to ObjectId failed for value "!" (type string) at path "_id" for model "Customer"
+	[
+	CastError: Cast to ObjectId failed for value "!" (type string) at path "_id" for model "Customer"
+    at model.Query.exec (C:\Users\matte\Documents\Università\Tecnologie Web\Progetto TechWeb\Backend\node_modules\mongoose\lib\query.js:4540:21)
+    at model.Query.Query.then (C:\Users\matte\Documents\Università\Tecnologie Web\Progetto TechWeb\Backend\node_modules\mongoose\lib\query.js:4639:15)
+    at processTicksAndRejections (internal/process/task_queues.js:95:5)
+	] 
+[2021-10-17 22:17:21][ERROR] : Non ancora implementanto
+	[
+	Error
+    at Object.handleMsg (C:\Users\matte\Documents\Università\Tecnologie Web\Progetto TechWeb\Backend\public\lib\errorHandler.js:29:48)
+    at C:\Users\matte\Documents\Università\Tecnologie Web\Progetto TechWeb\Backend\public\routers\customerRouter.js:106:31
+    at processTicksAndRejections (internal/process/task_queues.js:95:5)
+	] 
+[2021-10-17 22:17:21][ERROR] : Customer with id 507f191e810c19729de860ea not found on the database
+	[
+	Error
+    at Object.handleMsg (C:\Users\matte\Documents\Università\Tecnologie Web\Progetto TechWeb\Backend\public\lib\errorHandler.js:29:48)
+    at getCustomerById (C:\Users\matte\Documents\Università\Tecnologie Web\Progetto TechWeb\Backend\public\routers\customerRouter.js:116:39)
+    at processTicksAndRejections (internal/process/task_queues.js:95:5)
+	] 
+[2021-10-17 22:17:21][ERROR] : CastError: Cast to ObjectId failed for value "!" (type string) at path "_id" for model "Customer"
+	[
+	CastError: Cast to ObjectId failed for value "!" (type string) at path "_id" for model "Customer"
+    at model.Query.exec (C:\Users\matte\Documents\Università\Tecnologie Web\Progetto TechWeb\Backend\node_modules\mongoose\lib\query.js:4540:21)
+    at model.Query.Query.then (C:\Users\matte\Documents\Università\Tecnologie Web\Progetto TechWeb\Backend\node_modules\mongoose\lib\query.js:4639:15)
+    at processTicksAndRejections (internal/process/task_queues.js:95:5)
+	] 
+[2021-10-17 22:17:21][ERROR] : ValidationError: Product validation failed: subcategory: Path `subcategory` is required., category: Path `category` is required., description: Path `description` is required.
+	[
+	ValidationError: Product validation failed: subcategory: Path `subcategory` is required., category: Path `category` is required., description: Path `description` is required.
+    at model.Document.invalidate (C:\Users\matte\Documents\Università\Tecnologie Web\Progetto TechWeb\Backend\node_modules\mongoose\lib\document.js:2890:32)
+    at C:\Users\matte\Documents\Università\Tecnologie Web\Progetto TechWeb\Backend\node_modules\mongoose\lib\document.js:2681:17
+    at C:\Users\matte\Documents\Università\Tecnologie Web\Progetto TechWeb\Backend\node_modules\mongoose\lib\schematype.js:1280:9
+    at processTicksAndRejections (internal/process/task_queues.js:77:11)
+	] 
+[2021-10-17 22:17:24][ERROR] : Customer with id 616050300f33629454139b9a not found on the database
+	[
+	Error
+    at Object.handleMsg (C:\Users\matte\Documents\Università\Tecnologie Web\Progetto TechWeb\Backend\public\lib\errorHandler.js:29:48)
+    at getCustomerById (C:\Users\matte\Documents\Università\Tecnologie Web\Progetto TechWeb\Backend\public\routers\customerRouter.js:116:39)
+    at processTicksAndRejections (internal/process/task_queues.js:95:5)
+	] 
+[2021-10-17 22:17:24][ERROR] : CastError: Cast to ObjectId failed for value "!" (type string) at path "_id" for model "Customer"
+	[
+	CastError: Cast to ObjectId failed for value "!" (type string) at path "_id" for model "Customer"
+    at model.Query.exec (C:\Users\matte\Documents\Università\Tecnologie Web\Progetto TechWeb\Backend\node_modules\mongoose\lib\query.js:4540:21)
+    at model.Query.Query.then (C:\Users\matte\Documents\Università\Tecnologie Web\Progetto TechWeb\Backend\node_modules\mongoose\lib\query.js:4639:15)
+    at processTicksAndRejections (internal/process/task_queues.js:95:5)
+	] 
+[2021-10-17 22:17:24][ERROR] : Customer with id 616050300f55729454809b9a not found on the database
+	[
+	Error
+    at Object.handleMsg (C:\Users\matte\Documents\Università\Tecnologie Web\Progetto TechWeb\Backend\public\lib\errorHandler.js:29:48)
+    at getCustomerById (C:\Users\matte\Documents\Università\Tecnologie Web\Progetto TechWeb\Backend\public\routers\customerRouter.js:116:39)
+    at processTicksAndRejections (internal/process/task_queues.js:95:5)
+	] 
+[2021-10-17 22:17:24][ERROR] : Customer with id 507f191e810c19729de860ea not found on the database
+	[
+	Error
+    at Object.handleMsg (C:\Users\matte\Documents\Università\Tecnologie Web\Progetto TechWeb\Backend\public\lib\errorHandler.js:29:48)
+    at getCustomerById (C:\Users\matte\Documents\Università\Tecnologie Web\Progetto TechWeb\Backend\public\routers\customerRouter.js:116:39)
+    at processTicksAndRejections (internal/process/task_queues.js:95:5)
+	] 
+[2021-10-17 22:17:24][ERROR] : CastError: Cast to ObjectId failed for value "wrongurl" (type string) at path "_id" for model "Customer"
+	[
+	CastError: Cast to ObjectId failed for value "wrongurl" (type string) at path "_id" for model "Customer"
+    at model.Query.exec (C:\Users\matte\Documents\Università\Tecnologie Web\Progetto TechWeb\Backend\node_modules\mongoose\lib\query.js:4540:21)
+    at model.Query.Query.then (C:\Users\matte\Documents\Università\Tecnologie Web\Progetto TechWeb\Backend\node_modules\mongoose\lib\query.js:4639:15)
+    at processTicksAndRejections (internal/process/task_queues.js:95:5)
+	] 
+[2021-10-17 22:17:25][ERROR] : Customer with id 507f191e810c19729de860ea not found on the database
+	[
+	Error
+    at Object.handleMsg (C:\Users\matte\Documents\Università\Tecnologie Web\Progetto TechWeb\Backend\public\lib\errorHandler.js:29:48)
+    at getCustomerById (C:\Users\matte\Documents\Università\Tecnologie Web\Progetto TechWeb\Backend\public\routers\customerRouter.js:116:39)
+    at processTicksAndRejections (internal/process/task_queues.js:95:5)
+	] 
+[2021-10-17 22:17:25][ERROR] : CastError: Cast to ObjectId failed for value "!" (type string) at path "_id" for model "Customer"
+	[
+	CastError: Cast to ObjectId failed for value "!" (type string) at path "_id" for model "Customer"
+    at model.Query.exec (C:\Users\matte\Documents\Università\Tecnologie Web\Progetto TechWeb\Backend\node_modules\mongoose\lib\query.js:4540:21)
+    at model.Query.Query.then (C:\Users\matte\Documents\Università\Tecnologie Web\Progetto TechWeb\Backend\node_modules\mongoose\lib\query.js:4639:15)
+    at processTicksAndRejections (internal/process/task_queues.js:95:5)
+	] 
+[2021-10-17 22:17:25][ERROR] : Non ancora implementanto
+	[
+	Error
+    at Object.handleMsg (C:\Users\matte\Documents\Università\Tecnologie Web\Progetto TechWeb\Backend\public\lib\errorHandler.js:29:48)
+    at C:\Users\matte\Documents\Università\Tecnologie Web\Progetto TechWeb\Backend\public\routers\customerRouter.js:106:31
+    at processTicksAndRejections (internal/process/task_queues.js:95:5)
+	] 
+[2021-10-17 22:17:25][ERROR] : Customer with id 507f191e810c19729de860ea not found on the database
+	[
+	Error
+    at Object.handleMsg (C:\Users\matte\Documents\Università\Tecnologie Web\Progetto TechWeb\Backend\public\lib\errorHandler.js:29:48)
+    at getCustomerById (C:\Users\matte\Documents\Università\Tecnologie Web\Progetto TechWeb\Backend\public\routers\customerRouter.js:116:39)
+    at processTicksAndRejections (internal/process/task_queues.js:95:5)
+	] 
+[2021-10-17 22:17:25][ERROR] : CastError: Cast to ObjectId failed for value "!" (type string) at path "_id" for model "Customer"
+	[
+	CastError: Cast to ObjectId failed for value "!" (type string) at path "_id" for model "Customer"
+    at model.Query.exec (C:\Users\matte\Documents\Università\Tecnologie Web\Progetto TechWeb\Backend\node_modules\mongoose\lib\query.js:4540:21)
+    at model.Query.Query.then (C:\Users\matte\Documents\Università\Tecnologie Web\Progetto TechWeb\Backend\node_modules\mongoose\lib\query.js:4639:15)
+    at processTicksAndRejections (internal/process/task_queues.js:95:5)
+	] 
+[2021-10-17 22:17:26][ERROR] : ValidationError: Product validation failed: subcategory: Path `subcategory` is required., category: Path `category` is required., description: Path `description` is required.
+	[
+	ValidationError: Product validation failed: subcategory: Path `subcategory` is required., category: Path `category` is required., description: Path `description` is required.
+    at model.Document.invalidate (C:\Users\matte\Documents\Università\Tecnologie Web\Progetto TechWeb\Backend\node_modules\mongoose\lib\document.js:2890:32)
+    at C:\Users\matte\Documents\Università\Tecnologie Web\Progetto TechWeb\Backend\node_modules\mongoose\lib\document.js:2681:17
+    at C:\Users\matte\Documents\Università\Tecnologie Web\Progetto TechWeb\Backend\node_modules\mongoose\lib\schematype.js:1280:9
+    at processTicksAndRejections (internal/process/task_queues.js:77:11)
+	] 
+[2021-10-17 22:17:28][ERROR] : Customer with id 616050300f33629454139b9a not found on the database
+	[
+	Error
+    at Object.handleMsg (C:\Users\matte\Documents\Università\Tecnologie Web\Progetto TechWeb\Backend\public\lib\errorHandler.js:29:48)
+    at getCustomerById (C:\Users\matte\Documents\Università\Tecnologie Web\Progetto TechWeb\Backend\public\routers\customerRouter.js:116:39)
+    at processTicksAndRejections (internal/process/task_queues.js:95:5)
+	] 
+[2021-10-17 22:17:28][ERROR] : CastError: Cast to ObjectId failed for value "!" (type string) at path "_id" for model "Customer"
+	[
+	CastError: Cast to ObjectId failed for value "!" (type string) at path "_id" for model "Customer"
+    at model.Query.exec (C:\Users\matte\Documents\Università\Tecnologie Web\Progetto TechWeb\Backend\node_modules\mongoose\lib\query.js:4540:21)
+    at model.Query.Query.then (C:\Users\matte\Documents\Università\Tecnologie Web\Progetto TechWeb\Backend\node_modules\mongoose\lib\query.js:4639:15)
+    at processTicksAndRejections (internal/process/task_queues.js:95:5)
+	] 
+[2021-10-17 22:17:28][ERROR] : Customer with id 616050300f55729454809b9a not found on the database
+	[
+	Error
+    at Object.handleMsg (C:\Users\matte\Documents\Università\Tecnologie Web\Progetto TechWeb\Backend\public\lib\errorHandler.js:29:48)
+    at getCustomerById (C:\Users\matte\Documents\Università\Tecnologie Web\Progetto TechWeb\Backend\public\routers\customerRouter.js:116:39)
+    at processTicksAndRejections (internal/process/task_queues.js:95:5)
+	] 
+[2021-10-17 22:17:28][ERROR] : Customer with id 507f191e810c19729de860ea not found on the database
+	[
+	Error
+    at Object.handleMsg (C:\Users\matte\Documents\Università\Tecnologie Web\Progetto TechWeb\Backend\public\lib\errorHandler.js:29:48)
+    at getCustomerById (C:\Users\matte\Documents\Università\Tecnologie Web\Progetto TechWeb\Backend\public\routers\customerRouter.js:116:39)
+    at processTicksAndRejections (internal/process/task_queues.js:95:5)
+	] 
+[2021-10-17 22:17:28][ERROR] : CastError: Cast to ObjectId failed for value "wrongurl" (type string) at path "_id" for model "Customer"
+	[
+	CastError: Cast to ObjectId failed for value "wrongurl" (type string) at path "_id" for model "Customer"
+    at model.Query.exec (C:\Users\matte\Documents\Università\Tecnologie Web\Progetto TechWeb\Backend\node_modules\mongoose\lib\query.js:4540:21)
+    at model.Query.Query.then (C:\Users\matte\Documents\Università\Tecnologie Web\Progetto TechWeb\Backend\node_modules\mongoose\lib\query.js:4639:15)
+    at processTicksAndRejections (internal/process/task_queues.js:95:5)
+	] 
+[2021-10-17 22:17:29][ERROR] : Customer with id 507f191e810c19729de860ea not found on the database
+	[
+	Error
+    at Object.handleMsg (C:\Users\matte\Documents\Università\Tecnologie Web\Progetto TechWeb\Backend\public\lib\errorHandler.js:29:48)
+    at getCustomerById (C:\Users\matte\Documents\Università\Tecnologie Web\Progetto TechWeb\Backend\public\routers\customerRouter.js:116:39)
+    at processTicksAndRejections (internal/process/task_queues.js:95:5)
+	] 
+[2021-10-17 22:17:29][ERROR] : CastError: Cast to ObjectId failed for value "!" (type string) at path "_id" for model "Customer"
+	[
+	CastError: Cast to ObjectId failed for value "!" (type string) at path "_id" for model "Customer"
+    at model.Query.exec (C:\Users\matte\Documents\Università\Tecnologie Web\Progetto TechWeb\Backend\node_modules\mongoose\lib\query.js:4540:21)
+    at model.Query.Query.then (C:\Users\matte\Documents\Università\Tecnologie Web\Progetto TechWeb\Backend\node_modules\mongoose\lib\query.js:4639:15)
+    at processTicksAndRejections (internal/process/task_queues.js:95:5)
+	] 
+[2021-10-17 22:17:29][ERROR] : Non ancora implementanto
+	[
+	Error
+    at Object.handleMsg (C:\Users\matte\Documents\Università\Tecnologie Web\Progetto TechWeb\Backend\public\lib\errorHandler.js:29:48)
+    at C:\Users\matte\Documents\Università\Tecnologie Web\Progetto TechWeb\Backend\public\routers\customerRouter.js:106:31
+    at processTicksAndRejections (internal/process/task_queues.js:95:5)
+	] 
+[2021-10-17 22:17:29][ERROR] : Customer with id 507f191e810c19729de860ea not found on the database
+	[
+	Error
+    at Object.handleMsg (C:\Users\matte\Documents\Università\Tecnologie Web\Progetto TechWeb\Backend\public\lib\errorHandler.js:29:48)
+    at getCustomerById (C:\Users\matte\Documents\Università\Tecnologie Web\Progetto TechWeb\Backend\public\routers\customerRouter.js:116:39)
+    at processTicksAndRejections (internal/process/task_queues.js:95:5)
+	] 
+[2021-10-17 22:17:29][ERROR] : CastError: Cast to ObjectId failed for value "!" (type string) at path "_id" for model "Customer"
+	[
+	CastError: Cast to ObjectId failed for value "!" (type string) at path "_id" for model "Customer"
+    at model.Query.exec (C:\Users\matte\Documents\Università\Tecnologie Web\Progetto TechWeb\Backend\node_modules\mongoose\lib\query.js:4540:21)
+    at model.Query.Query.then (C:\Users\matte\Documents\Università\Tecnologie Web\Progetto TechWeb\Backend\node_modules\mongoose\lib\query.js:4639:15)
+    at processTicksAndRejections (internal/process/task_queues.js:95:5)
+	] 
+[2021-10-17 22:17:29][ERROR] : ValidationError: Product validation failed: subcategory: Path `subcategory` is required., category: Path `category` is required., description: Path `description` is required.
+	[
+	ValidationError: Product validation failed: subcategory: Path `subcategory` is required., category: Path `category` is required., description: Path `description` is required.
+    at model.Document.invalidate (C:\Users\matte\Documents\Università\Tecnologie Web\Progetto TechWeb\Backend\node_modules\mongoose\lib\document.js:2890:32)
+    at C:\Users\matte\Documents\Università\Tecnologie Web\Progetto TechWeb\Backend\node_modules\mongoose\lib\document.js:2681:17
+    at C:\Users\matte\Documents\Università\Tecnologie Web\Progetto TechWeb\Backend\node_modules\mongoose\lib\schematype.js:1280:9
+    at processTicksAndRejections (internal/process/task_queues.js:77:11)
+	] 

@@ -3,7 +3,7 @@ const fs = require("fs").promises;
 var path = require('path');
 
 const errorFileName = ".errorlog.txt";
-const errorFilePath = path.join(__dirname, '../../log/' + errorFileName);
+const errorFilePath = path.join(global.rootDir, '/log/' + errorFileName);
 const isInTest = typeof global.it === 'function';
 
 function getErrorCode(error){
@@ -26,13 +26,12 @@ async function handle(error, res, code = undefined) {
 }
 
 async function handleMsg(msg, res, code) {
-    code = code || getErrorCode(error);
-    await logErrorMessage(msg);
+    await logErrorMessage(msg + "\n\t[\n\t" + (new Error()).stack + "\n\t]");
     return res.status(code).json({ message: msg });
 }
 
 async function logError(error) {
-    logErrorMessage(error.name + ": " + error.message);
+    await logErrorMessage(error.name + ": " + error.message + "\n\t[\n\t" + error.stack + "\n\t]");
 }
 
 async function logErrorMessage(msg) {
@@ -52,3 +51,4 @@ function logToConsole(msg){
 
 module.exports.handle = handle;
 module.exports.handleMsg = handleMsg;
+module.exports.logError = logError;

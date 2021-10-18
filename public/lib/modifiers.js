@@ -1,10 +1,11 @@
+/* eslint-disable no-unused-vars */
 const conditionLevel = require("../models/unit").conditionLevel;
 const helper = require("./helper");
 
 //TODO magari rendere condition async
 
 let discoutBasedOnCondition = {
-    async condition({ unit, from, to, ...others }) {
+    async condition({ unit, ...others }) {
         if (unit.condition == conditionLevel.perfect) {
             return false;
         }
@@ -24,10 +25,10 @@ let discoutBasedOnCondition = {
         return true;
     },
     value: 1,
-    shortExplanation({ unit, from, to, ...others }) {
+    shortExplanation({...others }) {
         return "discout based on condition of the unit";
     },
-    longExplanation({ unit, from, to, ...others }) {
+    longExplanation({unit, ...others }) {
         return ` A discout of ${(1 - this.value) * 100}% is applied because the unit has some ${unit.condition}`;
     }
 };

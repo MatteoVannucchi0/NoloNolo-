@@ -28,7 +28,7 @@ describe('Unit test price for price estimanation and modifiers', function () {
     const authheader = { "Authorization": adminToken };
 
     async function postAuth(prod, urlMethod=url) {
-        let req = await (request(app).post(urlMethod).set(authheader).send(prod));;
+        let req = await (request(app).post(urlMethod).set(authheader).send(prod));
         let value = req.body;
         let statusCode = req.statusCode;
         let id = value._id;

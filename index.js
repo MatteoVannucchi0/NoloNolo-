@@ -31,9 +31,6 @@ Copyright (c) 2021 by Fabio Vitali
 global.rootDir = __dirname;
 global.startDate = null;
 
-global.rootDir = __dirname;
-global.startDate = null;
-
 const mongoose = require("mongoose");
 const express = require('express');
 const cors = require('cors');
@@ -66,7 +63,7 @@ var accessLogStream = fs.createWriteStream(path.join(logginFolderPath, '.log.txt
 const morgan = require('morgan');
 app.use(
    morgan(
-      '[:date[web]] :method :url :req[header] - :status',
+      '[:date[web]] :method - :url :req[header] - :status',
       { stream: accessLogStream }
    )
 );

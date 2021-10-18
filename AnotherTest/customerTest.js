@@ -2,6 +2,10 @@ const chai = require('chai');
 const expect = chai.expect;
 const should = chai.should();
 
+
+chai.use(require("chai-things"));
+chai.use(require('chai-exclude'));
+
 const request = require('supertest');
 const app = require('../index');
 const url = "/api"
@@ -18,6 +22,15 @@ describe('Unit test customer', function() {
         got.should.have.property('_id');
         got.address.should.deep.equal(expected.address);
     }
+
+    function verify(got, expected) {
+        expect(got).excluding(['_id', '__v', 'productImage', 'dateOfBirth']).to.deep.equal(expected);
+    }
+
+    function shouldContain(arr, obj) {
+        expect(arr).excluding(['_id', '__v', 'productImage']).to.include.something.that.deep.equals(obj);
+    }
+
 
     const adminToken = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJhdXRoIjoiYWRtaW4iLCJ1c2VybmFtZSI6ImNpYW8iLCJpZCI6ImFzZG9pMDE5MjNlYXNkIiwiaWF0IjoxNjMzNzAwOTY0LCJleHAiOjE2MzYzNzkzNjR9._cIrkGfajb6DbVFiSxD0wU8SUjZ3kI3-ojV8Fu_a0Kw";
     const authheader = {"Authorization": adminToken};
@@ -246,13 +259,24 @@ describe('Unit test customer', function() {
     })
 
     it('GET /customers/rentals should return an array', async function() {
-        let diffLogin = customer4
-        diffLogin.loginInfo = { 
-            username: "alsddfsdf", 
-            password: "alkdl<sdkg+e",
-            email: "adfasdfasdf@gmail.com"
+        const customerTest = {
+            firstname: 'John',
+            lastname: 'Smith',
+            loginInfo: {
+                username: 'customerTestGetCustomerRentals',
+                password: 'afdkgsdfoiaposidfèaposdfiaosdfi',
+                email: 'customerTestGetCustomerRentals@example.com',
+            },
+            dateOfBirth: Date.now(),
+            address: {
+                country: 'United States',
+                city: 'New York',
+                zipcode: '123',
+                streetAddress: "5th avenue",
+            }
         }
-        let req = await postAuth(customer4); 
+        
+        let req = await postAuth(customerTest); 
         let value = req.body;
         let statusCode = req.statusCode;
         let oldId = value._id
@@ -264,14 +288,11 @@ describe('Unit test customer', function() {
         statusCode.should.equal(200);
         value.should.be.a("array");
 
-        let elem0 = value[0];
-        elem0.should.have.property("startdate");
-        elem0.should.have.property("enddate");
-        elem0.should.have.property("bill");
-
         req = await deleteAuth(oldId);
         value = req.body;
         statusCode = req.statusCode;
+
+        statusCode.should.equal(200);
     })
 
     it('GET /customers/rentals with an non existant id should return 404', async function() {
@@ -294,34 +315,107 @@ describe('Unit test customer', function() {
     })
     
     it('GET /customers/favorites should return an array', async function() {
-        let diffLogin = customer5
-        diffLogin.loginInfo = { 
-            username: "testtest", 
-            password: "alkdl<sdkg+e",
-            email: "test1@gmail.com"
+        const customerTest = {
+            firstname: 'John',
+            lastname: 'Smith',
+            loginInfo: {
+                username: 'customerTestGetFavorites',
+                password: 'dfgsadfsdgfdhafhaefh',
+                email: 'customerTestGetFavorites@example.com',
+            },
+            dateOfBirth: Date.now(),
+            address: {
+                country: 'United States',
+                city: 'New York',
+                zipcode: '123',
+                streetAddress: "5th avenue",
+            }
         }
-        let req = await postAuth(diffLogin); 
+        let req = await postAuth(customerTest); 
         let value = req.body;
         let statusCode = req.statusCode;
-        let oldId = value._id;
+        let customerId = value._id;
 
-        req = (await request(app).get(url + '/customers/'+ value._id + '/favorites').set(authheader));
+        const product = {
+            name: "ProductTest",
+            description: "DescriptionTest",
+            image: "/image.png",
+            category: "auto",
+            subcategory: "prova",
+            tags: [],
+            altproducts: [],
+        }
+
+        req = (await request(app).post(url + '/products/').set(authheader).send(product));
+        value = req.body;
+        statusCode = req.statusCode;
+        productId = value._id;
+
+        statusCode.should.equal(201);
+        verify(value, product);
+
+        const unit = {
+            name: "UnitaTest",
+            condition: "perfect",
+            price: 100,
+            product: productId,
+            rentals: [],
+        }
+
+        req = (await request(app).post(url + '/products/' + productId + '/units/').set(authheader).send(unit));
+        value = req.body;
+        statusCode = req.statusCode;
+        unitId = value._id;
+
+        statusCode.should.equal(201);
+        verify(value, unit);
+
+
+        const rentTest = {
+            customer: customerId,
+            employee: null, 
+            prenotationDate: Date.now(),
+            open: true,
+            bill: "616b1a142e3e8c419d5c3b77",
+            startDate: Date.now(),
+            expectedEndDate: Date.now() + 1000,
+            unit: unitId,
+            priceEstimation: {},
+        }
+
+        req = (await request(app).post(url + '/rentals/').set(authheader).send(rentTest));
+        value = req.body;
+        statusCode = req.statusCode;
+        rentId = value._id;
+
+        statusCode.should.equal(201);
+
+
+        req = (await request(app).get(url + '/customers/'+ customerId + '/favorites').set(authheader));
         value = req.body;
         statusCode = req.statusCode;
 
         statusCode.should.equal(200);
         value.should.be.a("array");
 
-        let elem0 = value[0];
-        elem0.should.have.property("name");
-        elem0.should.have.property("description");
-        elem0.should.have.property("image");
-        elem0.should.have.property("category");
+        shouldContain(value, product);
 
-
-        req = await deleteAuth(oldId);
+        req = await deleteAuth(customerId);
         value = req.body;
         statusCode = req.statusCode;
+
+        statusCode.should.equal(200);
+
+        req = await request(app).delete(url + '/products/' + productId).set(authheader);
+        statusCode = req.statusCode;
+        statusCode.should.equal(200);
+
+        
+        req = await request(app).delete(url + '/rentals/' + rentId).set(authheader);
+        statusCode = req.statusCode;
+
+        statusCode.should.equal(200);
+
     })
 
     it('GET /customers/favorites with an non existant id should return 404', async function() {

@@ -3,6 +3,7 @@ const bcrypt = require('bcrypt');
 const crypto = require('crypto');
 const jwt = require('jsonwebtoken');
 const validation = require('../lib/validation');
+const errorHandler = require('../lib/errorhandler');
 
 
 const authFileName = ".auth"
@@ -13,7 +14,7 @@ initializeAuthentication();
 
 async function initializeAuthentication() {
     try{
-        data = await fs.readFile(authFilePath)
+        const data = await fs.readFile(authFilePath)
         if (data == ""){
             privateKey = crypto.randomBytes(256).toString('base64');
             try{
@@ -25,7 +26,7 @@ async function initializeAuthentication() {
             privateKey = data;
         }
     } catch (err){
-        console.log(err);
+        errorHandler.logError(err)
     }
 
     //let token = await createToken("admin", "ciao", "asdoi01923easd");
@@ -41,8 +42,7 @@ async function hash(string) {
 
 async function hashPassword(req, res, next) {
     try{
-        if(req.body && req.body.loginInfo && req.body.loginInfo.password)
-            req.body.loginInfo.password = await hash(req.body.loginInfo.password);
+        req.body.loginInfo.password = await hash(req.body.loginInfo.password);
     } catch (error) {
         return res.status(400).json({message: error.message});
     }
@@ -115,8 +115,22 @@ function verifyAuth(requiredAuthLevel, checkId = false){
     }
 }
 
-//------------ Token handling --------------------------------
+async function getIdFromToken(req, res, next) {
+    const token = req.headers["authorization"];
+    if(!token) {
+        next();             //Nel caso in cui non ci sia un token da cui prendere l'id dello username vado oltre
+    }
 
+    try{
+        const decodedToken = await jwt.verify(token, privateKey);
+        req.agentId = decodedToken.id;
+        next();
+    } catch (error) {
+        return res.status(401).json({message: "Invalid authentication token [" + error.message + "]"});
+    }
+}
+
+//------------ Token handling --------------------------------
 
 module.exports.verifyCredential = verifyCredential;
 module.exports.generateToken = generateToken;
@@ -124,4 +138,4 @@ module.exports.authLevel = authLevel;
 module.exports.hashPassword = hashPassword;
 module.exports.verifyAuth = verifyAuth;
 module.exports.hash = hash;
-
+module.exports.getIdFromToken = getIdFromToken

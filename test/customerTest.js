@@ -349,7 +349,7 @@ describe('Unit test customer', function() {
         req = (await request(app).post(url + '/products/').set(authheader).send(product));
         value = req.body;
         statusCode = req.statusCode;
-        productId = value._id;
+        const productId = value._id;
 
         statusCode.should.equal(201);
         verify(value, product);
@@ -365,7 +365,7 @@ describe('Unit test customer', function() {
         req = (await request(app).post(url + '/products/' + productId + '/units/').set(authheader).send(unit));
         value = req.body;
         statusCode = req.statusCode;
-        unitId = value._id;
+        const unitId = value._id;
 
         statusCode.should.equal(201);
         verify(value, unit);
@@ -386,7 +386,7 @@ describe('Unit test customer', function() {
         req = (await request(app).post(url + '/rentals/').set(authheader).send(rentTest));
         value = req.body;
         statusCode = req.statusCode;
-        rentId = value._id;
+        const rentId = value._id;
 
         statusCode.should.equal(201);
 

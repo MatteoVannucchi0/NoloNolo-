@@ -42,7 +42,7 @@ unitSchema.methods.getRentals = async function () {
 }
 
 unitSchema.methods.getOpenRentals = async function () {
-    return await Rental.find({ unit: this._id, open: true });;
+    return await Rental.find({ unit: this._id, open: true });
 }
 
 unitSchema.methods.available = async function () {

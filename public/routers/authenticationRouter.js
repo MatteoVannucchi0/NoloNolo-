@@ -7,21 +7,18 @@ const validation = require("../lib/validation");
 
 router.post('/customers/login', async (req, res) => {
     try {
-        let username = req.body.username;
-        let query = {};
 
-        if (validation.validateEmail(username))
-            query["loginInfo.email"] = req.body.username;
-        else
-            query["loginInfo.username"] = req.body.username;
+        const email = req.body.email;
 
-        let customer = (await Customer.find(query))[0];
+        const customer = (await Customer.find({'loginInfo.email': email}))[0];
 
         if (!customer) {
             return res.status(401).json({ message: "No customer found with that username/email" });
         }
 
-        if (!authentication.verifyCredential(req.body, customer.loginInfo))
+        const correctPassword = await authentication.verifyCredential(req.body, customer.loginInfo)
+        console.log(req.body);
+        if (!correctPassword)
             return res.status(403).json({ message: "Password incorrect" });
 
         const jwtToken = await customer.generateToken();

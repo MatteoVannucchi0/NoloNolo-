@@ -37,12 +37,13 @@ async function initializeAuthentication() {
 //------------ Password hashing --------------------------------
 
 async function hash(string) {
-    return await bcrypt.hashSync(string, 5);
+    return await bcrypt.hash(string, 5);
 }
 
 async function hashPassword(req, res, next) {
     try{
         req.body.loginInfo.password = await hash(req.body.loginInfo.password);
+
     } catch (error) {
         return res.status(400).json({message: error.message});
     }
@@ -50,13 +51,7 @@ async function hashPassword(req, res, next) {
 }
 
 async function verifyCredential(loginInfoPassed, loginInfoExpected) {
-    if(validation.validateEmail(loginInfoPassed.username) && loginInfoPassed.username == loginInfoExpected.email){
-        return (await hash(loginInfoPassed.password)) == loginInfoExpected.password;
-    } else if (loginInfoPassed.username == loginInfoExpected.username) {
-        return (await hash(loginInfoPassed.password)) == loginInfoExpected.password;
-    }
-
-    return false;
+    return await bcrypt.compare(loginInfoPassed.password, loginInfoExpected.password);
 }
 
 //------------ Password hashing --------------------------------

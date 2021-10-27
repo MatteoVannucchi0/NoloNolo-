@@ -75,6 +75,12 @@ app.enable('trust proxy');
 require('console-stamp')(console, '[HH:MM:ss.l]');
 
 
+//va usato perché sennò nel frontend non si può accedere all'header Authorization
+app.use(function(req, res, next) {
+   res.set({'Access-Control-Expose-Headers':'Authorization'})
+   next();
+ });
+
 // const objectsRouter = require(global.rootDir + '/public/routers/'); 
 // app.use('/api/', Router);
 

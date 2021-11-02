@@ -59,11 +59,11 @@ app.use(express.json());   //L'ordine di questi è importante!
 app.use(cors())
 
 //Gestione loggin delle richieste al server
-const logginFolderPath = path.join(__dirname, '/log/')
+const logginFilePath = path.join(__dirname, '/log/.log.txt')
 const {createFileAndDir} = require(global.rootDir + global.publicDir + '/lib/helper');
 
-createFileAndDir(logginFolderPath).then( () => {
-   var accessLogStream = fs.createWriteStream(path.join(logginFolderPath, '.log.txt'), { flags: 'a' })
+createFileAndDir(logginFilePath).then( () => {
+   var accessLogStream = fs.createWriteStream(logginFilePath, { flags: 'a' })
    const morgan = require('morgan');
    app.use(
       morgan(

@@ -373,7 +373,7 @@ describe('Unit test customer', function() {
 
         const rentTest = {
             customer: customerId,
-            employee: null, 
+            employee: "616b1a142e3e8c419d5c3b55", 
             prenotationDate: Date.now(),
             open: true,
             bill: "616b1a142e3e8c419d5c3b77",

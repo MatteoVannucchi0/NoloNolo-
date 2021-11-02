@@ -39,6 +39,8 @@ var path = require('path');
 
 //Serve per le variabili di ambiente
 require('dotenv').config();
+global.publicDir = process.env.PUBLIC_DIR_URL;
+
 
 
 /* ========================== */
@@ -84,22 +86,22 @@ app.use(function(req, res, next) {
 // const objectsRouter = require(global.rootDir + '/public/routers/'); 
 // app.use('/api/', Router);
 
-const authentication = require(global.rootDir + '/public/routers/authenticationRouter');
+const authentication = require(global.rootDir + global.publicDir + '/routers/authenticationRouter');
 app.use("/api/authentication/", authentication.router);
 
-const customerRouter = require(global.rootDir + '/public/routers/customerRouter');
+const customerRouter = require(global.rootDir + global.publicDir + '/routers/customerRouter');
 app.use("/api/customers/", customerRouter);
 
-const productRouter = require(global.rootDir + '/public/routers/productRouter');
+const productRouter = require(global.rootDir + global.publicDir + '/routers/productRouter');
 app.use("/api/products/", productRouter);
 
-const employeeRouter = require(global.rootDir + '/public/routers/employeeRouter');
+const employeeRouter = require(global.rootDir + global.publicDir + '/routers/employeeRouter');
 app.use("/api/employees/", employeeRouter);
 
-const rentalRouter = require(global.rootDir + '/public/routers/rentalRouter');
+const rentalRouter = require(global.rootDir + global.publicDir + '/routers/rentalRouter');
 app.use("/api/rentals/", rentalRouter);
 
-const billRouter = require(global.rootDir + '/public/routers/billRouter');
+const billRouter = require(global.rootDir + global.publicDir + '/routers/billRouter');
 app.use('/api/bills/', billRouter);
 
 /* ========================== */

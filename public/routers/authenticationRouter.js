@@ -9,7 +9,6 @@ router.post('/customers/login', async (req, res) => {
     try {
 
         const email = req.body.email;
-
         const customer = (await Customer.find({'loginInfo.email': email}))[0];
 
         if (!customer) {

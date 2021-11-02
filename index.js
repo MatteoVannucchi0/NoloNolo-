@@ -119,13 +119,18 @@ const mongoCredentials = {
    site: "mongo_site202120"
 }
 
-const mongooseOptions = {
-   dbName: "databaseProgettoTechWeb",
+let mongooseOptions = {
    useNewUrlParser: true,
 }
+let mongouri = `mongodb://${mongoCredentials.user}:${mongoCredentials.pwd}@${process.env.DATABASE_URL}?writeConcern=majority`;
+
+if(process.env.DEVELOPMENT && process.env.DEVELOPMENT === "TRUE"){
+   mongooseOptions.dbName = "databaseProgettoTechWeb";
+   mongouri = `mongodb://${mongoCredentials.user}:${mongoCredentials.pwd}@${process.env.DATABASE_URL}/${mongooseOptions.dbName}?writeConcern=majority`;
+}
+
 
 //mongodb://matteo:vannucchi@localhost/databaseProgettoTechWeb
-const mongouri = `mongodb://${mongoCredentials.user}:${mongoCredentials.pwd}@${process.env.DATABASE_URL}/${mongooseOptions.dbName}`;
 
 mongoose.connect(mongouri, mongooseOptions);
 mongoose.connection.on('error', (err) => console.log(err));

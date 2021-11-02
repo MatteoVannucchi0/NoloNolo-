@@ -3,6 +3,7 @@ const bcrypt = require('bcrypt');
 const crypto = require('crypto');
 const jwt = require('jsonwebtoken');
 const errorHandler = require('./errorHandler');
+const {createFileAndDir} = require('./helper');
 
 
 const authFileName = ".auth"
@@ -13,7 +14,8 @@ initializeAuthentication();
 
 async function initializeAuthentication() {
     try{
-        const data = await fs.readFile(authFilePath)
+        await createFileAndDir(authFilePath);
+        const data = await fs.readFile(authFilePath);
         if (data == ""){
             privateKey = crypto.randomBytes(256).toString('base64');
             try{

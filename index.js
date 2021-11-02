@@ -58,17 +58,20 @@ app.use('/img', express.static(global.rootDir + '/public/media'));
 app.use(express.json());   //L'ordine di questi è importante!
 app.use(cors())
 
+//Gestione loggin delle richieste al server
 const logginFolderPath = path.join(__dirname, '/log/')
+const {createFileAndDir} = require(global.rootDir + global.publicDir + '/lib/helper');
 
-var accessLogStream = fs.createWriteStream(path.join(logginFolderPath, '.log.txt'), { flags: 'a' })
-
-const morgan = require('morgan');
-app.use(
-   morgan(
-      '[:date[web]] :method - :url :req[header] - :status',
-      { stream: accessLogStream }
-   )
-);
+createFileAndDir(logginFolderPath).then( () => {
+   var accessLogStream = fs.createWriteStream(path.join(logginFolderPath, '.log.txt'), { flags: 'a' })
+   const morgan = require('morgan');
+   app.use(
+      morgan(
+         '[:date[web]] :method - :url :req[header] - :status',
+         { stream: accessLogStream }
+      )
+   );
+})
 
 // https://stackoverflow.com/questions/40459511/in-express-js-req-protocol-is-not-picking-up-https-for-my-secure-link-it-alwa
 app.enable('trust proxy');

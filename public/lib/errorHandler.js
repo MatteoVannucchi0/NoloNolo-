@@ -1,10 +1,13 @@
 const chalk = require('chalk');
 const fs = require("fs").promises;
 var path = require('path');
+const {createFileAndDir} = require('./helper');
 
 const errorFileName = ".errorlog.txt";
 const errorFilePath = path.join(global.rootDir, '/log/' + errorFileName);
 const isInTest = typeof global.it === 'function';
+
+createFileAndDir(errorFilePath);
 
 function getErrorCode(error){
     switch (error.name) {

@@ -60,18 +60,20 @@ app.use(cors())
 
 //Gestione loggin delle richieste al server
 const logginFilePath = path.join(__dirname, '/log/.log.txt')
-const {createFileAndDir} = require(global.rootDir + global.publicDir + '/lib/helper');
+const {createFileAndDirSync} = require(global.rootDir + global.publicDir + '/lib/helper');
 
-createFileAndDir(logginFilePath).then( () => {
-   var accessLogStream = fs.createWriteStream(logginFilePath, { flags: 'a' })
-   const morgan = require('morgan');
-   app.use(
-      morgan(
-         '[:date[web]] :method - :url :req[header] - :status',
-         { stream: accessLogStream }
-      )
-   );
-})
+//Perchè lo mettiamo sincrono? se non lo fosse dovremmo usare un callback ma renderebbe morgan non funzionante perché andremmo a fare app.use(morgan ...) dopo il resto delle app.use dei vari endpoint
+//Se invece usassimo await funzionerebbe però bisognerebbe richiundere tutto index in una funzione async. Facendo ciò però i test partono prima che sia caricato tutto e non vanno.
+//Questa è quindi la soluzione più semplice, anche perché non causa grossi problemi avere una funzionalità sincrona chiamata solo durante il setup iniziale del server.
+createFileAndDirSync(logginFilePath)
+var accessLogStream = fs.createWriteStream(logginFilePath, { flags: 'a' })
+const morgan = require('morgan');
+app.use(
+   morgan(
+      '[:date[web]] :method - :url :req[header] - :status',
+      { stream: accessLogStream }
+   )
+);
 
 // https://stackoverflow.com/questions/40459511/in-express-js-req-protocol-is-not-picking-up-https-for-my-secure-link-it-alwa
 app.enable('trust proxy');

@@ -19,4 +19,16 @@ async function createFileAndDir(path) {
   }
 }
 
-module.exports = {dayDifference, isWeekend, createFileAndDir};
+function createFileAndDirSync(path) {
+  const fsSync = require("fs");
+  try{
+    fsSync.mkdirSync(getDirName(path), { recursive: true });
+    const file = fsSync.openSync(path, "a");
+    fsSync.close(file);
+  } catch (error) {
+    console.error(error);
+  }
+}
+
+
+module.exports = {dayDifference, isWeekend, createFileAndDir, createFileAndDirSync};

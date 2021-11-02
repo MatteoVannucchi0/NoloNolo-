@@ -142,6 +142,10 @@ describe('Unit test customer', function() {
         }
     }
 
+    it('Should wait', function() {
+        this.timeout(2000);
+    })
+
     it('GET /customers should return an array of customers', async function() {
         let req = await getAuth();
         let value = req.body;

@@ -21,6 +21,8 @@ jobs:
             scp -r public/models/ matteo.vannucchi@donpasquale.cs.unibo.it:/home/web/site202120/html/public/backend/
             scp -r public/routers/ matteo.vannucchi@donpasquale.cs.unibo.it:/home/web/site202120/html/public/backend/
             scp -r public/lib/ matteo.vannucchi@donpasquale.cs.unibo.it:/home/web/site202120/html/public/backend/
+            scp -r public/image/ matteo.vannucchi@donpasquale.cs.unibo.it:/home/web/site202120/html/public/backend/
+            
 
             scp index.js matteo.vannucchi@donpasquale.cs.unibo.it:/home/web/site202120/html/
             scp package.json matteo.vannucchi@donpasquale.cs.unibo.it:/home/web/site202120/html/

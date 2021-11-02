@@ -38,7 +38,7 @@ const fs = require('fs');
 var path = require('path');
 
 //Serve per le variabili di ambiente
-require('dotenv').config({ path: global.rootDir + "\\.env"});
+require('dotenv').config({ path: path.resolve(global.rootDir + "/.env") });
 global.publicDir = process.env.PUBLIC_DIR_URL;
 
 

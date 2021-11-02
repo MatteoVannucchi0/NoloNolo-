@@ -1,5 +1,5 @@
 const mongoose = require('mongoose');
-const Rental = require('../models/rental');
+const Rental = require('./rental');
 
 
 const conditionLevel = {

@@ -1,5 +1,5 @@
 const mongoose = require('mongoose');
-const Unit = require('../models/unit').model;
+const Unit = require('./unit').model;
 
 const tagSchema = new mongoose.Schema({
     key: {

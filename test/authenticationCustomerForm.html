@@ -36,10 +36,12 @@
     </div>  
 
     <script>
-        const site = "https://site202120.tw.cs.unibo.it" //"https://site202120.tw.cs.unibo.it"; // "http://localhost:8000"
+        const site = "http://localhost:8000 " //"https://site202120.tw.cs.unibo.it"; // "http://localhost:8000"
 
-        const uriLogin = site + "/api/authentication/customers/login/"
-        const uriRegister = site + "/api/customers/"
+        const user = "employees";    // "customers"
+
+        const uriLogin = site + "/api/authentication/"+user+"/login/"
+        const uriRegister = site + "/api/"+user+"/"
 
         const address = {
             country: "Italy",

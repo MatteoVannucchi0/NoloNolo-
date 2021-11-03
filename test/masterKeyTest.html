@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+
+<head>
+    <style>
+        div {
+            display: flex;
+        }
+    </style>
+</head>
+
+<body> 
+    <button type="button" onclick="toggle()">Clicca!</button>
+    <div id="div">
+     
+    </div>
+
+    <script>
+        const uri = "http://localhost:8000/api/products/"
+        const masterKey = "Ig1oQt6QKm+ZbaXULm146sicE4F4dbcltsw2QeaLfcghZ3TcTm3KGql7DPMSG+LgaJzqebEhxr0DIwRhcKQPTXTYoAtHM87WZ4Qdsx1lsbYZyqA8Ve3nBwBkn54TXqB9O20uc7hb02st41jmxE56w33UYVT4SNoFNm2h4tNoN+qAV4GsaHFhRwlVAPVLZCb3Dq8PxwHGRrUzv6NbZwv/UqwiXrH2Nl2ahyh9I6C2r7++8uYAH1AJx4yErRObWmBaAWwafJjJ3miPiLLpAv25Y9jOaoIN74C8T9afSyUWc8VwKkAoy9UZRijfBKtImQUMdFEANeBWXwlF8RWn+HVGOg=="
+
+        async function toggle(){
+            let response = await fetch(uri, {
+                headers: {"Authorization": masterKey},
+                method: "GET",
+                mode: 'cors',
+            })
+            let text = (await response.json());
+            console.log(text);
+        }
+
+    </script>
+
+</body>

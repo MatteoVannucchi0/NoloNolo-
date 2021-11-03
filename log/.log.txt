@@ -1,5 +1,5 @@
-[Tue, 02 Nov 2021 22:46:17 GMT] POST - /api/authentication/customers/login/ - - 401
-[Tue, 02 Nov 2021 22:46:49 GMT] POST - /api/authentication/customers/login/ - - 401
-[Tue, 02 Nov 2021 22:47:13 GMT] POST - /api/authentication/customers/login/ - - 401
-[Tue, 02 Nov 2021 22:47:21 GMT] POST - /api/authentication/customers/login/ - - 401
-[Tue, 02 Nov 2021 22:48:16 GMT] POST - /api/authentication/customers/login/ - - 200
+[Wed, 03 Nov 2021 13:28:44 GMT] POST - /api/authentication/employees/login/ - - 403
+[Wed, 03 Nov 2021 13:40:45 GMT] GET - /api/products/ - - 200
+[Wed, 03 Nov 2021 13:40:54 GMT] GET - /api/products/ - - 304
+[Wed, 03 Nov 2021 13:41:15 GMT] GET - /api/products/ - - 304
+[Wed, 03 Nov 2021 13:41:31 GMT] GET - /api/products/ - - 304

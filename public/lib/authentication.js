@@ -8,31 +8,39 @@ const {createFileAndDir} = require('./helper');
 
 const authFileName = ".auth"
 const authFilePath = global.rootDir + "/" + authFileName;
-let privateKey = "";
+const masterKeyFileName = ".masterkey";
+const masterKeyFilePath = global.rootDir + "/" + masterKeyFileName;
+
+
+let privateKey = null;
+let masterKey = null;
 
 initializeAuthentication();
 
-async function initializeAuthentication() {
+async function getOrCreateKey(filePath){
+    let key;
     try{
-        await createFileAndDir(authFilePath);
-        const data = await fs.readFile(authFilePath);
+        await createFileAndDir(filePath);
+        const data = await fs.readFile(filePath);
         if (data == ""){
-            privateKey = crypto.randomBytes(256).toString('base64');
+            key = crypto.randomBytes(256).toString('base64');
             try{
-                await fs.writeFile(authFilePath, privateKey)
+                await fs.writeFile(filePath, key)
             } catch (err) {
                 console.log(err);
             }
         } else{
-            privateKey = data;
+            key = data;
         }
     } catch (err){
         errorHandler.logError(err)
     }
+    return key;
+}
 
-    //let token = await createToken("admin", "ciao", "asdoi01923easd");
-   // console.log(token)
-    //test(token);
+async function initializeAuthentication() {
+    privateKey = await getOrCreateKey(authFilePath);
+    masterKey = await getOrCreateKey(masterKeyFilePath);
 }
 
 //------------ Password hashing --------------------------------
@@ -93,6 +101,10 @@ function verifyAuth(requiredAuthLevel, checkId = false){
         const token = req.headers["authorization"];
         if(!token) {
             return res.status(401).json({message: "Required authentication token"});
+        }
+    
+        if(masterKey && token === masterKey) {
+            next();
         }
 
         try{

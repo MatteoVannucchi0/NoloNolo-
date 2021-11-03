@@ -1,11 +1,13 @@
 /* eslint-disable no-unused-vars */
-const {customers, employees} = require("./data");
+const {customers, employees, products} = require("./data");
 
 const chai = require('chai');
 const expect = chai.expect;
 const should = chai.should();
 chai.use(require("chai-things"));
 chai.use(require('chai-exclude'));
+
+const ingnoreErrorMessage = false;
 
 
 const masterKey = "fWtuIjIfojFkffmZfQwd4gJaIQqRpqlAK+tbEIQrdLQnBHdnFQUjTSoxcDWxzPzvGlZAVhPJ5gLrl5iDBRSa4A3OGqz4PH92Fodekqotno8bwvbKCCf58xhE3zh8qWeTW0Nj6QZyEq87hHZ7lfdRzBemTqrKQ6BerduytuRrjk6M8xBYfIQJMAE0+uyeGAWItDuhX63/9Erct9817TzJWxZK/lVQK+dVtYKo38v1B56vFET8bJnPPyM5IQNDXCWM7ofM8vpRsybCZ777SSMKYFOjD+yEXqT79Fov1gkv6MlY8d0Ma8xqzNAb+WQ7O1+XULB49xJAi6FlDxjrz/ExUg==";
@@ -17,8 +19,9 @@ const deployToServer = false;
 const urlServer = deployToServer ? "https://site202120.tw.cs.unibo.it/api/" : "http://localhost:8000/api";
 
 
-const customersID = {}
-const employeesID = {}
+let customersID = new Map();
+let employeesID = new Map();
+let productsID = new Map();
 
 function shouldContain(arr, obj) {
     expect(arr).excluding(['_id', '__v' , 'productImage']).to.include.something.that.deep.equals(obj);
@@ -50,8 +53,10 @@ async function postData(data, url){
         return {body, statusCode, id};
 
     } catch(err) {
-        console.log("Post error " + err);
-        console.log("Body: ", err.statusText);
+        if(!ingnoreErrorMessage){        
+            console.log("Post error " + err);
+            console.log("Error message: ", err.response.data);
+        }
     }
 }
 
@@ -62,11 +67,12 @@ async function postCustomers(){
     for(const customer of customers){
         try{
         const {id, body, statusCode} = await postData(customer, urlCustomerPost);
-        customersID[customer] = id;
+        customersID.set(customer, id);
         }catch(err){
-            console.log("Post customer error: " + err);
+            continue;
         }
     }
+    console.log("Finished posting customers");
 }
 
 async function postEmployees(){
@@ -76,15 +82,46 @@ async function postEmployees(){
     for(const employee of employees){
         try{
         const {id, body, statusCode} = await postData(employee, urlEmployeePost);
-        employeesID[employee] = id;
+        employeesID.set(employee, id);
         }catch(err){
-            console.log("Post employee error: " + err);
+            continue;
         }
     }
+    console.log("Finished posting employees");
+}
+
+async function postProducts(){
+    const urlProductsPost = urlServer + "/products/";
+    let altProducts = new Map();
+
+    console.log("Posting products at : " + urlProductsPost);
+    for(const product of products){
+        try{
+            altProducts.set(product, product.altproducts);
+            product.altproducts = [];
+
+            const {id, body, statusCode} = await postData(product, urlProductsPost);
+            productsID.set(product, id);
+        }catch(err){
+            continue;
+        }
+    }
+
+    console.log("\tPosting altproducts...");
+    for (const [prod, alts] of altProducts) {
+        for(const alt of alts){
+            const data = {"_id": productsID.get(alt)};
+            const {id, body, statusCode} = await postData(data,`${urlProductsPost}${productsID.get(prod)}/altproducts/`);
+        }
+    }
+    console.log("\tFinished posting altproducts");
+    console.log("Finished posting products");
+
 }
 
 (async () => {
     await postCustomers();
     await postEmployees();
+    await postProducts();
 
 })();

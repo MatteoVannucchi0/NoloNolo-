@@ -21,7 +21,7 @@ async function getOrCreateKey(filePath){
     let key;
     try{
         await createFileAndDir(filePath);
-        const data = await fs.readFile(filePath);
+        const data = await fs.readFile(filePath, "utf8");
         if (data == ""){
             key = crypto.randomBytes(256).toString('base64');
             try{
@@ -35,12 +35,15 @@ async function getOrCreateKey(filePath){
     } catch (err){
         errorHandler.logError(err)
     }
+
     return key;
 }
 
 async function initializeAuthentication() {
     privateKey = await getOrCreateKey(authFilePath);
     masterKey = await getOrCreateKey(masterKeyFilePath);
+
+    console.log("masterKey: ", masterKey);
 }
 
 //------------ Password hashing --------------------------------
@@ -104,9 +107,8 @@ function verifyAuth(requiredAuthLevel, checkId = false){
             return res.status(401).json({message: "Required authentication token"});
         }
 
-    
         if(masterKey && token === masterKey) {
-            next();
+            return next();
         }
 
         try{

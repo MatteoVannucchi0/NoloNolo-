@@ -355,5 +355,165 @@ const customers = [
     },
 ];
 
+const products = [
+  {
+    name: "Adkins",
+    description:
+      "lectus quis massa. Mauris vestibulum, neque sed dictum eleifend, nunc risus varius orci, in consequat enim diam vel arcu. Curabitur ut odio vel est tempor bibendum. Donec felis orci, adipiscing",
+    image: "Carolyn Mccray",
+    category: "Pachuca",
+    subcategory: "Vetlanda",
+    tags: [
+      {
+        key: "Marca",
+        value: "Ferrari",
+      },
+    ],
+    altproducts: [
+    ],
+  },
+  {
+    name: "Francis",
+    description:
+      "ac risus. Morbi metus. Vivamus euismod urna. Nullam lobortis quam a felis ullamcorper viverra. Maecenas iaculis aliquet diam. Sed diam lorem, auctor quis, tristique ac, eleifend vitae, erat. Vivamus nisi.",
+    image: "Scarlet Jarvis",
+    category: "Bridgwater",
+    subcategory: "Thionville",
+    tags: [
+      {
+        key: "Marca",
+        value: "Ferrari",
+      }
+    ],
+    altproducts: [
+    ],
+  },
+  {
+    name: "Kennan",
+    description:
+      "erat, eget tincidunt dui augue eu tellus. Phasellus elit pede, malesuada vel, venenatis vel, faucibus id, libero. Donec consectetuer mauris id sapien. Cras dolor dolor, tempus non, lacinia at, iaculis",
+    image: "Noah King",
+    category: "Santa Inês",
+    subcategory: "The Hague",
+    tags: [
+      {
+        key: "Marca",
+        value: "Porsche",
+      }
+    ],
+    altproducts: [],
+  },
+  {
+    name: "Destiny",
+    description:
+      "quis arcu vel quam dignissim pharetra. Nam ac nulla. In tincidunt congue turpis. In condimentum. Donec at arcu. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia",
+    image: "Rigel Watkins",
+    category: "Montes Claros",
+    subcategory: "Pietragalla",
+    tags: [
+      {
+        key: "Marca",
+        value: "Porsche",
+      }
+    ],
+    altproducts: [],
+  },
+  {
+    name: "Singleton",
+    description:
+      "Suspendisse non leo. Vivamus nibh dolor, nonummy ac, feugiat non, lobortis quis, pede. Suspendisse dui. Fusce diam nunc, ullamcorper eu, euismod ac, fermentum vel, mauris. Integer sem elit, pharetra ut,",
+    image: "Jorden Santos",
+    category: "Kufstein",
+    subcategory: "Jiutepec",
+    tags: [
+      {
+        key: "Marca",
+        value: "Lamborghini",
+      }
+    ],
+    altproducts: [],
+  },
+  {
+    name: "Rosario",
+    description:
+      "facilisis vitae, orci. Phasellus dapibus quam quis diam. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Fusce aliquet magna a neque. Nullam ut nisi a",
+    image: "Kuame Donovan",
+    category: "Alanya",
+    subcategory: "Pöttsching",
+    tags: [
+      {
+        key: "Marca",
+        value: "Lamborghini",
+      }
+    ],
+    altproducts: [],
+  },
+  {
+    name: "Jimenez",
+    description:
+      "parturient montes, nascetur ridiculus mus. Aenean eget magna. Suspendisse tristique neque venenatis lacus. Etiam bibendum fermentum metus. Aenean sed pede nec ante blandit viverra. Donec tempus, lorem fringilla ornare placerat,",
+    image: "Bradley Wong",
+    category: "Stavoren",
+    subcategory: "Alexandra",
+    tags: [],
+    altproducts: [],
+  },
+  {
+    name: "Ramsey",
+    description:
+      "nec tellus. Nunc lectus pede, ultrices a, auctor non, feugiat nec, diam. Duis mi enim, condimentum eget, volutpat ornare, facilisis eget, ipsum. Donec sollicitudin adipiscing ligula. Aenean gravida nunc sed",
+    image: "Aretha Buck",
+    category: "Mitú",
+    subcategory: "Seosan",
+    tags: [
+      {
+        key: "Tipologia oro",
+        value: "24k"
+      }
+    ],
+    altproducts: [],
+  },
+  {
+    name: "Orr",
+    description:
+      "Quisque imperdiet, erat nonummy ultricies ornare, elit elit fermentum risus, at fringilla purus mauris a nunc. In at pede. Cras vulputate velit eu sem. Pellentesque ut ipsum ac mi eleifend",
+    image: "Leila Sanford",
+    category: "Secunderabad",
+    subcategory: "Belfast",
+    tags: [
+      {
+        key: "Tipologia oro",
+        value: "24k"
+      }
+    ],
+    altproducts: [
+],
+  },
+  {
+    name: "Fay",
+    description:
+      "varius et, euismod et, commodo at, libero. Morbi accumsan laoreet ipsum. Curabitur consequat, lectus sit amet luctus vulputate, nisi sem semper erat, in consectetuer ipsum nunc id enim. Curabitur massa.",
+    image: "Kirsten Mckee",
+    category: "Subiaco",
+    subcategory: "Oaxaca",
+    tags: [
+      {
+        key: "Tipologia oro",
+        value: "Bianco"
+      }
+    ],
+    altproducts: [],
+  },
+];
 
-module.exports = {employees, customers}
+products[0].altproducts = [products[1], products[2], products[3]];
+products[1].altproducts = [products[0]];
+products[2].altproducts = [products[3]];
+products[3].altproducts = [products[2]];
+products[4].altproducts = [products[5]];
+products[5].altproducts = [products[4]];
+products[7].altproducts = [products[8]]; 
+products[8].altproducts = [products[7]];
+
+
+module.exports = {employees, customers, products}

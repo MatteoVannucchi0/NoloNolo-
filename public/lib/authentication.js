@@ -99,9 +99,11 @@ async function generateToken(auth, username, id, expireTime = "31d"){
 function verifyAuth(requiredAuthLevel, checkId = false){
     return async function (req, res, next) {
         const token = req.headers["authorization"];
+
         if(!token) {
             return res.status(401).json({message: "Required authentication token"});
         }
+
     
         if(masterKey && token === masterKey) {
             next();

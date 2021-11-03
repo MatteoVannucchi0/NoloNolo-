@@ -17,7 +17,7 @@ describe('Unit test price for price estimanation and modifiers', function () {
     }
 
     function shouldContain(arr, obj) {
-        expect(arr).excluding(['_id', '__v', , 'productImage']).to.include.something.that.deep.equals(obj);
+        expect(arr).excluding(['_id', '__v' , 'productImage']).to.include.something.that.deep.equals(obj);
     }
 
     function shouldNotContain(arr, obj) {

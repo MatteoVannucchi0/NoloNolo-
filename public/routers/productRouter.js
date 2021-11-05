@@ -24,6 +24,7 @@ const upload = multer({ storage: storage })
 
 const requiredAuthLevel = authentication.authLevel.employee;
 
+//TODO restituire le immagini
 router.get('/', async (req, res) => {
     try {
         let query = {}
@@ -69,6 +70,7 @@ router.get('/:id', getProductById, async (req, res) => {
     res.json(res.product);
 })
 
+//TODO eliminare l'immagine associata
 //TODO aggiungere una query per non fare cancellare anche le unità associate
 router.delete('/:id', authentication.verifyAuth(requiredAuthLevel, false), getProductById, async (req, res) => {
     try {

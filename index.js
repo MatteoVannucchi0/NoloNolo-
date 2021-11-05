@@ -55,11 +55,12 @@ app.use('/css', express.static(global.rootDir + '/public/css'));
 app.use('/data', express.static(global.rootDir + '/public/data'));
 app.use('/docs', express.static(global.rootDir + '/public/html'));
 app.use('/img', express.static(global.rootDir + '/public/media'));
-app.use(express.json());   //L'ordine di questi è importante!
+app.use(express.json({limit: '50mb'}));   //L'ordine di questi è importante!
+app.use(express.urlencoded({limit: '50mb', extended: true}));
 app.use(cors())
 
 //Gestione loggin delle richieste al server
-const logginFilePath = path.join(__dirname, '/log/.log.txt')
+const logginFilePath = path.join(global.rootDir, '/log/.log.txt')
 const {createFileAndDirSync} = require(global.rootDir + global.publicDir + '/lib/helper');
 
 //Perchè lo mettiamo sincrono? se non lo fosse dovremmo usare un callback ma renderebbe morgan non funzionante perché andremmo a fare app.use(morgan ...) dopo il resto delle app.use dei vari endpoint

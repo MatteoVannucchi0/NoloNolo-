@@ -98,12 +98,10 @@ router.get('/:id/favorites', authentication.verifyAuth(requiredAuthLevel, true),
 
         let onlyProducts = sortedMap.map(x => x[0]);
 
-        res.status(200).json(onlyProducts)
+        return res.status(200).json(onlyProducts)
     } catch (error) {
         return await errorHandler.handle(error, res, 400);         //Non so se restituire 400 o 404
     }
-
-    return await errorHandler.handleMsg("Non ancora implementanto", res, 404);
 })
 
 async function getCustomerById(req, res, next) {

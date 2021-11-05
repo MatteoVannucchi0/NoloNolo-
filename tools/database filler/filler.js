@@ -1,5 +1,11 @@
 /* eslint-disable no-unused-vars */
 const {customers, employees, products} = require("./data");
+const fs = require("fs").promises;
+const fsSync = require("fs");
+const FormData = require('form-data');
+const serialize = require("object-to-formdata").serialize;
+var path = require("path");
+
 
 const chai = require('chai');
 const expect = chai.expect;
@@ -31,14 +37,14 @@ function shouldNotContain(arr, obj) {
     expect(arr).excluding(['_id', '__v']).to.not.include.something.that.deep.equals(obj);
 }
 
-async function postData(data, url){
+async function postData(data, url, headers = {"Content-type": "application/json"}) {
     try{
+        headers["Authorization"] = masterKey;
+
         const response = await axios({
             url: url,
             method: 'POST',
-            headers: {
-                "Content-Type": "application/json",
-            },
+            headers: headers,
             timeout: 2000,
             data: data,
         });
@@ -95,12 +101,22 @@ async function postProducts(){
     let altProducts = new Map();
 
     console.log("Posting products at : " + urlProductsPost);
-    for(const product of products){
+    for(let product of products){
         try{
+            //Handle the alt products
             altProducts.set(product, product.altproducts);
             product.altproducts = [];
 
-            const {id, body, statusCode} = await postData(product, urlProductsPost);
+            //Handle the image of the product
+            const urlImage = product.image;
+            product.image = undefined;
+
+            //NOTA: se da errore ("FormData not found andare ad aggiungere nel module in nodemodule di object-to-form-data una riga: const FormData = require('form-data'))
+            let form = serialize(product);
+            form.append('image', fsSync.readFileSync(urlImage), path.basename(urlImage));
+
+            const {_id} = (await axios.post(urlProductsPost, form, { headers: form.getHeaders() })).data//await postData(product, urlProductsPost, form.getHeaders());
+            const id = _id;
             productsID.set(product, id);
         }catch(err){
             continue;
@@ -120,8 +136,8 @@ async function postProducts(){
 }
 
 (async () => {
-    await postCustomers();
-    await postEmployees();
+    //await postCustomers();
+    //await postEmployees();
     await postProducts();
 
 })();

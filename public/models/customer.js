@@ -1,5 +1,4 @@
 const mongoose = require('mongoose');
-
 const auth = require('../lib/authentication');
 const { validateEmail, validateNotEmail } = require('../lib/validation');
  

@@ -1,14 +1,17 @@
 const chalk = require('chalk');
 const fs = require("fs").promises;
 var path = require('path');
+const {createFileAndDir} = require('./helper');
 
 const errorFileName = ".errorlog.txt";
-const errorFilePath = path.join(__dirname, '../../log/' + errorFileName);
+const errorFilePath = path.join(global.rootDir, '/log/' + errorFileName);
+const isInTest = typeof global.it === 'function';
 
-console.log(errorFilePath);
+createFileAndDir(errorFilePath);
 
 function getErrorCode(error){
     switch (error.name) {
+        case "CastError":
         case "ValidationError":
             return 400;
         case "MongoServerError":
@@ -25,8 +28,13 @@ async function handle(error, res, code = undefined) {
     return res.status(code).json({ message: error.message });
 }
 
+async function handleMsg(msg, res, code) {
+    await logErrorMessage(msg + "\n\t[\n\t" + (new Error()).stack + "\n\t]");
+    return res.status(code).json({ message: msg });
+}
+
 async function logError(error) {
-    logErrorMessage(error.name + ": " + error.message);
+    await logErrorMessage(error.name + ": " + error.message + "\n\t[\n\t" + error.stack + "\n\t]");
 }
 
 async function logErrorMessage(msg) {
@@ -40,7 +48,10 @@ async function logErrorMessage(msg) {
 }
 
 function logToConsole(msg){
-    console.error(chalk.red(msg));
+    if (!isInTest)
+        console.error(chalk.red(msg));
 }
 
 module.exports.handle = handle;
+module.exports.handleMsg = handleMsg;
+module.exports.logError = logError;

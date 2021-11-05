@@ -1,5 +1,5 @@
 const mongoose = require('mongoose');
-const Rental = require('../models/rental');
+const Rental = require('./rental');
 
 
 const conditionLevel = {
@@ -32,26 +32,37 @@ const unitSchema = new mongoose.Schema({
     rentals: {
         type: [mongoose.Schema.Types.ObjectId],
         required: true,
+        default: [],
         ref: "Rental",
     },
 })
 
-unitSchema.virtual("available").get(function () {
+unitSchema.methods.getRentals = async function () {
+    return await Rental.find({ unit: this._id });
+}
+
+unitSchema.methods.getOpenRentals = async function () {
+    return await Rental.find({ unit: this._id, open: true });
+}
+
+unitSchema.methods.available = async function () {
     const dateNow = new Date().now();
-    let rentalInPeriod = Rental.find({unit: this._id})
-        .filter(x => {
-            return (x.startdate <= dateNow && x.enddate >= dateNow)
-        })
+    let rentalInPeriod = await this.getOpenRentals().filter(
+        x => { return (x.startDate <= dateNow && x.expectedEndDate >= dateNow) }
+    )
 
     return rentalInPeriod.length == 0;
-});
+};
 
 unitSchema.methods.availableFromTo = async function (from, to) {
-    let rentalInPeriod = Rental.find({unit: this._id})
+    if(from > to)
+        throw new Error("Tryied to verify availability from " + from + " to " + to + "but from is after to");
+
+    let rentalInPeriod = await this.getOpenRentals()
         .filter(x => {
-            return (x.startdate <= from && x.enddate >= from)
-                || (x.startdate <= to && x.enddate >= to) 
-                || (x.startdate >= frofrom && x.enddate <= to)
+            return (x.startDate <= from && x.expectedEndDate >= from)
+                || (x.startDate <= to && x.expectedEndDate >= to)
+                || (x.startDate >= from && x.expectedEndDate <= to)
         })
 
     return rentalInPeriod.length == 0;

@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+
+<head>
+    <style>
+        div {
+            display: flex;
+        }
+    </style>
+</head>
+
+<body>
+    <div>
+        <form id="productPostForm" enctype="multipart/form-data" action="http://localhost:8000/api/products/" method="POST" >
+            <label for="name">name:</label><br>
+            <input type="text" id="name" name="name" value="NomeProdottoTest" required><br><br>
+            <label for="description">description:</label><br>
+            <input type="text" id="description" name="description" value="descriptionTest" required><br><br>
+            <label for="category">category:</label><br>
+            <input type="text" id="category" name="category" value="categoryTest" required><br><br>
+            <label for="subcategory">subcategory:</label><br>
+            <input type="text" id="subcategory" name="subcategory" value="subcategoryTest"><br>
+            <label for="image">image:</label><br>
+            <input type="file" id="image" accept="image/*" name="image"><br>
+
+            <input type="submit" value="submit">
+        </form>
+
+        <form id="getProductForm" action="http://localhost:8000/api/products/" method="GET" >
+            <label for="name">name:</label><br>
+            <input type="text" id="getName" name="name" value="NomeProdottoTest" required><br><br>
+            <input type="submit" value="submit">
+        </form>
+    </div>
+
+    <div>
+
+    </div>
+
+    <script>
+        const uri = "http://localhost:8000/api/products/"
+        const adminToken = "fWtuIjIfojFkffmZfQwd4gJaIQqRpqlAK+tbEIQrdLQnBHdnFQUjTSoxcDWxzPzvGlZAVhPJ5gLrl5iDBRSa4A3OGqz4PH92Fodekqotno8bwvbKCCf58xhE3zh8qWeTW0Nj6QZyEq87hHZ7lfdRzBemTqrKQ6BerduytuRrjk6M8xBYfIQJMAE0+uyeGAWItDuhX63/9Erct9817TzJWxZK/lVQK+dVtYKo38v1B56vFET8bJnPPyM5IQNDXCWM7ofM8vpRsybCZ777SSMKYFOjD+yEXqT79Fov1gkv6MlY8d0Ma8xqzNAb+WQ7O1+XULB49xJAi6FlDxjrz/ExUg==";
+
+        const productPostForm = document.getElementById("productPostForm");
+        productPostForm.addEventListener("submit", async function (event) {
+            event.preventDefault();
+            let data = new FormData(productPostForm);
+
+            let response = await fetch(uri, {
+                headers: {"Authorization": adminToken},
+                method: "POST",
+                body: data,
+                mode: 'cors',
+            });
+
+            let text = await response.json();
+            console.log(text);
+        })
+
+        const getProductForm = document.getElementById("getProductForm");
+        getProductForm.addEventListener("submit", async function (event) {
+            event.preventDefault();
+            let data = document.getElementById("getName").value;
+            console.log(data);
+
+            let response = await fetch(uri + "?name=" + data, {
+                headers: {"Authorization": adminToken},
+                method: "GET",
+                mode: 'cors',
+            });
+
+            let text = (await response.json())[0];
+            console.log(text);
+        })
+
+        function serializeForm(form) {
+            return Array.from(form.querySelectorAll('input, select, textarea'))
+                .filter(element => element.name)
+                .reduce((json, element) => {
+                    json[element.name] = element.type === 'checkbox' ? element.checked : element.value;
+                    return json;
+                }, {});
+        }
+
+    </script>
+
+</body>

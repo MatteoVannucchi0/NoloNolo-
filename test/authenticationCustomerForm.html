@@ -10,8 +10,8 @@
 <body>
     <div>
     <form id="loginForm">
-        <label for="username">username:</label><br>
-        <input type="text" id="username" name="username" value="testUser"><br>
+        <label for="email">testEmail@gmail.com:</label><br>
+        <input type="text" id="email" name="email" value="testEmail@gmail.com"><br>
         <label for="password">password:</label><br>
         <input type="text" id="password" name="password" value="testPassword"><br><br>
         <input type="submit" value="submit">
@@ -36,8 +36,12 @@
     </div>  
 
     <script>
-        const uriLogin = "http://localhost:8000/api/authentication/customers/login/"
-        const uriRegister = "http://localhost:8000/api/customers/"
+        const site = "http://localhost:8000 " //"https://site202120.tw.cs.unibo.it"; // "http://localhost:8000"
+
+        const user = "employees";    // "customers"
+
+        const uriLogin = site + "/api/authentication/"+user+"/login/"
+        const uriRegister = site + "/api/"+user+"/"
 
         const address = {
             country: "Italy",

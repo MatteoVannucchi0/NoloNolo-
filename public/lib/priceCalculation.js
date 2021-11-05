@@ -1,6 +1,5 @@
 const modifiersList = require("./modifiers").modifiersList;
 
-
 class Modifiers {
     constructor(value, shortExplanation, longExplanation) {
         this.value = value;
@@ -10,19 +9,20 @@ class Modifiers {
 }
 
 class PriceEstimation{
-    constructor(basePrice, modifiersList, finalPrice){
+    constructor(basePrice, modifiersList, finalPrice, unitID){
         this.basePrice = basePrice;
         this.modifiersList = modifiersList;
         this.finalPrice = finalPrice;
+        this.unitID = unitID;
     }
 }
 
-function computePriceEstimation(units, info) {
+async function computePriceEstimation(units, info) {
     //let priceToEstimate = {};
     let estimations = [];
 
-    for (unit of units) {
-        estimations.push(unitPriceEstimation(unit, info));
+    for (const unit of units) {
+        estimations.push(await unitPriceEstimation(unit, info));
 
         /* TODO nel caso in cui si vogliono raggrupare unità per stesso prezzo aggiungerlo, però si perdono informazioni sulla causa del prezzo
         let estimation = unitPriceEstimation(unit, info);
@@ -36,22 +36,22 @@ function computePriceEstimation(units, info) {
     return estimations.sort( (a, b) => parseFloat(a.finalPrice) - parseFloat(b.finalPrice) );
 }
 
-function unitPriceEstimation(unit, info) {
-
-    let computedModifiers = computeModifiers({ unit, ...info });
+async function unitPriceEstimation(unit, info) {
+    let computedModifiers = await computeModifiers({ unit, ...info });
     let finalPrice = unit.price;
 
-    for (modifier of computedModifiers)
+    for (const modifier of computedModifiers)
         finalPrice = finalPrice * modifier.value;
 
-    return new PriceEstimation(unit.price, computedModifiers, finalPrice);
+    return new PriceEstimation(unit.price, computedModifiers, finalPrice, unit._id);
 }
 
-function computeModifiers(info) {
+async function computeModifiers(info) {
     let modifiers = [];
-    for (modifier in modifiersList) {
-        if (modifier.condition(info)) 
+    for (const modifier of modifiersList) {
+        if (await modifier.condition(info)){
             modifiers.push(new Modifiers(modifier.value, modifier.shortExplanation(info), modifier.longExplanation(info)));
+        } 
     }
 
     return modifiers;

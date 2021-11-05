@@ -31,9 +31,6 @@ Copyright (c) 2021 by Fabio Vitali
 global.rootDir = __dirname;
 global.startDate = null;
 
-global.rootDir = __dirname;
-global.startDate = null;
-
 const mongoose = require("mongoose");
 const express = require('express');
 const cors = require('cors');
@@ -41,7 +38,9 @@ const fs = require('fs');
 var path = require('path');
 
 //Serve per le variabili di ambiente
-require('dotenv').config();
+require('dotenv').config({ path: path.resolve(global.rootDir + "/.env") });
+global.publicDir = process.env.PUBLIC_DIR_URL;
+
 
 
 /* ========================== */
@@ -56,17 +55,23 @@ app.use('/css', express.static(global.rootDir + '/public/css'));
 app.use('/data', express.static(global.rootDir + '/public/data'));
 app.use('/docs', express.static(global.rootDir + '/public/html'));
 app.use('/img', express.static(global.rootDir + '/public/media'));
-app.use(express.json());   //L'ordine di questi è importante!
+app.use(express.json({limit: '50mb'}));   //L'ordine di questi è importante!
+app.use(express.urlencoded({limit: '50mb', extended: true}));
 app.use(cors())
 
-const logginFolderPath = path.join(__dirname, '/log/')
+//Gestione loggin delle richieste al server
+const logginFilePath = path.join(global.rootDir, '/log/.log.txt')
+const {createFileAndDirSync} = require(global.rootDir + global.publicDir + '/lib/helper');
 
-var accessLogStream = fs.createWriteStream(path.join(logginFolderPath, '.log.txt'), { flags: 'a' })
-
+//Perchè lo mettiamo sincrono? se non lo fosse dovremmo usare un callback ma renderebbe morgan non funzionante perché andremmo a fare app.use(morgan ...) dopo il resto delle app.use dei vari endpoint
+//Se invece usassimo await funzionerebbe però bisognerebbe richiundere tutto index in una funzione async. Facendo ciò però i test partono prima che sia caricato tutto e non vanno.
+//Questa è quindi la soluzione più semplice, anche perché non causa grossi problemi avere una funzionalità sincrona chiamata solo durante il setup iniziale del server.
+createFileAndDirSync(logginFilePath)
+var accessLogStream = fs.createWriteStream(logginFilePath, { flags: 'a' })
 const morgan = require('morgan');
 app.use(
    morgan(
-      '[:date[web]] :method :url :req[header] - :status',
+      '[:date[web]] :method - :url :req[header] - :status',
       { stream: accessLogStream }
    )
 );
@@ -78,25 +83,31 @@ app.enable('trust proxy');
 require('console-stamp')(console, '[HH:MM:ss.l]');
 
 
+//va usato perché sennò nel frontend non si può accedere all'header Authorization
+app.use(function(req, res, next) {
+   res.set({'Access-Control-Expose-Headers':'Authorization'})
+   next();
+ });
+
 // const objectsRouter = require(global.rootDir + '/public/routers/'); 
 // app.use('/api/', Router);
 
-const authentication = require(global.rootDir + '/public/routers/authenticationRouter');
+const authentication = require(global.rootDir + global.publicDir + '/routers/authenticationRouter');
 app.use("/api/authentication/", authentication.router);
 
-const customerRouter = require(global.rootDir + '/public/routers/customerRouter');
+const customerRouter = require(global.rootDir + global.publicDir + '/routers/customerRouter');
 app.use("/api/customers/", customerRouter);
 
-const productRouter = require(global.rootDir + '/public/routers/productRouter');
+const productRouter = require(global.rootDir + global.publicDir + '/routers/productRouter');
 app.use("/api/products/", productRouter);
 
-const employeeRouter = require(global.rootDir + '/public/routers/employeeRouter');
+const employeeRouter = require(global.rootDir + global.publicDir + '/routers/employeeRouter');
 app.use("/api/employees/", employeeRouter);
 
-const rentalRouter = require(global.rootDir + '/public/routers/rentalRouter');
+const rentalRouter = require(global.rootDir + global.publicDir + '/routers/rentalRouter');
 app.use("/api/rentals/", rentalRouter);
 
-const billRouter = require(global.rootDir + '/public/routers/billRouter');
+const billRouter = require(global.rootDir + global.publicDir + '/routers/billRouter');
 app.use('/api/bills/', billRouter);
 
 /* ========================== */
@@ -111,13 +122,18 @@ const mongoCredentials = {
    site: "mongo_site202120"
 }
 
-const mongooseOptions = {
-   dbName: "databaseProgettoTechWeb",
+let mongooseOptions = {
    useNewUrlParser: true,
 }
+let mongouri = `mongodb://${mongoCredentials.user}:${mongoCredentials.pwd}@${process.env.DATABASE_URL}?writeConcern=majority`;
+
+if(process.env.DEVELOPMENT && process.env.DEVELOPMENT === "TRUE"){
+   mongooseOptions.dbName = "databaseProgettoTechWeb";
+   mongouri = `mongodb://${mongoCredentials.user}:${mongoCredentials.pwd}@${process.env.DATABASE_URL}/${mongooseOptions.dbName}?writeConcern=majority`;
+}
+
 
 //mongodb://matteo:vannucchi@localhost/databaseProgettoTechWeb
-const mongouri = `mongodb://${mongoCredentials.user}:${mongoCredentials.pwd}@${process.env.DATABASE_URL}/${mongooseOptions.dbName}`;
 
 mongoose.connect(mongouri, mongooseOptions);
 mongoose.connection.on('error', (err) => console.log(err));

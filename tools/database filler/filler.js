@@ -4,7 +4,7 @@ const fs = require("fs").promises;
 const fsSync = require("fs");
 const FormData = require('form-data');
 const serialize = require("object-to-formdata").serialize;
-var path = require("path");
+const path = require("path");
 
 
 const chai = require('chai');
@@ -16,7 +16,13 @@ chai.use(require('chai-exclude'));
 const ingnoreErrorMessage = false;
 
 
-const masterKey = "fWtuIjIfojFkffmZfQwd4gJaIQqRpqlAK+tbEIQrdLQnBHdnFQUjTSoxcDWxzPzvGlZAVhPJ5gLrl5iDBRSa4A3OGqz4PH92Fodekqotno8bwvbKCCf58xhE3zh8qWeTW0Nj6QZyEq87hHZ7lfdRzBemTqrKQ6BerduytuRrjk6M8xBYfIQJMAE0+uyeGAWItDuhX63/9Erct9817TzJWxZK/lVQK+dVtYKo38v1B56vFET8bJnPPyM5IQNDXCWM7ofM8vpRsybCZ777SSMKYFOjD+yEXqT79Fov1gkv6MlY8d0Ma8xqzNAb+WQ7O1+XULB49xJAi6FlDxjrz/ExUg==";
+let masterKey = "";
+if (masterKey == ""){
+    const masterKeyPath = "../../.masterkey";
+    masterKey = fsSync.readFileSync(masterKeyPath, "utf8");
+    console.log(masterKey);
+}
+
 
 const axios = require('axios');
 axios.defaults.headers.post['Authorization'] = masterKey // for POST requests
@@ -24,18 +30,9 @@ axios.defaults.headers.post['Authorization'] = masterKey // for POST requests
 const deployToServer = true;
 const urlServer = deployToServer ? "https://site202120.tw.cs.unibo.it/api/" : "http://localhost:8000/api";
 
-
 let customersID = new Map();
 let employeesID = new Map();
 let productsID = new Map();
-
-function shouldContain(arr, obj) {
-    expect(arr).excluding(['_id', '__v' , 'productImage']).to.include.something.that.deep.equals(obj);
-}
-
-function shouldNotContain(arr, obj) {
-    expect(arr).excluding(['_id', '__v']).to.not.include.something.that.deep.equals(obj);
-}
 
 async function postData(data, url, headers = {"Content-type": "application/json"}) {
     try{
@@ -59,6 +56,26 @@ async function postData(data, url, headers = {"Content-type": "application/json"
         return {body, statusCode, id};
 
     } catch(err) {
+        if(!ingnoreErrorMessage){        
+            console.log("Post error " + err);
+            console.log("Error message: ", err.response.data);
+        }
+    }
+}
+
+async function postForm(form, url){
+    try{
+        const response = await axios.post(url, form, { headers: form.getHeaders() }) 
+        
+        const body = response.data;
+        const statusCode = response.status;
+        const id = body._id;
+
+        statusCode.should.equal(201);
+
+        return {body, statusCode, id};
+
+    } catch(err){
         if(!ingnoreErrorMessage){        
             console.log("Post error " + err);
             console.log("Error message: ", err.response.data);
@@ -115,8 +132,7 @@ async function postProducts(){
             let form = serialize(product);
             form.append('image', fsSync.readFileSync(urlImage), path.basename(urlImage));
 
-            const {_id} = (await axios.post(urlProductsPost, form, { headers: form.getHeaders() })).data//await postData(product, urlProductsPost, form.getHeaders());
-            const id = _id;
+            const {id, body, statusCode} = await postForm(form, urlProductsPost); //await postData(product, urlProductsPost, form.getHeaders());
             productsID.set(product, id);
         }catch(err){
             continue;
@@ -136,8 +152,7 @@ async function postProducts(){
 }
 
 (async () => {
-    //await postCustomers();
-    //await postEmployees();
+    await postCustomers();
+    await postEmployees();
     await postProducts();
-
 })();

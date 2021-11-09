@@ -36,7 +36,7 @@
     </div>  
 
     <script>
-        const site = "http://localhost:8000 " //"https://site202120.tw.cs.unibo.it"; // "http://localhost:8000"
+        const site = "http://localhost:8000" //"https://site202120.tw.cs.unibo.it"; // "http://localhost:8000"
 
         const user = "employees";    // "customers"
 
@@ -63,7 +63,7 @@
                 body: JSON.stringify(data),
                 mode: 'cors',
             });
-            
+
             let text = await response.text();
             console.log(text);
         })

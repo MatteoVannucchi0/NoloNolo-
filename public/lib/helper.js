@@ -24,7 +24,7 @@ function createFileAndDirSync(path) {
   try{
     fsSync.mkdirSync(getDirName(path), { recursive: true });
     const file = fsSync.openSync(path, "a");
-    fsSync.close(file);
+    fsSync.closeSync(file);
   } catch (error) {
     console.error(error);
   }

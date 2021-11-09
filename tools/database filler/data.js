@@ -812,7 +812,6 @@ units[11].product = products[7];
 units[12].product = products[7];
 units[13].product = products[8];
 units[14].product = products[9];
-units[15].product = products[10];
 
 //Operazioni ordinate per rental esaminato
 rentals[0].customers = customers[0];

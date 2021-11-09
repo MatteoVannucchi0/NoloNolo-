@@ -21,7 +21,7 @@ const masterKey = "fWtuIjIfojFkffmZfQwd4gJaIQqRpqlAK+tbEIQrdLQnBHdnFQUjTSoxcDWxz
 const axios = require('axios');
 axios.defaults.headers.post['Authorization'] = masterKey // for POST requests
 
-const deployToServer = false;
+const deployToServer = true;
 const urlServer = deployToServer ? "https://site202120.tw.cs.unibo.it/api/" : "http://localhost:8000/api";
 
 
@@ -97,7 +97,7 @@ async function postEmployees(){
 }
 
 async function postProducts(){
-    const urlProductsPost = urlServer + "/products/";
+    const urlProductsPost = urlServer + "products/";
     let altProducts = new Map();
 
     console.log("Posting products at : " + urlProductsPost);

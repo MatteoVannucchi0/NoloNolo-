@@ -151,8 +151,13 @@ async function postProducts(){
 
 }
 
+async function postUnits(){
+
+}
+
 (async () => {
     await postCustomers();
     await postEmployees();
     await postProducts();
+    await postUnits();
 })();

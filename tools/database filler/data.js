@@ -497,6 +497,297 @@ let products = [
   },
 ];
 
+let units = [
+  {
+    name: "Ferrari 812 superfast ",
+    condition: "perfect",
+    price: 980,
+    product: "",
+    rentals: [],
+  },
+  {
+    name: "Ferrari 812 superfast",
+    condition: "minor flaw",
+    price: 808,
+    product: "",
+    rentals: [],
+  },
+  {
+    name: "SF90 stradale",
+    condition: "broken",
+    price: 0,
+    product: "",
+    rentals: [],
+  },
+  {
+    name: "SF90 stradale",
+    condition: "minor flaw",
+    price: 900,
+    product: "",
+    rentals: [],
+  },
+  {
+    name: "Porshe 911",
+    condition: "minor flaw",
+    price: 770,
+    product: "",
+    rentals: [],
+  },
+  {
+    name: "Porshe 911",
+    condition: "major flaw",
+    price: 650,
+    product: "",
+    rentals: [],
+  },
+  {
+    name: "Porshe Cayenne",
+    condition: "minor flaw",
+    price: 792,
+    product: "",
+    rentals: [],
+  },
+  {
+    name: "Lamborghini Urus",
+    condition: "major flaw",
+    price: 880,
+    product: "",
+    rentals: [],
+  },
+  {
+    name: "Lamborghini Huracan",
+    condition: "perfect",
+    price: 1050,
+    product: "",
+    rentals: [],
+  },
+  {
+    name: "Rolex Cosmograph Daytona",
+    condition: "perfect",
+    price: 136,
+    product: "",
+    rentals: [],
+  },
+  {
+    name: "Rolex Cosmograph Daytona",
+    condition: "minor flaw",
+    price: 120,
+    product: "",
+    rentals: [],
+  },
+  {
+    name: "Rolex Cosmograph Daytona",
+    condition: "major flaw ",
+    price: 90,
+    product: "",
+    rentals: [],
+  },
+  {
+    name: "Rolex submariner",
+    condition: "perfect",
+    price: 130,
+    product: "",
+    rentals: [],
+  },
+  {
+    name: "Collana Cartier oro giallo 24k",
+    condition: "minor flaw",
+    price: 80,
+    product: "",
+    rentals: [],
+  },
+  {
+    name: "Bracciale Cartier oro bianco 18k",
+    condition: "broken",
+    price: 70,
+    product: "",
+    rentals: [],
+  },
+];
+
+let rentals = [
+  {
+    customers: "",
+    employees: "",
+    prenotationDate: "2021-11-07T18:25:43.511Z",
+    state: "pending",
+    bill: "",
+    startDate: "2021-11-09T00:00:00.000Z",
+    expectedEndDate: "2021-11-11T00:00:00.000Z",
+    actualEndDate: "",
+    unit: "",
+    priceEstimation: "",
+  },
+  {
+    customers: "",
+    employees: "",
+    prenotationDate: "2021-04-23T18:25:43.511Z",
+    state: "pending",
+    bill: "",
+    startDate: "2021-04-30T00:00:00.000Z",
+    expectedEndDate: "2021-05-04T00:00.000Z",
+    actualEndDate: "",
+    unit: "",
+    priceEstimation: "",
+  },
+  {
+    customers: "",
+    employees: "",
+    prenotationDate: "2021-08-10T00:43:25.115Z",
+    state: "pending",
+    bill: "",
+    startDate: "2021-08-15T00:00.000Z",
+    expectedEndDate: "2021-08-1T00:00.000Z",
+    actualEndDate: "",
+    unit: "",
+    priceEstimation: "",
+  },
+  {
+    customers: "",
+    employees: "",
+    prenotationDate: "2021-03-13T02:40.007Z",
+    state: "open",
+    bill: "",
+    startDate: "2021-03-13T02:40.007Z",
+    expectedEndDate: "2021-03-18T00:00.000Z",
+    actualEndDate: "",
+    unit: "",
+    priceEstimation: "",
+  },
+  {
+    customers: "",
+    employees: "",
+    prenotationDate: "2017-05-19T13:54.829Z",
+    state: "open",
+    bill: "",
+    startDate: "2017-06-19T13:54.829Z",
+    expectedEndDate: "2017-05-21T13:54.829Z",
+    actualEndDate: "",
+    unit: "",
+    priceEstimation: "",
+  },
+  {
+    customers: "",
+    employees: "",
+    prenotationDate: "2020-01-31T05:30.202Z",
+    state: "open",
+    bill: "",
+    startDate: "2020-02-20T05:30.202Z",
+    expectedEndDate: "2020-03-1T00:00.000Z",
+    actualEndDate: "",
+    unit: "",
+    priceEstimation: "",
+  },
+  {
+    customers: "",
+    employees: "",
+    prenotationDate: "2020-12-28T02:50.364Z",
+    state: "open",
+    bill: "",
+    startDate: "2021-01-01T02:50.364Z",
+    expectedEndDate: "2021-01-07T00:00.000Z",
+    actualEndDate: "",
+    unit: "",
+    priceEstimation: "",
+  },
+  {
+    customers: "",
+    employees: "",
+    prenotationDate: "2021-04-15T02:15.453Z",
+    state: "open",
+    bill: "",
+    startDate: "2021-04-15T00:00.000Z",
+    expectedEndDate: "2021-04-19T00:00.000Z",
+    actualEndDate: "",
+    unit: "",
+    priceEstimation: "",
+  },
+  {
+    customers: "",
+    employees: "",
+    prenotationDate: "2021-09-17T02:03.119Z",
+    state: "close",
+    bill: "",
+    startDate: "2021-09-17T02:03.119Z",
+    expectedEndDate: "2021-09-22T02:03.119Z",
+    actualEndDate: "2021-09-23T02:03.119Z",
+    unit: "",
+    priceEstimation: "",
+  },
+  {
+    customers: "",
+    employees: "",
+    prenotationDate: "2021-04-01T15:43.411Z",
+    state: "close",
+    bill: "",
+    startDate: "2021-04-05T15:43.411Z",
+    expectedEndDate: "2021-04-08T15:43.411Z",
+    actualEndDate: "2021-04-08T15:43.411Z",
+    unit: "",
+    priceEstimation: "",
+  },
+  {
+    customers: "",
+    employees: "",
+    prenotationDate: "2020-12-14T03:21.333Z",
+    state: "close",
+    bill: "",
+    startDate: "2020-01-01T03:21.333Z",
+    expectedEndDate: "2020-01-03T03:21.333Z",
+    actualEndDate: "2020-01-07T03:21.333Z",
+    unit: "",
+    priceEstimation: "",
+  },
+  {
+    customers: "",
+    employees: "",
+    prenotationDate: "2021-02-14T14:30.039Z",
+    state: "close",
+    bill: "",
+    startDate: "2021-02-30T14:30.039Z",
+    expectedEndDate: "2021-03-01T14:30.039Z",
+    actualEndDate: "2021-03-01T14:30.039Z",
+    unit: "",
+    priceEstimation: "",
+  },
+  {
+    customers: "",
+    employees: "",
+    prenotationDate: "2020-10-04T09:38.553Z",
+    state: "close",
+    bill: "",
+    startDate: "2020-10-16T00:00.000Z",
+    expectedEndDate: "2020-10-20T00:00.000Z",
+    actualEndDate: "2020-10-20T00:38.553Z",
+    unit: "",
+    priceEstimation: "",
+  },
+  {
+    customers: "",
+    employees: "",
+    prenotationDate: "2020-10-20T06:29.427Z",
+    state: "close",
+    bill: "",
+    startDate: "2020-10-28T00:00.000Z",
+    expectedEndDate: "2020-10-30T00:00.000Z",
+    actualEndDate: "2020-11-30T06:29.427Z",
+    unit: "",
+    priceEstimation: "",
+  },
+  {
+    customers: "",
+    employees: "",
+    prenotationDate: "2020-02-18T17:15.406Z",
+    state: "close",
+    bill: "",
+    startDate: "2020-02-25T00:00.000Z",
+    expectedEndDate: "2020-02-28T00:00.000Z",
+    actualEndDate: "2020-02-28T17:15.406Z",
+    unit: "",
+    priceEstimation: "",
+  },
+];
+
 products[0].altproducts = [products[1], products[2], products[3]];
 products[1].altproducts = [products[0]];
 products[2].altproducts = [products[3]];
@@ -505,5 +796,61 @@ products[4].altproducts = [products[5]];
 products[5].altproducts = [products[4]];
 products[7].altproducts = [products[8]]; 
 products[8].altproducts = [products[7]];
+
+units[0].product = products[0];
+units[1].product = products[0];
+units[2].product = products[1];
+units[3].product = products[1];
+units[4].product = products[2];
+units[5].product = products[2];
+units[6].product = products[3];
+units[7].product = products[4];
+units[8].product = products[5];
+units[9].product = products[6];
+units[10].product = products[7];
+units[11].product = products[7];
+units[12].product = products[7];
+units[13].product = products[8];
+units[14].product = products[9];
+units[15].product = products[10];
+
+//Operazioni ordinate per rental esaminato
+rentals[0].customers = customers[0];
+rentals[0].employees = employees[0];
+rentals[0].unit = units[0];
+rentals[1].customers = customers[0];
+rentals[1].employees = employees[0];
+rentals[1].unit = units[0];
+rentals[2].customers = customers[0];
+rentals[2].employees = employees[0];
+rentals[2].unit = units[0];
+rentals[3].customers = customers[0];
+rentals[3].employees = employees[0];
+rentals[3].unit = units[0];
+rentals[4].customers = customers[0];
+rentals[4].employees = employees[0];
+rentals[4].unit = units[0];
+rentals[5].customers = customers[0];
+rentals[5].employees = employees[0];
+rentals[5].unit = units[0];
+rentals[6].customers = customers[0];
+rentals[6].employees = employees[0];
+rentals[6].unit = units[0];
+rentals[7].customers = customers[0];
+rentals[7].employees = employees[0];
+rentals[7].unit = units[0];
+rentals[8].customers = customers[0];
+rentals[8].employees = employees[0];
+rentals[8].unit = units[0];
+rentals[9].customers = customers[0];
+rentals[9].employees = employees[0];
+rentals[9].unit = units[0];
+rentals[10].customers = customers[0];
+rentals[10].employees = employees[0];
+rentals[10].unit = units[0];
+rentals[11].customers = customers[0];
+rentals[11].employees = employees[0];
+rentals[11].unit = units[0];
+
 
 module.exports = {employees, customers, products}

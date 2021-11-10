@@ -1,11 +1,10 @@
 /* eslint-disable no-unused-vars */
-const {customers, employees, products} = require("./data");
+const {customers, employees, products, units, rentals} = require("./data");
 const fs = require("fs").promises;
 const fsSync = require("fs");
 const FormData = require('form-data');
 const serialize = require("object-to-formdata").serialize;
 const path = require("path");
-
 
 const chai = require('chai');
 const expect = chai.expect;
@@ -15,7 +14,7 @@ chai.use(require('chai-exclude'));
 
 const ingnoreErrorMessage = false;
 
-const deployToServer = true;
+const deployToServer = false;
 const urlServer = deployToServer ? "https://site202120.tw.cs.unibo.it/api" : "http://localhost:8000/api";
 
 let masterKey = "";
@@ -27,7 +26,6 @@ if (!deployToServer){
     masterKey = "armrp6OnNrjqYqe4WG0cta6pkOoGf1x/VekMnTNWP2vbhwfJsC68yYuWOoYSm4ijQm65zbq7Iafgcs5YeA4OBLQzqMjWqWWKkRWam2IHVUWC4M01w+ZsP6mzU0EdGviKEUAX99NoDv4S4DJXvMO6LfUQ0bWl24X/50eq3+OaJvr0ENPagpDmflUq4VwWyWx3Yuuvr37hLXPyZEDKzWNougQ3esR5CTlGuKF5jT3lrJv5R147de2gWql9kok0/Udt1upfLnh4N2GWaS+TjFWQUhXKLCciExfdsZrOSk/S4gEAYizsl1N1S6loZfJlt5IrfW+DE6Ojn0sLp3MMknr8tg=="
 }
 
-
 const axios = require('axios');
 axios.defaults.headers.post['Authorization'] = masterKey // for POST requests
 
@@ -35,6 +33,8 @@ axios.defaults.headers.post['Authorization'] = masterKey // for POST requests
 let customersID = new Map();
 let employeesID = new Map();
 let productsID = new Map();
+let unitsID = new Map();
+let rentalsID = new Map();
 
 async function postData(data, url, headers = {"Content-type": "application/json"}) {
     try{
@@ -141,8 +141,6 @@ async function postProducts(){
         }
     }
 
-    console.log(productsID);
-
     console.log("\tPosting altproducts...");
     for (const [prod, alts] of altProducts) {
         for(const alt of alts){
@@ -156,12 +154,50 @@ async function postProducts(){
 }
 
 async function postUnits(){
+    const urlProductsPost = urlServer + "/products/";
 
+    console.log("Posting units");
+    for(const unit of units){
+        const urlUnitPost = `${urlProductsPost}${productsID.get(unit.product)}/units/`;
+        try{
+            unit.product = {};
+
+            const {id, body, statusCode} = await postData(unit, urlUnitPost);
+            unitsID.set(unit, id);
+        }catch(err){
+            continue;
+        }
+    }
+    console.log("Finished posting units");
+}
+
+async function postRentals(){
+    const ulrRentalsPost = urlServer + "/rentals/";
+    
+    console.log("Posting rentals");
+    for(const rental of rentals){
+        try{
+            const idEmployee = employeesID.get(rental.employee);
+            const idCustomer = employeesID.get(rental.employee);
+            const idUnit = employeesID.get(rental.employee);
+
+            rental.employee = idEmployee;
+            rental.customer = idCustomer;
+            rental.unit = idUnit;
+
+            const {id, body, statusCode} = await postData(rental, ulrRentalsPost);
+            rentalsID.set(rental, id);
+        }catch(err){
+            continue;
+        }
+    }
+    console.log("Finished posting rentals");
 }
 
 (async () => {
-    await postCustomers();
-    await postEmployees();
+    //await postCustomers();
+    //await postEmployees();
     await postProducts();
     await postUnits();
+    await postRentals();
 })();

@@ -577,7 +577,7 @@ let units = [
   },
   {
     name: "Rolex Cosmograph Daytona",
-    condition: "major flaw ",
+    condition: "major flaw",
     price: 90,
     product: "",
     rentals: [],
@@ -608,10 +608,10 @@ let units = [
 let rentals = [
   {
     customers: "",
-    employees: "",
+    employees: undefined,
     prenotationDate: "2021-11-07T18:25:43.511Z",
     state: "pending",
-    bill: "",
+    bill: undefined,
     startDate: "2021-11-09T00:00:00.000Z",
     expectedEndDate: "2021-11-11T00:00:00.000Z",
     actualEndDate: "",
@@ -814,42 +814,49 @@ units[13].product = products[8];
 units[14].product = products[9];
 
 //Operazioni ordinate per rental esaminato
-rentals[0].customers = customers[0];
-rentals[0].employees = employees[0];
+rentals[0].customer = customers[0];
+rentals[0].employee = employees[0];
 rentals[0].unit = units[0];
-rentals[1].customers = customers[0];
-rentals[1].employees = employees[0];
+rentals[1].customer = customers[0];
+rentals[1].employee = employees[0];
 rentals[1].unit = units[0];
-rentals[2].customers = customers[0];
-rentals[2].employees = employees[0];
+rentals[2].customer = customers[0];
+rentals[2].employee = employees[0];
 rentals[2].unit = units[0];
-rentals[3].customers = customers[0];
-rentals[3].employees = employees[0];
+rentals[3].customer = customers[0];
+rentals[3].employee = employees[0];
 rentals[3].unit = units[0];
-rentals[4].customers = customers[0];
-rentals[4].employees = employees[0];
+rentals[4].customer = customers[0];
+rentals[4].employee = employees[0];
 rentals[4].unit = units[0];
-rentals[5].customers = customers[0];
-rentals[5].employees = employees[0];
+rentals[5].customer = customers[0];
+rentals[5].employee = employees[0];
 rentals[5].unit = units[0];
-rentals[6].customers = customers[0];
-rentals[6].employees = employees[0];
+rentals[6].customer = customers[0];
+rentals[6].employee = employees[0];
 rentals[6].unit = units[0];
-rentals[7].customers = customers[0];
-rentals[7].employees = employees[0];
+rentals[7].customer = customers[0];
+rentals[7].employee = employees[0];
 rentals[7].unit = units[0];
-rentals[8].customers = customers[0];
-rentals[8].employees = employees[0];
+rentals[8].customer = customers[0];
+rentals[8].employee = employees[0];
 rentals[8].unit = units[0];
-rentals[9].customers = customers[0];
-rentals[9].employees = employees[0];
+rentals[9].customer = customers[0];
+rentals[9].employee = employees[0];
 rentals[9].unit = units[0];
-rentals[10].customers = customers[0];
-rentals[10].employees = employees[0];
+rentals[10].customer = customers[0];
+rentals[10].employee = employees[0];
 rentals[10].unit = units[0];
-rentals[11].customers = customers[0];
-rentals[11].employees = employees[0];
+rentals[11].customer = customers[0];
+rentals[11].employee = employees[0];
 rentals[11].unit = units[0];
 
+for(const rental in rentals){
+  if(rental.state == "pending")
+    rental.employee = undefined;
+  if(rental.state == 'pending' || rental.state == 'open')
+    rental.bill = undefined;
+}
 
-module.exports = {employees, customers, products}
+
+module.exports = {employees, customers, products, units, rentals}

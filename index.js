@@ -54,7 +54,7 @@ app.use('/js', express.static(global.rootDir + '/public/js'));
 app.use('/css', express.static(global.rootDir + '/public/css'));
 app.use('/data', express.static(global.rootDir + '/public/data'));
 app.use('/docs', express.static(global.rootDir + '/public/html'));
-app.use('/img', express.static(global.rootDir + global.publicDir + '/image'));
+app.use('/image', express.static(global.rootDir + global.publicDir + '/image'));
 app.use(express.json({limit: '50mb'}));   //L'ordine di questi è importante!
 app.use(express.urlencoded({limit: '50mb', extended: true}));
 app.use(cors())

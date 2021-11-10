@@ -248,7 +248,7 @@ router.get('/:id/price_estimation', authentication.verifyAuth(requiredAuthLevel,
         let agentId = req.agentId;
 
         let priceEstimation = await computePriceEstimation(availableUnits, { from, to, agentId, });
-        res.status(200).json(priceEstimation);
+        return res.status(200).json(priceEstimation);
     } catch (error) {
         return await errorHandler.handle(error, res);
     }

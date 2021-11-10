@@ -1,6 +1,12 @@
 const mongoose = require('mongoose');
 //const {billmodel, priceEstimationSchema, billSchema} = require("bill");
 
+const rentalState = {
+    pending: 'pending',
+    open: 'open',
+    close: 'close',
+}
+
 const rentalSchema = new mongoose.Schema({
     customer:{
         type: mongoose.Schema.Types.ObjectId,
@@ -19,7 +25,7 @@ const rentalSchema = new mongoose.Schema({
     },
     state: {
         type: String,
-        enum: ['pending','open','close'],
+        enum: [rentalState.pending, rentalState.open, rentalState.close],
         required: true, 
         default: 'pending'
     },
@@ -52,3 +58,4 @@ const rentalSchema = new mongoose.Schema({
 })
 
 module.exports = mongoose.model('Rental', rentalSchema);
+module.exports.rentalState = rentalState;

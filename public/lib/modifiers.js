@@ -24,6 +24,7 @@ let discoutBasedOnCondition = {
 
         return true;
     },
+    //TODO rendere funzione
     value: 1,
     shortExplanation({...others }) {
         return "discout based on condition of the unit";

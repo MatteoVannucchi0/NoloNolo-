@@ -117,7 +117,7 @@ function verifyAuth(requiredAuthLevel, checkId = false){
             const id = decodedToken.id;
 
             if(authLevel >= authLevelDict[requiredAuthLevel] || (checkId && id == req.params.id)){
-                next();
+                return next();
             } else{
                 return res.status(401).json({message: "Authorization level not sufficient to do this operation"});
             }
@@ -129,14 +129,14 @@ function verifyAuth(requiredAuthLevel, checkId = false){
 
 async function getIdFromToken(req, res, next) {
     const token = req.headers["authorization"];
-    if(!token) {
-        next();             //Nel caso in cui non ci sia un token da cui prendere l'id dello username vado oltre
+    if(!token || token === masterKey) {
+        return next();             //Nel caso in cui non ci sia un token da cui prendere l'id dello username vado oltre
     }
 
     try{
         const decodedToken = await jwt.verify(token, privateKey);
         req.agentId = decodedToken.id;
-        next();
+        return next();
     } catch (error) {
         return res.status(401).json({message: "Invalid authentication token [" + error.message + "]"});
     }

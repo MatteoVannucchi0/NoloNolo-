@@ -1,6 +1,6 @@
 const mongoose = require('mongoose');
 const Rental = require('./rental');
-
+const rentalState = require('./rental').rentalState;
 
 const conditionLevel = {
     perfect: "perfect",
@@ -38,34 +38,41 @@ const unitSchema = new mongoose.Schema({
 })
 
 unitSchema.methods.getRentals = async function () {
-    return await Rental.find({ unit: this._id });
+    return (await Rental.find({ unit: this._id })) || [];
 }
 
 unitSchema.methods.getOpenRentals = async function () {
-    return await Rental.find({ unit: this._id, open: true });
+    return (await this.getRentals()).filter(x => (x.open === rentalState.pending || x.open === rentalState.open));
 }
 
 unitSchema.methods.available = async function () {
     const dateNow = new Date().now();
-    let rentalInPeriod = await this.getOpenRentals().filter(
+    const openRentals = await this.getOpenRentals()
+    let rentalsInPeriod = openRentals.filter(
         x => { return (x.startDate <= dateNow && x.expectedEndDate >= dateNow) }
     )
 
-    return rentalInPeriod.length == 0;
+    if(rentalsInPeriod.length > 1)
+        throw new Error("There are more than one rentals associated with the units in this time frame. This is a server error");
+
+    return rentalsInPeriod.length == 0;
 };
 
 unitSchema.methods.availableFromTo = async function (from, to) {
     if(from > to)
         throw new Error("Tryied to verify availability from " + from + " to " + to + "but from is after to");
 
-    let rentalInPeriod = await this.getOpenRentals()
-        .filter(x => {
+    const openRentals = await this.getOpenRentals()
+    let rentalsInPeriod = openRentals.filter(x => {
             return (x.startDate <= from && x.expectedEndDate >= from)
                 || (x.startDate <= to && x.expectedEndDate >= to)
                 || (x.startDate >= from && x.expectedEndDate <= to)
         })
+    
+    if(rentalsInPeriod.length > 1)
+        throw new Error("There are more than one rentals associated with the units in this time frame. This is a server error");
 
-    return rentalInPeriod.length == 0;
+    return rentalsInPeriod.length == 0;
 }
 
 module.exports.model = mongoose.model('Unit', unitSchema);

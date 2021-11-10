@@ -33,7 +33,8 @@
     </div>
 
     <div>
-
+        <input type="text" placeholder="Inserisci id prodotto" id="idprodotto">
+        <button value="clicca" id="price_estimation">clicca</button>
     </div>
 
     <script>
@@ -80,6 +81,18 @@
                     return json;
                 }, {});
         }
+
+        const buttonPriceEstimation = document.getElementById("price_estimation");
+        buttonPriceEstimation.addEventListener("click", async function (event) {
+            const idProd = document.getElementById("idprodotto").value;
+            const to = '2021-11-26T12:00:00.000Z'
+            const uriPriceEst = uri + idProd + "/price_estimation?to="+to;
+            const resp = await fetch(uriPriceEst, {
+                headers: {"Authorization": adminToken},
+                method: "GET",
+                mode: 'cors',
+            });
+        })
 
     </script>
 

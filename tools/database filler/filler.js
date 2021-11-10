@@ -15,20 +15,22 @@ chai.use(require('chai-exclude'));
 
 const ingnoreErrorMessage = false;
 
+const deployToServer = true;
+const urlServer = deployToServer ? "https://site202120.tw.cs.unibo.it/api" : "http://localhost:8000/api";
 
 let masterKey = "";
-if (masterKey == ""){
+if (!deployToServer){
     const masterKeyPath = "../../.masterkey";
     masterKey = fsSync.readFileSync(masterKeyPath, "utf8");
     console.log(masterKey);
+} else {
+    masterKey = "armrp6OnNrjqYqe4WG0cta6pkOoGf1x/VekMnTNWP2vbhwfJsC68yYuWOoYSm4ijQm65zbq7Iafgcs5YeA4OBLQzqMjWqWWKkRWam2IHVUWC4M01w+ZsP6mzU0EdGviKEUAX99NoDv4S4DJXvMO6LfUQ0bWl24X/50eq3+OaJvr0ENPagpDmflUq4VwWyWx3Yuuvr37hLXPyZEDKzWNougQ3esR5CTlGuKF5jT3lrJv5R147de2gWql9kok0/Udt1upfLnh4N2GWaS+TjFWQUhXKLCciExfdsZrOSk/S4gEAYizsl1N1S6loZfJlt5IrfW+DE6Ojn0sLp3MMknr8tg=="
 }
 
 
 const axios = require('axios');
 axios.defaults.headers.post['Authorization'] = masterKey // for POST requests
 
-const deployToServer = true;
-const urlServer = deployToServer ? "https://site202120.tw.cs.unibo.it/api/" : "http://localhost:8000/api";
 
 let customersID = new Map();
 let employeesID = new Map();
@@ -114,19 +116,19 @@ async function postEmployees(){
 }
 
 async function postProducts(){
-    const urlProductsPost = urlServer + "products/";
+    const urlProductsPost = urlServer + "/products/";
     let altProducts = new Map();
 
     console.log("Posting products at : " + urlProductsPost);
     for(let product of products){
         try{
-            //Handle the alt products
-            altProducts.set(product, product.altproducts);
-            product.altproducts = [];
-
             //Handle the image of the product
             const urlImage = product.image;
             product.image = undefined;
+
+            //Handle the alt products
+            altProducts.set(product, product.altproducts);
+            product.altproducts = [];
 
             //NOTA: se da errore ("FormData not found andare ad aggiungere nel module in nodemodule di object-to-form-data una riga: const FormData = require('form-data'))
             let form = serialize(product);
@@ -138,6 +140,8 @@ async function postProducts(){
             continue;
         }
     }
+
+    console.log(productsID);
 
     console.log("\tPosting altproducts...");
     for (const [prod, alts] of altProducts) {

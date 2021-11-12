@@ -178,8 +178,8 @@ async function postRentals(){
     for(const rental of rentals){
         try{
             const idEmployee = employeesID.get(rental.employee);
-            const idCustomer = employeesID.get(rental.employee);
-            const idUnit = employeesID.get(rental.employee);
+            const idCustomer = customersID.get(rental.customer);
+            const idUnit = unitsID.get(rental.unit);
 
             rental.employee = idEmployee;
             rental.customer = idCustomer;
@@ -195,8 +195,8 @@ async function postRentals(){
 }
 
 (async () => {
-    //await postCustomers();
-    //await postEmployees();
+    await postCustomers();
+    await postEmployees();
     await postProducts();
     await postUnits();
     await postRentals();

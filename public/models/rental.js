@@ -16,7 +16,6 @@ const rentalSchema = new mongoose.Schema({
     employee: {
         //The employee is null until state is pending
         type: mongoose.Schema.Types.ObjectId,
-        required: true,
         ref: "Employee",
     },
     prenotationDate:{

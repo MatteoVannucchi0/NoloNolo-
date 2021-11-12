@@ -607,8 +607,8 @@ let units = [
 
 let rentals = [
   {
-    customers: "",
-    employees: undefined,
+    customer: "",
+    employee: undefined,
     prenotationDate: "2021-11-07T18:25:43.511Z",
     state: "pending",
     bill: undefined,
@@ -619,8 +619,8 @@ let rentals = [
     priceEstimation: "",
   },
   {
-    customers: "",
-    employees: "",
+    customer: "",
+    employee: "",
     prenotationDate: "2021-04-23T18:25:43.511Z",
     state: "pending",
     bill: "",
@@ -631,20 +631,20 @@ let rentals = [
     priceEstimation: "",
   },
   {
-    customers: "",
-    employees: "",
-    prenotationDate: "2021-08-10T00:00:43:25.115Z",
+    customer: "",
+    employee: "",
+    prenotationDate: "2021-08-10T00:43:25.115Z",
     state: "pending",
     bill: "",
     startDate: "2021-08-15T00:00:00.000Z",
-    expectedEndDate: "2021-08-1T00:00:00.000Z",
+    expectedEndDate: "2021-08-01T00:00:00.000Z",
     actualEndDate: "",
     unit: "",
     priceEstimation: "",
   },
   {
-    customers: "",
-    employees: "",
+    customer: "",
+    employee: "",
     prenotationDate: "2021-03-13T02:00:40.007Z",
     state: "open",
     bill: "",
@@ -655,8 +655,8 @@ let rentals = [
     priceEstimation: "",
   },
   {
-    customers: "",
-    employees: "",
+    customer: "",
+    employee: "",
     prenotationDate: "2017-05-19T13:00:54.829Z",
     state: "open",
     bill: "",
@@ -667,20 +667,20 @@ let rentals = [
     priceEstimation: "",
   },
   {
-    customers: "",
-    employees: "",
+    customer: "",
+    employee: "",
     prenotationDate: "2020-01-31T05:00:30.202Z",
     state: "open",
     bill: "",
     startDate: "2020-02-20T05:00:30.202Z",
-    expectedEndDate: "2020-03-1T00:00:00.000Z",
+    expectedEndDate: "2020-03-01T00:00:00.000Z",
     actualEndDate: "",
     unit: "",
     priceEstimation: "",
   },
   {
-    customers: "",
-    employees: "",
+    customer: "",
+    employee: "",
     prenotationDate: "2020-12-28T02:00:50.364Z",
     state: "open",
     bill: "",
@@ -691,8 +691,8 @@ let rentals = [
     priceEstimation: "",
   },
   {
-    customers: "",
-    employees: "",
+    customer: "",
+    employee: "",
     prenotationDate: "2021-04-15T02:00:15.453Z",
     state: "open",
     bill: "",
@@ -703,8 +703,8 @@ let rentals = [
     priceEstimation: "",
   },
   {
-    customers: "",
-    employees: "",
+    customer: "",
+    employee: "",
     prenotationDate: "2021-09-17T02:00:03.119Z",
     state: "close",
     bill: "",
@@ -715,8 +715,8 @@ let rentals = [
     priceEstimation: "",
   },
   {
-    customers: "",
-    employees: "",
+    customer: "",
+    employee: "",
     prenotationDate: "2021-04-01T15:00:43.411Z",
     state: "close",
     bill: "",
@@ -727,8 +727,8 @@ let rentals = [
     priceEstimation: "",
   },
   {
-    customers: "",
-    employees: "",
+    customer: "",
+    employee: "",
     prenotationDate: "2020-12-14T03:00:21.333Z",
     state: "close",
     bill: "",
@@ -739,8 +739,8 @@ let rentals = [
     priceEstimation: "",
   },
   {
-    customers: "",
-    employees: "",
+    customer: "",
+    employee: "",
     prenotationDate: "2021-02-14T14:30:00.039Z",
     state: "close",
     bill: "",
@@ -751,8 +751,8 @@ let rentals = [
     priceEstimation: "",
   },
   {
-    customers: "",
-    employees: "",
+    customer: "",
+    employee: "",
     prenotationDate: "2020-10-04T09:00:38.553Z",
     state: "close",
     bill: "",
@@ -763,8 +763,8 @@ let rentals = [
     priceEstimation: "",
   },
   {
-    customers: "",
-    employees: "",
+    customer: "",
+    employee: "",
     prenotationDate: "2020-10-20T06:00:29.427Z",
     state: "close",
     bill: "",
@@ -775,9 +775,9 @@ let rentals = [
     priceEstimation: "",
   },
   {
-    customers: "",
-    employees: "",
-    prenotationDate: "2020-02-18T17:15.406Z",
+    customer: "",
+    employee: "",
+    prenotationDate: "2020-02-18T17:00:15.406Z",
     state: "close",
     bill: "",
     startDate: "2020-02-25T00:00:00.000Z",
@@ -850,12 +850,25 @@ rentals[10].unit = units[0];
 rentals[11].customer = customers[0];
 rentals[11].employee = employees[0];
 rentals[11].unit = units[0];
+rentals[12].customer = customers[0];
+rentals[12].employee = employees[0];
+rentals[12].unit = units[0];
+rentals[13].customer = customers[0];
+rentals[13].employee = employees[0];
+rentals[13].unit = units[0];
+rentals[14].customer = customers[0];
+rentals[14].employee = employees[0];
+rentals[14].unit = units[0];
 
-for(const rental in rentals){
+
+for(const rental of rentals){
   if(rental.state == "pending")
     rental.employee = undefined;
-  if(rental.state == 'pending' || rental.state == 'open')
+  if(rental.state == 'pending' || rental.state == 'open'){
     rental.bill = undefined;
+  }
+  rental.bill = undefined;
+  rental.priceEstimation = {};
 }
 
 

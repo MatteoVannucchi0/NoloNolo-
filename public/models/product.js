@@ -25,7 +25,7 @@ const productSchema = new mongoose.Schema({
     image: {
         type: String,
         required: true,
-        default: "placeholder.jpg",
+        default: "product/placeholder.jpg",
     },
     category: {
         type: String,

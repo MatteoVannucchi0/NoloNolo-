@@ -36,7 +36,6 @@ const customerSchema = new mongoose.Schema({
     },
     dateOfBirth:{
         type: Date,
-        required: true,
         default: Date.now(),
     },
     loginInfo: {
@@ -58,6 +57,10 @@ const customerSchema = new mongoose.Schema({
         },
     },
     address: addressSchema,
+    profilePicture: {
+        type: String,
+        default: 'profile/placeholder.png'
+    }
 })
 
 customerSchema.methods.generateToken = async function() {

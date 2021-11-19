@@ -6,9 +6,25 @@ const Product = require('../models/product').model;
 const Unit = require('../models/unit').model;
 const authentication = require('../lib/authentication');
 const errorHandler = require('../lib/errorHandler');
+const path = require('path');
 
+const { deleteFile, getRandomNameForImage} = require('../lib/helper');
+const imageFolderRelativePath = global.profileImageDirRelative;
+const imageFolderAbsolutePath = global.profileImageDir;
+
+const multer = require('multer');
+const storage = multer.diskStorage({
+    destination: function (req, file, cb) {
+        cb(null, imageFolderAbsolutePath)
+    },
+    filename: function (req, file, cb) {
+        cb(null, getRandomNameForImage("customer", path.extname(file.originalname)))
+    }
+})
+const upload = multer({ storage: storage })
 
 const requiredAuthLevel = authentication.authLevel.employee;
+
 
 router.get('/', authentication.verifyAuth(requiredAuthLevel, false), async (req, res) => {
     try {
@@ -25,10 +41,13 @@ router.get('/', authentication.verifyAuth(requiredAuthLevel, false), async (req,
     }
 })
 
-router.post('/', authentication.hashPassword, async (req, res) => {
+router.post('/', upload.single('profilePicture'), authentication.hashPassword, async (req, res) => {
     let customer = null;
     let jwtToken = null;
     try {
+        if(req.file)
+            req.body.profilePicture = path.join(imageFolderRelativePath, req.file.filename);
+
         customer = await Customer(req.body);
         jwtToken = await customer.generateToken();
     } catch (error) {
@@ -39,6 +58,12 @@ router.post('/', authentication.hashPassword, async (req, res) => {
         const newCustomer = await customer.save();
         res.status(201).set({ "Authorization": jwtToken }).json(newCustomer);
     } catch (error) {
+        try{
+            if(req.file)
+                await deleteFile(path.join(global.publicDir, customer.profilePicture));
+        } catch (error) {
+            return await errorHandler.handle(error, res, 500);
+        }
         return await errorHandler.handle(error, res);
     }
 })
@@ -51,6 +76,8 @@ router.delete('/:id', authentication.verifyAuth(requiredAuthLevel, true), getCus
     try {
         let removedCustomer = res.customer;
         await res.customer.remove();
+        await deleteFile(path.join(global.publicDir, removedCustomer.profilePicture));
+
         res.status(200).json(removedCustomer);   //{message: "Customer deleted from the database"});
     } catch (error) {
         return await errorHandler.handle(error, res, 500);

@@ -1,4 +1,5 @@
-﻿/*
+﻿/* eslint-disable no-undef */
+/*
 File: index.js
 Author: Fabio Vitali
 Version: 1.0 
@@ -39,7 +40,13 @@ var path = require('path');
 
 //Serve per le variabili di ambiente
 require('dotenv').config({ path: path.resolve(global.rootDir + "/.env") });
-global.publicDir = process.env.PUBLIC_DIR_URL;
+global.publicDir = global.rootDir + process.env.PUBLIC_DIR_URL;
+global.imageDir = global.publicDir + '/image'
+
+global.productImageDirRelative = "/image/product";
+global.profileImageDirRelative = "/image/profile";
+global.productImageDir = global.publicDir + global.productImageDirRelative;
+global.profileImageDir = global.publicDir + global.profileImageDirRelative;
 
 
 
@@ -50,18 +57,23 @@ global.publicDir = process.env.PUBLIC_DIR_URL;
 /* ========================== */
 
 let app = express();
+
 app.use('/js', express.static(global.rootDir + '/public/js'));
 app.use('/css', express.static(global.rootDir + '/public/css'));
 app.use('/data', express.static(global.rootDir + '/public/data'));
 app.use('/docs', express.static(global.rootDir + '/public/html'));
-app.use('/image', express.static(global.rootDir + global.publicDir + '/image'));
+// app.use('/image', express.static(global.publicDir + '/image'));
+app.use(global.productImageDirRelative, express.static(global.productImageDir));
+app.use(global.profileImageDirRelative, express.static(global.profileImageDir));
+
+
 app.use(express.json({limit: '50mb'}));   //L'ordine di questi è importante!
 app.use(express.urlencoded({limit: '50mb', extended: true}));
 app.use(cors())
 
 //Gestione loggin delle richieste al server
 const logginFilePath = path.join(global.rootDir, '/log/.log.txt')
-const {createFileAndDirSync} = require(global.rootDir + global.publicDir + '/lib/helper');
+const {createFileAndDirSync} = require(global.publicDir + '/lib/helper');
 
 //Perchè lo mettiamo sincrono? se non lo fosse dovremmo usare un callback ma renderebbe morgan non funzionante perché andremmo a fare app.use(morgan ...) dopo il resto delle app.use dei vari endpoint
 //Se invece usassimo await funzionerebbe però bisognerebbe richiundere tutto index in una funzione async. Facendo ciò però i test partono prima che sia caricato tutto e non vanno.
@@ -92,22 +104,22 @@ app.use(function(req, res, next) {
 // const objectsRouter = require(global.rootDir + '/public/routers/'); 
 // app.use('/api/', Router);
 
-const authentication = require(global.rootDir + global.publicDir + '/routers/authenticationRouter');
+const authentication = require(global.publicDir + '/routers/authenticationRouter');
 app.use("/api/authentication/", authentication.router);
 
-const customerRouter = require(global.rootDir + global.publicDir + '/routers/customerRouter');
+const customerRouter = require(global.publicDir + '/routers/customerRouter');
 app.use("/api/customers/", customerRouter);
 
-const productRouter = require(global.rootDir + global.publicDir + '/routers/productRouter');
+const productRouter = require(global.publicDir + '/routers/productRouter');
 app.use("/api/products/", productRouter);
 
-const employeeRouter = require(global.rootDir + global.publicDir + '/routers/employeeRouter');
+const employeeRouter = require(global.publicDir + '/routers/employeeRouter');
 app.use("/api/employees/", employeeRouter);
 
-const rentalRouter = require(global.rootDir + global.publicDir + '/routers/rentalRouter');
+const rentalRouter = require(global.publicDir + '/routers/rentalRouter');
 app.use("/api/rentals/", rentalRouter);
 
-const billRouter = require(global.rootDir + global.publicDir + '/routers/billRouter');
+const billRouter = require(global.publicDir + '/routers/billRouter');
 app.use('/api/bills/', billRouter);
 
 /* ========================== */

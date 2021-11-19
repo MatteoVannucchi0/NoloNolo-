@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+
+<head>
+    <style>
+        div {
+            display: flex;
+        }
+    </style>
+</head>
+
+<body>
+    <div>
+
+        <form id="productPostForm" enctype="multipart/form-data" action="http://localhost:8000/api/products/" method="POST" >
+            <label for="name">name:</label><br>
+            <input type="text" id="name" name="name" value="NomeProdottoTest" required><br><br>
+            <label for="description">description:</label><br>
+            <input type="text" id="description" name="description" value="descriptionTest" required><br><br>
+            <label for="category">category:</label><br>
+            <input type="text" id="category" name="category" value="categoryTest" required><br><br>
+            <label for="subcategory">subcategory:</label><br>
+            <input type="text" id="subcategory" name="subcategory" value="subcategoryTest"><br>
+            <label for="image">image:</label><br>
+            <input type="file" id="image" accept="image/*" name="image"><br>
+
+            <input type="submit" value="submit">
+        </form>
+
+        <form id="customerPostForm" enctype="multipart/form-data" action="http://localhost:8000/api/customers/" method="POST" >
+            <label for="firstname">firstname:</label><br>
+            <input type="text" id="firstname" name="firstname" value="NomePersona" required><br><br>
+            
+            <label for="lastname">lastname:</label><br>
+            <input type="text" id="lastname" name="lastname" value="CognomePersona" required><br><br>
+
+            <label for="image">image:</label><br>
+            <input type="file" id="profilePicture" accept="image/*" name="profilePicture"><br>
+
+            <input type="submit" value="submit">
+        </form>
+    </div>
+
+    
+    <div>
+        <input type="text" id="prodImageUrl">
+        <input type="text" id="custImageUrl">
+        <input type="button" onclick="updateImg()" value="Update">
+    </div>
+
+    <div>
+        <input type="text" id="prodIdDelete">
+        <input type="button" onclick="deleteProd()" value="Delete Product">
+
+        <input type="text" id="custIdDelete">
+        <input type="button" onclick="deleteCust()" value="Delete Customer">
+    </div>
+
+    <img src="" id="prodImg">
+    <img src="" id="custImg">
+
+    <script>
+        const url = "http://localhost:8000/api"
+        const adminToken = "fWtuIjIfojFkffmZfQwd4gJaIQqRpqlAK+tbEIQrdLQnBHdnFQUjTSoxcDWxzPzvGlZAVhPJ5gLrl5iDBRSa4A3OGqz4PH92Fodekqotno8bwvbKCCf58xhE3zh8qWeTW0Nj6QZyEq87hHZ7lfdRzBemTqrKQ6BerduytuRrjk6M8xBYfIQJMAE0+uyeGAWItDuhX63/9Erct9817TzJWxZK/lVQK+dVtYKo38v1B56vFET8bJnPPyM5IQNDXCWM7ofM8vpRsybCZ777SSMKYFOjD+yEXqT79Fov1gkv6MlY8d0Ma8xqzNAb+WQ7O1+XULB49xJAi6FlDxjrz/ExUg==";
+
+        async function post(data, url) {
+            return await fetch(url, {
+                headers: {"Authorization": adminToken},
+                method: "POST",
+                body: data,
+                mode: 'cors',
+            });
+        }
+
+        const productPostForm = document.getElementById("productPostForm");
+        productPostForm.addEventListener("submit", async function (event) {
+            event.preventDefault();
+            let data = new FormData(productPostForm);
+            let response = post(data, url + "/products/");
+            console.log(response.data)
+        })
+        
+        const customerPostForm = document.getElementById("customerPostForm");
+        customerPostForm.addEventListener("submit", async function (event) {
+            event.preventDefault();
+            const loginInfo = {
+                username: "UsernamePersona",
+                password: "PasswordPersona",
+                email: "email@persona.com",
+            }
+
+            let data = new FormData(customerPostForm);
+            data.append("loginInfo[username]", loginInfo.username);
+            data.append("loginInfo[password]", loginInfo.password);
+            data.append("loginInfo[email]", loginInfo.email);
+
+
+            console.log(data);
+
+            let response = await post(data, url + "/customers/")
+        })
+
+        function updateImg() {
+            const urlImage = "http://localhost:8000/image"
+            document.getElementById("prodImg").src = urlImage + "/product/" + document.getElementById('prodImageUrl').value ;
+            document.getElementById("custImg").src = urlImage + "/profile/" +  document.getElementById('custImageUrl').value ;
+        }
+
+        async function deleteProd(){
+            const id = document.getElementById('prodIdDelete').value
+            const urlDelete = url + "/products/" + id
+            await fetch(urlDelete, {
+                headers: {"Authorization": adminToken},
+                method: "DELETE",
+                mode: 'cors',
+            });
+        }
+
+        async function deleteCust(){
+            const id = document.getElementById('custIdDelete').value
+            const urlDelete = url + "/customers/" + id
+            await fetch(urlDelete, {
+                headers: {"Authorization": adminToken},
+                method: "DELETE",
+                mode: 'cors',
+            });
+        }
+    </script>
+<body

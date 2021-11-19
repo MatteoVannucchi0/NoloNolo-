@@ -4,16 +4,20 @@ const Product = require("../models/product").model;
 const Unit = require("../models/unit").model;
 const authentication = require('../lib/authentication');
 const errorHandler = require('../lib/errorHandler');
-const fs = require("fs").promises;
 const path = require('path')
 const computePriceEstimation = require('../lib/priceCalculation').computePriceEstimation;
+const requiredAuthLevel = authentication.authLevel.employee;
+
+const { deleteFile } = require('../lib/helper');
+
+
+const imageRelativePath = global.productImageDirRelative;
+const imageAbsolutePath = global.productImageDir;
 
 const multer = require('multer');
-const imageRelativePath = "/image/"
-const imagePath = path.join(__dirname, "..", imageRelativePath);
 const storage = multer.diskStorage({
     destination: function (req, file, cb) {
-        cb(null, imagePath)
+        cb(null, imageAbsolutePath)
     },
     filename: function (req, file, cb) {
         const uniqueName = req.body.name + '-' + Date.now() + path.extname(file.originalname);
@@ -22,9 +26,7 @@ const storage = multer.diskStorage({
 })
 const upload = multer({ storage: storage })
 
-const requiredAuthLevel = authentication.authLevel.employee;
 
-//TODO restituire le immagini
 router.get('/', async (req, res) => {
     try {
         let query = {}
@@ -58,9 +60,9 @@ router.post('/', authentication.verifyAuth(requiredAuthLevel, false), upload.sin
     } catch (error) {
         try {
             if (req.file)
-                await fs.unlink(path.join(imagePath, req.file.filename));
+                await deleteFile(path.join(global.publicDir, product.image));
         } catch (error) {
-            return await errorHandler.handle(error, res, 400);
+            return await errorHandler.handle(error, res, 500);
         }
         return await errorHandler.handle(error, res);
     }
@@ -70,7 +72,6 @@ router.get('/:id', getProductById, async (req, res) => {
     res.json(res.product);
 })
 
-//TODO eliminare l'immagine associata
 //TODO aggiungere una query per non fare cancellare anche le unità associate
 router.delete('/:id', authentication.verifyAuth(requiredAuthLevel, false), getProductById, async (req, res) => {
     try {
@@ -81,8 +82,9 @@ router.delete('/:id', authentication.verifyAuth(requiredAuthLevel, false), getPr
             await unit.remove();
         }
 
-
         await res.product.remove();
+        await deleteFile(path.join(global.publicDir, removedProduct.image));
+
         res.status(200).json(removedProduct);
     } catch (error) {
         return await errorHandler.handle(error, res, 500);
@@ -142,8 +144,6 @@ router.delete('/:id/units/:idunit', authentication.verifyAuth(requiredAuthLevel,
 //TODO aggiungere una query per restiture un determinato tags
 router.get('/:id/tags', authentication.verifyAuth(requiredAuthLevel, false), getProductById, async (req, res) => {
     try {
-        let query = {};
-
         res.status(200).json(res.product.tags);
     } catch (error) {
         return await errorHandler.handle(error, res, 400);

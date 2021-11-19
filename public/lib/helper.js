@@ -30,5 +30,19 @@ function createFileAndDirSync(path) {
   }
 }
 
+const fileExists = async path => !!(await fs.stat(path).catch(e => false));
 
-module.exports = {dayDifference, isWeekend, createFileAndDir, createFileAndDirSync};
+async function deleteFile(absPath) {
+    console.log(absPath);
+    if (await fileExists(absPath))
+        await fs.unlink(absPath);
+
+}
+
+function getRandomNameForImage(prefix, suffix) {
+    const random = Math.floor(Math.random() * 1000000) 
+    return `${prefix}-${Date.now()}-${random}${suffix}`;
+}
+
+
+module.exports = {dayDifference, isWeekend, createFileAndDir, createFileAndDirSync, deleteFile, getRandomNameForImage};

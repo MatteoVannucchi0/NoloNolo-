@@ -4,8 +4,25 @@ const Customer = require('../models/customer');
 const Rental = require('../models/rental');
 const router = express.Router();
 const authentication = require('../lib/authentication');
+const errorHandler = require('../lib/errorHandler');
+const path = require('path');
 
 const requiredAuthLevel = authentication.authLevel.admin
+
+const { deleteFile, getRandomNameForImage} = require('../lib/helper');
+const imageFolderRelativePath = global.profileImageDirRelative;
+const imageFolderAbsolutePath = global.profileImageDir;
+
+const multer = require('multer');
+const storage = multer.diskStorage({
+    destination: function (req, file, cb) {
+        cb(null, imageFolderAbsolutePath)
+    },
+    filename: function (req, file, cb) {
+        cb(null, getRandomNameForImage("customer", path.extname(file.originalname)))
+    }
+})
+const upload = multer({ storage: storage })
 
 router.get('/', authentication.verifyAuth(requiredAuthLevel, false), async (req, res) => {
     try {
@@ -43,12 +60,14 @@ router.get('/', authentication.verifyAuth(requiredAuthLevel, false), async (req,
     }
 })
 
-router.post('/', authentication.hashPassword, async (req, res) => {
+router.post('/', upload.single('profilePicture'), authentication.hashPassword, async (req, res) => {
     let employee = null;
     let jwtToken = null;
     try{
-        employee = await Employee(req.body);
+        if(req.file)
+            req.body.profilePicture = path.join(imageFolderRelativePath, req.file.filename);
 
+        employee = await Employee(req.body);
         jwtToken = await employee.generateToken();
     } catch (error) {
         res.status(400).json({message: error.message})
@@ -58,11 +77,18 @@ router.post('/', authentication.hashPassword, async (req, res) => {
         const newEmployee = await employee.save();
         res.status(201).set({"Authorization": jwtToken}).json(newEmployee);
     } catch (error) {
+        try{
+            if(req.file)
+                await deleteFile(path.join(global.publicDir, employee.profilePicture));
+        } catch (error) {
+            return await errorHandler.handle(error, res, 500);
+        }
+
         res.status(409).json({message: error.message});
     }
 })
 
-router.get('/:id', authentication.verifyAuth(requiredAuthLevel, true)  , getEmployeeById, async (req, res) => {
+router.get('/:id', authentication.verifyAuth(requiredAuthLevel, true), getEmployeeById, async (req, res) => {
     res.json(res.employee);
 })
 
@@ -70,6 +96,9 @@ router.delete('/:id', authentication.verifyAuth(requiredAuthLevel, true), getEmp
     try{
         let removedEmployee = res.employee
         await res.employee.remove();
+        await deleteFile(path.join(global.publicDir, removedEmployee.profilePicture));
+
+
         res.status(200).json(removedEmployee);
     } catch(error){
         res.status(500).json({message: error.message});
@@ -98,7 +127,7 @@ router.get('/:id/rentals',authentication.verifyAuth(requiredAuthLevel, true), ge
 
 router.get('/:id/customers', authentication.verifyAuth(requiredAuthLevel, true), getEmployeeById, async (req,res) => {
     try {
-        let cusotmer = await Cusotmer.find({employee: req.params.id})
+        let cusotmer = await Customer.find({employee: req.params.id})
         res.status(200).json({cusotmer})
     } catch (error) {
         res.status(400).json({message: error.message})

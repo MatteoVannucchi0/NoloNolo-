@@ -34,6 +34,10 @@ const employeeSchema = new mongoose.Schema({
         required: false,
         enum: [auth.authLevel.admin, auth.authLevel.employee],
         default: auth.authLevel.employee
+    },
+    profilePicture: {
+        type: String,
+        default: 'profile/placeholder.png'
     }
 })
 

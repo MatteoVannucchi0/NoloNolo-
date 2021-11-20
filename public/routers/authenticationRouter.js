@@ -58,8 +58,5 @@ router.get('/verify', async (req, res) => {
 })
 
 
-//TODO aggiungere verify
-router.get('')
-
 module.exports.router = router;
 

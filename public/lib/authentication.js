@@ -100,8 +100,8 @@ async function generateToken(auth, username, id, expireTime = "31d"){
 }
 
 function processToken(token) {
-    if(token.startsWith('Bearer'))
-        return token.substring(7);
+    if(!token) return undefined;
+    if(token.startsWith('Bearer')) return token.substring(7);
     return token;
 }
 

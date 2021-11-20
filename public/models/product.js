@@ -1,5 +1,6 @@
 const mongoose = require('mongoose');
 const Unit = require('./unit').model;
+const mongoosePaginate = require('mongoose-paginate-v2');
 
 const tagSchema = new mongoose.Schema({
     key: {
@@ -42,6 +43,8 @@ const productSchema = new mongoose.Schema({
         ref: 'Product',
     }
 })
+
+productSchema.plugin(mongoosePaginate);
 
 //TODO da aggiungere nella specifica di openapi
 productSchema.methods.available = async function () {

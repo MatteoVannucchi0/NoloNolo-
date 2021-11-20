@@ -1,6 +1,8 @@
 const mongoose = require('mongoose');
 const auth = require('../lib/authentication');
 const { validateEmail, validateNotEmail } = require('../lib/validation');
+const mongoosePaginate = require('mongoose-paginate-v2');
+
  
 //const loginInfoSchema = require('../models/loginInfo');
 //var uniqueValidator = require('mongoose-unique-validator');
@@ -62,6 +64,8 @@ const customerSchema = new mongoose.Schema({
         default: 'profile/placeholder.png'
     }
 })
+
+customerSchema.plugin(mongoosePaginate);
 
 customerSchema.methods.generateToken = async function() {
     return await auth.generateToken(auth.authLevel.customer, this.username, this._id);

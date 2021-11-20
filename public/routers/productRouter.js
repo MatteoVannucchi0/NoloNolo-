@@ -30,6 +30,7 @@ const upload = multer({ storage: storage })
 router.get('/', async (req, res) => {
     try {
         let query = {}
+
         if (req.query.name)
             query["productname"] = req.query.name;
         if (req.query.category)
@@ -37,7 +38,11 @@ router.get('/', async (req, res) => {
         if (req.query.subcategory)
             query["subcategory"] = req.query.subcategory;
 
-        const product = await Product.find(query);
+        const limit = req.query.limit ? parseInt(req.query.limit) : undefined;
+        const page = req.query.page ? parseInt(req.query.page) : 0;
+        const pagination = !! limit;
+
+        const product = await Product.paginate(query, {limit, page, pagination})
         return res.status(200).json(product);
     } catch (error) {
         return await errorHandler.handle(error, res, 500);

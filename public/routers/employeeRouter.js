@@ -32,11 +32,31 @@ router.get('/', authentication.verifyAuth(requiredAuthLevel, false), async (req,
         if(req.query.email)
             query["loginInfo.email"] = req.query.email;
 
+        const limit = req.query.limit ? parseInt(req.query.limit) : undefined;
+        const page = req.query.page ? parseInt(req.query.page) : 0;
+        const pagination = !! limit;
 
-        let employees = await Employee.find(query);
-        
+        const employees = await Employee.paginate(query, {limit, page, pagination})        
 
-        if(req.query.openRent){
+        /* if(req.query.openRent){
+            const newQuery = [{
+                $lookup: {
+                    from: "Rental",
+                    localField: "_id",
+                    foreignField: "employee",
+                    as: rentals,
+                }
+            }, {
+                $unwind: "rentals"
+            },{
+                $match: {
+                    state: "open"
+                }
+            }, {
+                $count: "numbersOpen"
+            }
+        ]
+
             let rentals = await Rental.find();
 
             //Prendo tutti i rental che sono open
@@ -51,9 +71,9 @@ router.get('/', authentication.verifyAuth(requiredAuthLevel, false), async (req,
                 if(employee._id == rent.employee)
                     final.push(employee);
             }
-            }
+        } 
         res.status(200).json(final);
-        }
+        } */ 
         res.status(200).json(employees);
     } catch (error) {
         res.status(500).json({message: error.message});

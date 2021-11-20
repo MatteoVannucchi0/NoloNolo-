@@ -1,6 +1,9 @@
 const mongoose = require('mongoose');
 const auth = require('../lib/authentication');
 const { validateEmail, validateNotEmail } = require('../lib/validation');
+const mongoosePaginate = require('mongoose-paginate-v2');
+const aggregatePaginate = require("mongoose-aggregate-paginate-v2");
+
 
 const employeeSchema = new mongoose.Schema({
     firstname:{
@@ -40,6 +43,9 @@ const employeeSchema = new mongoose.Schema({
         default: 'profile/placeholder.png'
     }
 })
+
+employeeSchema.plugin(mongoosePaginate);
+employeeSchema.plugin(aggregatePaginate);
 
 employeeSchema.methods.generateToken = async function() {
     return await auth.generateToken(this.authorization, this.username, this._id);

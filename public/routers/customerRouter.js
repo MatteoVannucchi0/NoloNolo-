@@ -34,7 +34,12 @@ router.get('/', authentication.verifyAuth(requiredAuthLevel, false), async (req,
         if (req.query.email)
             query["loginInfo.email"] = req.query.email;
 
-        const customer = await Customer.find(query);
+        
+        const limit = req.query.limit ? parseInt(req.query.limit) : undefined;
+        const page = req.query.page ? parseInt(req.query.page) : 0;
+        const pagination = !! limit;
+
+        const customer = await Customer.paginate(query, {limit, page, pagination})
         res.status(200).json(customer);
     } catch (error) {
         return await errorHandler.handle(error, res, 500);

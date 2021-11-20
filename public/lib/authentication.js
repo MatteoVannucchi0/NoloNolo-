@@ -100,8 +100,6 @@ async function generateToken(auth, username, id, expireTime = "31d"){
 }
 
 function processToken(token) {
-    if(!token)
-        throw new Error("No token found")
     if(token.startsWith('Bearer'))
         return token.substring(7);
     return token;

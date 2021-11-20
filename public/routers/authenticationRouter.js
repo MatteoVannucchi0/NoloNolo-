@@ -50,6 +50,11 @@ router.post('/employees/login', async (req, res) => {
 router.get('/verify', async (req, res) => {
     try {
         const token = req.headers["authorization"];
+        
+        if(!token) {
+            return res.status(401).json({message: "Required authentication token"});
+        }
+
         const decrypted = await authentication.verifyToken(token);
         return res.status(200).json(decrypted);
     } catch (error) {

@@ -3,7 +3,6 @@ const router = express.Router();
 const Customer = require('../models/customer').model;
 const Employee = require('../models/employee');
 const authentication = require("../lib/authentication");
-const validation = require("../lib/validation");
 
 router.post('/customers/login', async (req, res) => {
     try {
@@ -47,6 +46,20 @@ router.post('/employees/login', async (req, res) => {
         return res.status(400).json({ message: error.message });
     }
 });
+
+router.get('/verify', async (req, res) => {
+    try {
+        const token = req.headers["authorization"];
+        const decrypted = await authentication.verifyToken(token);
+        return res.status(200).json(decrypted);
+    } catch (error) {
+        res.status(400).json({message: error.message})
+    }
+})
+
+
+//TODO aggiungere verify
+router.get('')
 
 module.exports.router = router;
 

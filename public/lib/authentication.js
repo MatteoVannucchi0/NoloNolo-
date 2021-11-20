@@ -99,9 +99,19 @@ async function generateToken(auth, username, id, expireTime = "31d"){
     return signedToken;
 }
 
+function processToken(token) {
+    if(token.startsWith('Bearer'))
+        return token.substring(7);
+    return token;
+}
+
+async function verifyToken(token) {
+    return jwt.verify(processToken(token), privateKey);
+}
+
 function verifyAuth(requiredAuthLevel, checkId = false){
     return async function (req, res, next) {
-        const token = req.headers["authorization"];
+        let token = processToken(req.headers["authorization"]);
 
         if(!token) {
             return res.status(401).json({message: "Required authentication token"});
@@ -112,7 +122,8 @@ function verifyAuth(requiredAuthLevel, checkId = false){
         }
 
         try{
-            const decodedToken = await jwt.verify(token, privateKey);
+            const decodedToken = await verifyToken(token);
+
             const authLevel = authLevelDict[decodedToken.auth]
             const id = decodedToken.id;
 
@@ -143,7 +154,6 @@ async function getIdFromToken(req, res, next) {
 }
 
 //------------ Token handling --------------------------------
-
 module.exports.verifyCredential = verifyCredential;
 module.exports.generateToken = generateToken;
 module.exports.authLevel = authLevel;
@@ -151,3 +161,4 @@ module.exports.hashPassword = hashPassword;
 module.exports.verifyAuth = verifyAuth;
 module.exports.hash = hash;
 module.exports.getIdFromToken = getIdFromToken
+module.exports.verifyToken = verifyToken;

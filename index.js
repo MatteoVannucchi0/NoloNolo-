@@ -41,6 +41,7 @@ var path = require('path');
 //Serve per le variabili di ambiente
 require('dotenv').config({ path: path.resolve(global.rootDir + "/.env") });
 global.publicDir = global.rootDir + process.env.PUBLIC_DIR_URL;
+global.frontendDir = global.publicDir + '/frontend';
 global.imageDir = global.publicDir + '/image'
 
 global.productImageDirRelative = "/image/product";
@@ -121,6 +122,10 @@ app.use("/api/rentals/", rentalRouter);
 
 const billRouter = require(global.publicDir + '/routers/billRouter');
 app.use('/api/bills/', billRouter);
+
+const pageRouter = require(global.publicDir + '/routers/pageRouter');
+app.use('/', pageRouter);
+
 
 /* ========================== */
 /*                            */

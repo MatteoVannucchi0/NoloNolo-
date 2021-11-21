@@ -12,6 +12,7 @@ router.get('/backoffice', async (req, res) => {
 
 console.log(path.join(global.frontendDir, '/dashboard'))
 
+router.use('/', express.static(path.join(global.frontendDir, '/dashboard/_nuxt/')));
 router.use('/dashboard', express.static(path.join(global.frontendDir, '/dashboard')));
 
 module.exports = router;

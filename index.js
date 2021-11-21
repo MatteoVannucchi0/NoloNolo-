@@ -40,14 +40,15 @@ var path = require('path');
 
 //Serve per le variabili di ambiente
 require('dotenv').config({ path: path.resolve(global.rootDir + "/.env") });
-global.publicDir = global.rootDir + process.env.PUBLIC_DIR_URL;
-global.frontendDir = global.publicDir + '/frontend';
-global.imageDir = global.publicDir + '/image'
+global.publicDir = global.rootDir + process.env.PUBLIC_DIR_URL
+global.backendDir = global.rootDir + process.env.BACKEND_DIR_URL;
+global.frontendDir = global.rootDir + process.env.FRONTEND_DIR_URL;
+global.imageDir = global.backendDir + '/image'
 
 global.productImageDirRelative = "/image/product";
 global.profileImageDirRelative = "/image/profile";
-global.productImageDir = global.publicDir + global.productImageDirRelative;
-global.profileImageDir = global.publicDir + global.profileImageDirRelative;
+global.productImageDir = global.backendDir + global.productImageDirRelative;
+global.profileImageDir = global.backendDir + global.profileImageDirRelative;
 
 
 
@@ -63,7 +64,7 @@ app.use('/js', express.static(global.rootDir + '/public/js'));
 app.use('/css', express.static(global.rootDir + '/public/css'));
 app.use('/data', express.static(global.rootDir + '/public/data'));
 app.use('/docs', express.static(global.rootDir + '/public/html'));
-// app.use('/image', express.static(global.publicDir + '/image'));
+// app.use('/image', express.static(global.rootDir + '/image'));
 app.use(global.productImageDirRelative, express.static(global.productImageDir));
 app.use(global.profileImageDirRelative, express.static(global.profileImageDir));
 
@@ -74,7 +75,7 @@ app.use(cors())
 
 //Gestione loggin delle richieste al server
 const logginFilePath = path.join(global.rootDir, '/log/.log.txt')
-const {createFileAndDirSync} = require(global.publicDir + '/lib/helper');
+const {createFileAndDirSync} = require(global.backendDir + '/lib/helper');
 
 //Perchè lo mettiamo sincrono? se non lo fosse dovremmo usare un callback ma renderebbe morgan non funzionante perché andremmo a fare app.use(morgan ...) dopo il resto delle app.use dei vari endpoint
 //Se invece usassimo await funzionerebbe però bisognerebbe richiundere tutto index in una funzione async. Facendo ciò però i test partono prima che sia caricato tutto e non vanno.
@@ -105,25 +106,25 @@ app.use(function(req, res, next) {
 // const objectsRouter = require(global.rootDir + '/public/routers/'); 
 // app.use('/api/', Router);
 
-const authentication = require(global.publicDir + '/routers/authenticationRouter');
+const authentication = require(global.backendDir + '/routers/authenticationRouter');
 app.use("/api/authentication/", authentication.router);
 
-const customerRouter = require(global.publicDir + '/routers/customerRouter');
+const customerRouter = require(global.backendDir + '/routers/customerRouter');
 app.use("/api/customers/", customerRouter);
 
-const productRouter = require(global.publicDir + '/routers/productRouter');
+const productRouter = require(global.backendDir + '/routers/productRouter');
 app.use("/api/products/", productRouter);
 
-const employeeRouter = require(global.publicDir + '/routers/employeeRouter');
+const employeeRouter = require(global.backendDir + '/routers/employeeRouter');
 app.use("/api/employees/", employeeRouter);
 
-const rentalRouter = require(global.publicDir + '/routers/rentalRouter');
+const rentalRouter = require(global.backendDir + '/routers/rentalRouter');
 app.use("/api/rentals/", rentalRouter);
 
-const billRouter = require(global.publicDir + '/routers/billRouter');
+const billRouter = require(global.backendDir + '/routers/billRouter');
 app.use('/api/bills/', billRouter);
 
-const pageRouter = require(global.publicDir + '/routers/pageRouter');
+const pageRouter = require(global.backendDir + '/routers/pageRouter');
 app.use('/', pageRouter);
 
 

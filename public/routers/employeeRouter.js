@@ -85,7 +85,7 @@ router.post('/', upload.single('profilePicture'), authentication.hashPassword, a
     let jwtToken = null;
     try{
         if(req.file)
-            req.body.profilePicture = path.join(imageFolderRelativePath, req.file.filename);
+            req.body.profilePicture = path.join(imageFolderRelativePath, req.file.filename).substring(1);
 
         employee = await Employee(req.body);
         jwtToken = await employee.generateToken();
@@ -116,7 +116,9 @@ router.delete('/:id', authentication.verifyAuth(requiredAuthLevel, true), getEmp
     try{
         let removedEmployee = res.employee
         await res.employee.remove();
-        await deleteFile(path.join(global.publicDir, removedEmployee.profilePicture));
+
+        if(removedEmployee.image && removedEmployee.image != global.profileImagePlaceholderName)
+            await deleteFile(path.join(global.publicDir, removedEmployee.profilePicture));
 
 
         res.status(200).json(removedEmployee);

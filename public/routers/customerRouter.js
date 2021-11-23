@@ -51,7 +51,7 @@ router.post('/', upload.single('profilePicture'), authentication.hashPassword, a
     let jwtToken = null;
     try {
         if(req.file)
-            req.body.profilePicture = path.join(imageFolderRelativePath, req.file.filename);
+            req.body.profilePicture = path.join(imageFolderRelativePath, req.file.filename).substring(1);
 
         customer = await Customer(req.body);
         jwtToken = await customer.generateToken();
@@ -81,7 +81,10 @@ router.delete('/:id', authentication.verifyAuth(requiredAuthLevel, true), getCus
     try {
         let removedCustomer = res.customer;
         await res.customer.remove();
-        await deleteFile(path.join(global.publicDir, removedCustomer.profilePicture));
+
+        
+        if(removedCustomer.image && removedCustomer.image != global.profileImagePlaceholderName)
+            await deleteFile(path.join(global.publicDir, removedCustomer.profilePicture));
 
         res.status(200).json(removedCustomer);   //{message: "Customer deleted from the database"});
     } catch (error) {

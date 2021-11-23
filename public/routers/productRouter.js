@@ -53,7 +53,7 @@ router.post('/', authentication.verifyAuth(requiredAuthLevel, false), upload.sin
     let product = null;
     try {
         if (req.file)
-            req.body.image = path.join(imageRelativePath, req.file.filename);
+            req.body.image = path.join(imageRelativePath, req.file.filename).substring(1);
         product = await Product(req.body);
     } catch (error) {
         return await errorHandler.handle(error, res, 400);
@@ -64,7 +64,7 @@ router.post('/', authentication.verifyAuth(requiredAuthLevel, false), upload.sin
         return res.status(201).json(newProduct);
     } catch (error) {
         try {
-            if (req.file)
+            if (req.file) 
                 await deleteFile(path.join(global.publicDir, product.image));
         } catch (error) {
             return await errorHandler.handle(error, res, 500);
@@ -88,7 +88,9 @@ router.delete('/:id', authentication.verifyAuth(requiredAuthLevel, false), getPr
         }
 
         await res.product.remove();
-        await deleteFile(path.join(global.publicDir, removedProduct.image));
+
+        if(removedProduct.image && removedProduct.image != global.productImagePlaceholderName)
+            await deleteFile(path.join(global.publicDir, removedProduct.image));
 
         res.status(200).json(removedProduct);
     } catch (error) {

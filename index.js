@@ -49,6 +49,8 @@ global.productImageDirRelative = "/image/product";
 global.profileImageDirRelative = "/image/profile";
 global.productImageDir = global.backendDir + global.productImageDirRelative;
 global.profileImageDir = global.backendDir + global.profileImageDirRelative;
+global.productImagePlaceholderName = "placeholder.jpg";
+global.profileImagePlaceholderName = "placeholder.png";
 
 
 

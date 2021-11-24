@@ -6,9 +6,10 @@ const authentication = require('../lib/authentication');
 const errorHandler = require('../lib/errorHandler');
 const path = require('path')
 const computePriceEstimation = require('../lib/priceCalculation').computePriceEstimation;
+const { deleteFile, parseQueryToPaginator } = require('../lib/helper');
+
 const requiredAuthLevel = authentication.authLevel.employee;
 
-const { deleteFile } = require('../lib/helper');
 
 
 const imageRelativePath = global.productImageDirRelative;
@@ -32,15 +33,13 @@ router.get('/', async (req, res) => {
         let query = {}
 
         if (req.query.name)
-            query["productname"] = req.query.name;
+            query["name"] = req.query.name;
         if (req.query.category)
             query["category"] = req.query.category;
         if (req.query.subcategory)
             query["subcategory"] = req.query.subcategory;
 
-        const limit = req.query.limit ? parseInt(req.query.limit) : undefined;
-        const page = req.query.page ? parseInt(req.query.page) : 0;
-        const pagination = !! limit;
+        const { limit, page, pagination } = parseQueryToPaginator(req.query)
 
         const product = await Product.paginate(query, {limit, page, pagination})
         return res.status(200).json(product);

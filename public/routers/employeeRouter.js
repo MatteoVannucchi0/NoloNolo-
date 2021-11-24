@@ -6,10 +6,11 @@ const router = express.Router();
 const authentication = require('../lib/authentication');
 const errorHandler = require('../lib/errorHandler');
 const path = require('path');
+const { deleteFile, getRandomNameForImage, parseQueryToPaginator} = require('../lib/helper');
+
 
 const requiredAuthLevel = authentication.authLevel.admin
 
-const { deleteFile, getRandomNameForImage} = require('../lib/helper');
 const imageFolderRelativePath = global.profileImageDirRelative;
 const imageFolderAbsolutePath = global.profileImageDir;
 
@@ -32,10 +33,7 @@ router.get('/', authentication.verifyAuth(requiredAuthLevel, false), async (req,
         if(req.query.email)
             query["loginInfo.email"] = req.query.email;
 
-        const limit = req.query.limit ? parseInt(req.query.limit) : undefined;
-        const page = req.query.page ? parseInt(req.query.page) : 0;
-        const pagination = !! limit;
-
+        const { limit, page, pagination } = parseQueryToPaginator(req.query)
         const employees = await Employee.paginate(query, {limit, page, pagination})        
 
         /* if(req.query.openRent){

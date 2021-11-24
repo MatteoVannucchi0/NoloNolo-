@@ -44,5 +44,13 @@ function getRandomNameForImage(prefix, suffix) {
     return `${prefix}-${Date.now()}-${random}${suffix}`;
 }
 
+function parseQueryToPaginator(query) {
+  const limit = query.limit ? parseInt(query.limit) : undefined;
+  const page = query.page ? parseInt(query.page) : 0;
+  const pagination = !! limit;
 
-module.exports = {dayDifference, isWeekend, createFileAndDir, createFileAndDirSync, deleteFile, getRandomNameForImage};
+  return {limit, page, pagination};
+}
+
+
+module.exports = {dayDifference, isWeekend, createFileAndDir, createFileAndDirSync, deleteFile, getRandomNameForImage, parseQueryToPaginator};

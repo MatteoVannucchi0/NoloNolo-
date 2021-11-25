@@ -6,7 +6,8 @@ const authentication = require('../lib/authentication');
 const errorHandler = require('../lib/errorHandler');
 const path = require('path')
 const computePriceEstimation = require('../lib/priceCalculation').computePriceEstimation;
-const { deleteFile, parseQueryToPaginator } = require('../lib/helper');
+const paginate = require('../lib/pagination').paginate;
+const { deleteFile } = require('../lib/helper');
 
 const requiredAuthLevel = authentication.authLevel.employee;
 
@@ -27,7 +28,6 @@ const storage = multer.diskStorage({
 })
 const upload = multer({ storage: storage })
 
-
 router.get('/', async (req, res) => {
     try {
         let query = {}
@@ -38,11 +38,14 @@ router.get('/', async (req, res) => {
             query["category"] = req.query.category;
         if (req.query.subcategory)
             query["subcategory"] = req.query.subcategory;
-
-        const { limit, page, pagination } = parseQueryToPaginator(req.query)
-
-        const product = await Product.paginate(query, {limit, page, pagination})
-        return res.status(200).json(product);
+        
+        if(req.query.availableTo){
+            const availableTo = req.query.availableTo
+            const availableFrom = req.query.availableFrom || Date.now();
+        }
+        
+        const product = (await Product.find(query));
+        res.status(200).json(paginate(product, req.query));
     } catch (error) {
         return await errorHandler.handle(error, res, 500);
     }

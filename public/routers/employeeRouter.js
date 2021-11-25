@@ -6,7 +6,8 @@ const router = express.Router();
 const authentication = require('../lib/authentication');
 const errorHandler = require('../lib/errorHandler');
 const path = require('path');
-const { deleteFile, getRandomNameForImage, parseQueryToPaginator} = require('../lib/helper');
+const paginate = require('../lib/pagination').paginate;
+const { deleteFile, getRandomNameForImage} = require('../lib/helper');
 
 
 const requiredAuthLevel = authentication.authLevel.admin
@@ -33,8 +34,8 @@ router.get('/', authentication.verifyAuth(requiredAuthLevel, false), async (req,
         if(req.query.email)
             query["loginInfo.email"] = req.query.email;
 
-        const { limit, page, pagination } = parseQueryToPaginator(req.query)
-        const employees = await Employee.paginate(query, {limit, page, pagination})        
+        const employees = await Employee.find(query)        
+        res.status(200).json(paginate(employees, req.query));
 
         /* if(req.query.openRent){
             const newQuery = [{
@@ -72,7 +73,6 @@ router.get('/', authentication.verifyAuth(requiredAuthLevel, false), async (req,
         } 
         res.status(200).json(final);
         } */ 
-        res.status(200).json(employees);
     } catch (error) {
         res.status(500).json({message: error.message});
     }

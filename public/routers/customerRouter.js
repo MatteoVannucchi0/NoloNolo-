@@ -7,7 +7,8 @@ const Unit = require('../models/unit').model;
 const authentication = require('../lib/authentication');
 const errorHandler = require('../lib/errorHandler');
 const path = require('path');
-const { deleteFile, getRandomNameForImage, parseQueryToPaginator} = require('../lib/helper');
+const paginate = require('../lib/pagination').paginate;
+const { deleteFile, getRandomNameForImage} = require('../lib/helper');
 
 const imageFolderRelativePath = global.profileImageDirRelative;
 const imageFolderAbsolutePath = global.profileImageDir;
@@ -34,9 +35,8 @@ router.get('/', authentication.verifyAuth(requiredAuthLevel, false), async (req,
         if (req.query.email)
             query["loginInfo.email"] = req.query.email;
 
-        const { limit, page, pagination } = parseQueryToPaginator(req.query)
-        const customer = await Customer.paginate(query, {limit, page, pagination})
-        res.status(200).json(customer);
+        const customer = await Customer.find(query)        
+        res.status(200).json(paginate(customer, req.query));
     } catch (error) {
         return await errorHandler.handle(error, res, 500);
     }

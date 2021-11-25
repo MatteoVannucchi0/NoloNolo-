@@ -609,11 +609,11 @@ let rentals = [
   {
     customer: "",
     employee: undefined,
-    prenotationDate: "2021-11-07T18:25:43.511Z",
+    prenotationDate: "2021-11-20T18:25:43.511Z",
     state: "pending",
     bill: undefined,
-    startDate: "2021-11-09T00:00:00.000Z",
-    expectedEndDate: "2021-11-11T00:00:00.000Z",
+    startDate: "2021-11-23T00:00:00.000Z",
+    expectedEndDate: "2021-11-29T00:00:00.000Z",
     actualEndDate: "",
     unit: "",
     priceEstimation: "",
@@ -621,11 +621,11 @@ let rentals = [
   {
     customer: "",
     employee: "",
-    prenotationDate: "2021-04-23T18:25:43.511Z",
+    prenotationDate: "2021-11-05T18:25:43.511Z",
     state: "pending",
     bill: "",
-    startDate: "2021-04-30T00:00:00.000Z",
-    expectedEndDate: "2021-05-04T00:00:00.000Z",
+    startDate: "2021-11-10T00:00:00.000Z",
+    expectedEndDate: "2021-12-23T00:00:00.000Z",
     actualEndDate: "",
     unit: "",
     priceEstimation: "",
@@ -819,7 +819,7 @@ rentals[0].employee = employees[0];
 rentals[0].unit = units[0];
 rentals[1].customer = customers[0];
 rentals[1].employee = employees[0];
-rentals[1].unit = units[0];
+rentals[1].unit = units[1];
 rentals[2].customer = customers[0];
 rentals[2].employee = employees[0];
 rentals[2].unit = units[0];

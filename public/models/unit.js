@@ -38,16 +38,16 @@ const unitSchema = new mongoose.Schema({
 })
 
 unitSchema.methods.getRentals = async function () {
-    return (await Rental.find({ unit: this._id })) || [];
+    return await Rental.find({ unit: this._id });
 }
 
 unitSchema.methods.getOpenRentals = async function () {
-    return (await this.getRentals()).filter(x => (x.open === rentalState.pending || x.open === rentalState.open));
+    return (await this.getRentals()).filter(x => (x.state === rentalState.pending || x.state === rentalState.open));
 }
 
 unitSchema.methods.available = async function () {
-    const dateNow = new Date().now();
-    const openRentals = await this.getOpenRentals()
+    const dateNow = Date.now();
+    const openRentals = await this.getOpenRentals();
     let rentalsInPeriod = openRentals.filter(
         x => { return (x.startDate <= dateNow && x.expectedEndDate >= dateNow) }
     )
@@ -64,11 +64,14 @@ unitSchema.methods.availableFromTo = async function (from, to) {
 
     const openRentals = await this.getOpenRentals()
     let rentalsInPeriod = openRentals.filter(x => {
+            console.log(from,to)
             return (x.startDate <= from && x.expectedEndDate >= from)
                 || (x.startDate <= to && x.expectedEndDate >= to)
                 || (x.startDate >= from && x.expectedEndDate <= to)
         })
     
+    console.log("Rentail in periods: ", rentalsInPeriod)
+
     if(rentalsInPeriod.length > 1)
         throw new Error("There are more than one rentals associated with the units in this time frame. This is a server error");
 

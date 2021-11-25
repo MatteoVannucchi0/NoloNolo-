@@ -39,12 +39,23 @@ router.get('/', async (req, res) => {
         if (req.query.subcategory)
             query["subcategory"] = req.query.subcategory;
         
-        if(req.query.availableTo){
-            const availableTo = req.query.availableTo
-            const availableFrom = req.query.availableFrom || Date.now();
-        }
+
         
-        const product = (await Product.find(query));
+        let product = (await Product.find(query));
+
+        if(req.query.availableTo){
+            const to = new Date(req.query.availableTo)
+            const from = new Date(req.query.availableFrom) || Date.now();
+
+            product = await product.filterAsync(async (x) => await x.availableFromTo(from,to))        
+        } else if (req.query.available) {
+            const bool = JSON.parse(req.query.available)
+            if(bool)
+                product = await product.filterAsync(async(x) => await x.available())
+            else
+                product = await product.filterAsync(async(x) => !(await x.available()))
+        }
+
         res.status(200).json(paginate(product, req.query));
     } catch (error) {
         return await errorHandler.handle(error, res, 500);
@@ -74,6 +85,8 @@ router.post('/', authentication.verifyAuth(requiredAuthLevel, false), upload.sin
         return await errorHandler.handle(error, res);
     }
 })
+
+//TODO Aggiungere un endpoint che dice se un prodotto e disponibile da a 
 
 router.get('/:id', getProductById, async (req, res) => {
     res.json(res.product);
@@ -136,6 +149,39 @@ router.post('/:id/units', authentication.verifyAuth(requiredAuthLevel, false), g
     } catch (error) {
         return await errorHandler.handle(error, res);
     }
+})
+
+router.get('/:id/available', /* authentication.verifyAuth(requiredAuthLevel, false), */ getProductById, async (req, res) => {
+    let response = {};
+    let availableUnits = [];
+    let from = null;
+    let to = null;
+    try{
+        console.log(req.query)
+        if(req.query.to){
+            to = new Date(req.query.to)
+            from = new Date(req.query.from) || Date.now();
+    
+            availableUnits = await res.product.getAvailableUnitsFromTo(from,to)        
+        } else {
+            availableUnits = await res.product.getAvailableUnits();
+            to = new Date();
+            from = new Date();
+        }
+    
+        response = {
+            available: availableUnits.length > 0,
+            availableCount: availableUnits.length,
+            availableUnits: availableUnits,
+            to: to.toISOString(),
+            from: from.toISOString() ,
+        }
+    
+        res.status(200).json(response);
+    } catch (error) {
+        res.status(500).json({message: error.message});
+    }
+
 })
 
 //TODO da aggiungere nella specifica di openapi

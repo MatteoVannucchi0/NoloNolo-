@@ -46,21 +46,26 @@ const productSchema = new mongoose.Schema({
 
 productSchema.plugin(mongoosePaginate);
 
-//TODO da aggiungere nella specifica di openapi
-productSchema.methods.available = async function () {
-    let unitsAvaible = await this.getUnits().filter(x => x.available);
-
-    return unitsAvaible.length > 0;
-};
-
 productSchema.methods.getUnits = async function () {
     return await Unit.find({product: this._id});
 }
 
-productSchema.methods.availableFromTo = async function (from, to) {
-    let unitsAvaible = await this.getUnits().filter(x => x.availableFromTo(from, to));
+productSchema.methods.getAvailableUnits = async function () {
+    return await (await this.getUnits()).filterAsync(async (x) => await x.available());
+}
 
-    return unitsAvaible.length > 0;
+productSchema.methods.getAvailableUnitsFromTo = async function (from, to ) {
+    return await (await this.getUnits()).filterAsync(async (x) => await x.availableFromTo(from, to));
+}
+
+//TODO da aggiungere nella specifica di openapi
+productSchema.methods.available = async function () {
+    return (await this.getAvailableUnits()).length > 0;
+};
+
+
+productSchema.methods.availableFromTo = async function (from, to) {
+    return (await this.getAvailableUnitsFromTo(from, to)).length > 0;
 }
 
 module.exports.model = mongoose.model('Product', productSchema);

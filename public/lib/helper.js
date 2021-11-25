@@ -44,5 +44,19 @@ function getRandomNameForImage(prefix, suffix) {
     return `${prefix}-${Date.now()}-${random}${suffix}`;
 }
 
+function mapAsync(array, callbackfn) {
+  return Promise.all(array.map(callbackfn));
+}
 
-module.exports = {dayDifference, isWeekend, createFileAndDir, createFileAndDirSync, deleteFile, getRandomNameForImage}
+function filterAsync(array, callbackfn) {
+  return mapAsync(array, callbackfn).then(filterMap => {
+    return array.filter((value, index) => filterMap[index]);
+  });
+}
+
+Array.prototype.mapAsync = async function (callbackfn){ return mapAsync(this, callbackfn); }
+
+Array.prototype.filterAsync = async function (callbackfn){ return filterAsync(this, callbackfn); }
+
+
+module.exports = {dayDifference, isWeekend, createFileAndDir, createFileAndDirSync, deleteFile, getRandomNameForImage, filterAsync}

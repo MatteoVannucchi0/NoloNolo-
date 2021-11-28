@@ -151,13 +151,12 @@ router.post('/:id/units', authentication.verifyAuth(requiredAuthLevel, false), g
     }
 })
 
-router.get('/:id/available', /* authentication.verifyAuth(requiredAuthLevel, false), */ getProductById, async (req, res) => {
+router.get('/:id/available', authentication.verifyAuth(requiredAuthLevel, false),  getProductById, async (req, res) => {
     let response = {};
     let availableUnits = [];
     let from = null;
     let to = null;
     try{
-        console.log(req.query)
         if(req.query.to){
             to = new Date(req.query.to)
             from = new Date(req.query.from) || Date.now();

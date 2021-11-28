@@ -61,7 +61,7 @@ const customerSchema = new mongoose.Schema({
     address: addressSchema,
     profilePicture: {
         type: String,
-        default: 'profile/placeholder.png'
+        default: 'image/profile/placeholder.png'
     }
 })
 

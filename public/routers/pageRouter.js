@@ -5,6 +5,8 @@ const path = require('path');
 router.use('/', express.static(path.join(global.frontendDir, '/dashboard/_nuxt/')));
 router.use('/dashboard', express.static(path.join(global.frontendDir, '/dashboard')));
 router.use('/backoffice', express.static(path.join(global.frontendDir, '/backoffice')));
+router.use('/assets', express.static(path.join(global.frontendDir, '/assets')));
+
 
 
 module.exports = router;

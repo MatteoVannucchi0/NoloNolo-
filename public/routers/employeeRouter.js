@@ -33,46 +33,23 @@ router.get('/', authentication.verifyAuth(requiredAuthLevel, false), async (req,
             query["loginInfo.username"] = req.query.username;
         if(req.query.email)
             query["loginInfo.email"] = req.query.email;
+        if(req.query.firstname)
+            query["firstname"] = req.query.firstname;
+        if(req.query.lastname)
+            query["lastname"] = req.query.lastname;
 
-        const employees = await Employee.find(query)        
-        res.status(200).json(paginate(employees, req.query));
+        //Prendere tutti gli impiegati con rent aperti 
 
-        /* if(req.query.openRent){
-            const newQuery = [{
-                $lookup: {
-                    from: "Rental",
-                    localField: "_id",
-                    foreignField: "employee",
-                    as: rentals,
-                }
-            }, {
-                $unwind: "rentals"
-            },{
-                $match: {
-                    state: "open"
-                }
-            }, {
-                $count: "numbersOpen"
-            }
-        ]
-
-            let rentals = await Rental.find();
-
-            //Prendo tutti i rental che sono open
-            rentals = rentals.filter(rent => rent.state == "open");
-            console.log("Verificare che i rent siano aperti");
+        let employees = await Employee.find(query)   
         
-            let final = [];
+        if(req.query.openRentals){
+            if(JSON.parse(req.query.openRentals))
+                employees = await employees.filterAsync(async e => await e.hasOpenRentals())
+            else
+                employees = await employees.filterAsync(async e => !(await e.hasOpenRentals()))
+        }
 
-            //Prendo tutti gli employee che sono associati ad uno di questi rental
-            for(employee of employees){
-            for(rent of rentals){
-                if(employee._id == rent.employee)
-                    final.push(employee);
-            }
-        } 
-        res.status(200).json(final);
-        } */ 
+        res.status(200).json(paginate(employees, req.query));
     } catch (error) {
         res.status(500).json({message: error.message});
     }

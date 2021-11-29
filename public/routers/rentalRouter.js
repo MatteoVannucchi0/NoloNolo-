@@ -21,7 +21,7 @@ router.get('/', authentication.verifyAuth(requiredAuthLevel, true), async (req, 
         if(req.query.prenotationdate)
             query["prenotationdate"] = req.query.prenotationdate;
 
-        const rental = await Rental.find(query);
+        let rental = await Rental.find(query);
 
         if(req.query.maxfinalprice)
             rental = rental.filter(x => x.finalprice <= req.query.maxfinalprice);
@@ -75,7 +75,7 @@ router.patch('/:id', authentication.verifyAuth(requiredAuthLevel, false),getRent
 })
 
 
-router.get('/:id/bill', authentication.verifyAuth(requiredAuthLevel, false), getRentalById,async function() {
+router.get('/:id/bill', authentication.verifyAuth(requiredAuthLevel, false), getRentalById,async function(res, req) {
     try {
         let bill = Bill.find({rental: req.params.bill});
         res.status(200).json(bill);
@@ -84,7 +84,7 @@ router.get('/:id/bill', authentication.verifyAuth(requiredAuthLevel, false), get
     }
 })
 
-router.get('/:id/unit', async function() {
+router.get('/:id/unit', async function(res, req) {
     try {
         let unit = Unit.find({rental: req.params.unit});
         res.status(200).json(unit);

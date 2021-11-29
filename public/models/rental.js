@@ -56,5 +56,18 @@ const rentalSchema = new mongoose.Schema({
     }
 })
 
+rentalSchema.methods.isPending = function() {
+    return this.state === rentalState.pending;
+}
+
+rentalSchema.methods.isOpen = function() {
+    return this.state === rentalState.open;
+}
+
+rentalSchema.methods.isClosed = function() {
+    return this.state === rentalState.close;
+}
+
 module.exports = mongoose.model('Rental', rentalSchema);
 module.exports.rentalState = rentalState;
+

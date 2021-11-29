@@ -1,7 +1,5 @@
 const mongoose = require('mongoose');
 const Unit = require('./unit').model;
-const mongoosePaginate = require('mongoose-paginate-v2');
-
 const tagSchema = new mongoose.Schema({
     key: {
         type: String,
@@ -43,8 +41,6 @@ const productSchema = new mongoose.Schema({
         ref: 'Product',
     }
 })
-
-productSchema.plugin(mongoosePaginate);
 
 productSchema.methods.getUnits = async function () {
     return await Unit.find({product: this._id});

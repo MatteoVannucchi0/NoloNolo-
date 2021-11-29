@@ -85,16 +85,14 @@ const authLevelDict = {
     "unregistered": 1,
 }
 
-async function generateToken(auth, username, id, expireTime = "31d"){
+async function generateToken(auth, username, id){
     const unsignedToken = {
         auth: auth,
         username: username,
         id: id,
     }
 
-    const signedToken = await jwt.sign(unsignedToken, privateKey, {
-        expiresIn: expireTime,
-    });
+    const signedToken = await jwt.sign(unsignedToken, privateKey);
 
     return signedToken;
 }

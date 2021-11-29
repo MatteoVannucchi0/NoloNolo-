@@ -2,10 +2,10 @@ const express = require('express');
 const Rental = require('../models/rental');
 const router = express.Router();
 const authentication = require('../lib/authentication');
-const Customer = require('../models/customer');
-const Employee = require('../models/employee');
 const Bill = require('../models/bill');
 const Unit = require('../models/unit');
+const paginate = require('../lib/pagination').paginate;
+
 
 const requiredAuthLevel = authentication.authLevel.admin
 
@@ -19,16 +19,13 @@ router.get('/', authentication.verifyAuth(requiredAuthLevel, true), async (req, 
         if(req.query.unitid)
             query["unit_id"] = req.query.unitid;
         if(req.query.prenotationdate)
-            query["prenotationdate"] = req.query.prenotationdate;
+            query["prenotationdate"] = new Date(req.query.prenotationdate);
+        if(req.query.state)
+            query["state"] = req.query.state;
 
         let rental = await Rental.find(query);
 
-        if(req.query.maxfinalprice)
-            rental = rental.filter(x => x.finalprice <= req.query.maxfinalprice);
-        if(req.query.minfinalprice)
-            rental = rental.filter(x => x.finalprice >= req.query.minfinalprice);
-
-        res.status(200).json(rental);
+        res.status(200).json(paginate(rental, req.query));
     } catch (error) {
         res.status(500).json({message: error.message});
     }

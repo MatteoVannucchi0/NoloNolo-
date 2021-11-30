@@ -110,6 +110,39 @@ const employees = [
       },
       authorization: "employee",
     },
+    {
+      firstname: "Matteo",
+      lastname: "Vannucchi",
+      dateOfBirth: "2021-12-04T18:25:43.511Z",
+      loginInfo: {
+        username: "Matteo",
+        password: "matteomatteo",
+        email: "matteo@test.com",
+      },
+      authorization: "admin",
+    },
+    {
+      firstname: "Michele",
+      lastname: "Virelli",
+      dateOfBirth: "2021-12-04T18:25:43.511Z",
+      loginInfo: {
+        username: "Michele",
+        password: "michelemichele",
+        email: "michele@test.com",
+      },
+      authorization: "admin",
+    },
+    {
+      firstname: "Denis",
+      lastname: "Pondini",
+      dateOfBirth: "2021-12-04T18:25:43.511Z",
+      loginInfo: {
+        username: "Denis",
+        password: "denisdenis",
+        email: "denis@test.com",
+      },
+      authorization: "admin",
+    },
 ];
 
 const customers = [

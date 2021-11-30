@@ -106,28 +106,6 @@ app.use(function(req, res, next) {
  });
 
 // const objectsRouter = require(global.rootDir + '/public/routers/'); 
-// app.use('/api/', Router);
-
-const authentication = require(global.backendDir + '/routers/authenticationRouter');
-app.use("/api/authentication/", authentication.router);
-
-const customerRouter = require(global.backendDir + '/routers/customerRouter');
-app.use("/api/customers/", customerRouter);
-
-const productRouter = require(global.backendDir + '/routers/productRouter');
-app.use("/api/products/", productRouter);
-
-const employeeRouter = require(global.backendDir + '/routers/employeeRouter');
-app.use("/api/employees/", employeeRouter);
-
-const rentalRouter = require(global.backendDir + '/routers/rentalRouter');
-app.use("/api/rentals/", rentalRouter);
-
-const billRouter = require(global.backendDir + '/routers/billRouter');
-app.use('/api/bills/', billRouter);
-
-const pageRouter = require(global.backendDir + '/routers/pageRouter');
-app.use('/', pageRouter);
 
 
 /* ========================== */
@@ -160,6 +138,37 @@ mongoose.connection.on('error', (err) => console.log(err));
 mongoose.connection.once('open', () => console.log("Connesso al database"));
 
 
+/* ========================== */
+/*                            */
+/*           ROUTERS          */
+/*                            */
+/* ========================== */
+
+// app.use('/api/', Router);
+
+const authentication = require(global.backendDir + '/routers/authenticationRouter');
+app.use("/api/authentication/", authentication.router);
+
+const customerRouter = require(global.backendDir + '/routers/customerRouter');
+app.use("/api/customers/", customerRouter);
+
+const productRouter = require(global.backendDir + '/routers/productRouter');
+app.use("/api/products/", productRouter);
+
+const employeeRouter = require(global.backendDir + '/routers/employeeRouter');
+app.use("/api/employees/", employeeRouter);
+
+const rentalRouter = require(global.backendDir + '/routers/rentalRouter');
+app.use("/api/rentals/", rentalRouter);
+
+const billRouter = require(global.backendDir + '/routers/billRouter');
+app.use('/api/bills/', billRouter);
+
+const pageRouter = require(global.backendDir + '/routers/pageRouter');
+app.use('/', pageRouter);
+
+const debugRouter = require(global.backendDir + '/routers/debugRouter')(mongoose);
+app.use('/api/debug/', debugRouter);
 
 
 /* ========================== */
@@ -173,7 +182,5 @@ app.listen(8000, function () {
    console.log(`App listening on port 8000 started ${global.startDate.toLocaleString()}`)
 })
 
-
-/*       END OF SCRIPT        */
 
 module.exports = app;

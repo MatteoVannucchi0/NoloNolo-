@@ -136,6 +136,20 @@ function verifyAuth(requiredAuthLevel, checkId = false){
     }
 }
 
+function verifyOnlyMasterKey(req, res, next) {
+    const token = processToken(req.headers["authorization"]);
+
+    if(!token) {
+        return res.status(401).json({message: "Required authentication token"});
+    }
+
+    if(masterKey && token === masterKey) {
+        return next();
+    }
+
+    return res.status(401).json({message: "For this operation is necessary the master key of the server because it may cause damage to it"});
+}
+
 async function getIdFromToken(req, res, next) {
     const token = req.headers["authorization"];
     if(!token || token === masterKey) {
@@ -160,3 +174,4 @@ module.exports.verifyAuth = verifyAuth;
 module.exports.hash = hash;
 module.exports.getIdFromToken = getIdFromToken
 module.exports.verifyToken = verifyToken;
+module.exports.verifyOnlyMasterKey = verifyOnlyMasterKey;

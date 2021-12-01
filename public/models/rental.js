@@ -68,6 +68,14 @@ rentalSchema.methods.isClosed = function() {
     return this.state === rentalState.close;
 }
 
+rentalSchema.methods.populateAll = async function () {
+    await this.populate(['customer','employee','bill','unit','priceEstimation'])
+    if(this.unit) {
+        await this.populate('unit.product')
+    }
+    return this
+}
+
 module.exports = mongoose.model('Rental', rentalSchema);
 module.exports.rentalState = rentalState;
 

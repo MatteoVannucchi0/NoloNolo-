@@ -102,6 +102,11 @@ router.patch('/:id', authentication.verifyAuth(requiredAuthLevel, true), authent
 router.get('/:id/rentals', authentication.verifyAuth(requiredAuthLevel, true), getCustomerById, async (req, res) => {
     try {
         let rentals = await Rental.find({ customer: req.params.id })
+
+        if(req.query.populate && JSON.parse(req.query.populate)) {
+            rentals = await rentals.mapAsync(async(r) => await r.populateAll())
+        }
+
         res.status(200).json(rentals)
     } catch (error) {
         return await errorHandler.handle(error, res, 400);         //Non so se restituire 400 o 404

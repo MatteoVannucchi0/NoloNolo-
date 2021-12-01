@@ -23,9 +23,13 @@ router.get('/', authentication.verifyAuth(requiredAuthLevel, true), async (req, 
         if(req.query.state)
             query["state"] = req.query.state;
 
-        let rental = await Rental.find(query);
+        let rentals = await Rental.find(query);
 
-        res.status(200).json(paginate(rental, req.query));
+        if(req.query.populate && JSON.parse(req.query.populate)) {
+            rentals = await rentals.mapAsync(async(r) => await r.populateAll())
+        }
+
+        res.status(200).json(paginate(rentals, req.query));
     } catch (error) {
         res.status(500).json({message: error.message});
     }
@@ -47,7 +51,18 @@ router.post('/', authentication.verifyAuth(requiredAuthLevel, true), async (req,
 })
 
 router.get('/:id', authentication.verifyAuth(requiredAuthLevel, true), getRentalById, async (req, res) => {
-    res.json(res.rental);
+    let rental = res.rental
+    if(req.query.populate && JSON.parse(req.query.populate)) {
+        // E' richiesto di popolare tutto
+        try{
+            res.status(200).json(await rental.populateAll());
+        } catch (error) {
+            res.status(500).json({message: error})
+        }
+
+    } else{
+        res.status(200).json(rental);
+    } 
 })
 
 router.delete('/:id', authentication.verifyAuth(requiredAuthLevel, false), getRentalById, async (req, res) => {
@@ -103,6 +118,14 @@ async function getRentalById(req, res, next) {
 
     res.rental = rental;
     next();
+}
+
+async function populateRental(rental) {
+    await rental.populate(['customer','employee','bill','unit','priceEstimation'])
+    if(rental.unit) {
+        await rental.populate('unit.product')
+    }
+    return rental
 }
 
 module.exports = router;

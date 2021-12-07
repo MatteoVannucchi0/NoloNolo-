@@ -38,9 +38,17 @@ router.get('/', authentication.verifyAuth(requiredAuthLevel, false), async (req,
         let customer = await Customer.find(query)
         
         if (req.query.nameStartWith){
-            customer = customer.filter(customer => {
-                const fullName = customer.firstname + " " + customer.lastname;
-                return fullName.toLowerCase().startsWith(req.query.nameStartWith)
+            const startWith = req.query.nameStartWith.toLowerCase();
+            customer = customer.filter(c => {
+                const firstname = c.firstname.toLowerCase();
+                const lastname = c.lastname.toLowerCase();
+
+                if(startWith.includes(' ')) {
+                    const [first, second] = startWith.split(' ');
+                    return (first === firstname && lastname.startsWith(second)) || (first === lastname && first.startsWith(second))
+                }
+                
+                return firstname.startsWith(startWith) || lastname.startsWith(startWith)
             })
         }
 

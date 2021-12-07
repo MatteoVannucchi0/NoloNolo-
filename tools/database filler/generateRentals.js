@@ -34,8 +34,6 @@ function testAvailability(unit, rentals, from, to) {
             || (x.startDate >= from && x.expectedEndDate <= to)
     })
 
-    console.log(rentalInPeriod)
-
     return rentalInPeriod.length === 0
 }
 
@@ -93,8 +91,6 @@ function generateRentals(customers, employees, units, rentals) {
         unit,
         expectedEndDate
     }
-
-    console.log(rental)
 
     return rental
 }

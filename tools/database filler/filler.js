@@ -1,3 +1,5 @@
+const deployToServer = true;
+
 /* eslint-disable no-unused-vars */
 const {customers, employees, products, units, rentals} = require("./data");
 const fs = require("fs").promises;
@@ -14,7 +16,6 @@ chai.use(require('chai-exclude'));
 
 const ingnoreErrorMessage = false;
 
-const deployToServer = false;
 const urlServer = deployToServer ? "https://site202120.tw.cs.unibo.it/api" : "http://localhost:8000/api";
 
 let masterKey = "";
@@ -44,7 +45,7 @@ async function postData(data, url, headers = {"Content-type": "application/json"
             url: url,
             method: 'POST',
             headers: headers,
-            timeout: 2000,
+            timeout: 20000,
             data: data,
         });
 

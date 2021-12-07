@@ -1,5 +1,143 @@
 /* eslint-disable */
-var data = [
+const products = [
+  {
+    name: "Ferrari 812 superfast",
+    description:`La Ferrari di serie più potente di tutti i tempi è anche una granturismo guidabile tutti i giorni: i suoi 799 cavalli sanno essere brutali o docili a seconda della posizione del manettino sul volante. In fatto di prestazioni, oltre a un poderoso V12 aspirato con condotti di aspirazione a lunghezza variabile (regolati elettroidraulicamente), la Ferrari 812 Superfast può contare su un rapidissimo cambio a doppia frizione. Tutti i sistemi interagiscono con l'elettronica: dal differenziale autobloccante e-Diff ai controlli di stabilità, passando per le quattro ruote sterzanti (soluzione ereditata dalla Ferrari F12Tdf) e per gli ammortizzatori "intelligenti". Al debutto per una Ferrari il servosterzo elettrico, a sua volta collegato al sistema che gestisce la stabilità della vettura, il cosiddetto SSC (Side Slip Angol Control) di quinta generazione. Particolarmente curata l'aerodinamica, con soluzioni ispirate al mondo delle Formula 1: nella parte frontale ci sono flap mobili che si aprono al crescere della velocità per modificare i flussi d'aria sotto il fondo della vettura. Al retrotreno, davanti al vistoso estrattore, sono invece delle alette comandate elettricamente a modificare il coefficiente di penetrazione aerodinamica. Anche l'elaborato design della carrozzeria è funzionale all'aerodinamica e alla gestione dei flussi d'aria in aspirazione e agli sfoghi di calore.`,
+    image: "./image/ferrari812superfast.jpg",
+    category: "Automobili",
+    subcategory: "Supercar",
+    tags: [
+      {
+        key: "Marca",
+        value: "Ferrari",
+      },
+    ],
+    altproducts: [],
+  },
+  {
+    name: "SF90 Stradale",
+    description: `Un'auto incredibile con linee da navicella spaziale e prestazioni mai raggiunte: è la SF90 Stradale, la Ferrari più veloce di sempre, estrema in ogni parte che si pone al top della gamma del Cavallino e che si inserisce di diritto nella famiglia delle grandi supercar con numeri da record.
+    E' la prima Ferrari ibrida plug-in con 1000 cv, ottenuti unendo propulsore termico e elettrico e che impiega solo 2,5 secondi per passare da 0 a 100 km/h e 6,7 secondi da 0 a 200 km/h. Un'auto definita "beyond", oltre in tutto, e lo dimostrano i numeri: la velocità massima è di 340 km/h e per percorrere un giro a Fiorano impiega 79 secondi, uno in meno del precedente record per un'auto di serie ottenuto con la LaFerrari. `,
+    image: "./image/ferrariSF90Stradale.jpg",
+    category: "Automobili",
+    subcategory: "Supercar",
+    tags: [
+      {
+        key: "Marca",
+        value: "Ferrari",
+      }
+    ],
+    altproducts: [
+    ],
+  },
+  {
+    name: "Porsche 911",
+    description: `L'ottava generazione della Porsche 911 non tradisce la sua formula di successo: motore montato dietro l'asse posteriore (ovvero "a sbalzo"), due comodi posti anteriori che si sommano ai due strapuntini (utili più che altro come "estensione" del bagagliaio, che si trova sotto il cofano davanti) e prestazioni elevate che non vanno a discapito del comfort. Il 3.0 sei cilindri boxer biturbo è un'evoluzione di quello montato sulla precedente 911: i suoi 385 cavalli (che salgono a 450 nelle versioni S, e arrivano fino a 650 nelle 3.8 Turbo) spingono con vigore da poco sopra il minimo fino a 7500 giri. Nuovo, invece, il fulmineo cambio robotizzato a doppia frizione con otto marce; una più di prima. Gli interni miscelano elementi moderni (come la microscopica leva del cambio, da azionare con pollice e indice) e altri ispirati a quelle delle prime 911, quali la plancia a sviluppo orizzontale. Al centro di quest'ultima trova posto un grande schermo di 10,25'', che comanda un sistema multimediale ricco e connesso al web. Di qualità le finiture e ampie le possibilità di personalizzazione (anche degli esterni, dato che non mancano i paraurti sportivi opzionali).`,
+    image: "./image/porsche911.jpg",
+    category: "Automobili",
+    subcategory: "Supercar",
+    tags: [
+      {
+        key: "Marca",
+        value: "Porsche",
+      }
+    ],
+    altproducts: [],
+  },
+  {
+    name: "Porsche Cayenne",
+    description: `È dotata di un propulsore 550 CV con coppia di 750 Nm e, nonostante la potenza incrementata rispetto alla versione Turbo, continua ad avere un consumo medio di 11,5 litri per 100 km. Con questa configurazione la vettura può passare da 0 a 100 km/h in 4,5 secondi, con una velocità massima di 283 km/h.`,
+    image: "./image/porscheCayenne.jpg",
+    category: "Automobili",
+    subcategory: "Lusso",
+    tags: [
+      {
+        key: "Marca",
+        value: "Porsche",
+      }
+    ],
+    altproducts: [],
+  },
+  {
+    name: "Lamborghini Urus",
+    description: `Questa grande suv ha linee taglienti e un aspetto aggressivo come le coupé della casa italiana. Caratteristiche giustificate dalle prestazioni entusiasmanti della Urus non solo sull'asfalto (i cavalli sono 650 e il retrotreno sterzante favorisce l'agilità), ma anche sulla terra. Il sistema di trazione integrale, le sospensioni ad aria (che possono variare la distanza del fondo dell'auto dal suolo) e i programmi di guida specifici per l'off-road (optional), permettono di muoversi anche nel fuori strada. La meccanica della Urus è condivisa con altri modelli del gruppo Volkswagen (di cui la Lamborghini fa parte), come l'Audi Q7 e la Porsche Cayenne, ma la messa a punto è specifica per questo modello. Moderno (digitale la strumentazione configurabile) e lussuoso (molte le possibilità di personalizzazione) l'abitacolo della Urus è spazioso e proposto in configurazione a quattro o a cinque posti. Grande anche il baule, cui si accede facilmente dal portellone. A titolo di curiosità, ricordiamo che la Urus è la prima Lamborghini di serie dotata di un motore sovralimentato (il V8 è biturbo) e che non si tratta della prima off-road del marchio emiliano: l'ha preceduta la LM002 nel 1986.`,
+    image: "./image/lamborghiniUrus.jpg",
+    category: "Automobili",
+    subcategory: "Lusso",
+    tags: [
+      {
+        key: "Marca",
+        value: "Lamborghini",
+      }
+    ],
+    altproducts: [],
+  },
+  {
+    name: "Lamborghini Huracan",
+    description: `La Lamborghini Huracán, la più “accessibile” delle supercar di Sant’Agata Bolognese, è l'erede della Gallardo: infatti adotta un motore con la stessa architettura, un V10 aspirato di 5,2 litri. Il dieci cilindri è montato in posizione posteriore-centrale (alle spalle dell’abitacolo biposto), è costruito dalla Volkswagen e abbinato a un cambio a doppia frizione e sette marce. La Huracán Evo ha la trazione integrale: aiuta a scaricare a terra i 639 CV di potenza (ottenuti a 8000 giri) e i 600 Nm di coppia massima (a 6500 giri). Ma ci sono anche due versioni con la sola trazione posteriore: la Evo RWD, con qualche cavallo in meno (610) e di una trentina di kg più leggera, e la STO, con 639 CV, di impostazione prettamente corsaiola. La Super Trofeo Omologata deriva infatti dalle esperienze compiute nelle competizioni (la Huracán, fra l'altro, ha vinto tre volte la 24 ore di Daytona nella sua categoria) e prevede un'aerodinamica completamente rivista, con prese d'aria aggiuntive, una pinna posteriore per accrescere la stabilità e uno spoiler regolabile manualmente su tre posizioni, per variare l'equilibrio della vettura in base al tipo di percorso e alle preferenze del guidatore. La STO fa poi ampio uso di fibra di carbonio (nella carrozzeria e nei sedili), magnesio (per i cerchi) e altri materiali leggeri, oltre ad adottare un parabrezza più sottile, così da guadagnare 50 kg rispetto alla RWD e arrivare a 1339 kg a secco. Di quasi 30 centimetri più corta della Aventador (la carrozzeria misura 452 cm di lunghezza, è larga 193 cm e alta soltanto 117), la Huracán consente di scegliere fra diversi programmi di marcia per variare la risposta di motore, cambio, sterzo, sospensioni e aiuti elettronici, oltre alla ripartizione della coppia da parte del sistema 4x4 e al funzionamento della sterzatura integrale (anche al retrotreno): si può così privilegiare la reattività nell’uso “estremo” oppure la (relativa) comodità di marcia. Di spiccata impostazione sportiva è anche l’abitacolo, che però non rinuncia a uno stile raffinato e a materiali pregiati: disponibili anche rivestimenti in pelle nappa o Alcantara in numerose combinazioni di colore.`,
+    image: "./image/lamborghiniHuracan.jpg",
+    category: "Automobili",
+    subcategory: "Supercar",
+    tags: [
+      {
+        key: "Marca",
+        value: "Lamborghini",
+      }
+    ],
+    altproducts: [],
+  },
+  {
+    name: "Rolex Cosmograph Daytona",
+    description: `Il Rolex Cosmograph Daytona è un orologio con movimento meccanico a carica automatica, con funzioni di cronografo da polso e qualifica di cronometro ufficialmente certificato dal COSC.`,
+    image: "./image/rolexCosmographDaytona.jpg",
+    category: "Goielli",
+    subcategory: "Orologi",
+    tags: [],
+    altproducts: [],
+  },
+  {
+    name: "Rolex Submariner",
+    description: `Rolex Submariner è l'orologio subacqueo per l'immersione nelle profondità marine. Al momento del suo lancio, nel 1953, il Rolex Submariner è stato il primo orologio Rolex subacqueo impermeabile fino a 100 metri.`,
+    image: "./image/rolexSubmarine24k.png",
+    category: "Goielli",
+    subcategory: "Orologi",
+    tags: [
+      {
+        key: "Tipologia oro",
+        value: "24k"
+      }
+    ],
+    altproducts: [],
+  },
+  {
+    name: "Collana Cartier oro giallo 24k",
+    description: `Una bellissima collana in oro 24k prodotta dal famoso marco Cartier. Fatta a mano da degli artigiani in una serie di processi di 4 mesi di durata. Oro proveniente da miniere regolamentate.`,
+    image: "./image/collana24kCartier.jpg",
+    category: "Goielli",
+    subcategory: "Collane",
+    tags: [
+      {
+        key: "Tipologia oro",
+        value: "24k"
+      }
+    ],
+    altproducts: [
+],
+  },
+  {
+    name: "Bracciale Cartier oro bianco 18k",
+    description: `Un bellissimo bracciale in oro bianco 18k prodotta dal famoso marco Cartier. Fatta a mano da degli artigiani in una serie di processi di 4 mesi di durata. Oro proveniente da miniere regolamentate.`,
+    image: "./image/braccialeCartierOroBianco.jpg",
+    category: "Goielli",
+    subcategory: "Bracciali",
+    tags: [
+      {
+        key: "Tipologia oro",
+        value: "Bianco"
+      }
+    ],
+    altproducts: [],
+  },
   {
     name: "Jamalia Estes",
     description:
@@ -402,4 +540,23 @@ var data = [
   },
 ];
 
-module.exports = data
+function random(min, max) { // min and max included 
+  return Math.floor(Math.random() * (max - min + 1) + min)
+}
+
+function getRandomProduct() {
+  return products[random(0,products.length - 1)]
+}
+
+products.forEach(product => {
+  const n = random(0,5);
+  const set = new Set()
+  for(let i = 0; i < n; i += 1){
+    set.add(getRandomProduct())
+  }
+
+  product.altproducts = [...set]
+
+});
+
+module.exports = products

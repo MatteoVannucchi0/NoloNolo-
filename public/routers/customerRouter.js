@@ -35,7 +35,15 @@ router.get('/', authentication.verifyAuth(requiredAuthLevel, false), async (req,
         if (req.query.email)
             query["loginInfo.email"] = req.query.email;
 
-        const customer = await Customer.find(query)        
+        let customer = await Customer.find(query)
+        
+        if (req.query.nameStartWith){
+            customer = customer.filter(customer => {
+                const fullName = customer.firstname + " " + customer.lastname;
+                return fullName.startWith(req.query.nameStartWith)
+            })
+        }
+
         res.status(200).json(paginate(customer, req.query));
     } catch (error) {
         return await errorHandler.handle(error, res, 500);

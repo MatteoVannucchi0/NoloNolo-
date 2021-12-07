@@ -40,7 +40,7 @@ router.get('/', authentication.verifyAuth(requiredAuthLevel, false), async (req,
         if (req.query.nameStartWith){
             customer = customer.filter(customer => {
                 const fullName = customer.firstname + " " + customer.lastname;
-                return fullName.startsWith(req.query.nameStartWith)
+                return fullName.toLowerCase().startsWith(req.query.nameStartWith)
             })
         }
 

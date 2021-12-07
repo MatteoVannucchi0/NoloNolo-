@@ -1,4 +1,5 @@
 /* eslint-disable no-unused-vars */
+
 const employees = [
     {
       firstname: "Emmanuel",
@@ -406,7 +407,6 @@ let products = [
   {
     name: "SF90 Stradale",
     description: `Un'auto incredibile con linee da navicella spaziale e prestazioni mai raggiunte: è la SF90 Stradale, la Ferrari più veloce di sempre, estrema in ogni parte che si pone al top della gamma del Cavallino e che si inserisce di diritto nella famiglia delle grandi supercar con numeri da record.
-
     E' la prima Ferrari ibrida plug-in con 1000 cv, ottenuti unendo propulsore termico e elettrico e che impiega solo 2,5 secondi per passare da 0 a 100 km/h e 6,7 secondi da 0 a 200 km/h. Un'auto definita "beyond", oltre in tutto, e lo dimostrano i numeri: la velocità massima è di 340 km/h e per percorrere un giro a Fiorano impiega 79 secondi, uno in meno del precedente record per un'auto di serie ottenuto con la LaFerrari. `,
     image: "./image/ferrariSF90Stradale.jpg",
     category: "Automobili",
@@ -820,6 +820,18 @@ let rentals = [
     priceEstimation: "",
   },
 ];
+
+let otherProducts = require('./dataProducts')
+
+
+//Randomizzo gli other products
+otherProducts.forEach(product => {
+  product.altproducts = otherProducts[(Math.random()*39)]
+  product.altproducts = otherProducts[(Math.random()*39)]
+  product.altproducts = otherProducts[(Math.random()*39)]
+});
+
+products.concat(otherProducts)
 
 products[0].altproducts = [products[1], products[2], products[3]];
 products[1].altproducts = [products[0]];

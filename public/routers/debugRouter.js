@@ -1,6 +1,8 @@
 const express = require('express');
 const router = express.Router();
 const authentication = require("../lib/authentication");
+const fs = require('fs').promises;
+
 let mongoose = undefined;
 
 
@@ -41,6 +43,26 @@ router.get('/dropCollection', authentication.verifyOnlyMasterKey, async (req, re
             await dropCollection(req.query.collection);
             return res.status("200").json({message: "Collection dropped"})
         }
+    } catch (err) {
+        return res.status("500").json({message: err.message});
+    }
+})
+
+router.get('/errorlog', async (req, res) => {
+    try {
+      const data = await fs.readFile("log/.errorlog.txt", {encoding: "utf8"})
+      res.set({"Content-Disposition":"attachment; filename=.errorlog.txt"});
+      return res.status("200").json(data)
+    } catch (err) {
+        return res.status("500").json({message: err.message});
+    }
+})
+
+router.get('/log', async (req, res) => {
+    try {
+      const data = await fs.readFile("log/.log.txt", {encoding: "utf8"})
+      res.set({"Content-Disposition":"attachment; filename=.log.txt"});
+      return res.status("200").json(data)
     } catch (err) {
         return res.status("500").json({message: err.message});
     }

@@ -164,6 +164,10 @@ app.use("/api/rentals/", rentalRouter);
 const billRouter = require(global.backendDir + '/routers/billRouter');
 app.use('/api/bills/', billRouter);
 
+
+const unitRouter = require(global.backendDir + '/routers/unitRouter');
+app.use('/api/units/', unitRouter);
+
 const pageRouter = require(global.backendDir + '/routers/pageRouter');
 app.use('/', pageRouter);
 

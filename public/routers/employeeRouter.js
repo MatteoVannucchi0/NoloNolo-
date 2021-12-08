@@ -49,6 +49,13 @@ router.get('/', authentication.verifyAuth(requiredAuthLevel, false), async (req,
                 employees = await employees.filterAsync(async e => !(await e.hasOpenRentals()))
         }
 
+        if (req.query.nameStartWith){
+            const startWith = req.query.nameStartWith.toLowerCase();
+            employees = employees.filter(e => {
+                return `${e.firstname} ${e.lastname}`.toLowerCase().includes(startWith) ||  `${e.lastname} ${e.firstname}`.toLowerCase().includes(startWith)
+            })
+        }
+
         res.status(200).json(paginate(employees, req.query));
     } catch (error) {
         res.status(500).json({message: error.message});
@@ -115,8 +122,13 @@ router.patch('/:id', authentication.verifyAuth(requiredAuthLevel, true), authent
 
 router.get('/:id/rentals',authentication.verifyAuth(requiredAuthLevel, true), getEmployeeById, async (req, res) => {
     try{
-        let rentals =  await Rental.find({employee: req.params.id})
-        res.send(200).json({rentals})
+        let rentals = await Rental.find({ employee: req.params.id })
+
+        if(req.query.populate && JSON.parse(req.query.populate)) {
+            rentals = await rentals.mapAsync(async(r) => await r.populateAll())
+        }
+
+        res.status(200).json(paginate(rentals, req.query));
     } catch (error) {
         res.status(400).json({message: error.message})
     }
@@ -124,8 +136,16 @@ router.get('/:id/rentals',authentication.verifyAuth(requiredAuthLevel, true), ge
 
 router.get('/:id/customers', authentication.verifyAuth(requiredAuthLevel, true), getEmployeeById, async (req,res) => {
     try {
-        let cusotmer = await Customer.find({employee: req.params.id})
-        res.status(200).json({cusotmer})
+        let rentals = await Rental.find({ employee: req.params.id })
+
+        if(req.query.populate && JSON.parse(req.query.populate)) {
+            rentals = await rentals.mapAsync(async(r) => await r.populateAll())
+        }
+
+        let customer = [...new Set(rentals.map(rent => JSON.stringify(rent.customer)))]
+        customer = customer.map(customer => JSON.parse(customer))
+        
+        res.status(200).json({customer})
     } catch (error) {
         res.status(400).json({message: error.message})
     }

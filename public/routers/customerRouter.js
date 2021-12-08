@@ -35,24 +35,16 @@ router.get('/', authentication.verifyAuth(requiredAuthLevel, false), async (req,
         if (req.query.email)
             query["loginInfo.email"] = req.query.email;
 
-        let customer = await Customer.find(query)
+        let customers = await Customer.find(query)
         
         if (req.query.nameStartWith){
             const startWith = req.query.nameStartWith.toLowerCase();
-            customer = customer.filter(c => {
-                const firstname = c.firstname.toLowerCase();
-                const lastname = c.lastname.toLowerCase();
-
-                if(startWith.includes(' ')) {
-                    const [first, second] = startWith.split(' ');
-                    return (first === firstname && lastname.startsWith(second)) || (first === lastname && first.startsWith(second))
-                }
-                
-                return firstname.startsWith(startWith) || lastname.startsWith(startWith)
+            customers = customers.filter(c => {
+                return `${c.firstname} ${c.lastname}`.toLowerCase().includes(startWith) ||  `${c.lastname} ${c.firstname}`.toLowerCase().includes(startWith)
             })
         }
 
-        res.status(200).json(paginate(customer, req.query));
+        res.status(200).json(paginate(customers, req.query));
     } catch (error) {
         return await errorHandler.handle(error, res, 500);
     }
@@ -123,7 +115,7 @@ router.get('/:id/rentals', authentication.verifyAuth(requiredAuthLevel, true), g
             rentals = await rentals.mapAsync(async(r) => await r.populateAll())
         }
 
-        res.status(200).json(rentals)
+        res.status(200).json(paginate(rentals, req.query));
     } catch (error) {
         return await errorHandler.handle(error, res, 400);         //Non so se restituire 400 o 404
     }

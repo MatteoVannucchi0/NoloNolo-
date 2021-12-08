@@ -39,8 +39,6 @@ router.get('/', async (req, res) => {
         if (req.query.subcategory)
             query["subcategory"] = req.query.subcategory;
         
-
-        
         let product = (await Product.find(query));
 
         if(req.query.availableTo){

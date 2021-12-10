@@ -12,18 +12,32 @@ const requiredAuthLevel = authentication.authLevel.admin
 router.get('/', authentication.verifyAuth(requiredAuthLevel, true), async (req, res) => {
     try {
         let query = {};
-        if(req.query.customerid) 
-            query["customer._id"] = req.query.customerid;
-        if(req.query.employeeid)
-            query["employee._id"] = req.query.employeeid;
-        if(req.query.unitid)
-            query["unit_id"] = req.query.unitid;
+        if(req.query.customer) 
+            query["customer"] = req.query.customer;
+        if(req.query.employee)
+            query["employee"] = req.query.employee;
+        if(req.query.unit)
+            query["unit"] = req.query.unit;
         if(req.query.prenotationdate)
             query["prenotationdate"] = new Date(req.query.prenotationdate);
         if(req.query.state)
             query["state"] = req.query.state;
-
-        let rentals = await Rental.find(query);
+        if(req.query.prenotationDateAfter)
+            query["prenotationDate"] = {$gt: new Date(req.query.prenotationDateAfter)};
+        if(req.query.prenotationDateBefore)
+            query["prenotationDate"] = {...query["prenotationDate"], $lt: new Date(req.query.prenotationDateBefore)};
+        if(req.query.expectedEndDateAfter)
+            query["expectedEndDate"] = {$gt: new Date(req.query.expectedEndDateAfter)};
+        if(req.query.expectedEndDateBefore)
+            query["expectedEndDate"] = {...query["prenotationDate"], $lt: new Date(req.query.expectedEndDateBefore)};
+        
+        let rentals = []
+        if(req.query.project){ 
+            const project = req.query.project.split(',');
+            rentals = await Rental.find(query, project);
+        }
+        else
+            rentals = await Rental.find(query);
 
         if(req.query.populate && JSON.parse(req.query.populate)) {
             rentals = await rentals.mapAsync(async(r) => await r.populateAll())

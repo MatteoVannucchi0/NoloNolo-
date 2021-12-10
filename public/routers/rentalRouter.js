@@ -29,7 +29,7 @@ router.get('/', authentication.verifyAuth(requiredAuthLevel, true), async (req, 
         if(req.query.expectedEndDateAfter)
             query["expectedEndDate"] = {$gt: new Date(req.query.expectedEndDateAfter)};
         if(req.query.expectedEndDateBefore)
-            query["expectedEndDate"] = {...query["prenotationDate"], $lt: new Date(req.query.expectedEndDateBefore)};
+            query["expectedEndDate"] = {...query["expectedEndDate"], $lt: new Date(req.query.expectedEndDateBefore)};
         
         let rentals = []
         if(req.query.project){ 

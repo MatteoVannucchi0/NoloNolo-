@@ -64,5 +64,10 @@ productSchema.methods.availableFromTo = async function (from, to) {
     return (await this.getAvailableUnitsFromTo(from, to)).length > 0;
 }
 
+productSchema.methods.populateAll = async function () {
+    await this.populate(['altproducts'])
+    return this
+}
+
 module.exports.model = mongoose.model('Product', productSchema);
 module.exports.schema = productSchema;

@@ -32,15 +32,17 @@ router.get('/', async (req, res) => {
     try {
         let query = {}
 
+        // BEFORE FIND QUERY
         if (req.query.name)
             query["name"] = req.query.name;
         if (req.query.category)
             query["category"] = req.query.category;
         if (req.query.subcategory)
             query["subcategory"] = req.query.subcategory;
-        
+
         let product = (await Product.find(query));
 
+        // AFTER FIND QUERY
         if(req.query.availableTo){
             const to = new Date(req.query.availableTo)
             const from = new Date(req.query.availableFrom) || Date.now();
@@ -52,6 +54,11 @@ router.get('/', async (req, res) => {
                 product = await product.filterAsync(async(x) => await x.available())
             else
                 product = await product.filterAsync(async(x) => !(await x.available()))
+        }
+
+        // MODIFIER
+        if(req.query.populate && JSON.parse(req.query.populate)) {            
+            product = await product.mapAsync(async(p) => await p.populateAll())
         }
 
         res.status(200).json(paginate(product, req.query));

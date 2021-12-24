@@ -58,3 +58,4 @@ async function computeModifiers(info) {
 }
 
 module.exports.computePriceEstimation = computePriceEstimation;
+module.exports.unitPriceEstimation = unitPriceEstimation

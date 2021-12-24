@@ -151,7 +151,7 @@ function verifyOnlyMasterKey(req, res, next) {
 }
 
 async function getIdFromToken(req, res, next) {
-    const token = req.headers["authorization"];
+    const token = processToken(req.headers["authorization"]);
     if(!token || token === masterKey) {
         return next();             //Nel caso in cui non ci sia un token da cui prendere l'id dello username vado oltre
     }

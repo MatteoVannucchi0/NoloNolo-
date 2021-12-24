@@ -294,7 +294,7 @@ router.delete('/:id/altproducts', authentication.verifyAuth(requiredAuthLevel, f
     }
 })
 
-router.get('/:id/price_estimation', authentication.verifyAuth(requiredAuthLevel, false), authentication.getIdFromToken, getProductById, async (req, res) => {
+router.get('/:id/priceEstimation', authentication.verifyAuth(requiredAuthLevel, false), authentication.getIdFromToken, getProductById, async (req, res) => {
     try {
         let from = req.query.from || Date.now();
         let to = req.query.to;

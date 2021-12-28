@@ -156,7 +156,7 @@ router.post('/:id/units', authentication.verifyAuth(requiredAuthLevel, false), g
     }
 })
 
-router.get('/:id/available', authentication.verifyAuth(requiredAuthLevel, false),  getProductById, async (req, res) => {
+router.get('/:id/available', getProductById, async (req, res) => {
     let response = {};
     let availableUnits = [];
     let from = null;

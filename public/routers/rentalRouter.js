@@ -1,5 +1,6 @@
 const express = require('express');
 const Rental = require('../models/rental');
+const Product = require('../models/product').model;
 const router = express.Router();
 const authentication = require('../lib/authentication');
 const Bill = require('../models/bill');
@@ -31,6 +32,14 @@ router.get('/', authentication.verifyAuth(requiredAuthLevel, true), async (req, 
         if(req.query.expectedEndDateBefore)
             query["expectedEndDate"] = {...query["expectedEndDate"], $lt: new Date(req.query.expectedEndDateBefore)};
         
+        if(req.query.product) {
+            const productId = req.query.product;
+            const product = await Product.findById(productId)
+            const productUnit = await product.getUnits();
+            const queryObject = {$in: [...productUnit, query["unit"] ]}; 
+            query["unit"] = queryObject
+        }
+
         let rentals = []
         if(req.query.project){ 
             const project = req.query.project.split(',');

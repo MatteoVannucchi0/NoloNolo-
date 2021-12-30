@@ -1,6 +1,7 @@
 const express = require('express');
 const router = express.Router();
 const Unit = require("../models/unit").model;
+const Product = require("../models/product").model;
 const authentication = require('../lib/authentication');
 const errorHandler = require('../lib/errorHandler');
 const priceCalculation = require('../lib/priceCalculation');
@@ -27,6 +28,28 @@ router.get('/:idunit', authentication.verifyAuth(requiredAuthLevel, false), getU
     }
 })
 
+router.delete('/:idunit', authentication.verifyAuth(requiredAuthLevel, false), getUnitById, async (req, res) => {
+    try {
+        let removedUnit = res.unit;
+        await res.unit.remove();
+
+        res.status(200).json(removedUnit);
+    } catch (error) {
+        return await errorHandler.handle(error, res, 500);
+    }
+})
+
+router.patch('/:idunit', authentication.verifyAuth(requiredAuthLevel, false), getUnitById, async (req, res) => {
+    try {
+        res.unit.set(req.body);
+        await res.unit.save();
+
+        res.status(200).json(res.unit);
+    } catch (error) {
+        return await errorHandler.handle(error, res, 400);
+    }
+})
+
 router.get('/:idunit/priceEstimation', authentication.verifyAuth(requiredAuthLevel, false), authentication.getIdFromToken, getUnitById, async (req, res) => {
     try {
         let from = req.query.from || Date.now();
@@ -37,8 +60,15 @@ router.get('/:idunit/priceEstimation', authentication.verifyAuth(requiredAuthLev
             return await errorHandler.handleMsg(errmsg, res, 400);
         }
 
+        const product = await Product.findById(res.unit.product);
+        const category = product.category;
+        const subcategory = product.subcategory;
+
         let agentId = req.agentId;
-        let priceEstimation = await priceCalculation.unitPriceEstimation(res.unit, { from, to, agentId, });
+        from = new Date(from);
+        to = new Date(to);
+        
+        let priceEstimation = await priceCalculation.unitPriceEstimation(res.unit, { from, to, agentId, product, category, subcategory });
         return res.status(200).json(priceEstimation);
     } catch (error) {
         return await errorHandler.handle(error, res, 500);

@@ -82,6 +82,13 @@ const {createFileAndDirSync} = require(global.backendDir + '/lib/helper');
 //Perchè lo mettiamo sincrono? se non lo fosse dovremmo usare un callback ma renderebbe morgan non funzionante perché andremmo a fare app.use(morgan ...) dopo il resto delle app.use dei vari endpoint
 //Se invece usassimo await funzionerebbe però bisognerebbe richiundere tutto index in una funzione async. Facendo ciò però i test partono prima che sia caricato tutto e non vanno.
 //Questa è quindi la soluzione più semplice, anche perché non causa grossi problemi avere una funzionalità sincrona chiamata solo durante il setup iniziale del server.
+
+try{
+   fs.unlinkSync(logginFilePath);
+} catch (err) {
+   console.error(err)
+}
+
 createFileAndDirSync(logginFilePath)
 var accessLogStream = fs.createWriteStream(logginFilePath, { flags: 'a' })
 const morgan = require('morgan');
@@ -144,7 +151,6 @@ mongoose.connection.once('open', () => console.log("Connesso al database"));
 /*                            */
 /* ========================== */
 
-// app.use('/api/', Router);
 
 const authentication = require(global.backendDir + '/routers/authenticationRouter');
 app.use("/api/authentication/", authentication.router);
@@ -164,15 +170,19 @@ app.use("/api/rentals/", rentalRouter);
 const billRouter = require(global.backendDir + '/routers/billRouter');
 app.use('/api/bills/', billRouter);
 
-
 const unitRouter = require(global.backendDir + '/routers/unitRouter');
 app.use('/api/units/', unitRouter);
+
+const offerRouter = require(global.backendDir + '/routers/offerRouter');
+app.use('/api/offers/', offerRouter);
 
 const pageRouter = require(global.backendDir + '/routers/pageRouter');
 app.use('/', pageRouter);
 
 const debugRouter = require(global.backendDir + '/routers/debugRouter')(mongoose);
 app.use('/api/debug/', debugRouter);
+
+
 
 
 /* ========================== */

@@ -10,6 +10,38 @@ function isWeekend(date){
     return day === 6 || day === 0;
 }
 
+Date.prototype.addDays = function (days) {
+  var date = new Date(this.valueOf());
+  date.setDate(date.getDate() + days);
+  return date;
+};
+
+function getNumberOfWorkingDays(startDate, endDate) {
+  var numWorkDays = 0;
+  var currentDate = new Date(startDate);
+  while (currentDate <= endDate) {
+      // Skips Sunday and Saturday
+      if (!isWeekend(currentDate)) {
+          numWorkDays++;
+      }
+      currentDate = currentDate.addDays(1);
+  }
+  return numWorkDays;
+}
+
+function getNumberOfWeekendDays(startDate, endDate) {
+  var numWorkDays = 0;
+  var currentDate = new Date(startDate);
+  while (currentDate <= endDate) {
+      // Skips Sunday and Saturday
+      if (isWeekend(currentDate)) {
+          numWorkDays++;
+      }
+      currentDate = currentDate.addDays(1);
+  }
+  return numWorkDays;
+}
+
 async function createFileAndDir(path) {
   try{
     await fs.mkdir(getDirName(path), { recursive: true });
@@ -59,4 +91,4 @@ Array.prototype.mapAsync = async function (callbackfn){ return mapAsync(this, ca
 Array.prototype.filterAsync = async function (callbackfn){ return filterAsync(this, callbackfn); }
 
 
-module.exports = {dayDifference, isWeekend, createFileAndDir, createFileAndDirSync, deleteFile, getRandomNameForImage, filterAsync}
+module.exports = {dayDifference, isWeekend, getNumberOfWorkingDays, getNumberOfWeekendDays ,createFileAndDir, createFileAndDirSync, deleteFile, getRandomNameForImage, filterAsync}

@@ -1,4 +1,9 @@
 const modifiersList = require("./modifiers").modifiersList;
+const offerModifier = require("./modifiers").offerModifier;
+const Offer = require("../models/offer").model;
+
+const helper = require("./helper");
+
 
 class Modifiers {
     constructor(value, shortExplanation, longExplanation) {
@@ -18,30 +23,37 @@ class PriceEstimation{
 }
 
 async function computePriceEstimation(units, info) {
-    //let priceToEstimate = {};
     let estimations = [];
+
+    const offers = await Offer.find();
+    const inPeriodOffers = offers.filter(o => {
+        return (o.start <= info.from && info.from <= o.end) || 
+               (o.start <= info.to && info.to <= o.end)
+    })
+    const finalOffers = inPeriodOffers.filter(o => {
+        return o.categoryFilter.length === 0 || o.categoryFilter.includes(info.category)
+    })
+
+    console.log(finalOffers)
+    info.offers = finalOffers
 
     for (const unit of units) {
         estimations.push(await unitPriceEstimation(unit, info));
-
-        /* TODO nel caso in cui si vogliono raggrupare unità per stesso prezzo aggiungerlo, però si perdono informazioni sulla causa del prezzo
-        let estimation = unitPriceEstimation(unit, info);
-        if(priceToEstimate[estimation.finalPrice])
-            priceToEstimate[estimation.finalPrice].units.push(unit._id);
-        else
-            priceToEstimate[estimation.finalPrice] = estimation;
-            estimations.push(estimation);
-            */
     }
+
     return estimations.sort( (a, b) => parseFloat(a.finalPrice) - parseFloat(b.finalPrice) );
 }
 
 async function unitPriceEstimation(unit, info) {
     let computedModifiers = await computeModifiers({ unit, ...info });
-    let finalPrice = unit.price;
+    let finalPricePerDay = unit.price;
 
     for (const modifier of computedModifiers)
-        finalPrice = finalPrice * modifier.value;
+        finalPricePerDay = finalPricePerDay * modifier.value;
+
+    const numberOfDay = helper.dayDifference(info.from, info.to);
+    const finalPrice = finalPricePerDay * numberOfDay;
+    
 
     return new PriceEstimation(unit.price, computedModifiers, finalPrice, unit._id);
 }
@@ -49,9 +61,19 @@ async function unitPriceEstimation(unit, info) {
 async function computeModifiers(info) {
     let modifiers = [];
     for (const modifier of modifiersList) {
-        if (await modifier.condition(info)){
-            modifiers.push(new Modifiers(modifier.value, modifier.shortExplanation(info), modifier.longExplanation(info)));
-        } 
+        try{
+            if (await modifier.condition(info)){
+                modifiers.push(new Modifiers(await modifier.value(info), await modifier.shortExplanation(info), await modifier.longExplanation(info)));
+            } 
+        } catch (error) {
+            console.error(error);
+        }
+    }
+
+    for(const offer of info.offers){
+            
+
+        modifiers.push(new Modifiers(offer.modifier, offer.shortDescription, offer.description))
     }
 
     return modifiers;

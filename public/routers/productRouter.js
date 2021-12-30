@@ -305,8 +305,15 @@ router.get('/:id/priceEstimation', authentication.verifyAuth(requiredAuthLevel, 
 
         let availableUnits = (await Unit.find({ product: req.params.id })).filter(x => x.availableFromTo(from, to));
         let agentId = req.agentId;
+        
+        from = new Date(from);
+        to = new Date(to);
 
-        let priceEstimation = await computePriceEstimation(availableUnits, { from, to, agentId, });
+        const category = res.product.category;
+        const subcategory = res.product.subcategory;
+        const product = res.product;
+
+        let priceEstimation = await computePriceEstimation(availableUnits, { from, to, agentId, category, subcategory, product });
         return res.status(200).json(priceEstimation);
     } catch (error) {
         return await errorHandler.handle(error, res);

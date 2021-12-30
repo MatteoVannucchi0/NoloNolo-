@@ -20,7 +20,7 @@ router.post('/customers/login', async (req, res) => {
 
         const jwtToken = await customer.generateToken();
         
-        return res.status(200).set({ "Authorization": jwtToken }).send();
+        return res.status(200).set({ "Authorization": jwtToken }).json(customer);
     } catch (error) {
         return res.status(400).json({ message: error.message });
     }
@@ -41,7 +41,7 @@ router.post('/employees/login', async (req, res) => {
 
         const jwtToken = await employee.generateToken();
         
-        return res.status(200).set({ "Authorization": jwtToken }).send();
+        return res.status(200).set({ "Authorization": jwtToken }).json(employee);
     } catch (error) {
         return res.status(400).json({ message: error.message });
     }

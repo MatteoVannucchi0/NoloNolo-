@@ -151,6 +151,13 @@ mongoose.connection.once('open', () => console.log("Connesso al database"));
 /*                            */
 /* ========================== */
 
+app.patch(function (req, res, next) {
+   if(req.body){
+      req.body.__v = undefined;
+   }
+   
+   next();
+})
 
 const authentication = require(global.backendDir + '/routers/authenticationRouter');
 app.use("/api/authentication/", authentication.router);

@@ -70,6 +70,8 @@ unitSchema.methods.availableFromTo = async function (from, to) {
                 || (x.startDate >= from && x.expectedEndDate <= to)
         })
     
+    console.log("Rentail in periods: ", rentalsInPeriod)
+
     if(rentalsInPeriod.length > 1)
         throw new Error("There are more than one rentals associated with the units in this time frame. This is a server error");
 

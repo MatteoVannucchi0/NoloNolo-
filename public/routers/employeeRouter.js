@@ -112,7 +112,7 @@ router.delete('/:id', authentication.verifyAuth(requiredAuthLevel, true), getEmp
 router.patch('/:id', authentication.verifyAuth(requiredAuthLevel, true), authentication.hashPassword, getEmployeeById, async (req,res) => {
     try{
         res.employee.set(req.body);
-        await res.employee.update();
+        await res.employee.save();
 
         res.status(200).json(res.employee);
     } catch (error) {

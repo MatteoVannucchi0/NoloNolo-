@@ -56,7 +56,7 @@ router.delete('/:id', authentication.verifyAuth(requiredAuthLevel, false), getOf
 router.patch('/:id', authentication.verifyAuth(requiredAuthLevel, false), getOfferById, async (req, res) => {
     try {
         res.offer.set(req.body);
-        await res.offer.save();
+        await res.offer.update();
 
         res.status(200).json(res.offer);
     } catch (error) {

@@ -42,7 +42,7 @@ router.delete('/:idunit', authentication.verifyAuth(requiredAuthLevel, false), g
 router.patch('/:idunit', authentication.verifyAuth(requiredAuthLevel, false), getUnitById, async (req, res) => {
     try {
         res.unit.set(req.body);
-        await res.unit.save();
+        await res.unit.update();
 
         res.status(200).json(res.unit);
     } catch (error) {

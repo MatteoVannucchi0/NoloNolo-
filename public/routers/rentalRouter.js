@@ -101,7 +101,7 @@ router.delete('/:id', authentication.verifyAuth(requiredAuthLevel, false), getRe
 router.patch('/:id', authentication.verifyAuth(requiredAuthLevel, false),getRentalById, async (req,res) => {
     try{
         res.rental.set(req.body);
-        await res.rental.save();
+        await res.rental.update();
 
         res.status(200).json(res.rental);
     } catch (error) {

@@ -47,7 +47,7 @@ router.delete('/:id', authentication.verifyAuth(requiredAuthLevel, false), getBi
 router.patch('/:id', authentication.verifyAuth(requiredAuthLevel, false),getBillById, async (req,res) => {
     try{
         res.bill.set(req.body);
-        await res.bill.save();
+        await res.bill.update();
 
         res.status(200).json(res.bill);
     } catch (error) {

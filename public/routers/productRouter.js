@@ -121,7 +121,7 @@ router.delete('/:id', authentication.verifyAuth(requiredAuthLevel, false), getPr
 router.patch('/:id', authentication.verifyAuth(requiredAuthLevel, false), getProductById, async (req, res) => {
     try {
         res.product.set(req.body);
-        await res.product.save();
+        await res.product.update();
 
         res.status(200).json(res.product);
     } catch (error) {

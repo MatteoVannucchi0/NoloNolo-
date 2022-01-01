@@ -99,7 +99,7 @@ router.delete('/:id', authentication.verifyAuth(requiredAuthLevel, true), getCus
 router.patch('/:id', authentication.verifyAuth(requiredAuthLevel, true), authentication.hashPassword, getCustomerById, async (req, res) => {
     try {
         res.customer.set(req.body);
-        await res.customer.save();
+        await res.customer.update();
 
         res.status(200).json(res.customer);
     } catch (error) {

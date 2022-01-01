@@ -1,10 +1,9 @@
 /* eslint-disable no-unused-vars */
 const conditionLevel = require("../models/unit").conditionLevel;
-const helper = require("./helper");
-
-//TODO magari rendere condition async
+const Helper = require("./helper");
 
 let discoutBasedOnCondition = {
+    id: 0,
     majorflawDiscount: 0.5,
     minorflawDiscount: 0.8,
     async condition({ unit, ...others }) {
@@ -20,33 +19,30 @@ let discoutBasedOnCondition = {
         return 1;
     },
     async shortExplanation({...others }) {
-        return "discout based on condition of the unit";
+        return "Sconto dovuto allo stato dell'unità";
     },
-    async longExplanation({unit, ...others }) {
-        return ` A discout of ${(1 - this.value) * 100}% is applied because the unit has some ${unit.condition}`;
+    async longExplanation(contex) {
+        return `Uno sconto del ${Helper.toPercent(1 - await this.value(contex))}% è applicato perché l'unità ha ${Helper.translateUnitConditionToItalian(contex.unit.condition)}`;
     }
 };
 
 let premiumBasedOnWeekendDays = {
+    id: 1,
     //This modifier modify the price based on how much day are on the weekend
     //Weekend day cost 20% more
     premiumPrice: 1.2,
     weekendDays: null,
-    async condition({ unit, from, to, ...others }) {
-        this.weekendDays = helper.getNumberOfWeekendDays(from, to);
-        console.log(from);
-        return this.weekendDays > 0;
+    async condition({ day, ...others }) {
+        return Helper.isWeekend(day)
     },
-    async value({from, to}) {
-        const allDays = helper.dayDifference(from, to);
-        const workingDays = allDays - this.weekendDays;
-        return (workingDays * 1 + this.weekendDays * this.premiumPrice) / allDays;
+    async value(contex) {
+        return this.premiumPrice;
     },
-    async shortExplanation({ unit, from, to, ...others }) {
+    async shortExplanation({ unit, ...others }) {
         return "Prezzo aumentanto nei weekend";
     },
-    async longExplanation({ unit, from, to, ...others }) {
-        return `Ci sono ${this.weekendDays} giorni nel weekend che costano ${(this.premiumPrice - 1) * 100}% in più`;
+    async longExplanation({ unit, ...others }) {
+        return `I giorni nel weekend, visto la grossa richiesta, hanno un sovvrapprezzo del ${Helper.toPercent(this.premiumPrice - 1)}%`;
     }
 };
 

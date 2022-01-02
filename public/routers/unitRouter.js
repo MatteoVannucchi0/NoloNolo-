@@ -11,8 +11,17 @@ const requiredAuthLevel = authentication.authLevel.employee;
 router.get('/', authentication.verifyAuth(requiredAuthLevel, false), async (req, res) => {
     try {
         let query = {}
-        
-        let unit = (await Unit.find(query));
+        let unit = []
+        if(req.query.project){ 
+            const project = req.query.project.split(',');
+            unit = await Unit.find(query, project);
+        }
+        else
+            unit = (await Unit.find(query));
+
+        if(req.query.populate && JSON.parse(req.query.populate)) {
+            unit = await unit.mapAsync(async(u) => await u.populateAll())
+        }
 
         res.status(200).json(unit);
     } catch (error) {

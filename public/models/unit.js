@@ -78,6 +78,11 @@ unitSchema.methods.availableFromTo = async function (from, to) {
     return rentalsInPeriod.length == 0;
 }
 
+unitSchema.methods.populateAll = async function () {
+    await this.populate(['product','rentals'])
+    return this
+}
+
 module.exports.model = mongoose.model('Unit', unitSchema);
 module.exports.schema = unitSchema;
 module.exports.conditionLevel = conditionLevel;

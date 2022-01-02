@@ -56,7 +56,15 @@ router.get('/verify', async (req, res) => {
         }
 
         const decrypted = await authentication.verifyToken(token);
-        return res.status(200).json(decrypted);
+        let user = {};
+
+        if(decrypted.auth === authentication.authLevel.admin || decrypted.auth === authentication.authLevel.employee) {
+            user = await Employee.findById(decrypted.id);
+        } else {
+            user = await Customer.findById(decrypted.id);
+        }
+
+        return res.status(200).json(user);
     } catch (error) {
         res.status(400).json({message: error.message})
     }

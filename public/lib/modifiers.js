@@ -26,29 +26,51 @@ let discoutBasedOnCondition = {
     }
 };
 
-let premiumBasedOnWeekendDays = {
+let surchargeBasedOnWeekendDays = {
     id: 1,
     //This modifier modify the price based on how much day are on the weekend
     //Weekend day cost 20% more
-    premiumPrice: 1.2,
+    surchargePrice: 1.2,
     weekendDays: null,
-    async condition({ day, ...others }) {
+    async condition({ day }) {
         return Helper.isWeekend(day)
     },
     async value(contex) {
-        return this.premiumPrice;
+        return this.surchargePrice;
     },
-    async shortExplanation({ unit, ...others }) {
+    async shortExplanation({ unit }) {
         return "Prezzo aumentanto nei weekend";
     },
-    async longExplanation({ unit, ...others }) {
-        return `I giorni nel weekend, visto la grossa richiesta, hanno un sovvrapprezzo del ${Helper.toPercent(this.premiumPrice - 1)}%`;
+    async longExplanation({ unit }) {
+        return `I giorni nel weekend, visto la grossa richiesta, hanno un sovvrapprezzo del ${Helper.toPercent(this.surchargePrice - 1)}%`;
     }
 };
 
+let surchargeBasedOnLateDays = {
+    id: 2,
+    //This modifier modify the price based on if the days is after the expected end date, so the rent is late
+    //Each late days cost 25% more
+    surchargePrice: 1.25,
+    async condition({ day, expectedEndDate }) {
+        if(!expectedEndDate) {return false}
+
+        return day > expectedEndDate;
+    },
+    async value(contex) {
+        return this.surcharge;
+    },
+    async shortExplanation({ unit }) {
+        return "Prezzo aumentanto nei giorni di ritardo";
+    },
+    async longExplanation({ unit }) {
+        return `Ogni giorno di ritardo ha un sovraprezzo del ${Helper.toPercent(this.surchargePrice - 1)}%, a causa dei disguidi che comporta alla compagnia`;
+    }
+}
+
 const modifiersList = [
     discoutBasedOnCondition,
-    premiumBasedOnWeekendDays
+    surchargeBasedOnWeekendDays,
+    surchargeBasedOnLateDays
 ]
 
 module.exports.modifiersList = modifiersList;

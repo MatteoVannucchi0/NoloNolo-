@@ -1,32 +1,53 @@
 const express = require('express');
 const Bill = require('../models/bill').model;
+const Unit = require("../models/unit").model;
+const Product = require("../models/product").model;
+const Customer = require('../models/customer').model;
+const priceCalculation = require('../lib/priceCalculation');
+const Employee = require('../models/employee');
 const router = express.Router();
+const errorHandler = require('../lib/errorHandler');
 const authentication = require('../lib/authentication');
 
 const requiredAuthLevel = authentication.authLevel.admin
 
 router.get('/', authentication.verifyAuth(requiredAuthLevel, true), async (req, res) => {
     try {
-        let bill = await Bill.find();
+        let query = {}
+        if(req.query.customer) {
+            query.customer = req.query.customer;
+        }
+        if(req.query.employee) {
+            query.employee = req.query.employee
+        }
 
-        res.status(200).json(bill);
+        let unit = (await Bill.find(query));
+
+        res.status(200).json(unit);
     } catch (error) {
-        res.status(500).json({message: error.message});
+        return await errorHandler.handle(error, res, 500);
     }
 })
 
 router.post('/', authentication.verifyAuth(requiredAuthLevel, true), async (req, res) => {
-    try{
-        bill = await Bill(req.body);
+    const {customer: customerID, employee: employeeID, startRent: from, endRent: to , unit: unitID} = req.body;
+    const {expectedEndDate, repairDamageSurcharge} = req.query;
+
+    const billObject = await generateBill(customerID, employeeID, from, to, unitID, expectedEndDate, repairDamageSurcharge);
+    console.log(billObject);
+
+    let bill = null;
+    try {
+        bill = await Bill(billObject);
     } catch (error) {
-        res.status(400).json({message: error.message})
+        return await errorHandler.handle(error, res, 400);
     }
+
     try {
         const newBill = await bill.save();
         res.status(201).json(newBill);
     } catch (error) {
-        console.log(error.message);
-        res.status(409).json({message: error.message});
+        return await errorHandler.handle(error, res);
     }
 })
 
@@ -38,32 +59,61 @@ router.delete('/:id', authentication.verifyAuth(requiredAuthLevel, false), getBi
     try{
         let removedBill = res.bill;
         await res.bill.remove();
+
         res.status(200).json(removedBill);
     } catch(error){
-        res.status(500).json({message: error.message});
+        return await errorHandler.handle(error, res, 500);
     }
 })
 
 router.patch('/:id', authentication.verifyAuth(requiredAuthLevel, false),getBillById, async (req,res) => {
-    try{
+    try {
         res.bill.set(req.body);
         await res.bill.save();
 
         res.status(200).json(res.bill);
     } catch (error) {
-        res.status(400).json({message: error.message})
+        return await errorHandler.handle(error, res, 400);
     }
 })
+
+async function generateBill(customerID, employeeID, from, to, unitID, expectedEndDate, repairDamageSurcharge) {
+    const unit = await Unit.findById(unitID);
+
+    const product = await Product.findById(unit.product);
+    const category = product.category;
+    const subcategory = product.subcategory;
+
+    from = new Date(from);
+    to = new Date(to);
+
+    expectedEndDate = new Date(expectedEndDate);
+    repairDamageSurcharge = parseInt(repairDamageSurcharge);
+
+    const priceEstimation = await priceCalculation.unitPriceEstimation(unit, { from, to, agentId: customerID, product, category, subcategory, expectedEndDate, repairDamageSurcharge });
+
+    const billObject = {
+        customer: customerID,
+        employee: employeeID,
+        priceRecap: priceEstimation,
+        startRent: from,
+        endRent: to,
+    }
+
+    return billObject;
+}
 
 async function getBillById(req, res, next) {
     let bill;
     try {
         bill = await Bill.findById(req.params.id);
-        if(bill == null){
-            return res.status(404).json({message: "Bill not found on the database"});
+
+        if (bill == null) {
+            const errmsg = "Bill with id " + req.params.id + " not found on the database";
+            return await errorHandler.handleMsg(errmsg, res, 404);
         }
     } catch (error) {
-        return res.status(400).json({message: error.message});
+        return await errorHandler.handle(error, res);
     }
 
     res.bill = bill;

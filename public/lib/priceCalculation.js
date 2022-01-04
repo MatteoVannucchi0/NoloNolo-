@@ -22,14 +22,15 @@ class Modifier {
 }
 
 class PriceEstimation{
-    constructor(basePrice, modifiersList, finalPrice, unitID, daysCount, unitBasePrice){
+    constructor(basePrice, modifiersList, finalPrice, unitID, daysCount, unitBasePrice, repairDamageSurcharge = 0){
         this.basePrice = basePrice;
         this.modifiersList = modifiersList;
         this.finalPrice = finalPrice;
         this.unitID = unitID;
         this.daysCount = daysCount;
-        this.pricePerDay = finalPrice / this.daysCount;
-        this.unitBasePrice = unitBasePrice
+        this.pricePerDay = (finalPrice - repairDamageSurcharge )/ this.daysCount;
+        this.unitBasePrice = unitBasePrice;
+        this.repairDamageSurcharge = repairDamageSurcharge;
     }
 }
 
@@ -72,7 +73,11 @@ async function unitPriceEstimation(unit, info) {
         currentDate = currentDate.addDays(1);   
     }
 
-    return new PriceEstimation(basePrice, Array.from(modifiersMap.values()), finalPrice, unit._id, daysCount, unit.price);
+    if(info.repairDamageSurcharge) {
+        finalPrice = finalPrice + parseInt(info.repairDamageSurcharge);
+    }
+
+    return new PriceEstimation(basePrice, Array.from(modifiersMap.values()), finalPrice, unit._id, daysCount, unit.price, info.repairDamageSurcharge || 0);
 }
 
 async function computeUnitPriceEstimationForADay(day, unit, info) {
@@ -118,7 +123,6 @@ async function getSortedAndFilteredOffers(category, from, to) {
 
     return sorted;
 }
-
 
 module.exports.computePriceEstimation = computePriceEstimation;
 module.exports.unitPriceEstimation = unitPriceEstimation

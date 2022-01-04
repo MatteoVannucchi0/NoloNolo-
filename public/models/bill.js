@@ -11,17 +11,9 @@ const billSchema = new mongoose.Schema({
         required: true,
         ref: "Employee"
     },
-    basePrice: {
-        type: Number,
-        required: true
-    },
-    modifier: {
+    priceRecap: {
         type: mongoose.Schema.Types.Mixed, 
         required: true
-    },
-    finalPrice: {
-        type: Number,
-        required: true,
     },
     startRent: {
         type: Date,
@@ -31,11 +23,6 @@ const billSchema = new mongoose.Schema({
         type: Date,
         required: true
     },
-    unit: {
-        type: mongoose.Schema.Types.ObjectId,
-        required: true,
-        ref: "Unit",
-    }
 })
 
 module.exports.model = mongoose.model('Bill', billSchema);

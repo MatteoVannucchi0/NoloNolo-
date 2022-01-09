@@ -33,11 +33,11 @@ router.post('/', authentication.verifyAuth(requiredAuthLevel, true), async (req,
     const {customer: customerID, employee: employeeID, startRent: from, endRent: to , unit: unitID} = req.body;
     const {expectedEndDate, repairDamageSurcharge} = req.query;
 
-    const billObject = await generateBill(customerID, employeeID, from, to, unitID, expectedEndDate, repairDamageSurcharge);
-    console.log(billObject);
-
     let bill = null;
     try {
+        const billObject = await generateBill(customerID, employeeID, from, to, unitID, expectedEndDate, repairDamageSurcharge);
+        console.log(billObject);
+    
         bill = await Bill(billObject);
     } catch (error) {
         return await errorHandler.handle(error, res, 400);
@@ -84,6 +84,8 @@ async function generateBill(customerID, employeeID, from, to, unitID, expectedEn
     const category = product.category;
     const subcategory = product.subcategory;
     unit.price = product.price;
+
+    console.log("UNIT: ", unit, "PRODUCT: ", product)
 
     from = new Date(from);
     to = new Date(to);

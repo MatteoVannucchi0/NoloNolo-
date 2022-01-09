@@ -305,6 +305,7 @@ router.get('/:id/priceEstimation', authentication.verifyAuth(requiredAuthLevel, 
         }
 
         let availableUnits = (await Unit.find({ product: req.params.id })).filter(x => x.availableFromTo(from, to)).filter(x => x.condition !== unitConditionLevel.broken);
+        console.log("unità disponibili:", availableUnits);
         let agentId = req.agentId;
         
         from = new Date(from);

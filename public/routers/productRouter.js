@@ -122,6 +122,7 @@ router.delete('/:id', authentication.verifyAuth(requiredAuthLevel, false), getPr
 router.patch('/:id', authentication.verifyAuth(requiredAuthLevel, false), getProductById, upload.single('image'), async (req, res) => {
     try {
         if (req.file){
+            console.log("FILE: ", req.file);
             req.body.image = path.join(imageRelativePath, req.file.filename).substring(1); 
             await deleteFile(path.join(global.publicDir, res.product.image));
             console.log('New image patched, ' + req.body.image );

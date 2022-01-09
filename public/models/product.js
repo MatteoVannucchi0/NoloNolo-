@@ -26,6 +26,11 @@ const productSchema = new mongoose.Schema({
         required: true,
         default: "image/product/placeholder.jpg",
     },
+    price: {
+        type: Number,
+        required: true,
+        min: 0,
+    },
     category: {
         type: String,
         required: true,

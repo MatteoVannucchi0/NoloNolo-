@@ -79,6 +79,8 @@ router.get('/:idunit/priceEstimation', authentication.verifyAuth(requiredAuthLev
         const category = product.category;
         const subcategory = product.subcategory;
 
+        res.unit.price = product.price;
+
         let agentId = req.agentId;
         from = new Date(from);
         to = new Date(to);

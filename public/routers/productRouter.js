@@ -119,8 +119,11 @@ router.delete('/:id', authentication.verifyAuth(requiredAuthLevel, false), getPr
     }
 })
 
-router.patch('/:id', authentication.verifyAuth(requiredAuthLevel, false), getProductById, async (req, res) => {
+router.patch('/:id', authentication.verifyAuth(requiredAuthLevel, false), getProductById, upload.single('image'), async (req, res) => {
     try {
+        if (req.file) 
+            await deleteFile(path.join(global.publicDir, res.product.image));
+
         res.product.set(req.body);
         await res.product.save();
 

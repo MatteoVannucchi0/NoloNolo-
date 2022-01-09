@@ -1,6 +1,7 @@
 const express = require('express');
 const router = express.Router();
 const Unit = require("../models/unit").model;
+const unitConditionLevel = require("../models/unit").conditionLevel;
 const Product = require("../models/product").model;
 const authentication = require('../lib/authentication');
 const errorHandler = require('../lib/errorHandler');
@@ -61,6 +62,11 @@ router.patch('/:idunit', authentication.verifyAuth(requiredAuthLevel, false), ge
 
 router.get('/:idunit/priceEstimation', authentication.verifyAuth(requiredAuthLevel, false), authentication.getIdFromToken, getUnitById, async (req, res) => {
     try {
+        if(res.unit.condition === unitConditionLevel.broken) {
+            const errmsg = "You can't make price estimation on broken units";
+            return await errorHandler.handleMsg(errmsg, res, 400);
+        }
+
         let from = req.query.from || Date.now();
         let to = req.query.to;
 

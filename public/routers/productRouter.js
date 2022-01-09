@@ -2,6 +2,7 @@ const express = require('express');
 const router = express.Router();
 const Product = require("../models/product").model;
 const Unit = require("../models/unit").model;
+const unitConditionLevel = require("../models/unit").conditionLevel;
 const authentication = require('../lib/authentication');
 const errorHandler = require('../lib/errorHandler');
 const path = require('path')
@@ -303,7 +304,7 @@ router.get('/:id/priceEstimation', authentication.verifyAuth(requiredAuthLevel, 
             return await errorHandler.handleMsg(errmsg, res, 400);
         }
 
-        let availableUnits = (await Unit.find({ product: req.params.id })).filter(x => x.availableFromTo(from, to));
+        let availableUnits = (await Unit.find({ product: req.params.id })).filter(x => x.availableFromTo(from, to)).filter(x => x.condition !== unitConditionLevel.broken);
         let agentId = req.agentId;
         
         from = new Date(from);

@@ -83,6 +83,7 @@ async function generateBill(customerID, employeeID, from, to, unitID, expectedEn
     const product = await Product.findById(unit.product);
     const category = product.category;
     const subcategory = product.subcategory;
+    unit.price = product.price;
 
     from = new Date(from);
     to = new Date(to);

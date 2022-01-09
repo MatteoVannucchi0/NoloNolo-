@@ -23,6 +23,7 @@ const storage = multer.diskStorage({
         cb(null, imageAbsolutePath)
     },
     filename: function (req, file, cb) {
+        console.log(req.body);
         const uniqueName = req.body.name + '-' + Date.now() + path.extname(file.originalname);
         cb(null, uniqueName)
     }

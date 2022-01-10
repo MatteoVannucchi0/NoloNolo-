@@ -29,6 +29,7 @@ jobs:
       - run:
           name: Install npm packages
           command: |
+            ssh matteo.vannucchi@donpasquale.cs.unibo.it "bash --login -c 'npm cache clean --force' "
             ssh matteo.vannucchi@donpasquale.cs.unibo.it "bash --login -c 'cd /home/web/site202120/html && npm install --only=production' "
 workflows:
   version: 2

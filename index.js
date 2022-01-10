@@ -189,8 +189,18 @@ app.use('/', pageRouter);
 const debugRouter = require(global.backendDir + '/routers/debugRouter')(mongoose);
 app.use('/api/debug/', debugRouter);
 
+const next = require('next');
+const nextDirectory = `${global.frontendDir}/frontoffice/`;
+const nextApp = next({dir: nextDirectory});
+const nextHandler = nextApp.getRequestHandler();
 
-
+app.get('*', (req, res) => {
+   try{
+      return nextHandler(req, res);
+   } catch (err) {
+      return res.status(404).send("Not found");
+   }
+})
 
 /* ========================== */
 /*                            */

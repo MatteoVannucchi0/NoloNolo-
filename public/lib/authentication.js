@@ -54,7 +54,8 @@ async function hash(string) {
 
 async function hashPassword(req, res, next) {
     try{
-        req.body.loginInfo.password = await hash(req.body.loginInfo.password);
+        if(req.body.loginInfo && req.body.loginInfo.password)
+            req.body.loginInfo.password = await hash(req.body.loginInfo.password);
 
     } catch (error) {
         return res.status(400).json({message: error.message});

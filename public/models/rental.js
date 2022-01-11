@@ -53,6 +53,11 @@ const rentalSchema = new mongoose.Schema({
     priceEstimation: {
         type: mongoose.Schema.Types.Mixed,
         required: true,
+    },
+    replacementUnit: {
+        type: mongoose.Schema.Types.ObjectId,
+        ref: "Unit",
+        required: false,
     }
 })
 

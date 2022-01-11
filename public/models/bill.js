@@ -23,6 +23,10 @@ const billSchema = new mongoose.Schema({
         type: Date,
         required: true
     },
+    employeeMessage: {
+        type: String,
+        required: false,
+    } 
 })
 
 module.exports.model = mongoose.model('Bill', billSchema);

@@ -70,6 +70,52 @@ router.get('/verify', async (req, res) => {
     }
 })
 
+router.get('/verifyCustomer', async (req, res) => {
+    try {
+        const token = req.headers["authorization"];
+        
+        if(!token) {
+            return res.status(401).json({message: "Required authentication token"});
+        }
+
+        const decrypted = await authentication.verifyToken(token);
+        let user = {};
+
+        if(decrypted.auth === authentication.authLevel.admin || decrypted.auth === authentication.authLevel.employee) {
+            throw new Error("The token is not of a customer, but is of a " +  decrypted.auth);
+        } else {
+            user = await Customer.findById(decrypted.id);
+        }
+
+        return res.status(200).json(user);
+    } catch (error) {
+        res.status(400).json({message: error.message})
+    }
+})
+
+router.get('/verifyEmployee', async (req, res) => {
+    try {
+        const token = req.headers["authorization"];
+        
+        if(!token) {
+            return res.status(401).json({message: "Required authentication token"});
+        }
+
+        const decrypted = await authentication.verifyToken(token);
+        let user = {};
+
+        if(decrypted.auth === authentication.authLevel.admin || decrypted.auth === authentication.authLevel.employee) {
+            user = await Employee.findById(decrypted.id);
+        } else {
+            throw new Error("The token is not of an employee or an admin, but is of a customer.");
+        }
+
+        return res.status(200).json(user);
+    } catch (error) {
+        res.status(400).json({message: error.message})
+    }
+})
+
 
 module.exports.router = router;
 

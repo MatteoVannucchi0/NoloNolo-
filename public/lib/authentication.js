@@ -54,6 +54,7 @@ async function hash(string) {
 
 async function hashPassword(req, res, next) {
     try{
+        console.log("req.body:", req.body, "  req.body.loginInfo", req.body.loginInfo, "  req.body.loginInfo.password", req.body.loginInfo.password, " value:", !!req.body.loginInfo.password);
         if(req.body.loginInfo && req.body.loginInfo.password)
             req.body.loginInfo.password = await hash(req.body.loginInfo.password);
 

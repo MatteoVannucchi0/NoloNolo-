@@ -27,6 +27,10 @@ router.get('/', authentication.verifyAuth(requiredAuthLevel, true), async (req, 
             query["prenotationDate"] = {$gt: new Date(req.query.prenotationDateAfter)};
         if(req.query.prenotationDateBefore)
             query["prenotationDate"] = {...query["prenotationDate"], $lt: new Date(req.query.prenotationDateBefore)};
+        if(req.query.startDateAfter)
+            query["startDate"] = {$gt: new Date(req.query.startDateAfter)};
+        if(req.query.startDateBefore)
+            query["startDate"] = {...query["prenotationDate"], $lt: new Date(req.query.startDateBefore)};
         if(req.query.expectedEndDateAfter)
             query["expectedEndDate"] = {$gt: new Date(req.query.expectedEndDateAfter)};
         if(req.query.expectedEndDateBefore)

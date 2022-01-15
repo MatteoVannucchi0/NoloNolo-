@@ -8,7 +8,7 @@ const Unit = require('../models/unit');
 const paginate = require('../lib/pagination').paginate;
 
 
-const requiredAuthLevel = authentication.authLevel.admin
+const requiredAuthLevel = authentication.authLevel.employee
 
 router.get('/', authentication.verifyAuth(requiredAuthLevel, true), async (req, res) => {
     try {
@@ -62,7 +62,7 @@ router.get('/', authentication.verifyAuth(requiredAuthLevel, true), async (req, 
     }
 })
 
-router.post('/', authentication.verifyAuth(requiredAuthLevel, true), async (req, res) => {
+router.post('/', authentication.verifyAuth(authentication.authLevel.customer, true), async (req, res) => {
     let rental;
     try{
         rental = await Rental(req.body);

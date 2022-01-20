@@ -313,16 +313,18 @@ router.get('/:id/priceEstimation', authentication.verifyAuth(authentication.auth
             return await errorHandler.handleMsg(errmsg, res, 400);
         }
 
+        from = new Date(from);
+        to = new Date(to);
+        
         let units = (await Unit.find({ product: req.params.id }))
-        const unitsDisp = await units.filterAsync(async (x) => await x.availableFromTo(from, to))
+        const unitsDisp = await res.product.getAvailableUnitsFromTo(from, to);
         const availableUnits = unitsDisp.filter(x => x.condition !== unitConditionLevel.broken);
         
         availableUnits.forEach(u => {u.price = res.product.price;})
         
         let agentId = req.agentId;
         
-        from = new Date(from);
-        to = new Date(to);
+
 
         const category = res.product.category;
         const subcategory = res.product.subcategory;

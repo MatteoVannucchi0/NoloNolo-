@@ -101,7 +101,7 @@ async function computeUnitPriceEstimationForADay(day, unit, info) {
         }
 
         modifiers.push(new Modifier(offer.shortDescription, offer.description, offer._id))
-        
+        finalPrice = finalPrice * offer.modifier
         // It breaks at the first offer since it is the best
         break;
     }
